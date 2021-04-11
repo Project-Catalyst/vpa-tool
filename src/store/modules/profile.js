@@ -1,5 +1,5 @@
 // initial state
-const state = () => ({
+const getDefaultState = () => ({
   initialized: false,
   localDb: false,
   info: {
@@ -7,6 +7,7 @@ const state = () => ({
     email: ''
   }
 })
+const state = getDefaultState()
 
 // getters
 const getters = {}
@@ -29,6 +30,9 @@ const mutations = {
   },
   setLocalDb (state, localDb) {
     state.localDb = localDb
+  },
+  resetState (state) {
+    Object.assign(state, getDefaultState())
   }
 }
 

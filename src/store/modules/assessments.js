@@ -1,10 +1,16 @@
 // initial state
-const state = () => ({
+const getDefaultState = () => ({
   all: []
 })
 
+const state = getDefaultState()
+
 // getters
-const getters = {}
+const getters = {
+  getById: (state) => (id) => {
+    return state.all.find(assessment => assessment.id === id)
+  }
+}
 
 // actions
 const actions = {
@@ -14,6 +20,9 @@ const actions = {
 const mutations = {
   setAssessments (state, assessments) {
     state.all = assessments
+  },
+  resetState (state) {
+    Object.assign(state, getDefaultState())
   }
 }
 

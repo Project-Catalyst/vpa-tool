@@ -14,9 +14,10 @@
       </div>
     </div>
     <div class="database-loaded" v-if="initialized && localDb">
-      Database already loaded.
+      Database loaded.
       No of assessments: {{assessments.length}}
-      <router-link class="button" :to="{ name: 'filter' }">Start Reviewing</router-link>
+      <div class="button" @click="clear">Clear Database (!!!)</div>
+      <router-link class="button" :to="{ name: 'conditions' }">Start Reviewing</router-link>
     </div>
   </div>
 </template>
@@ -73,6 +74,10 @@ export default {
         header: true,
         complete: this.onComplete
       });
+    },
+    clear() {
+      this.$store.commit('profile/resetState')
+      this.$store.commit('assessments/resetState')
     }
   }
 }
