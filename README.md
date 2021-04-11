@@ -8,7 +8,7 @@ An external endpoint is connected to the app to have the updated number of revie
 The development is based on Vue.js
 
 An example CSV to import is [here](https://gist.github.com/coire1/86ac2bca2c0799ee5d5001f8a343f2c3)
-The demo is [here](https://project-catalyst.github.io/vca-tool/)
+The demo is [here](https://project-catalyst.github.io/vca-tool-frontend/)
 
 ## Development
 
