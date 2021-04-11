@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 import Profile from '../views/Profile.vue'
 import CFilter from '../views/CFilter.vue'
 import Stats from '../views/Stats.vue'
+import Conditions from '../views/Conditions.vue'
+import Assessment from '../views/Assessment.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +29,18 @@ const routes = [
     path: '/stats',
     name: 'stats',
     component: Stats
+  },
+  {
+    path: '/conditions',
+    name: 'conditions',
+    component: Conditions,
+    children: [
+      {
+        path: "assessment/:id",
+        name: 'assessment',
+        component: Assessment
+      }
+    ]
   }
 ]
 
