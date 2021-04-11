@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Profile from '../views/Profile.vue'
 import CFilter from '../views/CFilter.vue'
+import Stats from '../views/Stats.vue'
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,11 @@ const routes = [
     path: '/filter',
     name: 'filter',
     component: CFilter
+  },
+  {
+    path: '/stats',
+    name: 'stats',
+    component: Stats
   }
 ]
 
