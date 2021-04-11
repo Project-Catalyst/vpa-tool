@@ -16,7 +16,7 @@
     <div class="database-loaded" v-if="initialized && localDb">
       Database already loaded.
       No of assessments: {{assessments.length}}
-      <router-link :to="{ name: 'filter' }">Start Reviewing</router-link>
+      <router-link class="button" :to="{ name: 'filter' }">Start Reviewing</router-link>
     </div>
   </div>
 </template>

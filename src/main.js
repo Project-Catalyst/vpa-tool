@@ -5,6 +5,8 @@ import store from './store'
 
 import './plugins/vue-papa-parse'
 
+import "./assets/sass/main.scss";
+
 Vue.config.productionTip = false
 
 new Vue({
