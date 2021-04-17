@@ -32,6 +32,7 @@
 import { mapState } from 'vuex'
 import shuffle from '@/utils/shuffle'
 import AssessmentPreview from '@/components/AssessmentPreview'
+import { EventBus } from './../EventBus';
 
 export default {
   name: 'Conditions',
@@ -82,6 +83,9 @@ export default {
       this.$router.push({name: 'assessment', params: {id: this.currentList[this.currentIndex].id}})
       this.currentIndex = this.currentIndex + 1
     }
+  },
+  mounted() {
+    EventBus.$on('next-assessment', this.getNext)
   }
 }
 </script>

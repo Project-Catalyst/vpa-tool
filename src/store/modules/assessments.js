@@ -23,6 +23,12 @@ const mutations = {
   },
   resetState (state) {
     Object.assign(state, getDefaultState())
+  },
+  setProp (state, pp) {
+    const assessment = state.all.find(a => parseInt(a.id) === parseInt(pp.assId))
+    if (assessment) {
+      assessment[pp.propModel] = pp.value
+    }
   }
 }
 
