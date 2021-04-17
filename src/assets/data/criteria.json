@@ -1,0 +1,64 @@
+[
+  {
+    "key": "fair",
+    "name": "Fair",
+    "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur cursus augue mi, eget rutrum enim placerat eget. Phasellus finibus bibendum hendrerit. Aliquam vehicula massa velit, eget ornare libero tempus at. Donec luctus cursus auctor. Quisque eu nibh quis enim tempus molestie. Aliquam maximus auctor ex eget pulvinar. Quisque nec congue ipsum.",
+    "color": "green"
+  },
+  {
+    "key": "constructive",
+    "name": "Constructive Feedback",
+    "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur cursus augue mi, eget rutrum enim placerat eget. Phasellus finibus bibendum hendrerit. Aliquam vehicula massa velit, eget ornare libero tempus at. Donec luctus cursus auctor. Quisque eu nibh quis enim tempus molestie. Aliquam maximus auctor ex eget pulvinar. Quisque nec congue ipsum.",
+    "color": "green"
+  },
+  {
+    "key": "profanity",
+    "name": "Profanity / Offense",
+    "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur cursus augue mi, eget rutrum enim placerat eget. Phasellus finibus bibendum hendrerit. Aliquam vehicula massa velit, eget ornare libero tempus at. Donec luctus cursus auctor. Quisque eu nibh quis enim tempus molestie. Aliquam maximus auctor ex eget pulvinar. Quisque nec congue ipsum.",
+    "color": "red"
+  },
+  {
+    "key": "score",
+    "name": "Score doesn't match",
+    "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur cursus augue mi, eget rutrum enim placerat eget. Phasellus finibus bibendum hendrerit. Aliquam vehicula massa velit, eget ornare libero tempus at. Donec luctus cursus auctor. Quisque eu nibh quis enim tempus molestie. Aliquam maximus auctor ex eget pulvinar. Quisque nec congue ipsum.",
+    "info": "aaaa",
+    "color": "yellow"
+  },
+  {
+    "key": "not_related",
+    "name": "Not related",
+    "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur cursus augue mi, eget rutrum enim placerat eget. Phasellus finibus bibendum hendrerit. Aliquam vehicula massa velit, eget ornare libero tempus at. Donec luctus cursus auctor. Quisque eu nibh quis enim tempus molestie. Aliquam maximus auctor ex eget pulvinar. Quisque nec congue ipsum.",
+    "color": "yellow"
+  },
+  {
+    "key": "copy",
+    "name": "Copy",
+    "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur cursus augue mi, eget rutrum enim placerat eget. Phasellus finibus bibendum hendrerit. Aliquam vehicula massa velit, eget ornare libero tempus at. Donec luctus cursus auctor. Quisque eu nibh quis enim tempus molestie. Aliquam maximus auctor ex eget pulvinar. Quisque nec congue ipsum.",
+    "color": "yellow"
+  },
+  {
+    "key": "wrong_challenge",
+    "name": "Wrong challenge",
+    "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur cursus augue mi, eget rutrum enim placerat eget. Phasellus finibus bibendum hendrerit. Aliquam vehicula massa velit, eget ornare libero tempus at. Donec luctus cursus auctor. Quisque eu nibh quis enim tempus molestie. Aliquam maximus auctor ex eget pulvinar. Quisque nec congue ipsum.",
+    "color": "yellow"
+  },
+  {
+    "key": "wrong_criteria",
+    "name": "Wrong criteria",
+    "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur cursus augue mi, eget rutrum enim placerat eget. Phasellus finibus bibendum hendrerit. Aliquam vehicula massa velit, eget ornare libero tempus at. Donec luctus cursus auctor. Quisque eu nibh quis enim tempus molestie. Aliquam maximus auctor ex eget pulvinar. Quisque nec congue ipsum.",
+    "color": "yellow"
+  },
+  {
+    "key": "other",
+    "name": "General Infraction",
+    "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur cursus augue mi, eget rutrum enim placerat eget. Phasellus finibus bibendum hendrerit. Aliquam vehicula massa velit, eget ornare libero tempus at. Donec luctus cursus auctor. Quisque eu nibh quis enim tempus molestie. Aliquam maximus auctor ex eget pulvinar. Quisque nec congue ipsum.",
+    "color": "yellow"
+  },
+  {
+    "key": "other_rationale",
+    "name": "General infraction rationale",
+    "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur cursus augue mi, eget rutrum enim placerat eget. Phasellus finibus bibendum hendrerit. Aliquam vehicula massa velit, eget ornare libero tempus at. Donec luctus cursus auctor. Quisque eu nibh quis enim tempus molestie. Aliquam maximus auctor ex eget pulvinar. Quisque nec congue ipsum.",
+    "type": "text",
+    "color": "yellow"
+  }
+]

@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 
 import './plugins/vue-papa-parse'
+import './plugins/v-tooltip'
 
 import "./assets/sass/main.scss";
 

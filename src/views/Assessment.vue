@@ -35,8 +35,10 @@
         </div>
       </div>
       <div class="review">
-        <div class="el" v-for="(criterium, idx) in criteria" :key="idx">
-          {{criterium.name}} <input v-if="!criterium.type" type="checkbox" v-model="self()[criterium.key]" />
+        <div class="el" :class="[criterium.color]" v-for="(criterium, idx) in criteria" :key="idx">
+          <label :for="`label-${criterium.key}`">{{criterium.name}}</label>
+          <input :id="`label-${criterium.key}`" v-if="!criterium.type" type="checkbox" v-model="self()[criterium.key]" />
+          <div class="additional-info" v-tooltip="criterium.info">i</div>
           <textarea v-model="self()[criterium.key]" v-if="criterium.type"></textarea>
         </div>
       </div>
@@ -72,14 +74,6 @@ export default {
   computed: {
     ...mapGetters('assessments', ['getById']),
     ...dynamicComputed(criteria, 'assessment'),
-    email: {
-      get () {
-        return this.$store.state.profile.info.email
-      },
-      set (value) {
-        this.$store.commit('profile/setEmail', value)
-      }
-    },
     assessment() {
       return this.getById(this.$route.params.id);
     },
@@ -130,6 +124,7 @@ export default {
   width: 100%;
   height: 100%;
   background: #fff;
+  overflow: auto;
   .wrapper {
     max-width: 600px;
     width: 100%;
@@ -162,24 +157,72 @@ export default {
         }
       }
     }
-    .single-info {
+    .info {
       width: 100%;
-      float: left;
-      border: 2px solid #000;
-      padding: 10px;
-      margin-bottom: 20px;
-      .label {
-        font-size: 12px;
-        font-weight: 700;
-        margin-bottom: 5px;
-      }
-      &.half {
-        width: calc(50% - 10px);
-        &.first {
-          margin-right: 10px;
+      .single-info {
+        width: 100%;
+        float: left;
+        border: 2px solid #000;
+        padding: 10px;
+        margin-bottom: 20px;
+        .label {
+          font-size: 12px;
+          font-weight: 700;
+          margin-bottom: 5px;
         }
-        &.last {
-          margin-left: 10px;
+        &.half {
+          width: calc(50% - 10px);
+          &.first {
+            margin-right: 10px;
+          }
+          &.last {
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+    .review {
+      width: 100%;
+      .el {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px;
+        &.yellow {
+          background: #ffef93;
+        }
+        &.red {
+          background: #ff9393;
+        }
+        &.green {
+          background: #baffb2;
+        }
+        label {
+          flex-grow: 1;
+          cursor: pointer;
+        }
+        input[type="checkbox"] {
+          width: 20px;
+          height: 20px;
+          cursor: pointer;
+        }
+        textarea {
+          width: 100%;
+          height: 100px;
+          font-family: Avenir, Helvetica, Arial, sans-serif;
+          padding: 5px;
+          font-size: 14px;
+        }
+        .additional-info {
+          background: #000;
+          color: #fff;
+          font-size: 10px;
+          width: 10px;
+          height: 10px;
+          text-align:center;
+
         }
       }
     }

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "This proposal effectively addresses the challenge"
+  },
+  {
+    "id": 2,
+    "title": "Given experience and plan presented it is highly likely this proposal will be implemented successfully"
+  },
+  {
+    "id": 3,
+    "title": "The proposal provides sufficient information to assess how feasible it is and how effectively it addresses the challenge."
+  },
+  {
+    "id": 4,
+    "title": "Alignment: This challenge is critical to achieve Cardano's mission."
+  },
+  {
+    "id": 5,
+    "title": "Feasibility: The Catalyst community has the capacity to address the challenge."
+  },
+  {
+    "id": 6,
+    "title": "Verifiability: Success criteria and suggested metrics are set correctly to measure progress in addressing the challenge."
+  }
+]

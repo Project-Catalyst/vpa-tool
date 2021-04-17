@@ -2,7 +2,7 @@
   <div class="assessment-preview">
     <div class="info">
       <div class="label">Proposal:</div>
-      <div class="value">{{assessment.proposal_id}}</div>
+      <div class="value">{{proposal.title}}</div>
     </div>
     <div class="info text">
       <div class="label">Assessment:</div>
@@ -17,9 +17,27 @@
 
 <script>
 
+import proposals from '../assets/data/proposals.json'
+
 export default {
+  data() {
+    return {
+      proposals: proposals,
+    }
+  },
   name: 'AssessmentPreview',
-  props: ['assessment']
+  props: ['assessment'],
+  computed: {
+    proposal() {
+      if (this.assessment) {
+        let filtered = this.proposals.filter(p => (p.id === parseInt(this.assessment.proposal_id)))
+        if (filtered.length) {
+          return filtered[0]
+        }
+      }
+      return false
+    }
+  }
 }
 </script>
 

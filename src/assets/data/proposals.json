@@ -1,0 +1,2226 @@
+[
+  {
+    "id": 1,
+    "title": "Decentralized Football Betting Pool",
+    "description": "Football betting pools face limitations due to lack of transparency, inconvenient buy-ins/payouts, and require trust in a centralized party.",
+    "url": "http://ideascale.com/t/UM5UZBfWb",
+    "category": 1,
+    "no_assessments": 9
+  },
+  {
+    "id": 2,
+    "title": "Layer 2 Advanced Architecture",
+    "description": "Cardano **NEEDS** a cutting edge layer 2 data solution that will handle large volumes of, and high rates of, irregular and complex data.",
+    "url": "http://ideascale.com/t/UM5UZBfWm",
+    "category": 2,
+    "no_assessments": 3
+  },
+  {
+    "id": 3,
+    "title": "Idea: decentralized hierarchies",
+    "description": "It's hard to determine the best way to distribute power, hierarchies are necessary but it's almost impossible to make them right.",
+    "url": "http://ideascale.com/t/UM5UZBfWr",
+    "category": 4,
+    "no_assessments": 5
+  },
+  {
+    "id": 4,
+    "title": "Documentation Alignment",
+    "description": "There isn't a clear strategy for getting up to speed as a developer new to Cardano",
+    "url": "http://ideascale.com/t/UM5UZBfW0",
+    "category": 5,
+    "no_assessments": 0
+  },
+  {
+    "id": 5,
+    "title": "Cardano-based Marketplace",
+    "description": "A user can easily create a token but does not have any way to sell their token besides peer-to-peer trading.",
+    "url": "http://ideascale.com/t/UM5UZBfW3",
+    "category": 1,
+    "no_assessments": 9
+  },
+  {
+    "id": 6,
+    "title": "West Africa Proposer Outreach",
+    "description": "West African entrepreneurs are unaware of the Project Catalyst's funding campaigns and the community's encouragement of African proposals",
+    "url": "http://ideascale.com/t/UM5UZBfXD",
+    "category": 5,
+    "no_assessments": 1
+  },
+  {
+    "id": 7,
+    "title": "Local Centers in West Africa",
+    "description": "WADA's *Blockchain* *Resource Hubs for Solution Design* have no formal relationship with the Cardano Foundation (CF).",
+    "url": "http://ideascale.com/t/UM5UZBfXP",
+    "category": 2,
+    "no_assessments": 1
+  },
+  {
+    "id": 8,
+    "title": "+ Dev incentives in Cameroon",
+    "description": "Need welcoming space for developers to come together and brainstorm solutions (on a community level) built on Distributed Ledger Technology.",
+    "url": "http://ideascale.com/t/UM5UZBfXU",
+    "category": 7,
+    "no_assessments": 1
+  },
+  {
+    "id": 9,
+    "title": "Developer Library",
+    "description": "Developers have limited time to learn. Why not create a library of learning resources where each developer has a learning plan and a coach.",
+    "url": "http://ideascale.com/t/UM5UZBfXu",
+    "category": 1,
+    "no_assessments": 10
+  },
+  {
+    "id": 10,
+    "title": "Working Groups",
+    "description": "We need to assemble talent in groups to then assign workflow and create synergies and efficiencies.",
+    "url": "http://ideascale.com/t/UM5UZBfXv",
+    "category": 7,
+    "no_assessments": 6
+  },
+  {
+    "id": 11,
+    "title": "University/College Outreach",
+    "description": "Solicit the youngest and brightest from around the globe to contribute to the network. Raising awareness with student organizations.",
+    "url": "http://ideascale.com/t/UM5UZBfXz",
+    "category": 2,
+    "no_assessments": 6
+  },
+  {
+    "id": 12,
+    "title": "Create Social Network in Catalyst",
+    "description": "Create a social network so participants can like and work with each other and shares ideas and collaborate.",
+    "url": "http://ideascale.com/t/UM5UZBfX1",
+    "category": 6,
+    "no_assessments": 2
+  },
+  {
+    "id": 13,
+    "title": "Nada: Nodes-as-a-Service",
+    "description": "Zero config, instant Cardano node access for free.  \nIn a similar spirit to **Infura.io**, access to nodes should be free & easy.",
+    "url": "http://ideascale.com/t/UM5UZBfYX",
+    "category": 4,
+    "no_assessments": 10
+  },
+  {
+    "id": 14,
+    "title": "Encourage proposals",
+    "description": "Proposers play an all or nothing role and they can't vote.",
+    "url": "http://ideascale.com/t/UM5UZBfYl",
+    "category": 6,
+    "no_assessments": 3
+  },
+  {
+    "id": 15,
+    "title": "Guides to project Catalyst success",
+    "description": "Catalyst is a confusing place when you are new to it. New users don't have a really concise guide to doing well on Project Catalyst",
+    "url": "http://ideascale.com/t/UM5UZBfYw",
+    "category": 1,
+    "no_assessments": 9
+  },
+  {
+    "id": 16,
+    "title": "West Africa Catalyst Onboarding",
+    "description": "No streamlined framework to onboard talented West Africans making contact through Cardano websites/social media/groups into Project Catalyst",
+    "url": "http://ideascale.com/t/UM5UZBfY3",
+    "category": 5,
+    "no_assessments": 3
+  },
+  {
+    "id": 17,
+    "title": "ADA in CIS exchangers/online stores",
+    "description": "Every user that spends $1000 on cryptocurrency purchases **lost about $15-35** as a stock exchange commission https://imgur.com/a/Lk7oHga",
+    "url": "http://ideascale.com/t/UM5UZBfaD",
+    "category": 7,
+    "no_assessments": 1
+  },
+  {
+    "id": 18,
+    "title": "Local Venture Activation Centres",
+    "description": "Good people do good but most don't get support, connections and mentorship vital to starting and sustainably scaling their aspirations.",
+    "url": "http://ideascale.com/t/UM5UZBfaH",
+    "category": 3,
+    "no_assessments": 4
+  },
+  {
+    "id": 19,
+    "title": "Demos DAO",
+    "description": "Current political parties and politicians are having troubles with serving their voters and keeping their integrity.",
+    "url": "http://ideascale.com/t/UM5UZBfaP",
+    "category": 2,
+    "no_assessments": 8
+  },
+  {
+    "id": 20,
+    "title": "Cardano Center in Europe",
+    "description": "There is no place in Europe where developers, entrepreneurs and other community members can meet to learn and work on Cardano projects.",
+    "url": "http://ideascale.com/t/UM5UZBfaW",
+    "category": 4,
+    "no_assessments": 5
+  },
+  {
+    "id": 21,
+    "title": "Auto-Paying Royalty System",
+    "description": "Creators of creative content are not properly paid royalties: there are no means of verifiably tracking royalty payouts.",
+    "url": "http://ideascale.com/t/UM5UZBfah",
+    "category": 2,
+    "no_assessments": 5
+  },
+  {
+    "id": 22,
+    "title": "The Cardano Global Treasure Hunt",
+    "description": "More people need to discover Cardano. Create a desire for them to engage in a fun way by organising a global event with dapps to support it.",
+    "url": "http://ideascale.com/t/UM5UZBfam",
+    "category": 4,
+    "no_assessments": 5
+  },
+  {
+    "id": 23,
+    "title": "Cardano spanish training programs",
+    "description": "There are no educational resources for spanish speakers who want to develop and grow their Cardano local community.",
+    "url": "http://ideascale.com/t/UM5UZBfat",
+    "category": 1,
+    "no_assessments": 10
+  },
+  {
+    "id": 24,
+    "title": "Catalyst Legal Fund",
+    "description": "If we are doing our job, we'll be pushing new boundaries and proposers need a legal point of contact.",
+    "url": "http://ideascale.com/t/UM5UZBfa6",
+    "category": 1,
+    "no_assessments": 10
+  },
+  {
+    "id": 25,
+    "title": "Xceed Decentralized eLearning",
+    "description": "Current e-Learning Platforms are Centralized, Prescriptive and not tailored to the African Situation",
+    "url": "http://ideascale.com/t/UM5UZBfbC",
+    "category": 2,
+    "no_assessments": 6
+  },
+  {
+    "id": 26,
+    "title": "Peer-to-peer Cryptocurrency Market",
+    "description": "Purchasing cryptocurrencies can be a complicated process, especially for people that do not live in first world countries.",
+    "url": "http://ideascale.com/t/UM5UZBfbK",
+    "category": 5,
+    "no_assessments": 8
+  },
+  {
+    "id": 27,
+    "title": "Sustainable ADA",
+    "description": "Sustainable ADA will expand outreach and education for explaining use cases/examples of how Cardano can help create a sustainable world.",
+    "url": "http://ideascale.com/t/UM5UZBfby",
+    "category": 6,
+    "no_assessments": 8
+  },
+  {
+    "id": 28,
+    "title": "Meta-Memory (Fmrly Fed. Debate)",
+    "description": "Debates and discussion are marred by talking past one another and pushing misinformation or logical fallacies, often obscured or hidden.",
+    "url": "http://ideascale.com/t/UM5UZBfcb",
+    "category": 1,
+    "no_assessments": 4
+  },
+  {
+    "id": 29,
+    "title": "Littercoin - Mass Adoption",
+    "description": "Plastic pollution is a huge global problem but data is lacking. Littercoin can incentivise data collection while increasing Cardano adoption",
+    "url": "http://ideascale.com/t/UM5UZBfcs",
+    "category": 1,
+    "no_assessments": 2
+  },
+  {
+    "id": 30,
+    "title": "Peer-to-peer Science",
+    "description": "Universities are oversized, inefficient middlemen. The direct transfer of funds from funders to scientists can be enabled by smart contracts",
+    "url": "http://ideascale.com/t/UM5UZBfcv",
+    "category": 3,
+    "no_assessments": 7
+  },
+  {
+    "id": 31,
+    "title": "Charity Casino",
+    "description": "People want to make change but don't have the skills, finances or time to do it. How can we help hubs flourish?",
+    "url": "http://ideascale.com/t/UM5UZBfc7",
+    "category": 1,
+    "no_assessments": 4
+  },
+  {
+    "id": 32,
+    "title": "Influencer Marketing Smart Contract",
+    "description": "Influencer marketing is a rapidly growing industry with thousands of financial transactions being executed manually every day.",
+    "url": "http://ideascale.com/t/UM5UZBfdK",
+    "category": 5,
+    "no_assessments": 0
+  },
+  {
+    "id": 33,
+    "title": "Sports Industry Smart Contracts",
+    "description": "Front offices of sports franchises are inefficient. They take weeks/months to create/negotiate contracts and forget player payments.",
+    "url": "http://ideascale.com/t/UM5UZBfdM",
+    "category": 6,
+    "no_assessments": 0
+  },
+  {
+    "id": 34,
+    "title": "Proposer to Producer Demo",
+    "description": "The step-by-step process of proposing a project, getting it funded and applying it in the real world is not clear and accessible.",
+    "url": "http://ideascale.com/t/UM5UZBfdV",
+    "category": 6,
+    "no_assessments": 10
+  },
+  {
+    "id": 35,
+    "title": "Global Restaurant Dapp - BIBOP",
+    "description": "Covid-19 changed the way we dine in at restaurants worldwide.",
+    "url": "http://ideascale.com/t/UM5UZBfdh",
+    "category": 1,
+    "no_assessments": 8
+  },
+  {
+    "id": 36,
+    "title": "Migrate Tron Multi-PVP Game to ADA",
+    "description": "Cardano needs easy-to-learn, multi-player games with ADA as game currency to drive the value of ADA & bring large groups of players together",
+    "url": "http://ideascale.com/t/UM5UZBfdr",
+    "category": 7,
+    "no_assessments": 8
+  },
+  {
+    "id": 37,
+    "title": "Novellia Gaming Platform and Store",
+    "description": "Blockchain games are difficult for gamers and developers to interact with. There is a need for an ecosystem that simplifies user experience.",
+    "url": "http://ideascale.com/t/UM5UZBfdv",
+    "category": 4,
+    "no_assessments": 7
+  },
+  {
+    "id": 38,
+    "title": "Cardano Podcast  Interviews w/Teams",
+    "description": "We don't know who are the people behind each project on Catalyst. We can only read their and the name of the author.",
+    "url": "http://ideascale.com/t/UM5UZBfeg",
+    "category": 3,
+    "no_assessments": 10
+  },
+  {
+    "id": 39,
+    "title": "Polyswap: Decentralized Exchange",
+    "description": "It should be possible to trade native tokens in a trustless, decentralized manner.",
+    "url": "http://ideascale.com/t/UM5UZBfep",
+    "category": 3,
+    "no_assessments": 10
+  },
+  {
+    "id": 40,
+    "title": "Improving agriculture with Dapps",
+    "description": "The optimization of agricultural techniques is sufficient for self-sustainability.  \nThe lack of \"free\" knowledge is the biggest challenge.",
+    "url": "http://ideascale.com/t/UM5UZBfeq",
+    "category": 3,
+    "no_assessments": 2
+  },
+  {
+    "id": 41,
+    "title": "Wrapped Ether - The WETHER token 🌧",
+    "description": "Wrapping Ethereum tokens will add liquidity to the Cardano ecosystem and allow Ethereum users to enjoy scalable Cardano dApps.",
+    "url": "http://ideascale.com/t/UM5UZBffd",
+    "category": 7,
+    "no_assessments": 0
+  },
+  {
+    "id": 42,
+    "title": "ARMing Cardano",
+    "description": "To scale up a community of low-cost, energy-efficient stake pool operations that will help promote Cardano and our community!",
+    "url": "http://ideascale.com/t/UM5UZBffo",
+    "category": 6,
+    "no_assessments": 7
+  },
+  {
+    "id": 43,
+    "title": "Vehicle Auctions with Tokenized Bid",
+    "description": "Retail buyers don't trust dealerships or online auction sites. Current auction sites don't include transparent, publicly verifiable bidding.",
+    "url": "http://ideascale.com/t/UM5UZBfgS",
+    "category": 4,
+    "no_assessments": 10
+  },
+  {
+    "id": 44,
+    "title": "PlayerMint: Token System for Gamers",
+    "description": "Currently there is no way for the gaming masses to monetize their gameplay performance without serious time investment or monetary risk.",
+    "url": "http://ideascale.com/t/UM5UZBfgi",
+    "category": 7,
+    "no_assessments": 10
+  },
+  {
+    "id": 45,
+    "title": "Circle of Life (DNA)",
+    "description": "People feel alone. People are scared of death. This is due in part to a lack of understanding of the rich human history and evolution.",
+    "url": "http://ideascale.com/t/UM5UZBfgv",
+    "category": 2,
+    "no_assessments": 8
+  },
+  {
+    "id": 46,
+    "title": "Stake Pool Operator Marketing",
+    "description": "Small stake pool operators struggle to find delegaters to their stake pool. They rely on incentives like giving to charity to entice people.",
+    "url": "http://ideascale.com/t/UM5UZBfhb",
+    "category": 5,
+    "no_assessments": 0
+  },
+  {
+    "id": 47,
+    "title": "Cardano LCC - Community Outreach DK",
+    "description": "Blockchain & cryptocurrencies generates a rampant increase in public interest, but there is no formal or educational institutions available",
+    "url": "http://ideascale.com/t/UM5UZBfht",
+    "category": 7,
+    "no_assessments": 5
+  },
+  {
+    "id": 48,
+    "title": "Commodities Dex",
+    "description": "Middle men are more informed than the farmers about the market condition of commodities thus they are more in power to control the prices.",
+    "url": "http://ideascale.com/t/UM5UZBfhv",
+    "category": 5,
+    "no_assessments": 3
+  },
+  {
+    "id": 49,
+    "title": "Cardano Katas",
+    "description": "How to accelerate adoption and development of dApps on Cardano given Haskell is not a mainstream programming language?",
+    "url": "http://ideascale.com/t/UM5UZBfiD",
+    "category": 7,
+    "no_assessments": 1
+  },
+  {
+    "id": 50,
+    "title": "Hub for Javascript Entrepreneurs",
+    "description": "Web developers and entrepreneurs want to build on top of Cardano. Lack of tutorials and boilerplates cause a steep curve to get started.",
+    "url": "http://ideascale.com/t/UM5UZBfiK",
+    "category": 4,
+    "no_assessments": 5
+  },
+  {
+    "id": 51,
+    "title": "Free Online Course about Catalyst",
+    "description": "People outside of the Cardano community don't know/understand what Catalyst is and how they can apply to get their project funded.",
+    "url": "http://ideascale.com/t/UM5UZBfiU",
+    "category": 3,
+    "no_assessments": 5
+  },
+  {
+    "id": 52,
+    "title": "Diversify Voting Influence",
+    "description": "Voting, like stakepools, requires balanced incentives to encourage a diversity of participants to ensure broad community support.",
+    "url": "http://ideascale.com/t/UM5UZBfii",
+    "category": 1,
+    "no_assessments": 6
+  },
+  {
+    "id": 53,
+    "title": "Poor energy supply/infrastructures",
+    "description": "The problem of providing power supply to ease innovation and provide modern facilities to local communities. Eradicate poverty in local area",
+    "url": "http://ideascale.com/t/UM5UZBfix",
+    "category": 6,
+    "no_assessments": 7
+  },
+  {
+    "id": 54,
+    "title": "Adagov.org (Co-creation)",
+    "description": "Multiple proposals create a fragmented governance ecosystem with very few coordinating principles. Proposals are unlikely to work together.",
+    "url": "http://ideascale.com/t/UM5UZBfi2",
+    "category": 2,
+    "no_assessments": 0
+  },
+  {
+    "id": 55,
+    "title": "The BookChain Library & Exchange",
+    "description": "Book sales online through retailers gives away 30-70% of the margin to distributors and retailers, while authors and publishers lack data",
+    "url": "http://ideascale.com/t/UM5UZBfjJ",
+    "category": 5,
+    "no_assessments": 7
+  },
+  {
+    "id": 56,
+    "title": "Decentralized Local Marketplace",
+    "description": "Current marketplaces are associated with the trade of illegal items  \nHard to know history of sellers and buyers  \nComplicated to prove payment",
+    "url": "http://ideascale.com/t/UM5UZBfjO",
+    "category": 7,
+    "no_assessments": 0
+  },
+  {
+    "id": 57,
+    "title": "Synthesis - Hybrid Crowdfunding",
+    "description": "Simple crowdfunding, sales and defi in a single, turnkey platform for individuals, communities, business and enterprises.",
+    "url": "http://ideascale.com/t/UM5UZBfjW",
+    "category": 7,
+    "no_assessments": 4
+  },
+  {
+    "id": 58,
+    "title": "Crowdfunding Platform",
+    "description": "Catalyst offers limited funding. Winning does't guarantee successful implementation of a project. Proposers need follow-on funding.",
+    "url": "http://ideascale.com/t/UM5UZBfjp",
+    "category": 5,
+    "no_assessments": 7
+  },
+  {
+    "id": 59,
+    "title": "Rust version of cardano",
+    "description": "Port the current Haskell Cardano implementation to rust, using the similar abstractions.",
+    "url": "http://ideascale.com/t/UM5UZBfj2",
+    "category": 3,
+    "no_assessments": 7
+  },
+  {
+    "id": 60,
+    "title": "Guided Onboarding Experience",
+    "description": "Newbies need more than documentation. When onboarding is self-guided, we create undue friction for incoming talent. Let's make it personal.",
+    "url": "http://ideascale.com/t/UM5UZBfkO",
+    "category": 6,
+    "no_assessments": 7
+  },
+  {
+    "id": 61,
+    "title": "Large Example Projects for Devs",
+    "description": "How can we provide a paved path for developers to understand all the technologies that need to come together to build a decent sized dapp?",
+    "url": "http://ideascale.com/t/UM5UZBfks",
+    "category": 7,
+    "no_assessments": 8
+  },
+  {
+    "id": 62,
+    "title": "Content Creator Fanbase DEFI DAPP",
+    "description": "Content creators do not have tools to identify their \"Most Valuable FANS\" and do not have a way to reward fans with crypto or monetize fans",
+    "url": "http://ideascale.com/t/UM5UZBfkx",
+    "category": 7,
+    "no_assessments": 9
+  },
+  {
+    "id": 63,
+    "title": "Howto Cardano",
+    "description": "Lack of good quality entry level/intermediate tutorials. Kids, that never heard about Cardano, now 12 years old, will write the best Dapps.",
+    "url": "http://ideascale.com/t/UM5UZBfk9",
+    "category": 6,
+    "no_assessments": 8
+  },
+  {
+    "id": 64,
+    "title": "Voltaire Assistant (Swarm Sessions)",
+    "description": "‌Project Catalyst needs a way to direct decentralized energies supplied by the community into achieving desirable outcomes.",
+    "url": "http://ideascale.com/t/UM5UZBflE",
+    "category": 5,
+    "no_assessments": 4
+  },
+  {
+    "id": 65,
+    "title": "Testing Smart Contracts",
+    "description": "We hear about it all the time. Smart contract exploits that lead to millions in crypto being stolen.",
+    "url": "http://ideascale.com/t/UM5UZBflI",
+    "category": 2,
+    "no_assessments": 0
+  },
+  {
+    "id": 66,
+    "title": "Incentivizing interaction",
+    "description": "Breakthrough innovations are NOT brought about by individuals of similar background. :fearful:",
+    "url": "http://ideascale.com/t/UM5UZBflR",
+    "category": 1,
+    "no_assessments": 0
+  },
+  {
+    "id": 67,
+    "title": "Scale Up&Go",
+    "description": "Decentralise and scale up worker owned gig platform up&go to offer easy adoption in other cities, teams, languages, services and currencies.",
+    "url": "http://ideascale.com/t/UM5UZBflW",
+    "category": 2,
+    "no_assessments": 8
+  },
+  {
+    "id": 68,
+    "title": "Family/Groups join planning dAPP",
+    "description": "Provide a simple and transparent way for family and groups participate in join projects",
+    "url": "http://ideascale.com/t/UM5UZBflX",
+    "category": 3,
+    "no_assessments": 5
+  },
+  {
+    "id": 69,
+    "title": "Infographics - Series 1",
+    "description": "Information about Project Catalyst is difficult to digest for many.",
+    "url": "http://ideascale.com/t/UM5UZBflf",
+    "category": 4,
+    "no_assessments": 2
+  },
+  {
+    "id": 70,
+    "title": "Direct funding: Medusa AdaWallet",
+    "description": "Lack of time to follow roadmap in a good temp because of \"enthusiast project\" status. But there are a lot of requests from community.",
+    "url": "http://ideascale.com/t/UM5UZBflw",
+    "category": 3,
+    "no_assessments": 1
+  },
+  {
+    "id": 71,
+    "title": "AdaStat.net Platform Upgrade",
+    "description": "The upcoming changes in the Cardano will bring a lot of new features, support for which is not implemented in existing blockchain explorers",
+    "url": "http://ideascale.com/t/UM5UZBfl9",
+    "category": 2,
+    "no_assessments": 10
+  },
+  {
+    "id": 72,
+    "title": "ADA MakerSpace Hackathon",
+    "description": "As a DEV learning Marlowe and Plutus can be challenging on your own, and as a entrepreneur finding DEVs to work with is also a challenge!",
+    "url": "http://ideascale.com/t/UM5UZBfmI",
+    "category": 5,
+    "no_assessments": 7
+  },
+  {
+    "id": 73,
+    "title": "Native SDKs for iOS and Android",
+    "description": "The lack of native SDKs makes it very hard for app developers to create decentralised apps, which is a significant problem in creating dapps",
+    "url": "http://ideascale.com/t/UM5UZBfmP",
+    "category": 7,
+    "no_assessments": 10
+  },
+  {
+    "id": 74,
+    "title": "Mobile Application for Cardano",
+    "description": "There is no mobile wallet app for the Cardano blockchain for keeping track of and moving ADAs and other tokens and interact with SMRT CNTRt.",
+    "url": "http://ideascale.com/t/UM5UZBfmS",
+    "category": 5,
+    "no_assessments": 8
+  },
+  {
+    "id": 75,
+    "title": "Decentralized Studio on Cardano",
+    "description": "CENTRALIZED Hollywood Studios, Mainstream News & Music can censor, suppress, defame, or blacklist any artist at any time for no reason",
+    "url": "http://ideascale.com/t/UM5UZBfmf",
+    "category": 7,
+    "no_assessments": 6
+  },
+  {
+    "id": 76,
+    "title": "The Great Filter ❌✅",
+    "description": "**Project Catalyst's form encourages rational ignorance**; The more engagement we get, the harder it is to maintain meaningful participation.",
+    "url": "http://ideascale.com/t/UM5UZBfml",
+    "category": 1,
+    "no_assessments": 9
+  },
+  {
+    "id": 77,
+    "title": "Education/Developer center - Sweden",
+    "description": "There is low adoption and knowledge about blockchain solutions in Sweden.",
+    "url": "http://ideascale.com/t/UM5UZBfnL",
+    "category": 1,
+    "no_assessments": 3
+  },
+  {
+    "id": 78,
+    "title": "New Compensation Plan",
+    "description": "Currently only idea creators (Proposers) and some Referrers are being rewarded.\n\nWe need to expand compensation to more participants.",
+    "url": "http://ideascale.com/t/UM5UZBfnO",
+    "category": 3,
+    "no_assessments": 1
+  },
+  {
+    "id": 79,
+    "title": "Personal Reputation System",
+    "description": "Pandemic isolation create lack of trust among people. It means less opportunities, more poverty and inequality. How can we trust each other?",
+    "url": "http://ideascale.com/t/UM5UZBfnT",
+    "category": 1,
+    "no_assessments": 5
+  },
+  {
+    "id": 80,
+    "title": "Indie Cardano Node",
+    "description": "We need to demonstrate that the Cardano community is capable of sustaining the development and implementation of the Cardano protocol.",
+    "url": "http://ideascale.com/t/UM5UZBfng",
+    "category": 7,
+    "no_assessments": 2
+  },
+  {
+    "id": 81,
+    "title": "Training program NOA-NEA Argentina.",
+    "description": "In Argentina, the ignorance of the Cardano ecosystem is complete with more than 2 million potential users of the network.",
+    "url": "http://ideascale.com/t/UM5UZBfnl",
+    "category": 5,
+    "no_assessments": 4
+  },
+  {
+    "id": 82,
+    "title": "NFT-DAO Framework Collab—continued",
+    "description": "To achieve the de facto NFT platform on Cardano, the Minimum Viable Product of Fund 3 needs to advance to Alpha and Beta testing & release.",
+    "url": "http://ideascale.com/t/UM5UZBfoI",
+    "category": 3,
+    "no_assessments": 1
+  },
+  {
+    "id": 83,
+    "title": "Myjeeni - Decentralized Healthcare",
+    "description": "Healthcare research is growing exponentially. But this research isn't converted into actionable, healthcare protocols at the same rate.",
+    "url": "http://ideascale.com/t/UM5UZBfoP",
+    "category": 6,
+    "no_assessments": 6
+  },
+  {
+    "id": 84,
+    "title": "A platform for ordering drugs onlin",
+    "description": "Problem of need for delivering drugs to doorstep of patients especially in light of physical restrictions due to Corona Virus",
+    "url": "http://ideascale.com/t/UM5UZBfoS",
+    "category": 2,
+    "no_assessments": 7
+  },
+  {
+    "id": 85,
+    "title": "NFT-DAO NFT metadata standards",
+    "description": "NFT use cases have varied metadata needs and schemas. We lack standards for alike NFTs to avoid complex, fragile systems & chaos at scale.",
+    "url": "http://ideascale.com/t/UM5UZBfoW",
+    "category": 2,
+    "no_assessments": 9
+  },
+  {
+    "id": 86,
+    "title": "Order Book Based Exchange",
+    "description": "Currently most popular DEXes employ AMM liquidity pools. This lacks the familiarity of an order book based market for spot and derivatives.",
+    "url": "http://ideascale.com/t/UM5UZBfoh",
+    "category": 7,
+    "no_assessments": 7
+  },
+  {
+    "id": 87,
+    "title": "Free to Play Collectible Game",
+    "description": "In Gacha games, users play to roll for random virtual items. These items are untradeable and only valuable within the game's ecosystem.",
+    "url": "http://ideascale.com/t/UM5UZBfon",
+    "category": 1,
+    "no_assessments": 7
+  },
+  {
+    "id": 88,
+    "title": "CardanoPy: 5 min extensible node",
+    "description": "Cardano node setup and ops are overtly difficult. Onboarding and development frictions need to be significantly reduced",
+    "url": "http://ideascale.com/t/UM5UZBfo4",
+    "category": 6,
+    "no_assessments": 0
+  },
+  {
+    "id": 89,
+    "title": "Online Makerspace",
+    "description": "Currently there are no proper way to incentivize Makers, their iterations and ideas.",
+    "url": "http://ideascale.com/t/UM5UZBfpC",
+    "category": 7,
+    "no_assessments": 1
+  },
+  {
+    "id": 90,
+    "title": "Development Journey Documentation",
+    "description": "Current Plutus documentation is not very user-friendly, lacking real case examples, does not display a journey to Cardano dev eco-system",
+    "url": "http://ideascale.com/t/UM5UZBfpo",
+    "category": 6,
+    "no_assessments": 9
+  },
+  {
+    "id": 91,
+    "title": "Pharma&Biotech - Supply Chain Mngt",
+    "description": "Supply Chain Management in Life Sciences (Pharma, Biotech) is extremely challenging, not cost-efficient with lack of transparency & agility.",
+    "url": "http://ideascale.com/t/UM5UZBfpp",
+    "category": 5,
+    "no_assessments": 10
+  },
+  {
+    "id": 92,
+    "title": "Cardano China Info Hub",
+    "description": "The Chinese Cardano community has limited access to accurate Cardano-related information which led to low awareness and mass misconception.",
+    "url": "http://ideascale.com/t/UM5UZBfps",
+    "category": 4,
+    "no_assessments": 1
+  },
+  {
+    "id": 93,
+    "title": "Gimbalabs Building Network Capacity",
+    "description": "To build something truly new, developers need tools, a learning community, and holistic support in elucidating ideas and fostering teams.",
+    "url": "http://ideascale.com/t/UM5UZBfp3",
+    "category": 1,
+    "no_assessments": 9
+  },
+  {
+    "id": 94,
+    "title": "Fiat to ADA stake machine",
+    "description": "Transfer fiat money to ADA staking for people without phone or electricity.",
+    "url": "http://ideascale.com/t/UM5UZBfp9",
+    "category": 4,
+    "no_assessments": 5
+  },
+  {
+    "id": 95,
+    "title": "DeSci - Decentralised Science",
+    "description": "Academic publication is highly centralised where the value created by authors and peer-reviews is transferred to gate-keeper publishers.",
+    "url": "http://ideascale.com/t/UM5UZBfqc",
+    "category": 2,
+    "no_assessments": 9
+  },
+  {
+    "id": 96,
+    "title": "West Africa: Dev Tools & Events",
+    "description": "West Africa has more than 16 countries throughout the region, but there is a lack of community resources to begin developing with Cardano.",
+    "url": "http://ideascale.com/t/UM5UZBfqk",
+    "category": 4,
+    "no_assessments": 10
+  },
+  {
+    "id": 97,
+    "title": "NFT Based Online Football Manager",
+    "description": "Traditional games lack an important attraction factor: they do not offer users tangible rewards.",
+    "url": "http://ideascale.com/t/UM5UZBfqq",
+    "category": 7,
+    "no_assessments": 5
+  },
+  {
+    "id": 98,
+    "title": "Real Estate Investment Platform",
+    "description": "Crypto investors don't have access to real estate investments via crypto funds",
+    "url": "http://ideascale.com/t/UM5UZBfrR",
+    "category": 3,
+    "no_assessments": 3
+  },
+  {
+    "id": 99,
+    "title": "pruf.io: Media-rich NFTs on Cardano",
+    "description": "Developers and entrepreneurs need a low barrier-to-entry NFT infrastructure to build on or migrate to the Cardano ecosystem.",
+    "url": "http://ideascale.com/t/UM5UZBfrS",
+    "category": 1,
+    "no_assessments": 1
+  },
+  {
+    "id": 100,
+    "title": "Ruggedized DeFi",
+    "description": "DeFi apps have exploded in use but have also proved unreliable. Stress testing of DeFi apps for the Cardano environment is required.",
+    "url": "http://ideascale.com/t/UM5UZBfro",
+    "category": 3,
+    "no_assessments": 5
+  },
+  {
+    "id": 101,
+    "title": "Afri-pay",
+    "description": "Problème de transfert d'argent d'un compte bancaire A vers B, car la population ne contrôle pas les transactions effectuées par les banques",
+    "url": "http://ideascale.com/t/UM5UZBfsR",
+    "category": 2,
+    "no_assessments": 5
+  },
+  {
+    "id": 102,
+    "title": "+Rideshare-CO2 = Ada",
+    "description": "Our planet's ecosystem is being destroyed by high carbon emissions, worsened by the fact that too many solo drivers are on the road.",
+    "url": "http://ideascale.com/t/UM5UZBfsV",
+    "category": 4,
+    "no_assessments": 3
+  },
+  {
+    "id": 103,
+    "title": "Make donations transparent",
+    "description": "Companies use donating percentages of their profits as marketing tool. Yet, this is hard and time-consuming to verify for customers.",
+    "url": "http://ideascale.com/t/UM5UZBfsg",
+    "category": 6,
+    "no_assessments": 10
+  },
+  {
+    "id": 104,
+    "title": "Tokenize West Africa projects",
+    "description": "Interest rates in West Africa are commonly above 20% a year, 87% of innovative projects in Africa do not have access to any funding.",
+    "url": "http://ideascale.com/t/UM5UZBfsl",
+    "category": 5,
+    "no_assessments": 10
+  },
+  {
+    "id": 105,
+    "title": "Autographed selfies backed by NFT",
+    "description": "Struggling as a new artist to get your name out? Give your fans an Autographed NFT as your business card and share royalties with your fans.",
+    "url": "http://ideascale.com/t/UM5UZBfsr",
+    "category": 2,
+    "no_assessments": 1
+  },
+  {
+    "id": 106,
+    "title": "Dapps of financial analysis on DEFI",
+    "description": "the future is DEFI and investors need specialized financial analysis before investing.",
+    "url": "http://ideascale.com/t/UM5UZBfs4",
+    "category": 5,
+    "no_assessments": 2
+  },
+  {
+    "id": 107,
+    "title": "Tool to setup and run local testnet",
+    "description": "A tool to setup testnet locally, and tutorials to explore Cardano features in local testnet. Useful for developers to explore Cardano.",
+    "url": "http://ideascale.com/t/UM5UZBftF",
+    "category": 6,
+    "no_assessments": 4
+  },
+  {
+    "id": 108,
+    "title": "Mobile Device HW Wallet Integration",
+    "description": "Keeping your keys safe is paramount. Software wallets like Metamask and others work well in the browser, but not as easily on mobile phones.",
+    "url": "http://ideascale.com/t/UM5UZBftR",
+    "category": 5,
+    "no_assessments": 5
+  },
+  {
+    "id": 109,
+    "title": "CardanoArcade",
+    "description": "The Cardano (ADA) ecosystem needs viable entertainment environment where users can use their ADA in a trusted space/evironment.",
+    "url": "http://ideascale.com/t/UM5UZBfto",
+    "category": 1,
+    "no_assessments": 10
+  },
+  {
+    "id": 110,
+    "title": "Translator",
+    "description": "With the economy growing, its important more now than ever to have accessible translation devices.",
+    "url": "http://ideascale.com/t/UM5UZBftq",
+    "category": 7,
+    "no_assessments": 1
+  },
+  {
+    "id": 111,
+    "title": "They desire a better country.",
+    "description": "Proposers feel left out once their ideas have been rejected, while others further in the Catalyst funnel receive rewards for participating.",
+    "url": "http://ideascale.com/t/UM5UZBfty",
+    "category": 5,
+    "no_assessments": 2
+  },
+  {
+    "id": 112,
+    "title": "ALDEA, the Latin America DAO",
+    "description": "There is currently no platform or framework for the **Cardano Community** to discuss, prioritize and solve **Latin American issues** in **Spanish**.",
+    "url": "http://ideascale.com/t/UM5UZBft3",
+    "category": 4,
+    "no_assessments": 6
+  },
+  {
+    "id": 113,
+    "title": "Viral Media Campaign",
+    "description": "Building a brand reaching 1 billion people will require bold strategy and precise execution when Bitcoin is so far ahead in mindshare",
+    "url": "http://ideascale.com/t/UM5UZBfuA",
+    "category": 2,
+    "no_assessments": 4
+  },
+  {
+    "id": 114,
+    "title": "Better security using multi-sig",
+    "description": "Storing crypto without any single point of failure by Multi-sig. Aimed for advance users where security is a priority (or institutions).",
+    "url": "http://ideascale.com/t/UM5UZBfuz",
+    "category": 5,
+    "no_assessments": 4
+  },
+  {
+    "id": 115,
+    "title": "Adriatic EU Community Center",
+    "description": "Lack of a physical place for Catalyst Community to meet, socialize and represent Cardano network.",
+    "url": "http://ideascale.com/t/UM5UZBfvB",
+    "category": 2,
+    "no_assessments": 6
+  },
+  {
+    "id": 116,
+    "title": "TipADA - Decentralized $ADA Tipping",
+    "description": "There is a great demand for showing appreciation of content and ideas by tipping $ADA to a creator. Currently no solution is available.",
+    "url": "http://ideascale.com/t/UM5UZBfvE",
+    "category": 2,
+    "no_assessments": 1
+  },
+  {
+    "id": 117,
+    "title": "Visual Studio Code Market Plugin",
+    "description": "There are no plugins within for Microsoft Visual Studio Code to build Cardano Smart Contracts on vb/c# .NET. VSCODE is used by 1000s of devs",
+    "url": "http://ideascale.com/t/UM5UZBfvT",
+    "category": 2,
+    "no_assessments": 2
+  },
+  {
+    "id": 118,
+    "title": "HW wallet passphrase recovery tool",
+    "description": "Currently there is no public tool supporting Cardano allowing BIP39 passphrase to be guessed/tested. Plus none using GPU acceleration.",
+    "url": "http://ideascale.com/t/UM5UZBfvX",
+    "category": 6,
+    "no_assessments": 7
+  },
+  {
+    "id": 119,
+    "title": "JavaScript SDK for Blockfrost API",
+    "description": "JavaScript developers are missing tools to fully enjoy Blockfrost.io, a service that provides free and public Cardano API to developer.",
+    "url": "http://ideascale.com/t/UM5UZBfva",
+    "category": 1,
+    "no_assessments": 5
+  },
+  {
+    "id": 120,
+    "title": "Python SDK for Blockfrost API",
+    "description": "Python developers are missing tools to fully enjoy Blockfrost.io, a service that provides free and public Cardano API to developers.",
+    "url": "http://ideascale.com/t/UM5UZBfvb",
+    "category": 6,
+    "no_assessments": 5
+  },
+  {
+    "id": 121,
+    "title": "Golang SDK for Blockfrost API",
+    "description": "Go language developers are missing tools to fully enjoy Blockfrost.io, a service that provides free and public Cardano API to developers.",
+    "url": "http://ideascale.com/t/UM5UZBfvd",
+    "category": 7,
+    "no_assessments": 0
+  },
+  {
+    "id": 122,
+    "title": "Haskell SDK for Blockfrost API",
+    "description": "Haskell developers are missing tools to fully enjoy Blockfrost.io, a service that provides free and public Cardano API to developers.",
+    "url": "http://ideascale.com/t/UM5UZBfve",
+    "category": 6,
+    "no_assessments": 3
+  },
+  {
+    "id": 123,
+    "title": "Rust SDK for Blockfrost API",
+    "description": "Rust developers are missing tools to fully enjoy Blockfrost.io, a service that provides free and public Cardano API to developers.",
+    "url": "http://ideascale.com/t/UM5UZBfvg",
+    "category": 2,
+    "no_assessments": 0
+  },
+  {
+    "id": 124,
+    "title": "Swift SDK for Blockfrost API",
+    "description": "Swift developers are missing tools to fully enjoy Blockfrost.io, a service that provides free and public Cardano API to developers.",
+    "url": "http://ideascale.com/t/UM5UZBfvj",
+    "category": 1,
+    "no_assessments": 1
+  },
+  {
+    "id": 125,
+    "title": "PHP SDK for Blockfrost API",
+    "description": "PHP developers are missing tools to fully enjoy Blockfrost.io, a service that provides free and public Cardano API to developers.",
+    "url": "http://ideascale.com/t/UM5UZBfvk",
+    "category": 1,
+    "no_assessments": 9
+  },
+  {
+    "id": 126,
+    "title": "Scala SDK for Blockfrost API",
+    "description": "Scala developers are missing tools to fully enjoy Blockfrost.io, a service that provides free and public Cardano API to developers.",
+    "url": "http://ideascale.com/t/UM5UZBfvn",
+    "category": 5,
+    "no_assessments": 4
+  },
+  {
+    "id": 127,
+    "title": "Ruby SDK for Blockfrost API",
+    "description": "Ruby developers are missing tools to fully enjoy Blockfrost.io, a service that provides free and public Cardano API to developers.",
+    "url": "http://ideascale.com/t/UM5UZBfvo",
+    "category": 6,
+    "no_assessments": 2
+  },
+  {
+    "id": 128,
+    "title": "Java SDK for Blockfrost API",
+    "description": "Java developers are missing tools to fully enjoy Blockfrost.io, a service that provides free and public Cardano API to developers.",
+    "url": "http://ideascale.com/t/UM5UZBfvp",
+    "category": 5,
+    "no_assessments": 3
+  },
+  {
+    "id": 129,
+    "title": "Arduino SDK for Blockfrost API",
+    "description": "Arduino developers are missing tools to fully enjoy Blockfrost.io, a service that provides free and public Cardano API to developers.",
+    "url": "http://ideascale.com/t/UM5UZBfvq",
+    "category": 7,
+    "no_assessments": 2
+  },
+  {
+    "id": 130,
+    "title": "Elixir SDK for Blockfrost API",
+    "description": "Elixir developers are missing tools to fully enjoy Blockfrost.io, a service that provides free and public Cardano API to developers.",
+    "url": "http://ideascale.com/t/UM5UZBfvr",
+    "category": 1,
+    "no_assessments": 10
+  },
+  {
+    "id": 131,
+    "title": ".NET SDK for Blockfrost API",
+    "description": ".NET developers are missing tools to fully enjoy Blockfrost.io, a service that provides free and public Cardano API to developers.",
+    "url": "http://ideascale.com/t/UM5UZBfvt",
+    "category": 6,
+    "no_assessments": 6
+  },
+  {
+    "id": 132,
+    "title": "Global sustainable transport",
+    "description": "The continuous advance of society causes every day more climate problems, the planet dies and Cardano can help save it :grinning:",
+    "url": "http://ideascale.com/t/UM5UZBfvv",
+    "category": 5,
+    "no_assessments": 6
+  },
+  {
+    "id": 133,
+    "title": "Yoroi ⇄ Blockfrost bridge",
+    "description": "Yoroi developement often requires full stack Cardano node + DB Sync, because Yoroi implements only a basic subset of available endpoints.",
+    "url": "http://ideascale.com/t/UM5UZBfvx",
+    "category": 3,
+    "no_assessments": 4
+  },
+  {
+    "id": 134,
+    "title": "Token faucet",
+    "description": "It is expensive to faucet out or airdrop tokens, as you need to include more than 1 ADA for each transaction.",
+    "url": "http://ideascale.com/t/UM5UZBfvy",
+    "category": 5,
+    "no_assessments": 1
+  },
+  {
+    "id": 135,
+    "title": "API for decentralized application",
+    "description": "The need to have rapid development tools already tested is observed",
+    "url": "http://ideascale.com/t/UM5UZBfv2",
+    "category": 5,
+    "no_assessments": 6
+  },
+  {
+    "id": 136,
+    "title": "Multiplayer Game using Cardano",
+    "description": "Making Cardano mainstream. Training young developers.",
+    "url": "http://ideascale.com/t/UM5UZBfv4",
+    "category": 7,
+    "no_assessments": 2
+  },
+  {
+    "id": 137,
+    "title": "Making Cardano the go to for games",
+    "description": "How can game developers, especially indie developers, access and easily implement a payment system, circumventing the big payment providers?",
+    "url": "http://ideascale.com/t/UM5UZBfwH",
+    "category": 1,
+    "no_assessments": 5
+  },
+  {
+    "id": 138,
+    "title": "Blockchain in Education",
+    "description": "Generally, significant higher education blockchain use cases are, for instance, record-keeping and performance optimization.",
+    "url": "http://ideascale.com/t/UM5UZBfwM",
+    "category": 2,
+    "no_assessments": 3
+  },
+  {
+    "id": 139,
+    "title": "Dapp to control/monetize your data",
+    "description": "$300B surveillance capitalism market broke the customer relationship. People should control and benefit from the use of their personal data",
+    "url": "http://ideascale.com/t/UM5UZBfwX",
+    "category": 5,
+    "no_assessments": 10
+  },
+  {
+    "id": 140,
+    "title": "ADAppTO",
+    "description": "Its too complicated to cash in and cash out ADA through coinbase, binance and similar websites and you always lose money on fees.",
+    "url": "http://ideascale.com/t/UM5UZBfwu",
+    "category": 7,
+    "no_assessments": 1
+  },
+  {
+    "id": 141,
+    "title": "Kotlin SDK for Blockfrost API",
+    "description": "Kotlin developers are missing tools to fully enjoy Blockfrost.io, a service that provides free and public Cardano API to developers.",
+    "url": "http://ideascale.com/t/UM5UZBfw6",
+    "category": 6,
+    "no_assessments": 6
+  },
+  {
+    "id": 142,
+    "title": "Decentralized exchange - VyFinance",
+    "description": "There's a need for dex on every blockchain, and cardano seems to fit the best with what a dex can offer.",
+    "url": "http://ideascale.com/t/UM5UZBfw8",
+    "category": 2,
+    "no_assessments": 6
+  },
+  {
+    "id": 143,
+    "title": "Voluntary.Gold: a community network",
+    "description": "Worldwide cardano community lacks a decentralized platform for collaboration, leadership development, social interaction, & incentivisation.",
+    "url": "http://ideascale.com/t/UM5UZBfxI",
+    "category": 4,
+    "no_assessments": 9
+  },
+  {
+    "id": 144,
+    "title": "Smart Contract Development Campaign",
+    "description": "User awareness, adoption, reduce barrier to entry. There are not as many people aware of smart contracts, their use and how to develop them.",
+    "url": "http://ideascale.com/t/UM5UZBfxK",
+    "category": 4,
+    "no_assessments": 9
+  },
+  {
+    "id": 145,
+    "title": "Petercoin",
+    "description": "Hey Peter! Cardano is missing an element of \"fun\" that would otherwise assist in introducing new users to the platform.",
+    "url": "http://ideascale.com/t/UM5UZBfxL",
+    "category": 2,
+    "no_assessments": 8
+  },
+  {
+    "id": 146,
+    "title": "Help University/hacker association",
+    "description": "An incentive to use Cardano has to be created for groups that are creating and experimenting with new technologies.",
+    "url": "http://ideascale.com/t/UM5UZBfxP",
+    "category": 7,
+    "no_assessments": 4
+  },
+  {
+    "id": 147,
+    "title": "Mental Health Dapp on the go",
+    "description": "A mental health assistant app that stays with you on the go.",
+    "url": "http://ideascale.com/t/UM5UZBfxU",
+    "category": 5,
+    "no_assessments": 10
+  },
+  {
+    "id": 148,
+    "title": "Tokenized ADA for Yield Farming",
+    "description": "Huge amounts are locked up in DeFi yield farms on Eth and BSC. They don't want to move to Cardano yet because of lesser yield opportunities.",
+    "url": "http://ideascale.com/t/UM5UZBfxk",
+    "category": 3,
+    "no_assessments": 8
+  },
+  {
+    "id": 149,
+    "title": "University Cardano Research Program",
+    "description": "Creating new Cardano education and learning centres and labs is a big challenge which involves many aspects like location and equipments",
+    "url": "http://ideascale.com/t/UM5UZBfxl",
+    "category": 3,
+    "no_assessments": 4
+  },
+  {
+    "id": 150,
+    "title": "Cardano Adoption in D.R. of Congo",
+    "description": "Bitcoin scams have led the government to take a negative stance on crypto currencies that result in bans and discourage blockchain adoption.",
+    "url": "http://ideascale.com/t/UM5UZBfxw",
+    "category": 2,
+    "no_assessments": 7
+  },
+  {
+    "id": 151,
+    "title": "Cardanotes",
+    "description": "Cardano needs a platform where great concepts meet great skills. The iPod required the vision of Steve Jobs and the engineers who built it.",
+    "url": "http://ideascale.com/t/UM5UZBfx9",
+    "category": 6,
+    "no_assessments": 5
+  },
+  {
+    "id": 152,
+    "title": "Music Database MIDI blockchain",
+    "description": "The way in wich we can relation with music actually is very limited.",
+    "url": "http://ideascale.com/t/UM5UZBfyL",
+    "category": 2,
+    "no_assessments": 9
+  },
+  {
+    "id": 153,
+    "title": "Stake Pool Operations Dashboard",
+    "description": "24/7 uptime requires alerting and monitoring to maintain. How can we give new operators awareness of top health metrics for their pool.",
+    "url": "http://ideascale.com/t/UM5UZBfyV",
+    "category": 1,
+    "no_assessments": 6
+  },
+  {
+    "id": 154,
+    "title": "Distributed financial support",
+    "description": "Small communities in emerging economies do not have adequate access to financial services.",
+    "url": "http://ideascale.com/t/UM5UZBfyp",
+    "category": 5,
+    "no_assessments": 2
+  },
+  {
+    "id": 155,
+    "title": "PoolTool-Testnet Support",
+    "description": "Samuel at IOHK has requested that we have a version of PoolTool for the Testnet as well as mainnet.",
+    "url": "http://ideascale.com/t/UM5UZBfy6",
+    "category": 2,
+    "no_assessments": 1
+  },
+  {
+    "id": 156,
+    "title": "Delegation Tracker",
+    "description": "Onboarding barrier for ADA delegators is large, existing solutions cause centralization of stake.",
+    "url": "http://ideascale.com/t/UM5UZBfzB",
+    "category": 2,
+    "no_assessments": 5
+  },
+  {
+    "id": 157,
+    "title": "Cardano with Ñ / Cardano in Spanish",
+    "description": "The lack of knowledge about Cardano is common at non-native speaking countries where fewer resources are available in their own language.",
+    "url": "http://ideascale.com/t/UM5UZBfzL",
+    "category": 3,
+    "no_assessments": 2
+  },
+  {
+    "id": 158,
+    "title": "+WADA Outreach=Smart Catalyst Users",
+    "description": "WADA's outreach is currently limited by their web app capacity. They need their own solid integrated management system to optimize outreach.",
+    "url": "http://ideascale.com/t/UM5UZBfzO",
+    "category": 7,
+    "no_assessments": 4
+  },
+  {
+    "id": 159,
+    "title": "Vy.Finance DeFi Protocol",
+    "description": "DeFi has a few issues right now, one of which being gas fees, another being a lack of diversity into things besides just currencies.",
+    "url": "http://ideascale.com/t/UM5UZBfzQ",
+    "category": 4,
+    "no_assessments": 6
+  },
+  {
+    "id": 160,
+    "title": "Cardano Mobile App",
+    "description": "Members need a structured format to easily on board to the Project Catalyst project in a format they are familar with.",
+    "url": "http://ideascale.com/t/UM5UZBfzS",
+    "category": 2,
+    "no_assessments": 3
+  },
+  {
+    "id": 161,
+    "title": "VideoContent Marketplace",
+    "description": "Currently, many video content producers are faced with the problem of intellectual property misuse and as a result, do not receive royalties",
+    "url": "http://ideascale.com/t/UM5UZBfzp",
+    "category": 4,
+    "no_assessments": 0
+  },
+  {
+    "id": 162,
+    "title": "Project Catalyst Landing Page",
+    "description": "There is no central place for new and existing community members of Project Catalyst to find the info and links they need.",
+    "url": "http://ideascale.com/t/UM5UZBfz6",
+    "category": 5,
+    "no_assessments": 10
+  },
+  {
+    "id": 163,
+    "title": "Fair Food Ordering & Delivery",
+    "description": "delivery workers get 100% of gratuity leaving restaurant workers out and fuel/time efficiency is ignored. unwanted fees to merchants/users.",
+    "url": "http://ideascale.com/t/UM5UZBfz7",
+    "category": 5,
+    "no_assessments": 1
+  },
+  {
+    "id": 164,
+    "title": "Legal Entities Bonds' Tokenization",
+    "description": "Currently, legal entities have no many accessible, transparent, and intuitive instruments to attract investments for expansion of activities",
+    "url": "http://ideascale.com/t/UM5UZBf0E",
+    "category": 6,
+    "no_assessments": 8
+  },
+  {
+    "id": 165,
+    "title": "tokenize agricultural products",
+    "description": "Colombian farmers earn very little. people die of hunger in Colombia. investors are currently unable to trade agricultural digital assets",
+    "url": "http://ideascale.com/t/UM5UZBf0F",
+    "category": 2,
+    "no_assessments": 9
+  },
+  {
+    "id": 166,
+    "title": "NFT-DAO EZ-on",
+    "description": "Writing **safe** DApps today is **too difficult** and developers lack tools to easily build composable components.",
+    "url": "http://ideascale.com/t/UM5UZBf00",
+    "category": 3,
+    "no_assessments": 0
+  },
+  {
+    "id": 167,
+    "title": "Experimental Educational Videos",
+    "description": "Distributed ledger technology and the perceived benefits are not really understood by the general public, developers or entrepreneurs",
+    "url": "http://ideascale.com/t/UM5UZBf01",
+    "category": 6,
+    "no_assessments": 8
+  },
+  {
+    "id": 168,
+    "title": "Native Asset and Metadata app",
+    "description": "With the release of Mary HFC, native assets are now available. A tool is needed to assist asset creators define token details and metadata",
+    "url": "http://ideascale.com/t/UM5UZBf1F",
+    "category": 1,
+    "no_assessments": 7
+  },
+  {
+    "id": 169,
+    "title": "ADA Subscription Payments",
+    "description": "Staking ADA should not be the only way to earn ADA.  \nContent creators are charged even 30% in fees by Google, Microsoft, Apple & Sony.\\[1\\]",
+    "url": "http://ideascale.com/t/UM5UZBf1S",
+    "category": 6,
+    "no_assessments": 8
+  },
+  {
+    "id": 170,
+    "title": "Tokenized Property Investment DApp",
+    "description": "$200 Trillion in the real estate market is currently inaccessible to many millions of willing investors, we can solve that with blockchain",
+    "url": "http://ideascale.com/t/UM5UZBf1T",
+    "category": 1,
+    "no_assessments": 10
+  },
+  {
+    "id": 171,
+    "title": "Calling All Deadheads!",
+    "description": "Catalyst sits at the forefront of innovation in distributed decision-making. We don't have any historical models to guide us. Or do we?",
+    "url": "http://ideascale.com/t/UM5UZBf1X",
+    "category": 7,
+    "no_assessments": 5
+  },
+  {
+    "id": 172,
+    "title": "Teaming to integrate multiple ideas",
+    "description": "Individuals only give one perspective on ideas for the future of Cardano and may lose interest overtime.",
+    "url": "http://ideascale.com/t/UM5UZBf1Y",
+    "category": 3,
+    "no_assessments": 8
+  },
+  {
+    "id": 173,
+    "title": "WorldWide ADA/local fiat possible",
+    "description": "Cardano should be worthy of baking the unbank but people in several countries of the world CAN'T use their own fiat to buy ADA yet",
+    "url": "http://ideascale.com/t/UM5UZBf15",
+    "category": 7,
+    "no_assessments": 6
+  },
+  {
+    "id": 174,
+    "title": "Al-Baari. The Creator.",
+    "description": "Blockchain and multiple applications of Cardano, and this new era of technology, are foreign for the majority of the globe.",
+    "url": "http://ideascale.com/t/UM5UZBf18",
+    "category": 2,
+    "no_assessments": 1
+  },
+  {
+    "id": 175,
+    "title": "ADA-backed algorithmic stablecoin",
+    "description": "Upcoming defi projects for cardano will require one or more stablecoins for traders to prevent capital loss due to price volatility.",
+    "url": "http://ideascale.com/t/UM5UZBf2I",
+    "category": 4,
+    "no_assessments": 0
+  },
+  {
+    "id": 176,
+    "title": "Indigenous Art Authenticity",
+    "description": "COVID pandemic pushed indigenous artists to sell online. Ensuring authenticity of indigenous goods sold online is crucial to their survival.",
+    "url": "http://ideascale.com/t/UM5UZBf2M",
+    "category": 5,
+    "no_assessments": 7
+  },
+  {
+    "id": 177,
+    "title": "Live Coding Mentor Marketplace",
+    "description": "Coding roadblocks inhibit or slow down blockchain project completion & learning. Docs can be daunting & unhelpful compared to live help.",
+    "url": "http://ideascale.com/t/UM5UZBf2R",
+    "category": 1,
+    "no_assessments": 4
+  },
+  {
+    "id": 178,
+    "title": "Banking the unbanked",
+    "description": "A truly open financial system can't leave the unbanked and underbanked behind.",
+    "url": "http://ideascale.com/t/UM5UZBf2U",
+    "category": 6,
+    "no_assessments": 9
+  },
+  {
+    "id": 179,
+    "title": "CRITQ~Art Criticism NFT Marketplace",
+    "description": "Artists and buyers have difficulty finding the proper valuation of art and NFTs. Marketplaces need to integrate the process of *art* *criticism*",
+    "url": "http://ideascale.com/t/UM5UZBf2g",
+    "category": 7,
+    "no_assessments": 3
+  },
+  {
+    "id": 180,
+    "title": "dRelic",
+    "description": "Traditional bidding methods are uninteresting and do not take advantage of the power the blockchain offers.",
+    "url": "http://ideascale.com/t/UM5UZBf2k",
+    "category": 2,
+    "no_assessments": 9
+  },
+  {
+    "id": 181,
+    "title": "ADA\" Visual Scripting VSCode Ext.",
+    "description": "The complexity of blockchain tech can make it difficult to predict & debug dapp code. The process could be simplified by visual abstraction.",
+    "url": "http://ideascale.com/t/UM5UZBf2u",
+    "category": 1,
+    "no_assessments": 2
+  },
+  {
+    "id": 182,
+    "title": "Plutus Certification Program",
+    "description": "Companies looking for developers to help with building smart contacts won't know if the developer know what they are doing.",
+    "url": "http://ideascale.com/t/UM5UZBf24",
+    "category": 3,
+    "no_assessments": 2
+  },
+  {
+    "id": 183,
+    "title": "Crypto Blog & Cardano Podcast",
+    "description": "Many people still don't understand blockchain and are afraid of it the big bad Cryptos. Cardano may as well be a type of cheese to them.",
+    "url": "http://ideascale.com/t/UM5UZBf3J",
+    "category": 6,
+    "no_assessments": 4
+  },
+  {
+    "id": 184,
+    "title": "Bridging Cardano to Onomy & Beyond",
+    "description": "Value must easily flow in & out of the ADA economy. The cost of no bridges is the inability for ADA to access established DeFi ecosystems.",
+    "url": "http://ideascale.com/t/UM5UZBf3V",
+    "category": 7,
+    "no_assessments": 6
+  },
+  {
+    "id": 185,
+    "title": "A Cardano editorial news website",
+    "description": "We need to have greater news coverage across the internet related to the ongoing problems that Cardano infrastructure is trying to solve",
+    "url": "http://ideascale.com/t/UM5UZBf3b",
+    "category": 1,
+    "no_assessments": 1
+  },
+  {
+    "id": 186,
+    "title": "Decentralization Aids: Geo & Infra",
+    "description": "Cardano has an elegant design behind it, but delegators and stake pool operators need access to information to capture the potential of it.",
+    "url": "http://ideascale.com/t/UM5UZBf3y",
+    "category": 7,
+    "no_assessments": 10
+  },
+  {
+    "id": 187,
+    "title": "Cardano On-Chain Voting",
+    "description": "People desire a secure, reliable, and immutable source of truth when dealing with votes, polls, and elections.",
+    "url": "http://ideascale.com/t/UM5UZBf37",
+    "category": 2,
+    "no_assessments": 0
+  },
+  {
+    "id": 188,
+    "title": "Save Farmers in India Initiative!",
+    "description": "Farm Laws passed increase privatization and middlemen profits by curbing Farmer to consumer transactions. Farmers livelihood compromised.",
+    "url": "http://ideascale.com/t/UM5UZBf4U",
+    "category": 2,
+    "no_assessments": 8
+  },
+  {
+    "id": 189,
+    "title": "M-Pesa payment rails integration",
+    "description": "M-Pesa is the most successful mobile-phone financial service in the developing world. Integrating with them will make Ada more accessible.",
+    "url": "http://ideascale.com/t/UM5UZBf4b",
+    "category": 3,
+    "no_assessments": 6
+  },
+  {
+    "id": 190,
+    "title": "DARP: Cardano Address Name Service",
+    "description": "Developers need ways to manage addresses in their dApps, for user experience and backend integrations (e.g. smart contracts, NFT data)",
+    "url": "http://ideascale.com/t/UM5UZBf4d",
+    "category": 4,
+    "no_assessments": 9
+  },
+  {
+    "id": 191,
+    "title": "OctoWars - a game platform",
+    "description": "Cardano doesn't provide a simple and elegant way to build trading cards and turn based strategies.",
+    "url": "http://ideascale.com/t/UM5UZBf4f",
+    "category": 3,
+    "no_assessments": 8
+  },
+  {
+    "id": 192,
+    "title": "Decentralized Event-Risk Contracts",
+    "description": "Insurance is one of the oldest financial products. Hedging against risk is fundamental to life and business, yet it is a overly complicated.",
+    "url": "http://ideascale.com/t/UM5UZBf4o",
+    "category": 7,
+    "no_assessments": 9
+  },
+  {
+    "id": 193,
+    "title": "Cardano Hackathon",
+    "description": "Exposing outside developers and innovators to Cardano through a hackathon would bring fresh insight to the current ecosystem.",
+    "url": "http://ideascale.com/t/UM5UZBf4q",
+    "category": 7,
+    "no_assessments": 4
+  },
+  {
+    "id": 194,
+    "title": "imToken wallet integration",
+    "description": "Cardano needs more mobile wallets in the Asian market.",
+    "url": "http://ideascale.com/t/UM5UZBf4r",
+    "category": 7,
+    "no_assessments": 0
+  },
+  {
+    "id": 195,
+    "title": "Escambo",
+    "description": "Aumentar a renda das famílias africanas.",
+    "url": "http://ideascale.com/t/UM5UZBf4u",
+    "category": 1,
+    "no_assessments": 5
+  },
+  {
+    "id": 196,
+    "title": "Behavioural based governance",
+    "description": "Our governance systems are super complex and are often underdesigned, most solutions solve problems that were not fully understood",
+    "url": "http://ideascale.com/t/UM5UZBf4x",
+    "category": 3,
+    "no_assessments": 5
+  },
+  {
+    "id": 197,
+    "title": "Funding Tree Planting Organisations",
+    "description": "Tons of Trees are being cut everyday for human use. And only a small percentage of those are being replanted.",
+    "url": "http://ideascale.com/t/UM5UZBf44",
+    "category": 4,
+    "no_assessments": 2
+  },
+  {
+    "id": 198,
+    "title": "Better Security using Shamir Shares",
+    "description": "Securing ADA should not have loss and theft risks. However all of the Hardware wallets have single point of failure today with PK storage.",
+    "url": "http://ideascale.com/t/UM5UZBf47",
+    "category": 3,
+    "no_assessments": 2
+  },
+  {
+    "id": 199,
+    "title": "Cardano School: Education Platform",
+    "description": "Introductory dev materials are scattered across the internet what makes it hard to get started with Cardano.",
+    "url": "http://ideascale.com/t/UM5UZBf5L",
+    "category": 5,
+    "no_assessments": 9
+  },
+  {
+    "id": 200,
+    "title": "Catalystwinners.com",
+    "description": "It is currently not easy to find which projects have won on each Fund. That could eventually undermine the transparency of Catalyst.",
+    "url": "http://ideascale.com/t/UM5UZBf5X",
+    "category": 3,
+    "no_assessments": 5
+  },
+  {
+    "id": 201,
+    "title": "Art DApps to fund & curate artwork",
+    "description": "No. 1 problem of the art industry for the past 3 years is **onboarding new collectors** *(tech savvy, gadget-driven* *millennials)*",
+    "url": "http://ideascale.com/t/UM5UZBf5k",
+    "category": 4,
+    "no_assessments": 9
+  },
+  {
+    "id": 202,
+    "title": "Telecom infrastructure tokenization",
+    "description": "Build a team to help the tokenization of a several open RAN municipal projects.",
+    "url": "http://ideascale.com/t/UM5UZBf52",
+    "category": 7,
+    "no_assessments": 5
+  },
+  {
+    "id": 203,
+    "title": "CardaWork.com - Work Marketplace",
+    "description": "It is difficult for developers to get excited about Cardano if they cannot monetize their Cardano development skills (Plutus, Marlowe, Glow)",
+    "url": "http://ideascale.com/t/UM5UZBf55",
+    "category": 6,
+    "no_assessments": 1
+  },
+  {
+    "id": 204,
+    "title": "L10N - localisation",
+    "description": "community + communication should start in the low cost high value - online - (through the best medium - video) then offline.",
+    "url": "http://ideascale.com/t/UM5UZBf6E",
+    "category": 3,
+    "no_assessments": 9
+  },
+  {
+    "id": 205,
+    "title": "Geographic centers of expertise",
+    "description": "In order to build partnerships and move forward on specific jurisdictions, country-specific ancillary entities are good answer",
+    "url": "http://ideascale.com/t/UM5UZBf6F",
+    "category": 5,
+    "no_assessments": 7
+  },
+  {
+    "id": 206,
+    "title": "LCC in Brazil for Growth and Adopt.",
+    "description": "Lack of optimization in community communication during Cardano Growth Phase, we need more content translation and core members are overload.",
+    "url": "http://ideascale.com/t/UM5UZBf6O",
+    "category": 6,
+    "no_assessments": 2
+  },
+  {
+    "id": 207,
+    "title": "Local support hub to assit devs",
+    "description": "Local support is often necessary to train and support developers and community, address specific issues and create ambitious projects",
+    "url": "http://ideascale.com/t/UM5UZBf6c",
+    "category": 4,
+    "no_assessments": 9
+  },
+  {
+    "id": 208,
+    "title": "Universal news subscription",
+    "description": "News organisations rely heavily on ads that rewards clicks which result in poor quality content.",
+    "url": "http://ideascale.com/t/UM5UZBf6j",
+    "category": 4,
+    "no_assessments": 5
+  },
+  {
+    "id": 209,
+    "title": "Nodeless command line interface",
+    "description": "You need to run a full Cardano node to interact with the blockchain information using command line interface.",
+    "url": "http://ideascale.com/t/UM5UZBf68",
+    "category": 7,
+    "no_assessments": 10
+  },
+  {
+    "id": 210,
+    "title": "SEPA to/from Cardano addresse",
+    "description": "On-boarding users is not easy. This service would provide a easy way for EU citizen to send/receive € on/from Cardano",
+    "url": "http://ideascale.com/t/UM5UZBf7B",
+    "category": 3,
+    "no_assessments": 6
+  },
+  {
+    "id": 211,
+    "title": "Updev Community et Cardano Catalyst",
+    "description": "Even though we have a strong local community of devs, they have limited skills in blockchain tech and no way to access the information.",
+    "url": "http://ideascale.com/t/UM5UZBf7F",
+    "category": 1,
+    "no_assessments": 9
+  },
+  {
+    "id": 212,
+    "title": "Smart Contracts Tutorials",
+    "description": "Developpers not used to working in Haskell and/or with blockchain tech find it hard to introduce themselves to smart contract development",
+    "url": "http://ideascale.com/t/UM5UZBf7I",
+    "category": 2,
+    "no_assessments": 0
+  },
+  {
+    "id": 213,
+    "title": "The Universal Cookbook",
+    "description": "What are we making for dinner tonight?",
+    "url": "http://ideascale.com/t/UM5UZBf7R",
+    "category": 3,
+    "no_assessments": 8
+  },
+  {
+    "id": 214,
+    "title": "ADA human resources",
+    "description": "job applicants want to improve their resume or if they don't, they want to make a resume to improve their job offer opportunities.",
+    "url": "http://ideascale.com/t/UM5UZBf7b",
+    "category": 3,
+    "no_assessments": 10
+  },
+  {
+    "id": 215,
+    "title": "ADA Powers Incentive Apps",
+    "description": "Easy GTM strategy for ADA to drive wider adoption and liquidity.",
+    "url": "http://ideascale.com/t/UM5UZBf7j",
+    "category": 7,
+    "no_assessments": 3
+  },
+  {
+    "id": 216,
+    "title": "Open Source Governance UI",
+    "description": "Users are overwhelmed by distributed decision making, and developers do not have the funding to complete the network upgrades.",
+    "url": "http://ideascale.com/t/UM5UZBf7u",
+    "category": 3,
+    "no_assessments": 3
+  },
+  {
+    "id": 217,
+    "title": "PoolPeek.com Upgrades",
+    "description": "PoolPeek.com is built by small pool owners for small pool delegators. Small stake pools need more ways for delegators to find their pools.",
+    "url": "http://ideascale.com/t/UM5UZBf7z",
+    "category": 7,
+    "no_assessments": 5
+  },
+  {
+    "id": 218,
+    "title": "Adaption and integration of Cardano",
+    "description": "Implementing Cardano in society requires also many non ICT technical aspects: legal, political, stakeholders postions, etc",
+    "url": "http://ideascale.com/t/UM5UZBf76",
+    "category": 1,
+    "no_assessments": 9
+  },
+  {
+    "id": 219,
+    "title": "Genomic Data Marketplace",
+    "description": "Current markets for genomic data are centralized and run by the two major genetic testing companies. Ours is a democratic \"de-sci\" alternate",
+    "url": "http://ideascale.com/t/UM5UZBf8F",
+    "category": 3,
+    "no_assessments": 7
+  },
+  {
+    "id": 220,
+    "title": "REVUTO - Subscription Management",
+    "description": "Subscription management via Revuto Virtual Debit Cards supporting Cardano. For more please click: https://bit.ly/revuto_cardano",
+    "url": "http://ideascale.com/t/UM5UZBf8M",
+    "category": 1,
+    "no_assessments": 2
+  },
+  {
+    "id": 221,
+    "title": "Gauntlets of Catalyst Courts",
+    "description": "Project Catalyst wants to attract the best/brightest outside entrepreneurs/firms and submit proposals in F5/F6.",
+    "url": "http://ideascale.com/t/UM5UZBf8S",
+    "category": 6,
+    "no_assessments": 8
+  },
+  {
+    "id": 222,
+    "title": "Haskell DeFi SDK for Plutus Devs",
+    "description": "Cardano DeFi developers need an open-source standardized method for querying several DeFi protocols in parallel to build composable L2 dApps",
+    "url": "http://ideascale.com/t/UM5UZBf8U",
+    "category": 7,
+    "no_assessments": 3
+  },
+  {
+    "id": 223,
+    "title": "Sustainable Forest Stablecoin",
+    "description": "High gas prices on Ethereum are crippling Ekofolio's vision of frictionless issuance and trade of Stablecoins backed by Natural Capital.",
+    "url": "http://ideascale.com/t/UM5UZBf8g",
+    "category": 5,
+    "no_assessments": 6
+  },
+  {
+    "id": 224,
+    "title": "The Predictors App - Oracle Service",
+    "description": "It can be hard to find reliable predictions on the prices of assets, outcome of events, and other things people are interested in knowing.",
+    "url": "http://ideascale.com/t/UM5UZBf8i",
+    "category": 5,
+    "no_assessments": 1
+  },
+  {
+    "id": 225,
+    "title": "Ouroboros Networking Lib in JS",
+    "description": "Cardano has tools only in Haskell, developers are constrained due to the lack of a networking library in other languages such as Javascript",
+    "url": "http://ideascale.com/t/UM5UZBf8n",
+    "category": 3,
+    "no_assessments": 0
+  },
+  {
+    "id": 226,
+    "title": "Haskell Devs for Liqwid Plutus SC's",
+    "description": "Plutus is Cardano's smart contract layer written in Haskell. 1st target users to build secure DeFi contracts in Plutus are senior Haskellers",
+    "url": "http://ideascale.com/t/UM5UZBf8o",
+    "category": 4,
+    "no_assessments": 5
+  },
+  {
+    "id": 227,
+    "title": "Cardax - DEX on Cardano",
+    "description": "There is currently no decentralized exchange (DEX) on Cardano. Tokens built on Cardano dont have a 'native exchange' to list yet.",
+    "url": "http://ideascale.com/t/UM5UZBf8r",
+    "category": 4,
+    "no_assessments": 7
+  },
+  {
+    "id": 228,
+    "title": "Beautiful and clear results page(s)",
+    "description": "As a person new to catalyst, I want to know the results/status of previous Funds.\n\n  \n\nThe F1 PDF was a good start, but is now out of date.",
+    "url": "http://ideascale.com/t/UM5UZBf8v",
+    "category": 1,
+    "no_assessments": 7
+  },
+  {
+    "id": 229,
+    "title": "Proof-of-Free-Will ADA HW wallet",
+    "description": "**Current solutions for protecting digital assets are missing the tight bond to real physical identity of a person beyond simple PIN/Password.**",
+    "url": "http://ideascale.com/t/UM5UZBf9M",
+    "category": 6,
+    "no_assessments": 10
+  },
+  {
+    "id": 230,
+    "title": "Deep Data Management Solution",
+    "description": "Blockchain state management has become completely unmanageable. As Cardano grows, the database has become fast to write to but slow to read.",
+    "url": "http://ideascale.com/t/UM5UZBf9S",
+    "category": 4,
+    "no_assessments": 3
+  },
+  {
+    "id": 231,
+    "title": "Distributed decision making Dapp",
+    "description": "There are no tools to assist decision making already built on Cardano which could expand outside the community as well",
+    "url": "http://ideascale.com/t/UM5UZBf9W",
+    "category": 1,
+    "no_assessments": 10
+  },
+  {
+    "id": 232,
+    "title": "Governance tools to boost collabs",
+    "description": "Information about The Project Catalyst is not well structured and easily accessible",
+    "url": "http://ideascale.com/t/UM5UZBf9Y",
+    "category": 2,
+    "no_assessments": 9
+  },
+  {
+    "id": 233,
+    "title": "DAO for creating governance tools",
+    "description": "Voting is prone to errors and expensive\n\nThere are no helpful and resource-friendly tools to help us govern ourselves and what we do",
+    "url": "http://ideascale.com/t/UM5UZBf9b",
+    "category": 3,
+    "no_assessments": 0
+  },
+  {
+    "id": 234,
+    "title": "Fund Matching from C-Foundation",
+    "description": "Cardano Foundation is looking for ways to create a stronger impact in local areas and also reinvigorate the Ambassador program.",
+    "url": "http://ideascale.com/t/UM5UZBf9f",
+    "category": 7,
+    "no_assessments": 5
+  },
+  {
+    "id": 235,
+    "title": "Strengthen local communities",
+    "description": "How to generate more active Cardano participants, that effect local change?Many don't know how to use a Cardano wallet & need face2face help",
+    "url": "http://ideascale.com/t/UM5UZBf9i",
+    "category": 2,
+    "no_assessments": 2
+  },
+  {
+    "id": 236,
+    "title": "Community-driven content production",
+    "description": "Producing informational/educational content involves a lot of work, and it's hard to predict what is valuable to the Cardano community",
+    "url": "http://ideascale.com/t/UM5UZBf9n",
+    "category": 1,
+    "no_assessments": 5
+  },
+  {
+    "id": 237,
+    "title": "ADA MyProject Freelance",
+    "description": "High demand for blockchain-related projects",
+    "url": "http://ideascale.com/t/UM5UZBf9o",
+    "category": 1,
+    "no_assessments": 0
+  },
+  {
+    "id": 238,
+    "title": "Cardano Vision Website Germany",
+    "description": "The germans are very sceptic on the entire cryptospace.  \nMany barely know that bitcoin exists and think it exists for criminal use only.",
+    "url": "http://ideascale.com/t/UM5UZBf9w",
+    "category": 4,
+    "no_assessments": 3
+  },
+  {
+    "id": 239,
+    "title": "These Walled Gardens - DevThemePark",
+    "description": "We live/operate in physical/digital silos that limit the flow in and out of social groups and devs need a fast track lane to teams/tools.",
+    "url": "http://ideascale.com/t/UM5UZBf9z",
+    "category": 3,
+    "no_assessments": 6
+  },
+  {
+    "id": 240,
+    "title": "Bequeath:  Inheritance tracking",
+    "description": "Assignment, tracking, claiming, distribution of personal property after death",
+    "url": "http://ideascale.com/t/UM5UZBf90",
+    "category": 7,
+    "no_assessments": 5
+  },
+  {
+    "id": 241,
+    "title": "Social Physics-Balloon Challenge",
+    "description": "Catalyst lacks the ability to create \"value\" to engage community members. We are also challenged with defining \"value\".",
+    "url": "http://ideascale.com/t/UM5UZBf94",
+    "category": 1,
+    "no_assessments": 10
+  },
+  {
+    "id": 242,
+    "title": "Build user-centric apps on Cardano",
+    "description": "There is a steep learning curve to implement user-centric applications that support privacy and verifiable evidence on Cardano.",
+    "url": "http://ideascale.com/t/UM5UZBf95",
+    "category": 5,
+    "no_assessments": 7
+  },
+  {
+    "id": 243,
+    "title": "EmancipationStation",
+    "description": "Catalyst lacks the ability to capture the story of our decentralized lives and allow us to organize ourselves to prepare for the unknown fut",
+    "url": "http://ideascale.com/t/UM5UZBgAF",
+    "category": 6,
+    "no_assessments": 1
+  },
+  {
+    "id": 244,
+    "title": "Data sharing for medical AI",
+    "description": "limited amount of experimental data in one company leads to ignorance of rare-events. This is risky for AI performance.",
+    "url": "http://ideascale.com/t/UM5UZBgAb",
+    "category": 6,
+    "no_assessments": 8
+  },
+  {
+    "id": 245,
+    "title": "Global Parity Valuation Engine",
+    "description": "Nearly every exchange is based on faulty values making them unfair. Markets need a new baseline and method to deliver fair value for all.",
+    "url": "http://ideascale.com/t/UM5UZBgBW",
+    "category": 7,
+    "no_assessments": 8
+  },
+  {
+    "id": 246,
+    "title": "Idea to Team Connection Support",
+    "description": "Some folks with good ideas and business acumen cant code",
+    "url": "http://ideascale.com/t/UM5UZBgEz",
+    "category": 1,
+    "no_assessments": 3
+  },
+  {
+    "id": 247,
+    "title": "AI Proposal Evaluation and Guidance",
+    "description": "We're relying on humans to critique an ever growing set of proposals",
+    "url": "http://ideascale.com/t/UM5UZBgFN",
+    "category": 7,
+    "no_assessments": 4
+  },
+  {
+    "id": 248,
+    "title": "Test Proposal",
+    "description": "Community Advisors could use refresher on how to navigate Ideascale to make reviews.",
+    "url": "http://ideascale.com/t/UM5UZBgzC",
+    "category": 3,
+    "no_assessments": 0
+  },
+  {
+    "id": 249,
+    "title": "Migrate Ethereum",
+    "description": "How can we get more Ethereum projects to start moving to Cardano in the next 3 months?",
+    "url": "http://ideascale.com/t/UM5UZBfWi",
+    "category": 1,
+    "no_assessments": 9
+  },
+  {
+    "id": 250,
+    "title": "Clean Water",
+    "description": "How can we encourage ADA owners to donate to clean water projects around the world.",
+    "url": "http://ideascale.com/t/UM5UZBfX4",
+    "category": 5,
+    "no_assessments": 3
+  },
+  {
+    "id": 251,
+    "title": "DeFi and Microlending for Africa",
+    "description": "How can we enable the creation of micro-lending and Defi dApp solutions that fits the African setting?",
+    "url": "http://ideascale.com/t/UM5UZBfaC",
+    "category": 1,
+    "no_assessments": 8
+  },
+  {
+    "id": 252,
+    "title": "Cardano Web Hub",
+    "description": "How can Cardano establish a more meaningful and impactful presence on the internet to reach out general public and community members ?",
+    "url": "http://ideascale.com/t/UM5UZBfcA",
+    "category": 6,
+    "no_assessments": 7
+  },
+  {
+    "id": 253,
+    "title": "Success Tracking",
+    "description": "How can we build and maintain a better success tracking experience for funded proposals?",
+    "url": "http://ideascale.com/t/UM5UZBfcP",
+    "category": 6,
+    "no_assessments": 2
+  },
+  {
+    "id": 254,
+    "title": "One Book a Month",
+    "description": "Write books on a typewriter to represent a stake pool, and publish and distribute the book once the node is saturated.",
+    "url": "http://ideascale.com/t/UM5UZBffN",
+    "category": 5,
+    "no_assessments": 1
+  },
+  {
+    "id": 255,
+    "title": "Marketing",
+    "description": "How do we tell as many people as possible about the New World Operating System during the\n\n2021 bull market phase (ending Q4)?",
+    "url": "http://ideascale.com/t/UM5UZBff5",
+    "category": 3,
+    "no_assessments": 0
+  },
+  {
+    "id": 256,
+    "title": "Partnerships for Global Adoption",
+    "description": "How can Cardano enter in global partnerships with United Nations Development Programme and World Bank Group, to leverage mass adoption?",
+    "url": "http://ideascale.com/t/UM5UZBfgC",
+    "category": 4,
+    "no_assessments": 10
+  },
+  {
+    "id": 257,
+    "title": "Credit unions and co-operatives",
+    "description": "How can credit unions extend the higher savings returns from DEFI to less sophisticated and tech savvy investors in developing countries?",
+    "url": "http://ideascale.com/t/UM5UZBfhY",
+    "category": 4,
+    "no_assessments": 8
+  },
+  {
+    "id": 258,
+    "title": "Nation Building Dapps",
+    "description": "What core Dapp solutions can be provided for widespread governments adoption in the developing world?",
+    "url": "http://ideascale.com/t/UM5UZBfhg",
+    "category": 1,
+    "no_assessments": 10
+  },
+  {
+    "id": 259,
+    "title": "Developer Courses",
+    "description": "To adopt a training/apprenticeship program for those of us who are looking for a new career",
+    "url": "http://ideascale.com/t/UM5UZBfjf",
+    "category": 7,
+    "no_assessments": 1
+  },
+  {
+    "id": 260,
+    "title": "Staking Pool Workshops",
+    "description": "How can we teach ADA holders how to create and operate their own staking pool?",
+    "url": "http://ideascale.com/t/UM5UZBfkp",
+    "category": 7,
+    "no_assessments": 10
+  },
+  {
+    "id": 261,
+    "title": "CARS-dano automobile loans",
+    "description": "Can a Cardano based automobile financing solution compete with a line of credit from your bank or car company loans?",
+    "url": "http://ideascale.com/t/UM5UZBfma",
+    "category": 6,
+    "no_assessments": 1
+  },
+  {
+    "id": 262,
+    "title": "Cardano Emerging Threat Alarm",
+    "description": "How can we help stakeholders identify serious emerging systemic threats for the Cardano blockchain before a threat overcomes the system?",
+    "url": "http://ideascale.com/t/UM5UZBfm7",
+    "category": 7,
+    "no_assessments": 7
+  },
+  {
+    "id": 263,
+    "title": "Propose, build & deliver in 6 weeks",
+    "description": "How can we offer people an opportunity to contribute without having to commit to a large budget while still getting a fair voting chance?",
+    "url": "http://ideascale.com/t/UM5UZBfnU",
+    "category": 2,
+    "no_assessments": 7
+  },
+  {
+    "id": 264,
+    "title": "Decentralised Storage Solutions",
+    "description": "How can we create a robust, reliable, secure and affordable decentralised, high-capacity storage network built upon the Cardano blockchain?",
+    "url": "http://ideascale.com/t/UM5UZBfno",
+    "category": 1,
+    "no_assessments": 4
+  },
+  {
+    "id": 265,
+    "title": "Framework for non-tech entrepreneur",
+    "description": "How can we provide a system that allows non-tech entrepreneurs to create PPPs or orther forms of large-scale projects that will use Cardano?",
+    "url": "http://ideascale.com/t/UM5UZBfpO",
+    "category": 7,
+    "no_assessments": 1
+  },
+  {
+    "id": 266,
+    "title": "Web-of-Trust Digital Identity",
+    "description": "How can we help indigenous communities build a robust digital identity for members that gives them control over their personal information?",
+    "url": "http://ideascale.com/t/UM5UZBfu3",
+    "category": 5,
+    "no_assessments": 4
+  },
+  {
+    "id": 267,
+    "title": "Multilingual resources",
+    "description": "How can we motivate non english speakers to learn and grow Cardano ecosystem in the next 3-6 months?",
+    "url": "http://ideascale.com/t/UM5UZBf0D",
+    "category": 2,
+    "no_assessments": 1
+  },
+  {
+    "id": 268,
+    "title": "Functional Paradigm Onboarding",
+    "description": "How to demonstrate Functional Programing Capabilities within your own existing management system structure?",
+    "url": "http://ideascale.com/t/UM5UZBf0I",
+    "category": 7,
+    "no_assessments": 0
+  },
+  {
+    "id": 269,
+    "title": "DLT Entrepreneurship Toolbox",
+    "description": "How can early stage entrepreneurs develop their skills to execute & communicate great ideas so voters/stakeholders value the project",
+    "url": "http://ideascale.com/t/UM5UZBf1b",
+    "category": 1,
+    "no_assessments": 7
+  },
+  {
+    "id": 270,
+    "title": "Self Governing Stake Pools",
+    "description": "How can we empower delegators through self governance to influence stake pool engagement and foster a vibrant and diverse pool community?",
+    "url": "http://ideascale.com/t/UM5UZBf42",
+    "category": 6,
+    "no_assessments": 0
+  },
+  {
+    "id": 271,
+    "title": "Global Impact: Fighting COVID",
+    "description": "How can solutions built on Cardano help to deal with the COVID crisis?",
+    "url": "http://ideascale.com/t/UM5UZBf43",
+    "category": 4,
+    "no_assessments": 7
+  },
+  {
+    "id": 272,
+    "title": "Celebrities Onboarding",
+    "description": "How can we make Celebs (TV, music, film) embrace Cardano as platform for a token offering this year?",
+    "url": "http://ideascale.com/t/UM5UZBf5C",
+    "category": 3,
+    "no_assessments": 5
+  },
+  {
+    "id": 273,
+    "title": "Pyramid Rewards system",
+    "description": "I would like to propose the concept of a pyramid structure in which people are actively rewarded for bringing in new people.",
+    "url": "http://ideascale.com/t/UM5UZBf5I",
+    "category": 4,
+    "no_assessments": 4
+  },
+  {
+    "id": 274,
+    "title": "Lobbying team",
+    "description": "In terms of spreading Cardano not all people are created equal. How can we reach the people that reach masses?",
+    "url": "http://ideascale.com/t/UM5UZBf5Q",
+    "category": 3,
+    "no_assessments": 10
+  },
+  {
+    "id": 275,
+    "title": "Allow the vote for network updates",
+    "description": "Updates are essential. It is going to be important to think about an updating process with community votes and discussions",
+    "url": "http://ideascale.com/t/UM5UZBf5l",
+    "category": 4,
+    "no_assessments": 10
+  },
+  {
+    "id": 276,
+    "title": "More wood behind fewer arrows",
+    "description": "How can we increase Catalyst proposal strength?",
+    "url": "http://ideascale.com/t/UM5UZBf7V",
+    "category": 2,
+    "no_assessments": 10
+  },
+  {
+    "id": 277,
+    "title": "ZooCardano-Stories of Value",
+    "description": "Can we create an NFT for proposals? Catalyst is the greatest event crypto has seen. How do we harness these \"Stories of Value'? See icon.",
+    "url": "http://ideascale.com/t/UM5UZBf97",
+    "category": 6,
+    "no_assessments": 2
+  },
+  {
+    "id": 278,
+    "title": "No-Code/Low-Code Solutions",
+    "description": "How do we lower the barrier to entry to participating - show what can be built on Cardano without coding",
+    "url": "http://ideascale.com/t/UM5UZBgFU",
+    "category": 2,
+    "no_assessments": 4
+  }
+]
