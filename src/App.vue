@@ -1,46 +1,22 @@
 <template>
   <div id="app">
-    <c-header />
+    <b-navbar class="is-primary" :mobile-burger="false">
+      <template #brand>
+        <b-navbar-item tag="router-link" :to="{ name: 'home' }">
+          <img
+            src="@/assets/images/catalyst.png"
+            alt="Lightweight UI components for Vue.js based on Bulma"
+          />
+        </b-navbar-item>
+      </template>
+    </b-navbar>
     <router-view class="main-view" />
-    <c-footer />
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <router-link :to="{ name: 'stats' }">Statistics</router-link>
+        </p>
+      </div>
+    </footer>
   </div>
 </template>
-
-<script>
-import CHeader from '@/components/CHeader'
-import CFooter from '@/components/CFooter'
-
-export default {
-  components: {
-    CHeader,
-    CFooter
-  },
-}
-</script>
-
-<style lang="scss">
-* {
-  box-sizing: border-box;
-}
-body {
-  margin: 0;
-}
-#app {
-  max-width: 600px;
-  width: 100%;
-  margin: 0px auto;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  background: #f1f1f1;
-  height: 100vh;
-  padding: 0 30px;
-  display: flex;
-  flex-direction: column;
-  .main-view {
-    flex-grow: 1;
-    overflow: auto;
-  }
-}
-</style>
