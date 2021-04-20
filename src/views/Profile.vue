@@ -19,7 +19,7 @@
         <b-input type="email" v-model="email"></b-input>
       </b-field>
 
-      <b-field class="file is-primary" :class="{ 'has-name': !!csv }">
+      <b-field class="file is-primary">
         <b-upload v-on:input="readFile" drag-drop expanded accept=".csv">
           <section class="section">
             <div class="content has-text-centered">
@@ -41,7 +41,13 @@
         Upload CSV to load assessments.
       </b-message>
 
-      <b-button type="is-primary" :disabled="!csv">Import Data</b-button>
+      <b-button
+        type="is-primary"
+        :disabled="!csv"
+        tag="router-link"
+        :to="{ name: 'conditions' }"
+        >Import Data</b-button
+      >
     </section>
   </article>
 </template>
