@@ -1,5 +1,5 @@
 <template>
-  <div class="section">
+  <div class="section container">
     <div class="buttons">
       <b-button
         type="is-primary"

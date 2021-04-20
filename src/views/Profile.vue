@@ -33,33 +33,44 @@
           </b-upload>
         </b-field>
 
-        <div class="tags">
-          <span v-if="file" class="tag is-primary">
+        <div class="tags mb-1">
+          <span v-if="fileLoaded" class="tag is-primary">
             {{ file.name }}
             <button
               class="delete is-small"
               type="button"
-              @click="deleteDropFile(index)"
+              @click="deleteDropFile()"
             ></button>
           </span>
         </div>
       </section>
 
       <div class="database" v-if="initialized && !localDb">
-        <input type="file" @change="readFile" />
         <div class="recap" v-if="csv">
-          No of assessments to be loaded: {{ csv.data.length }}
-          <div class="button" v-if="csv.data.length > 0" @click="importCsv">
-            Import local Database
-          </div>
+          <b-message type="is-info" has-icon>
+            <strong>CSV file loaded successfully</strong><br />
+            No of assessments to be imported: {{ csv.data.length }}
+            <div class="control mt-5">
+              <b-button type="is-success" v-if="csv.data.length > 0" @click="importCsv">Import local Database</b-button>
+            </div>
+          </b-message>
         </div>
       </div>
       <div class="database-loaded" v-if="initialized && localDb">
-        Database loaded. No of assessments: {{ assessments.length }}
-        <div class="button" @click="clear">Clear Database (!!!)</div>
-        <router-link class="button" :to="{ name: 'conditions' }"
-          >Start Reviewing</router-link
-        >
+          <b-message type="is-success" has-icon>
+            <strong>Database loaded!</strong><br />
+            No of assessments: {{ assessments.length }}
+            <div class="control mt-5">
+              <b-button
+                class="mr-3"
+                type="is-primary"
+                tag="router-link"
+                :to="{ name: 'conditions' }"
+              >
+                Start Reviewing</b-button>
+              <b-button type="is-danger" @click="clear">Clear Database (!!!)</b-button>
+            </div>
+          </b-message>
       </div>
     </section>
   </article>
@@ -73,6 +84,7 @@ export default {
   data() {
     return {
       csv: false,
+      file: {}
     };
   },
   computed: {
@@ -97,6 +109,9 @@ export default {
         this.$store.commit("profile/setEmail", value);
       },
     },
+    fileLoaded() {
+      return this.file instanceof File
+    }
   },
   methods: {
     importCsv() {
@@ -111,8 +126,7 @@ export default {
       this.csv = results;
     },
     readFile() {
-      let file = event.target.files[0];
-      this.$papa.parse(file, {
+      this.$papa.parse(this.file, {
         header: true,
         complete: this.onComplete,
       });
@@ -121,6 +135,17 @@ export default {
       this.$store.commit("profile/resetState");
       this.$store.commit("assessments/resetState");
     },
+    deleteDropFile() {
+      this.file = {}
+      this.csv = false
+    }
   },
+  watch: {
+    file() {
+      if (this.fileLoaded) {
+        this.readFile()
+      }
+    }
+  }
 };
 </script>
