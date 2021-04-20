@@ -19,48 +19,28 @@
         <b-input type="email" v-model="email"></b-input>
       </b-field>
 
-      <section v-if="initialized && !localDb">
-        <b-field>
-          <b-upload v-model="file" drag-drop expanded @change="readFile">
-            <section class="section">
-              <div class="content has-text-centered">
-                <p>
-                  <b-icon icon="upload" size="is-large"></b-icon>
-                </p>
-                <p>Drop your file here or click to upload</p>
-              </div>
-            </section>
-          </b-upload>
-        </b-field>
+      <b-field class="file is-primary" :class="{ 'has-name': !!csv }">
+        <b-upload v-on:input="readFile" drag-drop expanded accept=".csv">
+          <section class="section">
+            <div class="content has-text-centered">
+              <p>
+                <b-icon icon="upload" size="is-large"></b-icon>
+              </p>
+              <p>Drop your file here or click to upload</p>
+            </div>
+          </section>
+        </b-upload>
+      </b-field>
 
-        <div class="tags">
-          <span v-if="file" class="tag is-primary">
-            {{ file.name }}
-            <button
-              class="delete is-small"
-              type="button"
-              @click="deleteDropFile(index)"
-            ></button>
-          </span>
-        </div>
-      </section>
+      <b-message v-if="csv" type="is-success">
+        No of assessments to be loaded: {{ csv.data.length }}
+      </b-message>
 
-      <div class="database" v-if="initialized && !localDb">
-        <input type="file" @change="readFile" />
-        <div class="recap" v-if="csv">
-          No of assessments to be loaded: {{ csv.data.length }}
-          <div class="button" v-if="csv.data.length > 0" @click="importCsv">
-            Import local Database
-          </div>
-        </div>
-      </div>
-      <div class="database-loaded" v-if="initialized && localDb">
-        Database loaded. No of assessments: {{ assessments.length }}
-        <div class="button" @click="clear">Clear Database (!!!)</div>
-        <router-link class="button" :to="{ name: 'conditions' }"
-          >Start Reviewing</router-link
-        >
-      </div>
+      <b-message v-if="!csv" type="is-information">
+        Upload CSV to load assessments.
+      </b-message>
+
+      <b-button type="is-primary" :disabled="!csv">Import Data</b-button>
     </section>
   </article>
 </template>
@@ -72,7 +52,7 @@ export default {
   name: "Profile",
   data() {
     return {
-      csv: false,
+      csv: null,
     };
   },
   computed: {
