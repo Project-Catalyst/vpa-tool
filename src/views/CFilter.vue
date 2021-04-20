@@ -1,22 +1,25 @@
 <template>
-  <div class="filter">
-    <div class="filter-list" v-if="filterVisible">
-      <div class="single-filter" v-for="v, i in availableFilters" :key="`filter-${v.key}-${i}`">
-        {{v.label}}:
-        <select :value="v.value" @input="updateFilter(v, $event)">
-          <option v-for="(vv, kk) in v.values" :value="vv" :key="vv">
-            {{kk}}
-          </option>
-        </select>
+  <section class="filter pt-4 pb-4">
+    <div class="filter-list box" v-if="filterVisible">
+      <div class="single-filter is-expanded" v-for="v, i in availableFilters" :key="`filter-${v.key}-${i}`">
+        <b-field expanded :label="v.label">
+          <b-select expanded :placeholder="v.label" :value="v.value" @input="updateFilter(v, $event)">
+            <option v-for="(vv, kk) in v.values" :value="vv" :key="vv">
+              {{kk}}
+            </option>
+          </b-select>
+        </b-field>
       </div>
     </div>
-    <div class="active-filters" v-if="activeFilters.length">
+    <div class="active-filters box" v-if="activeFilters.length">
       <div class="heading">Selected filter</div>
-      <div class="single-filter" v-for="f in activeFilters" :key="`active-${f.key}-${f.value}`">
-        {{f.label}}: {{getLabelValue(f)}} <span class="remove" @click="removeFilter(f)">X</span>
+      <div class="tags">
+        <div class="tag is-primary is-medium" v-for="f in activeFilters" :key="`active-${f.key}-${f.value}`">
+          {{f.label}}: {{getLabelValue(f)}} <button class="delete" @click="removeFilter(f)"></button>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -25,8 +28,8 @@ export default {
   name: 'CFilter',
   props: ['availableFilters', 'activeFilters', 'filterVisible'],
   methods: {
-    updateFilter(prop, $event) {
-      this.$emit('update-filter', prop, $event.target.value)
+    updateFilter(prop, value) {
+      this.$emit('update-filter', prop, value)
     },
     removeFilter(f) {
       this.$emit('remove-filter', f)
@@ -40,43 +43,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.filter {
-  .filter-list {
-    width: 100%;
-    .single-filter {
-      width: 100%;
-      display: flex;
-      margin-bottom: 10px;
-      justify-content: space-between;
-      select {
-        margin-left: 10px;
-        flex-grow: 1;
-        font-size: 14px;
-        max-width: 80%;
-        font-family: Avenir, Helvetica, Arial, sans-serif;
-      }
-    }
-  }
-  .active-filters {
-    padding: 10px;
-    border: 2px solid #000;
-    background: #fff;
-    .heading {
-      font-weight: bold;
-      font-size: 12px;
-    }
-    .single-filter {
-      background: #baffb2;
-      padding: 3px;
-      font-size: 13px;
-      font-weight: bold;
-      display: inline-block;
-      .remove {
-        font-size: 10px;
-        font-weight: bold;
-        cursor: pointer;
-      }
-    }
-  }
-}
 </style>

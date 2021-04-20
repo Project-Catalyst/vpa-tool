@@ -1,7 +1,7 @@
 <template>
-  <div class="conditions">
-    <div class="filters">
-      <div class="button" @click="filterVisible = !filterVisible">Choose Filters</div>
+  <div class="conditions container">
+    <div class="filters p-4">
+      <b-button expanded @click="filterVisible = !filterVisible">Choose Filters</b-button>
       <c-filter
         :filterVisible="filterVisible"
         :activeFilters="activeFilters"
