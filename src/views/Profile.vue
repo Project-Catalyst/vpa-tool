@@ -11,7 +11,7 @@
       </div>
     </section>
     <section class="section">
-      <b-field label="Name">
+      <b-field label="Full Name">
         <b-input v-model="name"></b-input>
       </b-field>
 
@@ -24,7 +24,8 @@
           <section class="section">
             <div class="content has-text-centered">
               <p>
-                <b-icon icon="upload" size="is-large"></b-icon>
+                <b-icon icon="upload" size="is-large" v-if="!csv"></b-icon>
+                <b-icon icon="check" size="is-large" v-if="csv"></b-icon>
               </p>
               <p>Drop your file here or click to upload</p>
             </div>
