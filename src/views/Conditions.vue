@@ -220,6 +220,7 @@ export default {
   },
   mounted() {
     this.setList({ label: "All", v: "filteredAssessments" });
+    this.$store.dispatch("assessments/getReviewsCount")
     EventBus.$on("next-assessment", this.getNext);
   },
 };

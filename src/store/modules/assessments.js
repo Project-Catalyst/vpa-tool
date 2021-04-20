@@ -22,6 +22,20 @@ const getters = {
 
 // actions
 const actions = {
+  getReviewsCount ({ state, commit }) {
+    const assessments = state.all
+    this._vm.$http.get().then((res) => {
+      if (res.data) {
+        Object.entries(res.data).forEach(([key, val]) => {
+          const assessment = assessments.find(a => parseInt(a.id) === parseInt(key))
+          if (assessment) {
+            assessment.reviews = val
+          }
+        });
+        commit('setAssessments', assessments)
+      }
+    })
+  },
 }
 
 // mutations

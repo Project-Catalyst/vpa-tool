@@ -33,6 +33,10 @@
           <div class="label">Assessment Note:</div>
           <div class="value">{{assessment.note}}</div>
         </div>
+        <div class="single-info full">
+          <div class="label">No of vCA reviews:</div>
+          <div class="value">{{assessment.reviews}}</div>
+        </div>
       </div>
       <div class="review">
         <div class="el" :class="[criterium.color]" v-for="(criterium, idx) in criteria" :key="idx">
