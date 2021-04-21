@@ -3,10 +3,7 @@
     <b-navbar class="is-primary" :mobile-burger="false">
       <template #brand>
         <b-navbar-item tag="router-link" :to="{ name: 'home' }">
-          <img
-            src="@/assets/images/catalyst.png"
-            alt="Lightweight UI components for Vue.js based on Bulma"
-          />
+          <img src="@/assets/images/catalyst.png" alt="Project Catalyst" />
         </b-navbar-item>
       </template>
     </b-navbar>
