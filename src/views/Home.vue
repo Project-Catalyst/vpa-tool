@@ -1,15 +1,25 @@
 <template>
-  <div class="home">
-    <router-link class="button" :to="{ name: 'profile' }">Start Process</router-link>
-    <div class="message">
-      This is an app to help vCAs with the review process. It's currently in Early development. Please report any bugs.
+  <div class="section container">
+    <b-message>
+      This is an app to help vCAs with the review process. It's currently in
+      Early development. Please report any bugs.
+    </b-message>
+
+    <div class="buttons">
+      <b-button
+        type="is-primary"
+        tag="router-link"
+        :to="{ name: 'profile' }"
+        expanded
+      >
+        Start Process</b-button
+      >
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'Home'
-}
+  name: "Home",
+};
 </script>
