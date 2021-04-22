@@ -24,10 +24,18 @@
         >{{ el.label }}</b-radio-button
       >
     </b-field>
-    <div class="button" @click="getNext">
-      Next
+    <div class="notification is-primary">
+      <div class="buttons">
+        <b-button type="is-primary" inverted @click="getNext">Next</b-button>
+        <b-button
+          type="is-primary"
+          inverted
+          outlined
+          @click="showList = !showList"
+          >Show List</b-button
+        >
+      </div>
     </div>
-    <div class="button" @click="showList = !showList">Show list</div>
     <div class="assessments-list" v-if="showList">
       <assessment-preview
         v-for="assessment in renderedList"
