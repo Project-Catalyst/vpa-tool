@@ -19,35 +19,41 @@
         <b-input type="email" v-model="email"></b-input>
       </b-field>
 
-      <b-field class="file is-primary">
-        <b-upload v-on:input="readFile" drag-drop expanded accept=".csv">
-          <section class="section">
-            <div class="content has-text-centered">
-              <p>
-                <b-icon icon="upload" size="is-large" v-if="!csv"></b-icon>
-                <b-icon icon="check" size="is-large" v-if="csv"></b-icon>
-              </p>
-              <p>Drop your file here or click to upload</p>
-            </div>
-          </section>
-        </b-upload>
-      </b-field>
+      <div class="csv-load" v-if="!localDb">
+        <b-field class="file is-primary">
+          <b-upload v-on:input="readFile" drag-drop expanded accept=".csv">
+            <section class="section">
+              <div class="content has-text-centered">
+                <p>
+                  <b-icon icon="upload" size="is-large" v-if="!csv"></b-icon>
+                  <b-icon icon="check" size="is-large" v-if="csv"></b-icon>
+                </p>
+                <p>Drop your file here or click to upload</p>
+              </div>
+            </section>
+          </b-upload>
+        </b-field>
 
-      <b-message v-if="csv" type="is-success">
-        No of assessments to be loaded: {{ csv.data.length }}
+        <b-message v-if="csv" type="is-success">
+          No of assessments to be loaded: {{ csv.data.length }}
+        </b-message>
+
+        <b-message v-if="!csv" type="is-information">
+          Upload CSV to load assessments.
+        </b-message>
+
+        <b-button
+          type="is-primary"
+          :disabled="!csv"
+          @click="importCsv"
+          >Import Data</b-button
+        >
+      </div>
+      <b-message type="is-danger mt-5" v-if="localDb">
+        <p>You've already loaded the CSV. Use this button to clear the database from your browser.</p>
+        <p>Be careful, this operation is not reversible!</p>
+        <b-button type="is-danger mt-5" @click="confirmClear">Clear local database</b-button>
       </b-message>
-
-      <b-message v-if="!csv" type="is-information">
-        Upload CSV to load assessments.
-      </b-message>
-
-      <b-button
-        type="is-primary"
-        :disabled="!csv"
-        tag="router-link"
-        :to="{ name: 'conditions' }"
-        >Import Data</b-button
-      >
     </section>
   </article>
 </template>
@@ -91,6 +97,7 @@ export default {
         if (this.csv.data) {
           this.$store.commit("profile/setLocalDb", true);
           this.$store.commit("assessments/setAssessments", this.csv.data);
+          this.$router.push({"name": "conditions"})
         }
       }
     },
@@ -108,6 +115,19 @@ export default {
       this.$store.commit("profile/resetState");
       this.$store.commit("assessments/resetState");
     },
+    confirmClear() {
+      this.$buefy.dialog.confirm({
+        title: 'Clear database',
+        message: 'Are you sure you want to <b>clear</b> the local database? This action cannot be undone and you will lose your work.',
+        confirmText: 'Clear Database',
+        type: 'is-danger',
+        hasIcon: true,
+        onConfirm: () => {
+          this.clear();
+          this.$buefy.toast.open('Database cleared!')
+        }
+      })
+    }
   },
 };
 </script>
