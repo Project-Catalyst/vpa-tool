@@ -28,7 +28,7 @@
           v-for="f in activeFilters"
           :key="`active-${f.key}-${f.value}`"
         >
-          {{ f.label }}: {{ getLabelValue(f) }}
+          <span class="has-ellipsis">{{ f.label }}: {{ getLabelValue(f) }}</span>
           <button class="delete" @click="removeFilter(f)"></button>
         </div>
       </div>
@@ -50,10 +50,13 @@ export default {
     getLabelValue(f) {
       return Object.keys(f.values)
         .find((key) => f.values[key] === parseInt(f.value))
-        .replace(/^(.{38}[^\s]*).*/, "$1");
     },
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.tag .has-ellipsis {
+  max-width: calc(100vw - 110px);
+}
+</style>
