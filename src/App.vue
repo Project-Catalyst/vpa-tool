@@ -7,9 +7,19 @@
         </b-navbar-item>
       </template>
       <template #end>
-        <b-navbar-dropdown label="User">
+        <b-navbar-dropdown label="vCA Tool">
           <b-navbar-item tag="router-link" :to="{ name: 'profile' }">
             Profile
+          </b-navbar-item>
+          <b-navbar-item
+            tag="router-link"
+            :to="{ name: 'conditions' }"
+            v-if="profile.localDb"
+            >
+            Assessments
+          </b-navbar-item>
+          <b-navbar-item tag="router-link" :to="{ name: 'stats' }">
+            Statistics
           </b-navbar-item>
         </b-navbar-dropdown>
       </template>
@@ -17,10 +27,20 @@
     <router-view class="main-view" />
     <footer class="footer">
       <div class="content has-text-centered">
-        <p>
-          <router-link :to="{ name: 'stats' }">Statistics</router-link>
-        </p>
+        <p>Made by Catalyst Community for the Catalyst Community</p>
       </div>
     </footer>
   </div>
 </template>
+
+<script>
+import { mapState } from "vuex";
+
+export default {
+  computed: {
+    ...mapState({
+      profile: (state) => state.profile
+    })
+  }
+};
+</script>
