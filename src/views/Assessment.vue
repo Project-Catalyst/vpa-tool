@@ -10,7 +10,9 @@
         </figure>
       </div> -->
       <div class="card-content">
-        <p class="title is-4">{{ proposal.title }}</p>
+        <p class="title is-4">
+          <a :href="proposal.url" target="_blank">{{ proposal.title }}</a>
+        </p>
         <p class="subtitle is-6">{{ category.title }}</p>
 
         <div class="columns is-multiline is-mobile">
