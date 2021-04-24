@@ -1,53 +1,54 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Profile from '../views/Profile.vue'
-import CFilter from '../views/CFilter.vue'
-import Stats from '../views/Stats.vue'
-import Conditions from '../views/Conditions.vue'
-import Assessment from '../views/Assessment.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Home from "../views/Home.vue";
+import Profile from "../views/Profile.vue";
+import CFilter from "../views/CFilter.vue";
+import Stats from "../views/Stats.vue";
+import Conditions from "../views/Conditions.vue";
+import Assessment from "../views/Assessment.vue";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: Home
+    path: "/",
+    name: "home",
+    component: Home,
   },
   {
-    path: '/profile',
-    name: 'profile',
-    component: Profile
+    path: "/profile",
+    name: "profile",
+    component: Profile,
   },
   {
-    path: '/filter',
-    name: 'filter',
-    component: CFilter
+    path: "/filter",
+    name: "filter",
+    component: CFilter,
   },
   {
-    path: '/stats',
-    name: 'stats',
-    component: Stats
+    path: "/stats",
+    name: "stats",
+    component: Stats,
   },
   {
-    path: '/conditions',
-    name: 'conditions',
+    path: "/assessments",
+    name: "conditions",
     component: Conditions,
     children: [
+      { path: "", component: Conditions },
       {
-        path: "assessment/:id",
-        name: 'assessment',
-        component: Assessment
-      }
-    ]
-  }
-]
+        path: "/assessments/:id",
+        name: "assessment",
+        component: Assessment,
+      },
+    ],
+  },
+];
 
 const router = new VueRouter({
   //mode: 'history',
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

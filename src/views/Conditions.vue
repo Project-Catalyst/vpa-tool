@@ -1,55 +1,57 @@
 <template>
   <div class="conditions container">
-    <div class="filters p-4">
-      <b-button expanded @click="filterVisible = !filterVisible"
-        >Choose Filters</b-button
-      >
-      <c-filter
-        :filterVisible="filterVisible"
-        :activeFilters="activeFilters"
-        :availableFilters="availableFilters"
-        @remove-filter="removeFilter"
-        @update-filter="updateFilter"
-      />
-    </div>
-    <b-field class="p-4">
-      <b-radio-button
-        v-model="prefilter"
-        v-for="(el, i) in prefilters"
-        v-on:input="setList(el)"
-        :native-value="el.v"
-        :key="i"
-        size="is-small"
-        expanded
-        >{{ el.label }}</b-radio-button
-      >
-    </b-field>
-    <div class="notification is-primary">
-      <div class="buttons">
-        <b-button type="is-primary" inverted @click="getNext">Next</b-button>
-        <b-button
-          type="is-primary"
-          inverted
-          outlined
-          @click="showList = !showList"
-          >Show List</b-button
+    <section v-if="currentIndex == 0">
+      <div class="filters p-4">
+        <b-button expanded @click="filterVisible = !filterVisible"
+          >Choose Filters</b-button
         >
+        <c-filter
+          :filterVisible="filterVisible"
+          :activeFilters="activeFilters"
+          :availableFilters="availableFilters"
+          @remove-filter="removeFilter"
+          @update-filter="updateFilter"
+        />
       </div>
-    </div>
-    <div class="assessments-list" v-if="showList">
-      <assessment-preview
-        v-for="assessment in renderedList"
-        :key="`ass-${assessment.id}`"
-        :assessment="assessment"
-      />
-      <div
-        class="button"
-        @click="currentSlice = currentSlice + 100"
-        v-if="currentSlice < currentList.length"
-      >
-        Load more...
+      <b-field class="p-4">
+        <b-radio-button
+          v-model="prefilter"
+          v-for="(el, i) in prefilters"
+          v-on:input="setList(el)"
+          :native-value="el.v"
+          :key="i"
+          size="is-small"
+          expanded
+          >{{ el.label }}</b-radio-button
+        >
+      </b-field>
+      <div class="notification is-primary">
+        <div class="buttons">
+          <b-button type="is-primary" inverted @click="getNext">Next</b-button>
+          <b-button
+            type="is-primary"
+            inverted
+            outlined
+            @click="showList = !showList"
+            >Show List</b-button
+          >
+        </div>
       </div>
-    </div>
+      <div class="assessments-list" v-if="showList">
+        <assessment-preview
+          v-for="assessment in renderedList"
+          :key="`ass-${assessment.id}`"
+          :assessment="assessment"
+        />
+        <div
+          class="button"
+          @click="currentSlice = currentSlice + 100"
+          v-if="currentSlice < currentList.length"
+        >
+          Load more...
+        </div>
+      </div>
+    </section>
     <router-view class="sub-view" />
   </div>
 </template>
@@ -220,7 +222,7 @@ export default {
   },
   mounted() {
     this.setList({ label: "All", v: "filteredAssessments" });
-    this.$store.dispatch("assessments/getReviewsCount")
+    this.$store.dispatch("assessments/getReviewsCount");
     EventBus.$on("next-assessment", this.getNext);
   },
 };
