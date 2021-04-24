@@ -55,7 +55,7 @@
         </div>
       </div>
       <footer class="card-footer">
-        <router-link class="card-footer-item" to="/conditions">
+        <router-link class="card-footer-item" to="/assessments">
           Overview
         </router-link>
 
