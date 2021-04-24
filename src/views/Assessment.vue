@@ -41,9 +41,9 @@
       <div class="review">
         <div class="el" :class="[criterium.color]" v-for="(criterium, idx) in criteria" :key="idx">
           <label :for="`label-${criterium.key}`">{{criterium.name}}</label>
-          <input :id="`label-${criterium.key}`" v-if="!criterium.type" type="checkbox" v-model="self()[criterium.key]" />
+          <input :id="`label-${criterium.key}`" v-if="criterium.type === 'boolean'" type="checkbox" v-model="self()[criterium.key]" />
           <div class="additional-info" v-tooltip="criterium.info">i</div>
-          <textarea v-model="self()[criterium.key]" v-if="criterium.type"></textarea>
+          <textarea v-model="self()[criterium.key]" v-if="criterium.type === 'text'"></textarea>
         </div>
       </div>
       <div class="button" @click="getNext">

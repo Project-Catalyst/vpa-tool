@@ -1,0 +1,10 @@
+[
+  "id",
+  "triplet_id",
+  "proposal_id",
+  "question_id",
+  "assessor",
+  "rating",
+  "note",
+  "proposer_flag"
+]
