@@ -142,21 +142,21 @@ export default {
         proposal_id: {
           key: "proposal_id",
           label: "Proposal",
-          comparision: (a, v) => a === v,
+          comparision: (a, v) => parseInt(a) === parseInt(v),
           value: false,
           values: this.proposalsById,
         },
         question_id: {
           key: "question_id",
           label: "Question",
-          comparision: (a, v) => a === v,
+          comparision: (a, v) => parseInt(a) === parseInt(v),
           value: false,
           values: this.questionsById,
         },
         rating: {
           key: "rating",
           label: "Rating",
-          comparision: (a, v) => a === v,
+          comparision: (a, v) => parseInt(a) === parseInt(v),
           value: false,
           values: { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 },
         },
@@ -225,6 +225,9 @@ export default {
     this.$store.dispatch("assessments/getReviewsCount");
     EventBus.$on("next-assessment", this.getNext);
   },
+  destroyed() {
+    EventBus.$off("next-assessment");
+  }
 };
 </script>
 <style lang="scss" scoped>
