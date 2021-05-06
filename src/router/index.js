@@ -34,11 +34,13 @@ const routes = [
     path: "/assessments",
     name: "conditions",
     component: Conditions,
-  },
-  {
-    path: "/assessments/:id",
-    name: "assessment",
-    component: Assessment,
+    children: [
+      {
+        path: "/assessments/:id",
+        name: "assessment",
+        component: Assessment,
+      },
+    ],
   },
 ];
 
