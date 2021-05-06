@@ -1,6 +1,11 @@
 <template>
-  <div class="assessment">
-    <div class="card">
+  <b-modal class="assessment"
+    :ref="'modal'"
+    v-model="isOpen"
+    :can-cancel="false"
+    full-screen
+    >
+    <div class="card container custom-card">
       <!-- <div class="card-image">
         <figure class="image is-4by3">
           <img
@@ -17,24 +22,37 @@
 
         <div class="columns is-multiline is-mobile">
           <div class="column is-full">
-            <p class="title is-6">Question</p>
-            <p class="subtitle is-6">{{ question.title }}</p>
+            <p class="is-6">
+              <strong>Question:</strong>
+              {{ question.title }}
+            </p>
           </div>
           <div class="column is-half">
-            <p class="title is-6">Rating</p>
-            <p class="subtitle is-6">{{ assessment.rating }}</p>
+            <p class="title is-6">
+              Rating:
+              <span class="inline">
+                <b-rate v-model="assessment.rating" disabled />
+              </span>
+            </p>
           </div>
           <div class="column is-half">
-            <p class="title is-6">Flagged by Proposer</p>
-            <p class="subtitle is-6">{{ assessment.proposer_flag }}</p>
+            <b-checkbox
+              class="always-opaque"
+              v-model="assessment.proposer_flag"
+              type="is-warning"
+              disabled>
+              Flagged by Proposer
+            </b-checkbox>
           </div>
           <div class="column is-full">
             <p class="title is-6">Assessment Note</p>
             <p class="subtitle is-6">{{ assessment.note }}</p>
           </div>
           <div class="column is-full">
-            <p class="title is-6">Reviews</p>
-            <p class="subtitle is-6">{{ assessment.reviews }}</p>
+            <p class="is-6">
+              <strong>Reviews:</strong>
+              {{ assessment.reviews }}
+            </p>
           </div>
           <div
             class="column is-full"
@@ -43,9 +61,14 @@
             :class="[c.color]"
           >
             <b-field :label="c.type ? c.name : ''">
-              <b-checkbox v-if="!c.type" v-model="self()[c.key]">{{
-                c.name
-              }}</b-checkbox>
+              <b-checkbox v-if="!c.type" v-model="self()[c.key]">
+                {{ c.name }}
+                <b-tooltip
+                  :label="c.info"
+                  multilined>
+                    <b-icon icon="information-outline"></b-icon>
+                </b-tooltip>
+              </b-checkbox>
               <b-input
                 maxlength="200"
                 type="textarea"
@@ -56,8 +79,8 @@
           </div>
         </div>
       </div>
-      <footer class="card-footer">
-        <router-link class="card-footer-item" to="/assessments">
+      <footer class="card-footer custom-footer">
+        <router-link class="card-footer-item" :to="{ name: 'conditions' }">
           Overview
         </router-link>
 
@@ -66,7 +89,7 @@
         </a>
       </footer>
     </div>
-  </div>
+  </b-modal>
 </template>
 
 <script>
@@ -87,6 +110,7 @@ export default {
       categories: categories,
       questions: questions,
       criteria: criteria,
+      isOpen: true
     };
   },
   asyncComputed: {
@@ -152,7 +176,6 @@ export default {
     },
     getNext() {
       EventBus.$emit("next-assessment");
-      window.scrollTo(0, 0);
     },
   },
 };
@@ -169,5 +192,22 @@ export default {
   &.green {
     background: #baffb2;
   }
+}
+.inline {
+  display: inline-block;
+}
+.always-opaque {
+  opacity: 1 !important;
+}
+.custom-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: .10rem;
+  background: #fff;
+  width: 100%;
+}
+.custom-card {
+  padding-bottom: 60px;
 }
 </style>
