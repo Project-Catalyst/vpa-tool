@@ -49,7 +49,7 @@ export default {
     },
     getLabelValue(f) {
       return Object.keys(f.values)
-        .find((key) => f.values[key] === parseInt(f.value))
+        .find((key) => f.values[key] === f.value)
     },
   },
 };

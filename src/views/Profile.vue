@@ -60,12 +60,14 @@
 
 <script>
 import { mapState } from "vuex";
+import csvHeaders from "../assets/data/csv-headers.json";
 
 export default {
   name: "Profile",
   data() {
     return {
       csv: null,
+      csvHeaders: csvHeaders
     };
   },
   computed: {
@@ -102,13 +104,44 @@ export default {
       }
     },
     onComplete(results) {
+      results.data = results.data.map((el) => {
+        return this._.pick(el, Object.keys(this.csvHeaders))
+      })
       this.csv = results;
+    },
+    transformData(value, col) {
+      if (this.csvHeaders[col]) {
+        if (this.csvHeaders[col].type === 'integer') {
+          return parseInt(value)
+        }
+        if (this.csvHeaders[col].type === 'boolean') {
+          return (value.trim() !== '')
+        }
+        if (this.csvHeaders[col].type === 'string') {
+          return value
+        }
+      } else {
+        return value
+      }
+    },
+    transformHeader(header) {
+      const newHeaders = {}
+      Object.keys(this.csvHeaders).forEach((h) => {
+        newHeaders[this.csvHeaders[h].label] = h
+      })
+      if (newHeaders[header]) {
+        return newHeaders[header]
+      }
+      return header
     },
     readFile() {
       let file = event.target.files[0];
       this.$papa.parse(file, {
         header: true,
         complete: this.onComplete,
+        transform: this.transformData,
+        transformHeader: this.transformHeader,
+        skipEmptyLines: true
       });
     },
     clear() {

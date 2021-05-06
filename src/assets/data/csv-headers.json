@@ -1,0 +1,86 @@
+{
+  "assessor": {
+    "type": "string",
+    "label": "Assessor"
+  },
+  "abstain": {
+    "type": "boolean",
+    "label": "Abstain"
+  },
+  "strict": {
+    "type": "boolean",
+    "label": "Strict"
+  },
+  "lenient": {
+    "type": "boolean",
+    "label": "Lenient"
+  },
+  "constructive": {
+    "type": "boolean",
+    "label": "Constructive Feedback"
+  },
+  "copy": {
+    "type": "boolean",
+    "label": "Copy"
+  },
+  "fair": {
+    "type": "boolean",
+    "label": "Acceptable"
+  },
+  "id": {
+    "type": "string",
+    "label": "id"
+  },
+  "incomplete_reading": {
+    "type": "boolean",
+    "label": "Incomplete Reading"
+  },
+  "non_constructive": {
+    "type": "boolean",
+    "label": "Non Constructive Feedback"
+  },
+  "not_related": {
+    "type": "boolean",
+    "label": "Not Related"
+  },
+  "note": {
+    "type": "string",
+    "label": "Assessment Note"
+  },
+  "other": {
+    "type": "boolean",
+    "label": "General Infraction"
+  },
+  "other_rationale": {
+    "type": "string",
+    "label": "General Infraction: rationale"
+  },
+  "profanity": {
+    "type": "boolean",
+    "label": "Offense / Profanity"
+  },
+  "proposal_id": {
+    "type": "integer",
+    "label": "proposal_id"
+  },
+  "proposer_flag": {
+    "type": "boolean",
+    "label": "Proposer Mark"
+  },
+  "question_id": {
+    "type": "integer",
+    "label": "question_id"
+  },
+  "rating": {
+    "type": "integer",
+    "label": "Rating Given"
+  },
+  "score": {
+    "type": "boolean",
+    "label": "Score doesn't match"
+  },
+  "triplet_id": {
+    "type": "integer",
+    "label": "triplet_id"
+  }
+}
