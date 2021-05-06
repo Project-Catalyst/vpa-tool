@@ -18,6 +18,9 @@
           >
             Assessments
           </b-navbar-item>
+          <b-navbar-item @click="exportCsv" v-if="profile.localDb">
+            Export CSV
+          </b-navbar-item>
           <b-navbar-item tag="router-link" :to="{ name: 'stats' }">
             Statistics
           </b-navbar-item>
@@ -35,12 +38,19 @@
 
 <script>
 import { mapState } from "vuex";
+import downloadCsv from "@/utils/export-csv";
 
 export default {
   computed: {
     ...mapState({
       profile: (state) => state.profile,
-    }),
+      assessments: (state) => state.assessments.all
+    })
   },
+  methods: {
+    exportCsv() {
+      downloadCsv(this.assessments, this.profile.info.name)
+    }
+  }
 };
 </script>
