@@ -60,7 +60,7 @@
             :key="i"
             :class="[c.color]"
           >
-            <b-field :label="c.type ? c.name : ''">
+            <b-field :label="(c.type === 'text') ? c.name : ''">
               <b-checkbox v-if="(c.type === 'boolean')" v-model="self()[c.key]">
                 {{ c.name }}
                 <b-tooltip
