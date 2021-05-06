@@ -1,55 +1,57 @@
 <template>
   <div class="conditions container">
-    <div class="filters p-4">
-      <b-button expanded @click="filterVisible = !filterVisible"
-        >Choose Filters</b-button
-      >
-      <c-filter
-        :filterVisible="filterVisible"
-        :activeFilters="activeFilters"
-        :availableFilters="availableFilters"
-        @remove-filter="removeFilter"
-        @update-filter="updateFilter"
-      />
-    </div>
-    <b-field class="p-4">
-      <b-radio-button
-        v-model="prefilter"
-        v-for="(el, i) in prefilters"
-        v-on:input="setList(el)"
-        :native-value="el.v"
-        :key="i"
-        size="is-small"
-        expanded
-        >{{ el.label }}</b-radio-button
-      >
-    </b-field>
-    <div class="notification is-primary">
-      <div class="buttons">
-        <b-button type="is-primary" inverted @click="getNext">Next</b-button>
-        <b-button
-          type="is-primary"
-          inverted
-          outlined
-          @click="showList = !showList"
-          >Show List</b-button
+    <section>
+      <div class="filters p-4">
+        <b-button expanded @click="filterVisible = !filterVisible"
+          >Choose Filters</b-button
         >
+        <c-filter
+          :filterVisible="filterVisible"
+          :activeFilters="activeFilters"
+          :availableFilters="availableFilters"
+          @remove-filter="removeFilter"
+          @update-filter="updateFilter"
+        />
       </div>
-    </div>
-    <div class="assessments-list" v-if="showList">
-      <assessment-preview
-        v-for="assessment in renderedList"
-        :key="`ass-${assessment.id}`"
-        :assessment="assessment"
-      />
-      <div
-        class="button"
-        @click="currentSlice = currentSlice + 100"
-        v-if="currentSlice < currentList.length"
-      >
-        Load more...
+      <b-field class="p-4">
+        <b-radio-button
+          v-model="prefilter"
+          v-for="(el, i) in prefilters"
+          v-on:input="setList(el)"
+          :native-value="el.v"
+          :key="i"
+          size="is-small"
+          expanded
+          >{{ el.label }}</b-radio-button
+        >
+      </b-field>
+      <div class="notification is-primary mb-6">
+        <div class="buttons">
+          <b-button type="is-primary" inverted @click="getNext">Next</b-button>
+          <b-button
+            type="is-primary"
+            inverted
+            outlined
+            @click="showList = !showList"
+            >{{ showListLabel }}</b-button
+          >
+        </div>
       </div>
-    </div>
+      <div class="assessments-list" v-if="showList">
+        <assessment-preview
+          v-for="assessment in renderedList"
+          :key="`ass-${assessment.id}`"
+          :assessment="assessment"
+        />
+        <div
+          class="button"
+          @click="currentSlice = currentSlice + 100"
+          v-if="currentSlice < currentList.length"
+        >
+          Load more...
+        </div>
+      </div>
+    </section>
     <router-view class="sub-view" />
   </div>
 </template>
@@ -103,11 +105,13 @@ export default {
     },
     lowReviewed() {
       return this.filteredAssessments
-        .filter((el) => el.no_assessments <= 4)
-        .sort((a, b) => a.no_assessments - b.assessments);
+        .filter((el) => el.reviews <= 4)
+        .sort((a, b) => a.reviews - b.reviews);
     },
     noReviewed() {
-      return this.filteredAssessments.filter((el) => el.no_assessments === 0);
+      return this.filteredAssessments.filter(
+        (el) => (el.reviews === 0) || (!el.reviews)
+      );
     },
     renderedList() {
       return this.currentList.slice(0, this.currentSlice);
@@ -130,31 +134,30 @@ export default {
           key: "proposer_flag",
           label: "Flagged by proposers",
           comparision: (a, v) => a === v,
-          value: false,
+          value: "",
           values: {
-            All: false,
-            Flagged: "1",
-            "Not flagged": "0",
+            "Flagged": true,
+            "Not flagged": false,
           },
         },
         proposal_id: {
           key: "proposal_id",
           label: "Proposal",
-          comparision: (a, v) => a === v,
+          comparision: (a, v) => parseInt(a) === parseInt(v),
           value: false,
           values: this.proposalsById,
         },
         question_id: {
           key: "question_id",
           label: "Question",
-          comparision: (a, v) => a === v,
+          comparision: (a, v) => parseInt(a) === parseInt(v),
           value: false,
           values: this.questionsById,
         },
         rating: {
           key: "rating",
           label: "Rating",
-          comparision: (a, v) => a === v,
+          comparision: (a, v) => parseInt(a) === parseInt(v),
           value: false,
           values: { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 },
         },
@@ -178,6 +181,9 @@ export default {
         },
       };
     },
+    showListLabel() {
+      return (this.showList) ? 'Close list' : 'Show list'
+    }
   },
   methods: {
     setList(el) {
@@ -220,9 +226,12 @@ export default {
   },
   mounted() {
     this.setList({ label: "All", v: "filteredAssessments" });
-    this.$store.dispatch("assessments/getReviewsCount")
+    this.$store.dispatch("assessments/getReviewsCount");
     EventBus.$on("next-assessment", this.getNext);
   },
+  destroyed() {
+    EventBus.$off("next-assessment");
+  }
 };
 </script>
 <style lang="scss" scoped>

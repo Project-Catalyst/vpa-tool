@@ -1,18 +1,16 @@
 import Vue from "vue";
-import Buefy from "buefy";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
-import './plugins/axios'
+import "./plugins/axios";
+import "./plugins/buefy";
 import "./plugins/vue-papa-parse";
 import "./plugins/v-tooltip";
-
-import "buefy/dist/buefy.css";
-import "./assets/sass/main.scss";
+import "./plugins/async-computed";
+import "./plugins/lodash";
 
 Vue.config.productionTip = false;
-Vue.use(Buefy);
 
 new Vue({
   router,

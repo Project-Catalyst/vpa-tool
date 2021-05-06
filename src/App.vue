@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <b-navbar class="is-primary" :mobile-burger="false">
+    <b-navbar class="is-primary">
       <template #brand>
         <b-navbar-item tag="router-link" :to="{ name: 'home' }">
           <img src="@/assets/images/catalyst.png" alt="Project Catalyst" />
@@ -15,7 +15,7 @@
             tag="router-link"
             :to="{ name: 'conditions' }"
             v-if="profile.localDb"
-            >
+          >
             Assessments
           </b-navbar-item>
           <b-navbar-item tag="router-link" :to="{ name: 'stats' }">
@@ -39,8 +39,8 @@ import { mapState } from "vuex";
 export default {
   computed: {
     ...mapState({
-      profile: (state) => state.profile
-    })
-  }
+      profile: (state) => state.profile,
+    }),
+  },
 };
 </script>
