@@ -70,7 +70,6 @@
                 </b-tooltip>
               </b-checkbox>
               <b-input
-                maxlength="200"
                 type="textarea"
                 v-model="self()[c.key]"
                 v-if="(c.type === 'text')"
