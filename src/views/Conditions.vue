@@ -1,6 +1,6 @@
 <template>
   <div class="conditions container">
-    <section v-if="currentIndex == 0">
+    <section>
       <div class="filters p-4">
         <b-button expanded @click="filterVisible = !filterVisible"
           >Choose Filters</b-button
@@ -25,7 +25,7 @@
           >{{ el.label }}</b-radio-button
         >
       </b-field>
-      <div class="notification is-primary">
+      <div class="notification is-primary mb-6">
         <div class="buttons">
           <b-button type="is-primary" inverted @click="getNext">Next</b-button>
           <b-button
@@ -33,7 +33,7 @@
             inverted
             outlined
             @click="showList = !showList"
-            >Show List</b-button
+            >{{ showListLabel }}</b-button
           >
         </div>
       </div>
@@ -105,11 +105,13 @@ export default {
     },
     lowReviewed() {
       return this.filteredAssessments
-        .filter((el) => el.no_assessments <= 4)
-        .sort((a, b) => a.no_assessments - b.assessments);
+        .filter((el) => el.reviews <= 4)
+        .sort((a, b) => a.reviews - b.reviews);
     },
     noReviewed() {
-      return this.filteredAssessments.filter((el) => el.no_assessments === 0);
+      return this.filteredAssessments.filter(
+        (el) => (el.reviews === 0) || (!el.reviews)
+      );
     },
     renderedList() {
       return this.currentList.slice(0, this.currentSlice);
@@ -132,11 +134,10 @@ export default {
           key: "proposer_flag",
           label: "Flagged by proposers",
           comparision: (a, v) => a === v,
-          value: false,
+          value: "",
           values: {
-            All: false,
-            Flagged: "1",
-            "Not flagged": "0",
+            "Flagged": true,
+            "Not flagged": false,
           },
         },
         proposal_id: {
@@ -180,6 +181,9 @@ export default {
         },
       };
     },
+    showListLabel() {
+      return (this.showList) ? 'Close list' : 'Show list'
+    }
   },
   methods: {
     setList(el) {
