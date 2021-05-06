@@ -2,24 +2,22 @@ import { parse } from 'json2csv'
 import FileSaver from 'file-saver'
 import slugify from 'slugify';
 
-import criteria from '../assets/data/criteria.json'
-import exportFields from '../assets/data/export-fields.json'
+import csvHeaders from '../assets/data/csv-headers.json'
 
 function generateFields() {
-  let criteriaKeys = criteria.map((c) => {
+  let criteriaKeys = Object.keys(csvHeaders).map((c) => {
     return {
-      label: c.key,
-      value: (row, field) => {
-        if (c.type === 'boolean') {
-          return (row[field.label]) ? '1' : ''
+      label: csvHeaders[c].label,
+      value: (row) => {
+        if (csvHeaders[c].type === 'boolean') {
+          return (row[c]) ? 'x' : ''
         } else {
-          return row[field.label]
+          return row[c]
         }
       }
     }
   })
-  let fields = exportFields.concat(criteriaKeys)
-  return fields
+  return criteriaKeys
 }
 
 function generateCsv(data) {
