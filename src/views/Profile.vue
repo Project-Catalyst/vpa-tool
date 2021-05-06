@@ -134,8 +134,7 @@ export default {
       }
       return header
     },
-    readFile() {
-      let file = event.target.files[0];
+    readFile(file) {
       this.$papa.parse(file, {
         header: true,
         complete: this.onComplete,
