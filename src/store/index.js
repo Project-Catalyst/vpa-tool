@@ -11,7 +11,7 @@ const debug = process.env.NODE_ENV !== 'production'
 let localStorage = createPersist({
     namespace: 'vca-tool',
     initialState: {},
-    expires: 1.21e+9 // Two Weeks
+    expires: 30 * 24 * 60 * 60 * 1e3 // 30 days
 })
 
 export default new Vuex.Store({
