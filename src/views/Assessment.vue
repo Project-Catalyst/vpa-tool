@@ -16,7 +16,7 @@
       </div> -->
       <div class="card-content">
         <p class="title is-4">
-          <a :href="proposal.url" target="_blank">{{ proposal.title }}</a>
+          {{ proposal.title }} <span class="is-size-6">(<a :href="proposal.url" target="_blank">See proposal in IdeaScale</a>)</span>
         </p>
         <p class="subtitle is-6">{{ category.title }}</p>
 
@@ -65,6 +65,8 @@
                 {{ c.name }}
                 <b-tooltip
                   :label="c.info"
+                  class="larger-tooltip"
+                  size="is-large"
                   multilined>
                     <b-icon icon="information-outline"></b-icon>
                 </b-tooltip>
@@ -208,5 +210,16 @@ export default {
 }
 .custom-card {
   padding-bottom: 60px;
+}
+.larger-tooltip {
+  .tooltip-content {
+    width: 500px;
+  }
+}
+</style>
+<style lang="scss">
+.larger-tooltip .tooltip-content {
+  width: 500px !important;
+  max-width: 100vw !important;
 }
 </style>
