@@ -9,7 +9,7 @@
   {
     "key": "constructive",
     "name": "Constructive Feedback",
-    "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur cursus augue mi, eget rutrum enim placerat eget. Phasellus finibus bibendum hendrerit. Aliquam vehicula massa velit, eget ornare libero tempus at. Donec luctus cursus auctor. Quisque eu nibh quis enim tempus molestie. Aliquam maximus auctor ex eget pulvinar. Quisque nec congue ipsum.",
+    "info": "This category allows assessments with high quality standards to be highlighted and be used as examples for other Community Advisors, they are in accordance with the guidelines, they are constructive and well written. The decision of the CA will be counted for the calculation of consensus.",
     "type": "boolean",
     "color": "green"
   },
