@@ -21,9 +21,9 @@
           <b-navbar-item @click="exportCsv" v-if="profile.localDb">
             Export CSV
           </b-navbar-item>
-          <b-navbar-item tag="router-link" :to="{ name: 'stats' }">
+          <!--<b-navbar-item tag="router-link" :to="{ name: 'stats' }">
             Statistics
-          </b-navbar-item>
+          </b-navbar-item>-->
         </b-navbar-dropdown>
       </template>
     </b-navbar>
