@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="active-filters box" v-if="activeFilters.length">
-      <div class="heading">Selected filter</div>
+      <div class="heading">Selected filters:</div>
       <div class="tags">
         <div
           class="tag is-primary is-light"
