@@ -65,6 +65,7 @@ import CFilter from "@/views/CFilter";
 import { EventBus } from "./../EventBus";
 import proposals from "../assets/data/proposals.json";
 import questions from "../assets/data/questions.json";
+import assessors from "../assets/data/assessors.json";
 
 export default {
   name: "Conditions",
@@ -76,6 +77,7 @@ export default {
     return {
       proposals: proposals,
       questions: questions,
+      assessors: assessors,
       prefilters: [
         { label: "Random", v: "randomAssessments" },
         { label: "Low reviewed", v: "lowReviewed" },
@@ -161,6 +163,13 @@ export default {
           comparision: (a, v) => parseInt(a) === parseInt(v),
           value: false,
           values: { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 },
+        },
+        assessor: {
+          key: "assessor",
+          label: "Assessor",
+          comparision: (a, v) => a === v,
+          value: "",
+          values: this.assessors,
         },
         lenLess: {
           key: "note",
