@@ -1,16 +1,16 @@
 <template>
-  <div class="assessment-preview">
-    <div class="info">
+  <div class="assessment-preview columns is-multiline is-mobile">
+    <div class="info column is-half">
       <div class="label">Proposal:</div>
       <div class="value">{{proposal.title}}</div>
     </div>
-    <div class="info">
+    <div class="info column is-half">
       <div class="label">Rating:</div>
       <div class="value">
         <b-rate v-model="assessment.rating" disabled />
       </div>
     </div>
-    <div class="info">
+    <div class="info column is-half">
       <div class="value">
         <b-checkbox
           class="always-opaque"
@@ -21,15 +21,15 @@
         </b-checkbox>
       </div>
     </div>
-    <div class="info">
+    <div class="info column is-half">
       <div class="label">Assessor:</div>
       <div class="value">&nbsp;{{assessment.assessor}}</div>
     </div>
-    <div class="info text">
+    <div class="info text column is-full">
       <div class="label">Assessment:</div>
       <div class="value">{{assessment.note}}</div>
     </div>
-    <div class="info mt-3">
+    <div class="info mt-3 column is-full">
       <b-button
         class=""
         type="is-primary"
@@ -79,16 +79,18 @@ export default {
 
 <style lang="scss">
 .assessment-preview {
-  padding: 10px 10px 20px 10px;
-  display: flex;
-  flex-direction: column;
+  padding: 10px;
+  width: 100%;
   &:nth-child(2n + 1) {
     background: #f5f5f5;
   }
   .info {
     display: flex;
+    padding: 5px 5px 0 5px !important;
+    box-sizing: border-box !important;
     .label {
       font-weight: bold;
+      margin-bottom: 0 !important;
     }
     &.text {
       flex-wrap: wrap;

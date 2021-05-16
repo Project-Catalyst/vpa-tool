@@ -255,7 +255,7 @@ export default {
   flex-direction: column;
   .assessments-list {
     flex-grow: 1;
-    overflow: auto;
+    //overflow: auto;
   }
 }
 </style>
