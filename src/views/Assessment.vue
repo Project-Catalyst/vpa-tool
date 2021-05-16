@@ -16,15 +16,21 @@
       </div> -->
       <div class="card-content">
         <p class="title is-4">
-          {{ proposal.title }} <span class="is-size-6">(<a :href="proposal.url" target="_blank">See proposal in IdeaScale</a>)</span>
+          {{ proposal.title }} <span class="is-size-5 has-text-weight-bold">(<a :href="proposal.url" target="_blank">See proposal in IdeaScale</a>)</span>
         </p>
         <p class="subtitle is-6">{{ category.title }}</p>
 
         <div class="columns is-multiline is-mobile">
-          <div class="column is-full">
+          <div class="column is-half">
             <p class="is-6">
               <strong>Question:</strong>
               {{ question.title }}
+            </p>
+          </div>
+          <div class="column is-half">
+            <p class="is-6">
+              <strong>Assessor:</strong>
+              {{ assessment.assessor }}
             </p>
           </div>
           <div class="column is-half">
@@ -50,15 +56,15 @@
           </div>
           <div class="column is-full">
             <p class="is-6">
-              <strong>Reviews:</strong>
-              {{ assessment.reviews }}
+              <strong>No of reviews by vCAs:</strong>
+              {{ (assessment.reviews) ? assessment.reviews : 0 }}
             </p>
           </div>
           <div
-            class="column is-full"
+            class="column is-half"
             v-for="(c, i) in criteria"
             :key="i"
-            :class="[c.color]"
+            :class="[c.color, c.key]"
           >
             <b-field :label="(c.type === 'text') ? c.name : ''">
               <b-checkbox v-if="(c.type === 'boolean')" v-model="self()[c.key]">
@@ -189,9 +195,13 @@ export default {
   }
   &.red {
     background: #ff9393;
+    width: 100% !important;
   }
   &.green {
     background: #baffb2;
+  }
+  &.not_related, &.other, &.other_rationale {
+    width: 100% !important;
   }
 }
 .inline {
