@@ -21,16 +21,19 @@
         </b-checkbox>
       </div>
     </div>
+    <div class="info">
+      <div class="label">Assessor:</div>
+      <div class="value">&nbsp;{{assessment.assessor}}</div>
+    </div>
     <div class="info text">
       <div class="label">Assessment:</div>
       <div class="value">{{assessment.note}}</div>
     </div>
     <div class="info mt-3">
       <b-button
-      class=""
+        class=""
         type="is-primary"
-        tag="router-link"
-        :to="{ name: 'assessment', params: { id: assessment.id } }"
+        @click="goTo"
       >
         Open</b-button>
     </div>
@@ -41,6 +44,8 @@
 
 import proposals from '../assets/data/proposals.json'
 
+import { EventBus } from "./../EventBus";
+
 export default {
   data() {
     return {
@@ -48,7 +53,7 @@ export default {
     }
   },
   name: 'AssessmentPreview',
-  props: ['assessment'],
+  props: ['assessment', 'idx'],
   computed: {
     proposal() {
       if (this.assessment) {
@@ -58,6 +63,15 @@ export default {
         }
       }
       return false
+    }
+  },
+  methods: {
+    goTo() {
+      EventBus.$emit("set-assessment-index", this.idx);
+      this.$router.push({
+        name: "assessment",
+        params: { id: this.assessment.id },
+      });
     }
   }
 }

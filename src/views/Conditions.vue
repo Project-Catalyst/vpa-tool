@@ -39,8 +39,9 @@
       </div>
       <div class="assessments-list" v-if="showList">
         <assessment-preview
-          v-for="assessment in renderedList"
+          v-for="(assessment, idx) in renderedList"
           :key="`ass-${assessment.id}`"
+          :idx="idx"
           :assessment="assessment"
         />
         <div
@@ -168,7 +169,7 @@ export default {
             return v ? v.length <= a : false;
           },
           value: false,
-          values: { "90": 90, "180": 180, "270": 270, "10000": 10000 },
+          values: { "40": 40, "90": 90, "180": 180, "270": 270, "600": 600 },
         },
         lenGreater: {
           key: "note",
@@ -177,7 +178,7 @@ export default {
             return v ? v.length >= a : false;
           },
           value: false,
-          values: { "90": 90, "180": 180, "270": 270, "10000": 10000 },
+          values: { "90": 90, "180": 180, "270": 270, "600": 600 },
         },
       };
     },
@@ -198,6 +199,9 @@ export default {
         params: { id: this.currentList[this.currentIndex].id },
       });
       this.currentIndex = this.currentIndex + 1;
+    },
+    setNext(index) {
+      this.currentIndex = index + 1;
     },
     updateFilter(prop, value) {
       const newFilter = Object.assign({}, prop);
@@ -228,9 +232,11 @@ export default {
     this.setList({ label: "All", v: "filteredAssessments" });
     this.$store.dispatch("assessments/getReviewsCount");
     EventBus.$on("next-assessment", this.getNext);
+    EventBus.$on("set-assessment-index", this.setNext);
   },
   destroyed() {
     EventBus.$off("next-assessment");
+    EventBus.$off("set-assessment-index");
   }
 };
 </script>
