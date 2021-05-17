@@ -92,6 +92,7 @@ export default {
       currentSlice: 100,
       showList: false,
       prefilter: "filteredAssessments",
+      interval: false
     };
   },
   computed: {
@@ -236,16 +237,23 @@ export default {
         return filtered;
       }
     },
+    remoteUpdate() {
+      this.$store.dispatch("assessments/getReviewsCount");
+    }
   },
   mounted() {
     this.setList({ label: "All", v: "filteredAssessments" });
-    this.$store.dispatch("assessments/getReviewsCount");
     EventBus.$on("next-assessment", this.getNext);
     EventBus.$on("set-assessment-index", this.setNext);
+    this.remoteUpdate()
+    this.interval = setInterval(() => {
+      this.remoteUpdate()
+    }, 30 * 60 * 1000)
   },
   destroyed() {
     EventBus.$off("next-assessment");
     EventBus.$off("set-assessment-index");
+    clearInterval(this.interval)
   }
 };
 </script>
