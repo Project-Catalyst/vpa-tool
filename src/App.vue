@@ -51,6 +51,14 @@ export default {
     exportCsv() {
       downloadCsv(this.assessments, this.profile.info.name)
     }
+  },
+  mounted() {
+    if (window.localStorage) {
+      let oldKey = window.localStorage.getItem('vca-tool-default')
+      if (oldKey) {
+        window.localStorage.removeItem('vca-tool-default')
+      }
+    }
   }
 };
 </script>
