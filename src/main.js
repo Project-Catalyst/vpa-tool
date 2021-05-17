@@ -6,7 +6,6 @@ import store from "./store";
 import "./plugins/axios";
 import "./plugins/buefy";
 import "./plugins/vue-papa-parse";
-import "./plugins/v-tooltip";
 import "./plugins/async-computed";
 import "./plugins/lodash";
 
