@@ -31,6 +31,15 @@
     <footer class="footer">
       <div class="content has-text-centered">
         <p>Made by Catalyst Community for the Catalyst Community</p>
+        <b-button
+          label="Feedback"
+          type="is-primary"
+          icon-left="message-reply-text"
+          tag="a"
+          target="_blank"
+          href="https://docs.google.com/forms/d/1Q3VCTA1VZBVDPxQWB9NH2CKY7sxvytwIIstDo2MMsX8/edit"
+          >
+        </b-button>
       </div>
     </footer>
   </div>

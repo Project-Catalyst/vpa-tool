@@ -44,7 +44,8 @@
       Unlike what happens with the Google Sheet, here you can see how many times an assessment has been reviewed by the vCAs (Reviews: X): this information is useful to better coordinate the work of the vCAs as you can check if an assessment has reached quorum ( Note: since not everyone will use the vCA tool this information is partial, welcome to the experiment in the experiment).
       6. In the "Assessments list view" you can also click the "Show list" button to see the list of the assessments based on the filters selected.<br />
       7. When you've finished your work, you have to click on top right "vCA Tool" menu and select "Export CSV".<br />
-      This is the final file that you'll have to share at the end of the vCA process. This file file can also be re-imported in the vCA-tool.<br /><br /></p>
+      This is the final file that you'll have to share at the end of the vCA process. This file file can also be re-imported in the vCA-tool.<br />
+      Upload the final export to Google Docs, change the share settings to "Anyone with the link", send the link in the <a href="https://t.me/CatalystCommunityAdvisors">Telegram Community Advisor Chat</a>, tag Marek Buchowiecki (@Marklar_IO) and fill in <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_8UtlGoRho9-b6NnnvRELPYSaY8woSBIYnt4r_v1dOnDbvA/viewform">this form</a> with your details.<br /></p>
       <p><b>Useful resources</b><br /></p>
       <p>
         <a href="https://docs.google.com/document/d/1LTw7iY-_XJ5welSUk-olRvkfyVuOIPcR_iAgqbnZv8c/edit">THE YELLOW AND RED CARD THING v2.0</a><br />
