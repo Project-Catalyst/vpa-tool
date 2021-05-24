@@ -3,34 +3,34 @@
     "key": "fair",
     "type": "boolean",
     "name": "Acceptable",
-    "info": "The assessment is within what is expected, is in accordance with the CA guidelines, constructive and there is no need for cards (red or yellow). The decision of the CA will be counted for the calculation of consensus.",
+    "info": "The assessment is within what is expected, is in accordance with the CA guidelines, constructive and there is no need for cards (red or yellow). The decision of the vCA will be counted for the calculation of consensus.",
     "color": "green"
   },
   {
     "key": "constructive",
     "name": "Constructive Feedback",
-    "info": "This category allows assessments with high quality standards to be highlighted and be used as examples for other Community Advisors, they are in accordance with the guidelines, they are constructive and well written. The decision of the CA will be counted for the calculation of consensus.",
+    "info": "This category allows assessments with high quality standards to be highlighted and be used as examples for other Community Advisors, they are in accordance with the guidelines, they are constructive and well written. The decision of the vCA will be counted for the calculation of consensus.",
     "type": "boolean",
     "color": "green"
   },
   {
     "key": "abstain",
     "name": "Abstain",
-    "info": "This category allows us to know that vCA analyzed the proposal, didn’t find it clear that the assessment is Acceptable or deserves a card(red or yellow). So, it would be appropriate to maintain neutrality and abstain. The decision of the CA will not be counted for the calculation of consensus, but his decision will be important for obtaining data and improving the process.",
+    "info": "This category allows us to know that vCA analyzed the proposal, didn’t find it clear that the assessment is Acceptable or deserves a card(red or yellow). So, it would be appropriate to maintain neutrality and abstain. The decision of the vCA will not be counted for the calculation of consensus, but his decision will be important for obtaining data and improving the process.",
     "type": "boolean",
     "color": "white"
   },
   {
     "key": "strict",
     "name": "Strict",
-    "info": "The assessment might align with the guidelines but is overly harsh with the rating. Would be an assessment that picks out one criterion of the proposal as legitimation for a low rating, disregarding the positive aspects/information presented in the proposal. The decision of the CA will not be counted for the calculation of consensus, but his decision will be important for obtaining data and improving the process.",
+    "info": "The assessment might align with the guidelines but is overly harsh with the rating. Would be an assessment that picks out one criterion of the proposal as legitimation for a low rating, disregarding the positive aspects/information presented in the proposal. The decision of the vCA will not be counted for the calculation of consensus, but his decision will be important for obtaining data and improving the process.",
     "type": "boolean",
     "color": "orange"
   },
   {
     "key": "lenient",
     "name": "Lenient",
-    "info": "The assessment might align with the guidelines but is overly soft with the rating. Would be an assessment that picks out one criterion of the proposal as legitimation for a high rating, disregarding the problems presented in the proposal. The decision of the CA will not be counted for the calculation of consensus, but his decision will be important for obtaining data and improving the process.",
+    "info": "The assessment might align with the guidelines but is overly soft with the rating. Would be an assessment that picks out one criterion of the proposal as legitimation for a high rating, disregarding the problems presented in the proposal. The decision of the vCA will not be counted for the calculation of consensus, but his decision will be important for obtaining data and improving the process.",
     "type": "boolean",
     "color": "orange"
   },
