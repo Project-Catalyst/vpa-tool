@@ -37,7 +37,7 @@
           icon-left="message-reply-text"
           tag="a"
           target="_blank"
-          href="https://docs.google.com/forms/d/1Q3VCTA1VZBVDPxQWB9NH2CKY7sxvytwIIstDo2MMsX8/edit"
+          href="https://forms.gle/BUFPVPetPvetpQB5A"
           >
         </b-button>
       </div>
