@@ -16,43 +16,58 @@
       </div> -->
       <div class="card-content">
         <p class="title is-4">
-          {{ proposal.title }} <span class="is-size-5 has-text-weight-bold">(<a :href="proposal.url" target="_blank">See proposal in IdeaScale</a>)</span>
+          {{ assessment.title }} <span class="is-size-5 has-text-weight-bold">(<a :href="assessment.url" target="_blank">See proposal in IdeaScale</a>)</span>
         </p>
         <p class="subtitle is-6">{{ category.title }}</p>
 
         <div class="columns is-multiline is-mobile">
-          <div class="column is-half">
+          <div class="column is-three-quarters">
             <p class="is-6">
               <strong>Question:</strong>
               {{ question.title }}
             </p>
           </div>
-          <div class="column is-half">
+          <div class="column is-one-quarter">
             <p class="is-6">
               <strong>Assessor:</strong>
               {{ assessment.assessor }}
             </p>
           </div>
-          <div class="column is-half">
+          <div class="column is-three-quarters">
+            <p class="title is-6">Impact / Alignment Note</p>
+            <p class="subtitle is-6">{{ assessment.impact_note }}</p>
+          </div>
+          <div class="column is-one-quarter">
             <p class="title is-6">
-              Rating:
+              Impact / Alignment Rating:
               <span class="inline">
-                <b-rate v-model="assessment.rating" disabled />
+                <b-rate v-model="assessment.impact_rating" disabled />
               </span>
             </p>
           </div>
-          <div class="column is-half">
-            <b-checkbox
-              class="always-opaque"
-              v-model="assessment.proposer_flag"
-              type="is-warning"
-              disabled>
-              Flagged by Proposer
-            </b-checkbox>
+          <div class="column is-three-quarters">
+            <p class="title is-6">Feasibility Note</p>
+            <p class="subtitle is-6">{{ assessment.feasibility_note }}</p>
           </div>
-          <div class="column is-full">
-            <p class="title is-6">Assessment Note</p>
-            <p class="subtitle is-6">{{ assessment.note }}</p>
+          <div class="column is-one-quarter">
+            <p class="title is-6">
+              Feasibility Rating:
+              <span class="inline">
+                <b-rate v-model="assessment.feasibility_rating" disabled />
+              </span>
+            </p>
+          </div>
+          <div class="column is-three-quarters">
+            <p class="title is-6">Auditability Note</p>
+            <p class="subtitle is-6">{{ assessment.auditability_note }}</p>
+          </div>
+          <div class="column is-one-quarter">
+            <p class="title is-6">
+              Auditability Rating:
+              <span class="inline">
+                <b-rate v-model="assessment.auditability_rating" disabled />
+              </span>
+            </p>
           </div>
           <div class="column is-full">
             <p class="is-6">
