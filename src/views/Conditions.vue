@@ -160,8 +160,11 @@ export default {
         },
         rating: {
           key: "rating",
-          label: "Rating",
-          comparision: (a, v) => parseInt(a) === parseInt(v),
+          label: "Average Rating",
+          comparision: (a, v, el) => {
+            v = Math.round((el.auditability_rating + el.feasibility_rating + el.impact_rating) / 3);
+            return parseInt(a) === v;
+          },
           value: false,
           values: { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 },
         },
@@ -175,7 +178,8 @@ export default {
         lenLess: {
           key: "note",
           label: "Length less than",
-          comparision: (a, v) => {
+          comparision: (a, v, el) => {
+            v = el.auditability_note + el.feasibility_note + el.impact_note;
             return v ? v.length <= a : false;
           },
           value: false,
@@ -184,7 +188,8 @@ export default {
         lenGreater: {
           key: "note",
           label: "Length greater than",
-          comparision: (a, v) => {
+          comparision: (a, v, el) => {
+            v = el.auditability_note + el.feasibility_note + el.impact_note;
             return v ? v.length >= a : false;
           },
           value: false,
@@ -229,7 +234,7 @@ export default {
     customFilter(data, filters) {
       const [current, ...newFilters] = filters;
       const filtered = data.filter((el) =>
-        current.comparision(current.value, el[current.key])
+        current.comparision(current.value, el[current.key], el)
       );
       if (filters.length > 1) {
         return this.customFilter(filtered, newFilters);
