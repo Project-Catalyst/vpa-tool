@@ -52,9 +52,11 @@ const mutations = {
   setReview(state, data) {
     const assessment = state.all.find(a => parseInt(a.id) === parseInt(data.id));
     if (assessment) {
+      const oldReviewed = isReviewed(assessment)
       assessment.excellent = data.value === 'excellent';
       assessment.good = data.value === 'good';
       assessment.not_valid = data.value === 'not_valid';
+      const newReviewed = isReviewed(assessment)
 
       const assessmentCb = (res) => {
         if (res.data) {
@@ -65,10 +67,10 @@ const mutations = {
         }
       }
 
-      if (isReviewed(assessment)) {
-        this._vm.$http.post(assessment.id).then(assessmentCb)
-      } else {
-        this._vm.$http.delete(assessment.id).then(assessmentCb)
+      if (newReviewed && !oldReviewed) {
+        this._vm.$http.post(`/${assessment.id}`).then(assessmentCb)
+      } else if (!newReviewed && oldReviewed) {
+        this._vm.$http.delete(`/${assessment.id}`).then(assessmentCb)
       }
     }
   },
