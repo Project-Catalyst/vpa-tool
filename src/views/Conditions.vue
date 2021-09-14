@@ -64,7 +64,6 @@ import AssessmentPreview from "@/components/AssessmentPreview";
 import CFilter from "@/views/CFilter";
 import { EventBus } from "./../EventBus";
 import proposals from "../assets/data/proposals.json";
-import questions from "../assets/data/questions.json";
 import assessors from "../assets/data/assessors.json";
 
 export default {
@@ -76,7 +75,6 @@ export default {
   data() {
     return {
       proposals: proposals,
-      questions: questions,
       assessors: assessors,
       prefilters: [
         { label: "Random", v: "randomAssessments" },
@@ -126,12 +124,6 @@ export default {
         {}
       );
     },
-    questionsById() {
-      return this.questions.reduce(
-        (obj, item) => Object.assign(obj, { [item.title]: item.id }),
-        {}
-      );
-    },
     availableFilters() {
       return {
         proposer_flag: {
@@ -150,13 +142,6 @@ export default {
           comparision: (a, v) => parseInt(a) === parseInt(v),
           value: false,
           values: this.proposalsById,
-        },
-        question_id: {
-          key: "question_id",
-          label: "Question",
-          comparision: (a, v) => parseInt(a) === parseInt(v),
-          value: false,
-          values: this.questionsById,
         },
         rating: {
           key: "rating",

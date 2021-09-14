@@ -18,14 +18,10 @@
         <p class="title is-4">
           {{ assessment.title }} <span class="is-size-5 has-text-weight-bold">(<a :href="assessment.url" target="_blank">See proposal in IdeaScale</a>)</span>
         </p>
-        <p class="subtitle is-6">{{ category.title }}</p>
 
         <div class="columns is-multiline is-mobile">
-          <div class="column is-three-quarters">
-            <p class="is-6">
-              <strong>Question:</strong>
-              {{ question.title }}
-            </p>
+          <div class="column is-three-quaters">
+            <p class="subtitle is-6">{{ category.title }}</p>
           </div>
           <div class="column is-one-quarter">
             <p class="is-6">
@@ -118,7 +114,6 @@
 import { mapGetters } from "vuex";
 import proposals from "../assets/data/proposals.json";
 import categories from "../assets/data/categories.json";
-import questions from "../assets/data/questions.json";
 import criteria from "../assets/data/criteria.json";
 import dynamicComputed from "@/utils/dynamicComputed";
 
@@ -130,7 +125,6 @@ export default {
     return {
       proposals: proposals,
       categories: categories,
-      questions: questions,
       criteria: criteria,
       isOpen: true
     };
@@ -173,17 +167,6 @@ export default {
       if (this.proposal) {
         let filtered = this.categories.filter(
           (c) => c.id === parseInt(this.proposal.category)
-        );
-        if (filtered.length) {
-          return filtered[0];
-        }
-      }
-      return false;
-    },
-    question() {
-      if (this.proposal) {
-        let filtered = this.questions.filter(
-          (q) => q.id === parseInt(this.assessment.question_id)
         );
         if (filtered.length) {
           return filtered[0];
