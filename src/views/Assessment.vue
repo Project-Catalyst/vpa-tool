@@ -5,7 +5,7 @@
     :can-cancel="false"
     full-screen
     >
-    <div class="card container custom-card">
+    <div class="card container custom-card" v-if="assessment">
       <!-- <div class="card-image">
         <figure class="image is-4by3">
           <img
@@ -16,67 +16,56 @@
       </div> -->
       <div class="card-content">
         <p class="title is-4">
-          {{ assessment.title }} <span class="is-size-5 has-text-weight-bold">(<a :href="assessment.url" target="_blank">See proposal in IdeaScale</a>)</span>
+          {{ proposal.title }} <span class="is-size-5 has-text-weight-bold">(<a :href="proposal.url" target="_blank">See proposal in IdeaScale</a>)</span>
+        </p>
+        <p class="subtitle is-5">{{ category.title }}</p>
+        <p class="subtitle is-5">
+          <strong>No. of vCAs reviews:</strong>
+          {{ (assessment.reviews) ? assessment.reviews : 0 }}
+        </p>
+        <p class="is-6">
+          <strong>Assessor:</strong>
+          {{ assessment.assessor }}
         </p>
 
         <div class="columns is-multiline is-mobile">
           <div class="column is-three-quaters">
-            <p class="subtitle is-6">{{ category.title }}</p>
           </div>
           <div class="column is-one-quarter">
-            <p class="is-6">
-              <strong>Assessor:</strong>
-              {{ assessment.assessor }}
-            </p>
           </div>
           <div class="column is-three-quarters">
-            <p class="title is-6">Impact / Alignment Note</p>
-            <p class="subtitle is-6">{{ assessment.impact_note }}</p>
+            <p class="title is-6 mb-4">
+              Impact / Alignment
+            </p>
+            <b-rate size="is-medium" v-model="assessment.impact_rating" disabled />
+            <p class="subtitle is-6 mb-2">{{ assessment.impact_note }}</p>
           </div>
           <div class="column is-one-quarter">
-            <p class="title is-6">
-              Impact / Alignment Rating:
-              <span class="inline">
-                <b-rate v-model="assessment.impact_rating" disabled />
-              </span>
-            </p>
           </div>
           <div class="column is-three-quarters">
-            <p class="title is-6">Feasibility Note</p>
-            <p class="subtitle is-6">{{ assessment.feasibility_note }}</p>
+            <p class="title is-6 mb-4">Feasibility</p>
+            <b-rate size="is-medium" v-model="assessment.feasibility_rating" disabled />
+            <p class="subtitle is-6 mb-2">{{ assessment.feasibility_note }}</p>
           </div>
           <div class="column is-one-quarter">
-            <p class="title is-6">
-              Feasibility Rating:
-              <span class="inline">
-                <b-rate v-model="assessment.feasibility_rating" disabled />
-              </span>
-            </p>
           </div>
           <div class="column is-three-quarters">
-            <p class="title is-6">Auditability Note</p>
-            <p class="subtitle is-6">{{ assessment.auditability_note }}</p>
+            <p class="title is-6 mb-4">Auditability</p>
+            <b-rate size="is-medium" v-model="assessment.auditability_rating" disabled />
+            <p class="subtitle is-6 mb-2">{{ assessment.auditability_note }}</p>
           </div>
           <div class="column is-one-quarter">
-            <p class="title is-6">
-              Auditability Rating:
-              <span class="inline">
-                <b-rate v-model="assessment.auditability_rating" disabled />
-              </span>
-            </p>
           </div>
-          <div class="column is-full">
-            <p class="is-6">
-              <strong>No of reviews by vCAs:</strong>
-              {{ (assessment.reviews) ? assessment.reviews : 0 }}
-            </p>
+          <div class="column is-three-quarters">
           </div>
         </div>
         <div class="columns is-mobile is-centered">
           <section class="column is-narrow">
+            <p class="title is-4">Your review:</p>
             <b-field>
               <b-radio-button v-model="review"
                 native-value="excellent"
+                size="is-large"
                 type="is-success is-light is-outlined">
                 <b-icon icon="heart"></b-icon>
                 <span>Excellent</span>
@@ -84,6 +73,7 @@
 
               <b-radio-button v-model="review"
                 native-value="good"
+                size="is-large"
                 type="is-primary is-light is-outlined">
                 <b-icon icon="check"></b-icon>
                 <span>Good</span>
@@ -91,11 +81,13 @@
 
               <b-radio-button v-model="review"
                 native-value="not_valid"
+                size="is-large"
                 type="is-danger is-light is-outlined">
                 <b-icon icon="close"></b-icon>
                 Not Valid
               </b-radio-button>
             </b-field>
+            <b-button type="is-warning is-light" @click="uncheck()" outlined>Deselect</b-button>
           </section>
         </div>
       </div>
@@ -188,6 +180,9 @@ export default {
     },
   },
   methods: {
+    uncheck() {
+      this.review = ''
+    },
     self() {
       return this;
     },

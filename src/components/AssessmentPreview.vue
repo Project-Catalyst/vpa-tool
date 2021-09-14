@@ -1,14 +1,13 @@
 <template>
   <div
     class="assessment-preview columns is-multiline is-mobile"
-    v-bind:class="{ 'has-background-success-light': isReviewed }"
     >
     <div class="info column is-half">
-      <div class="label">Proposal:</div>
-      <div class="value">{{assessment.title}}</div>
+      <div class="label mr-2">Proposal:</div>
+      <div class="value">{{proposal.title}}</div>
     </div>
     <div class="info column is-half">
-      <div class="label">Average Rating:</div>
+      <div class="label mr-2">Average Rating: </div>
       <div class="value">
         <b-rate v-model="rating" disabled />
       </div>
@@ -25,16 +24,24 @@
       </div>
     </div>
     <div class="info column is-half">
-      <div class="label">Assessor:</div>
+      <div class="label mr-2">Assessor:</div>
       <div class="value">&nbsp;{{assessment.assessor}}</div>
     </div>
     <div class="info mt-3 column is-full">
       <b-button
-        class=""
+        class="mr-6"
         type="is-primary"
         @click="goTo"
       >
         Open</b-button>
+
+        <b-checkbox
+          class="always-opaque"
+          v-model="isReviewed"
+          type="is-warning"
+          disabled>
+          Already reviewed
+        </b-checkbox>
     </div>
   </div>
 </template>
