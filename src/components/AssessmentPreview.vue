@@ -1,5 +1,8 @@
 <template>
-  <div class="assessment-preview columns is-multiline is-mobile">
+  <div
+    class="assessment-preview columns is-multiline is-mobile"
+    v-bind:class="{ 'has-background-success-light': isReviewed }"
+    >
     <div class="info column is-half">
       <div class="label">Proposal:</div>
       <div class="value">{{assessment.title}}</div>
@@ -62,6 +65,9 @@ export default {
     },
     rating() {
       return Math.round((this.assessment.auditability_rating + this.assessment.feasibility_rating + this.assessment.impact_rating) / 3)
+    },
+    isReviewed() {
+      return this.assessment.excellent || this.assessment.good || this.assessment.not_valid;
     }
   },
   methods: {
