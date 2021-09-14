@@ -16,7 +16,7 @@
     "label": "Assessor"
   },
   "triplet_id": {
-    "type": "integer",
+    "type": "string",
     "label": "triplet_id"
   },
   "proposal_id": {
