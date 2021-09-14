@@ -1,8 +1,5 @@
-import criteria from '@/assets/data/criteria.json'
-const activeCriteria = criteria.map((c) => c.key)
-
 const isReviewed = (el) => {
-  return activeCriteria.some((c) => el[c])
+  return el.excellent || el.good || el.not_valid;
 }
 
 // initial state
@@ -52,29 +49,29 @@ const mutations = {
       assessment.reviews = data.reviews
     }
   },
-  setProp (state, pp) {
-    const assessment = state.all.find(a => parseInt(a.id) === parseInt(pp.assId))
+  setReview(state, data) {
+    const assessment = state.all.find(a => parseInt(a.id) === parseInt(data.id));
     if (assessment) {
-      const initialState = isReviewed(assessment)
-      assessment[pp.propModel] = pp.value
-      const finalState = isReviewed(assessment)
-      if (initialState !== finalState) {
-        const assessmentCb = (res) => {
-          if (res.data) {
-            this.commit('assessments/setReviews', {
-              id: assessment.id,
-              reviews: res.data.reviews
-            })
-          }
-        }
-        if (finalState) {
-          this._vm.$http.post(assessment.id).then(assessmentCb)
-        } else {
-          this._vm.$http.delete(assessment.id).then(assessmentCb)
+      assessment.excellent = data.value === 'excellent';
+      assessment.good = data.value === 'good';
+      assessment.not_valid = data.value === 'not_valid';
+
+      const assessmentCb = (res) => {
+        if (res.data) {
+          this.commit('assessments/setReviews', {
+            id: assessment.id,
+            reviews: res.data.reviews
+          })
         }
       }
+
+      if (isReviewed(assessment)) {
+        this._vm.$http.post(assessment.id).then(assessmentCb)
+      } else {
+        this._vm.$http.delete(assessment.id).then(assessmentCb)
+      }
     }
-  }
+  },
 }
 
 export default {

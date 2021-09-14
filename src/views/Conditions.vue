@@ -64,7 +64,6 @@ import AssessmentPreview from "@/components/AssessmentPreview";
 import CFilter from "@/views/CFilter";
 import { EventBus } from "./../EventBus";
 import proposals from "../assets/data/proposals.json";
-import questions from "../assets/data/questions.json";
 import assessors from "../assets/data/assessors.json";
 
 export default {
@@ -76,7 +75,6 @@ export default {
   data() {
     return {
       proposals: proposals,
-      questions: questions,
       assessors: assessors,
       prefilters: [
         { label: "Random", v: "randomAssessments" },
@@ -126,16 +124,10 @@ export default {
         {}
       );
     },
-    questionsById() {
-      return this.questions.reduce(
-        (obj, item) => Object.assign(obj, { [item.title]: item.id }),
-        {}
-      );
-    },
     availableFilters() {
       return {
-        proposer_flag: {
-          key: "proposer_flag",
+        proposer_mark: {
+          key: "proposer_mark",
           label: "Flagged by proposers",
           comparision: (a, v) => a === v,
           value: "",
@@ -151,17 +143,13 @@ export default {
           value: false,
           values: this.proposalsById,
         },
-        question_id: {
-          key: "question_id",
-          label: "Question",
-          comparision: (a, v) => parseInt(a) === parseInt(v),
-          value: false,
-          values: this.questionsById,
-        },
         rating: {
           key: "rating",
-          label: "Rating",
-          comparision: (a, v) => parseInt(a) === parseInt(v),
+          label: "Average Rating",
+          comparision: (a, v, el) => {
+            v = Math.round((el.auditability_rating + el.feasibility_rating + el.impact_rating) / 3);
+            return parseInt(a) === v;
+          },
           value: false,
           values: { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 },
         },
@@ -175,7 +163,8 @@ export default {
         lenLess: {
           key: "note",
           label: "Length less than",
-          comparision: (a, v) => {
+          comparision: (a, v, el) => {
+            v = el.auditability_note + el.feasibility_note + el.impact_note;
             return v ? v.length <= a : false;
           },
           value: false,
@@ -184,7 +173,8 @@ export default {
         lenGreater: {
           key: "note",
           label: "Length greater than",
-          comparision: (a, v) => {
+          comparision: (a, v, el) => {
+            v = el.auditability_note + el.feasibility_note + el.impact_note;
             return v ? v.length >= a : false;
           },
           value: false,
@@ -229,7 +219,7 @@ export default {
     customFilter(data, filters) {
       const [current, ...newFilters] = filters;
       const filtered = data.filter((el) =>
-        current.comparision(current.value, el[current.key])
+        current.comparision(current.value, el[current.key], el)
       );
       if (filters.length > 1) {
         return this.customFilter(filtered, newFilters);

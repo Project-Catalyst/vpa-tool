@@ -16,43 +16,54 @@
       </div> -->
       <div class="card-content">
         <p class="title is-4">
-          {{ proposal.title }} <span class="is-size-5 has-text-weight-bold">(<a :href="proposal.url" target="_blank">See proposal in IdeaScale</a>)</span>
+          {{ assessment.title }} <span class="is-size-5 has-text-weight-bold">(<a :href="assessment.url" target="_blank">See proposal in IdeaScale</a>)</span>
         </p>
-        <p class="subtitle is-6">{{ category.title }}</p>
 
         <div class="columns is-multiline is-mobile">
-          <div class="column is-half">
-            <p class="is-6">
-              <strong>Question:</strong>
-              {{ question.title }}
-            </p>
+          <div class="column is-three-quaters">
+            <p class="subtitle is-6">{{ category.title }}</p>
           </div>
-          <div class="column is-half">
+          <div class="column is-one-quarter">
             <p class="is-6">
               <strong>Assessor:</strong>
               {{ assessment.assessor }}
             </p>
           </div>
-          <div class="column is-half">
+          <div class="column is-three-quarters">
+            <p class="title is-6">Impact / Alignment Note</p>
+            <p class="subtitle is-6">{{ assessment.impact_note }}</p>
+          </div>
+          <div class="column is-one-quarter">
             <p class="title is-6">
-              Rating:
+              Impact / Alignment Rating:
               <span class="inline">
-                <b-rate v-model="assessment.rating" disabled />
+                <b-rate v-model="assessment.impact_rating" disabled />
               </span>
             </p>
           </div>
-          <div class="column is-half">
-            <b-checkbox
-              class="always-opaque"
-              v-model="assessment.proposer_flag"
-              type="is-warning"
-              disabled>
-              Flagged by Proposer
-            </b-checkbox>
+          <div class="column is-three-quarters">
+            <p class="title is-6">Feasibility Note</p>
+            <p class="subtitle is-6">{{ assessment.feasibility_note }}</p>
           </div>
-          <div class="column is-full">
-            <p class="title is-6">Assessment Note</p>
-            <p class="subtitle is-6">{{ assessment.note }}</p>
+          <div class="column is-one-quarter">
+            <p class="title is-6">
+              Feasibility Rating:
+              <span class="inline">
+                <b-rate v-model="assessment.feasibility_rating" disabled />
+              </span>
+            </p>
+          </div>
+          <div class="column is-three-quarters">
+            <p class="title is-6">Auditability Note</p>
+            <p class="subtitle is-6">{{ assessment.auditability_note }}</p>
+          </div>
+          <div class="column is-one-quarter">
+            <p class="title is-6">
+              Auditability Rating:
+              <span class="inline">
+                <b-rate v-model="assessment.auditability_rating" disabled />
+              </span>
+            </p>
           </div>
           <div class="column is-full">
             <p class="is-6">
@@ -60,30 +71,32 @@
               {{ (assessment.reviews) ? assessment.reviews : 0 }}
             </p>
           </div>
-          <div
-            class="column is-half"
-            v-for="(c, i) in criteria"
-            :key="i"
-            :class="[c.color, c.key]"
-          >
-            <b-field :label="(c.type === 'text') ? c.name : ''">
-              <b-checkbox v-if="(c.type === 'boolean')" v-model="self()[c.key]">
-                {{ c.name }}
-                <b-tooltip
-                  :label="c.info"
-                  class="larger-tooltip"
-                  size="is-large"
-                  multilined>
-                    <b-icon icon="information-outline"></b-icon>
-                </b-tooltip>
-              </b-checkbox>
-              <b-input
-                type="textarea"
-                v-model="self()[c.key]"
-                v-if="(c.type === 'text')"
-              ></b-input>
+        </div>
+        <div class="columns is-mobile is-centered">
+          <section class="column is-narrow">
+            <b-field>
+              <b-radio-button v-model="review"
+                native-value="excellent"
+                type="is-success is-light is-outlined">
+                <b-icon icon="heart"></b-icon>
+                <span>Excellent</span>
+              </b-radio-button>
+
+              <b-radio-button v-model="review"
+                native-value="good"
+                type="is-primary is-light is-outlined">
+                <b-icon icon="check"></b-icon>
+                <span>Good</span>
+              </b-radio-button>
+
+              <b-radio-button v-model="review"
+                native-value="not_valid"
+                type="is-danger is-light is-outlined">
+                <b-icon icon="close"></b-icon>
+                Not Valid
+              </b-radio-button>
             </b-field>
-          </div>
+          </section>
         </div>
       </div>
       <footer class="card-footer custom-footer">
@@ -103,9 +116,6 @@
 import { mapGetters } from "vuex";
 import proposals from "../assets/data/proposals.json";
 import categories from "../assets/data/categories.json";
-import questions from "../assets/data/questions.json";
-import criteria from "../assets/data/criteria.json";
-import dynamicComputed from "@/utils/dynamicComputed";
 
 import { EventBus } from "./../EventBus";
 
@@ -115,8 +125,6 @@ export default {
     return {
       proposals: proposals,
       categories: categories,
-      questions: questions,
-      criteria: criteria,
       isOpen: true
     };
   },
@@ -139,7 +147,6 @@ export default {
   },
   computed: {
     ...mapGetters("assessments", ["getById"]),
-    ...dynamicComputed(criteria, "assessment"),
     assessment() {
       return this.getById(this.$route.params.id);
     },
@@ -165,16 +172,19 @@ export default {
       }
       return false;
     },
-    question() {
-      if (this.proposal) {
-        let filtered = this.questions.filter(
-          (q) => q.id === parseInt(this.assessment.question_id)
-        );
-        if (filtered.length) {
-          return filtered[0];
-        }
+    review: {
+      get() {
+        if (this.assessment.excellent) return 'excellent';
+        if (this.assessment.good) return 'good';
+        if (this.assessment.not_valid) return 'not_valid';
+        return '';
+      },
+      set(val) {
+        this.$store.commit('assessments/setReview', {
+          id: this.$route.params.id,
+          value: val
+        });
       }
-      return false;
     },
   },
   methods: {

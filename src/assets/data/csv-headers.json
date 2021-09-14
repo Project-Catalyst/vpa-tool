@@ -1,86 +1,70 @@
 {
+  "id": {
+    "type": "integer",
+    "label": "id"
+  },
+  "title": {
+    "type": "string",
+    "label": "Idea Title"
+  },
+  "url": {
+    "type": "string",
+    "label": "Idea URL"
+  },
   "assessor": {
     "type": "string",
     "label": "Assessor"
   },
-  "abstain": {
-    "type": "boolean",
-    "label": "Abstain"
-  },
-  "strict": {
-    "type": "boolean",
-    "label": "Strict"
-  },
-  "lenient": {
-    "type": "boolean",
-    "label": "Lenient"
-  },
-  "constructive": {
-    "type": "boolean",
-    "label": "Constructive Feedback"
-  },
-  "copy": {
-    "type": "boolean",
-    "label": "Copy"
-  },
-  "fair": {
-    "type": "boolean",
-    "label": "Acceptable"
-  },
-  "id": {
-    "type": "string",
-    "label": "id"
-  },
-  "incomplete_reading": {
-    "type": "boolean",
-    "label": "Incomplete Reading"
-  },
-  "non_constructive": {
-    "type": "boolean",
-    "label": "Non Constructive Feedback"
-  },
-  "not_related": {
-    "type": "boolean",
-    "label": "Not Related"
-  },
-  "note": {
-    "type": "string",
-    "label": "Assessment Note"
-  },
-  "other": {
-    "type": "boolean",
-    "label": "General Infraction"
-  },
-  "other_rationale": {
-    "type": "string",
-    "label": "General Infraction: rationale"
-  },
-  "profanity": {
-    "type": "boolean",
-    "label": "Offense / Profanity"
+  "triplet_id": {
+    "type": "integer",
+    "label": "triplet_id"
   },
   "proposal_id": {
     "type": "integer",
     "label": "proposal_id"
   },
-  "proposer_flag": {
+  "impact_note": {
+    "type": "string",
+    "label": "Impact / Alignment Note"
+  },
+  "impact_rating": {
+    "type": "integer",
+    "label": "Impact / Alignment Rating"
+  },
+  "feasibility_note": {
+    "type": "string",
+    "label": "Feasibility Note"
+  },
+  "feasibility_rating": {
+    "type": "integer",
+    "label": "Feasibility Rating"
+  },
+  "auditability_note": {
+    "type": "string",
+    "label": "Auditability Note"
+  },
+  "auditability_rating": {
+    "type": "integer",
+    "label": "Auditability Rating"
+  },
+  "proposer_mark": {
     "type": "boolean",
     "label": "Proposer Mark"
   },
-  "question_id": {
-    "type": "integer",
-    "label": "question_id"
+  "proposer_rationale": {
+    "type": "string",
+    "label": "Proposer Not Valid rationale"
   },
-  "rating": {
-    "type": "integer",
-    "label": "Rating Given"
-  },
-  "score": {
+  "excellent": {
     "type": "boolean",
-    "label": "Score doesn't match"
+    "label": "Excellent"
   },
-  "triplet_id": {
-    "type": "integer",
-    "label": "triplet_id"
+  "good": {
+    "type": "boolean",
+    "label": "Good"
+  },
+  "not_valid": {
+    "type": "boolean",
+    "label": "Not Valid"
   }
 }
