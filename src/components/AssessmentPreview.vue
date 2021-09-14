@@ -2,19 +2,19 @@
   <div class="assessment-preview columns is-multiline is-mobile">
     <div class="info column is-half">
       <div class="label">Proposal:</div>
-      <div class="value">{{proposal.title}}</div>
+      <div class="value">{{assessment.title}}</div>
     </div>
     <div class="info column is-half">
-      <div class="label">Rating:</div>
+      <div class="label">Average Rating:</div>
       <div class="value">
-        <b-rate v-model="assessment.rating" disabled />
+        <b-rate v-model="rating" disabled />
       </div>
     </div>
     <div class="info column is-half">
       <div class="value">
         <b-checkbox
           class="always-opaque"
-          v-model="assessment.proposer_flag"
+          v-model="assessment.proposer_mark"
           type="is-warning"
           disabled>
           Flagged by Proposer
@@ -24,10 +24,6 @@
     <div class="info column is-half">
       <div class="label">Assessor:</div>
       <div class="value">&nbsp;{{assessment.assessor}}</div>
-    </div>
-    <div class="info text column is-full">
-      <div class="label">Assessment:</div>
-      <div class="value">{{assessment.note}}</div>
     </div>
     <div class="info mt-3 column is-full">
       <b-button
@@ -63,6 +59,9 @@ export default {
         }
       }
       return false
+    },
+    rating() {
+      return Math.round((this.assessment.auditability_rating + this.assessment.feasibility_rating + this.assessment.impact_rating) / 3)
     }
   },
   methods: {

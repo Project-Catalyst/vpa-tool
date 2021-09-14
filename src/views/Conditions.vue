@@ -126,8 +126,8 @@ export default {
     },
     availableFilters() {
       return {
-        proposer_flag: {
-          key: "proposer_flag",
+        proposer_mark: {
+          key: "proposer_mark",
           label: "Flagged by proposers",
           comparision: (a, v) => a === v,
           value: "",
