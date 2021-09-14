@@ -71,30 +71,32 @@
               {{ (assessment.reviews) ? assessment.reviews : 0 }}
             </p>
           </div>
-          <div
-            class="column is-half"
-            v-for="(c, i) in criteria"
-            :key="i"
-            :class="[c.color, c.key]"
-          >
-            <b-field :label="(c.type === 'text') ? c.name : ''">
-              <b-checkbox v-if="(c.type === 'boolean')" v-model="self()[c.key]">
-                {{ c.name }}
-                <b-tooltip
-                  :label="c.info"
-                  class="larger-tooltip"
-                  size="is-large"
-                  multilined>
-                    <b-icon icon="information-outline"></b-icon>
-                </b-tooltip>
-              </b-checkbox>
-              <b-input
-                type="textarea"
-                v-model="self()[c.key]"
-                v-if="(c.type === 'text')"
-              ></b-input>
+        </div>
+        <div class="columns is-mobile is-centered">
+          <section class="column is-narrow">
+            <b-field>
+              <b-radio-button v-model="review"
+                native-value="excellent"
+                type="is-success is-light is-outlined">
+                <b-icon icon="heart"></b-icon>
+                <span>Excellent</span>
+              </b-radio-button>
+
+              <b-radio-button v-model="review"
+                native-value="good"
+                type="is-primary is-light is-outlined">
+                <b-icon icon="check"></b-icon>
+                <span>Good</span>
+              </b-radio-button>
+
+              <b-radio-button v-model="review"
+                native-value="not_valid"
+                type="is-danger is-light is-outlined">
+                <b-icon icon="close"></b-icon>
+                Not Valid
+              </b-radio-button>
             </b-field>
-          </div>
+          </section>
         </div>
       </div>
       <footer class="card-footer custom-footer">
@@ -114,8 +116,6 @@
 import { mapGetters } from "vuex";
 import proposals from "../assets/data/proposals.json";
 import categories from "../assets/data/categories.json";
-import criteria from "../assets/data/criteria.json";
-import dynamicComputed from "@/utils/dynamicComputed";
 
 import { EventBus } from "./../EventBus";
 
@@ -125,7 +125,6 @@ export default {
     return {
       proposals: proposals,
       categories: categories,
-      criteria: criteria,
       isOpen: true
     };
   },
@@ -148,7 +147,6 @@ export default {
   },
   computed: {
     ...mapGetters("assessments", ["getById"]),
-    ...dynamicComputed(criteria, "assessment"),
     assessment() {
       return this.getById(this.$route.params.id);
     },
@@ -173,6 +171,20 @@ export default {
         }
       }
       return false;
+    },
+    review: {
+      get() {
+        if (this.assessment.excellent) return 'excellent';
+        if (this.assessment.good) return 'good';
+        if (this.assessment.not_valid) return 'not_valid';
+        return '';
+      },
+      set(val) {
+        this.$store.commit('assessments/setReview', {
+          id: this.$route.params.id,
+          value: val
+        });
+      }
     },
   },
   methods: {
