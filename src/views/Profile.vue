@@ -19,6 +19,12 @@
         <b-input type="email" v-model="email"></b-input>
       </b-field>
 
+      <b-field>
+        <b-checkbox v-model="proposersRationaleVisible">
+          I want to have access to proposers' rationales for flags
+        </b-checkbox>
+      </b-field>
+
       <div class="csv-load" v-if="!localDb">
         <b-field class="file is-primary">
           <b-upload v-on:input="readFile" drag-drop expanded accept=".csv">
@@ -90,6 +96,14 @@ export default {
       },
       set(value) {
         this.$store.commit("profile/setEmail", value);
+      },
+    },
+    proposersRationaleVisible: {
+      get() {
+        return this.$store.state.profile.info.proposersRationaleVisible;
+      },
+      set(value) {
+        this.$store.commit("profile/setProposersRationale", value);
       },
     },
   },

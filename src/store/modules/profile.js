@@ -4,7 +4,8 @@ const getDefaultState = () => ({
   localDb: false,
   info: {
     name: '',
-    email: ''
+    email: '',
+    proposersRationaleVisible: false
   }
 })
 const state = getDefaultState()
@@ -26,6 +27,10 @@ const mutations = {
   },
   setEmail (state, email) {
     state.info.email = email
+    state.initialized = checkInitialized(state)
+  },
+  setProposersRationale (state, value) {
+    state.info.proposersRationaleVisible = value
     state.initialized = checkInitialized(state)
   },
   setLocalDb (state, localDb) {

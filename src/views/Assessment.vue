@@ -57,6 +57,18 @@
           <div class="column is-one-quarter">
           </div>
           <div class="column is-three-quarters">
+            <b-checkbox
+              class="always-opaque mb-3"
+              v-model="assessment.proposer_mark"
+              type="is-warning"
+              disabled>
+              Flagged by Proposer
+            </b-checkbox>
+            <b-message
+              v-if="profile.info.proposersRationaleVisible && assessment.proposer_rationale"
+              title="Proposer rationale" :closable="false">
+              {{ assessment.proposer_rationale }}
+            </b-message>
           </div>
         </div>
         <div class="columns is-mobile is-centered">
@@ -105,7 +117,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 import proposals from "../assets/data/proposals.json";
 import categories from "../assets/data/categories.json";
 
@@ -139,6 +151,9 @@ export default {
   },
   computed: {
     ...mapGetters("assessments", ["getById"]),
+    ...mapState({
+      profile: (state) => state.profile
+    }),
     assessment() {
       return this.getById(this.$route.params.id);
     },
@@ -222,6 +237,7 @@ export default {
   padding: .10rem;
   background: #fff;
   width: 100%;
+  z-index: 10;
 }
 .custom-card {
   padding-bottom: 60px;
