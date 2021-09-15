@@ -78,8 +78,8 @@ export default {
       assessors: assessors,
       prefilters: [
         { label: "Random", v: "randomAssessments" },
-        { label: "Low reviewed", v: "lowReviewed" },
-        { label: "No reviews", v: "noReviewed" },
+        { label: "Low reviewed (from other vCAs)", v: "lowReviewed" },
+        { label: "No reviews (from other vCAs)", v: "noReviewed" },
         { label: "All", v: "filteredAssessments" },
       ],
       filterVisible: false,
