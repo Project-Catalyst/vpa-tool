@@ -48,17 +48,28 @@
 <script>
 import { mapState } from "vuex";
 import downloadCsv from "@/utils/export-csv";
+import originalAssessments from "@/assets/data/assessments.csv";
 
 export default {
+  data() {
+    return {
+      originalAssessments: originalAssessments
+    }
+  },
   computed: {
     ...mapState({
       profile: (state) => state.profile,
-      assessments: (state) => state.assessments.all
+      assessments: (state) => state.assessments.indexed
     })
   },
   methods: {
     exportCsv() {
-      downloadCsv(this.assessments, this.profile.info.name)
+      const localAssessments = this.assessments
+      const assessmentsExport = this.originalAssessments.map(item => ({
+        ...item,
+        ...localAssessments[item.id],
+      }));
+      downloadCsv(assessmentsExport, this.profile.info.name)
     }
   },
   mounted() {

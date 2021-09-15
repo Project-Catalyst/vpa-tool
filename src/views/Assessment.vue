@@ -120,6 +120,7 @@
 import { mapGetters, mapState } from "vuex";
 import proposals from "../assets/data/proposals.json";
 import categories from "../assets/data/categories.json";
+import originalAssessments from "../assets/data/assessments.csv";
 
 import { EventBus } from "./../EventBus";
 
@@ -127,35 +128,28 @@ export default {
   name: "Assessment",
   data() {
     return {
+      originalAssessments: originalAssessments,
       proposals: proposals,
       categories: categories,
       isOpen: true
     };
-  },
-  asyncComputed: {
-    // ideaImageSrc: {
-    //   // The `get` function is the same as the function you would
-    //   // pass directly as the value to `blogPostContent` if you
-    //   // didn't need to specify a default value.
-    //   get() {
-    //     return this.axios.get(this.proposal.url).then((response) => {
-    //       console.log(response);
-    //       return "https://via.placeholder.com/1280x960";
-    //     });
-    //   },
-    //   // The computed proporty `blogPostContent` will have
-    //   // the value 'Loading...' until the first time the promise
-    //   // returned from the `get` function resolves.
-    //   default: "https://via.placeholder.com/1280x960",
-    // },
   },
   computed: {
     ...mapGetters("assessments", ["getById"]),
     ...mapState({
       profile: (state) => state.profile
     }),
+    mappedAssessments() {
+      let result = {}
+      this.originalAssessments.forEach(el => {
+        result[el.id] = el
+      })
+      return result
+    },
     assessment() {
-      return this.getById(this.$route.params.id);
+      const fullAssessment = this.mappedAssessments[this.$route.params.id]
+      const localAssessment = this.getById(this.$route.params.id)
+      return {...fullAssessment, ...localAssessment}
     },
     proposal() {
       if (this.assessment) {

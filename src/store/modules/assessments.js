@@ -1,10 +1,13 @@
+import Vue from 'vue'
+
 const isReviewed = (el) => {
   return el.excellent || el.good || el.not_valid;
 }
 
 // initial state
 const getDefaultState = () => ({
-  all: []
+  all: [],
+  indexed: {}
 })
 
 
@@ -13,7 +16,8 @@ const state = getDefaultState()
 // getters
 const getters = {
   getById: (state) => (id) => {
-    return state.all.find(assessment => assessment.id === id)
+    return state.indexed[id]
+    // return state.all.find(assessment => assessment.id === id)
   }
 }
 
@@ -39,6 +43,15 @@ const actions = {
 const mutations = {
   setAssessments (state, assessments) {
     state.all = assessments
+    this.commit('assessments/setIndexed', assessments)
+  },
+  setIndexed (state, assessments) {
+    let result = {}
+    assessments.forEach(el => {
+
+      result[el.id] = el
+    })
+    state.indexed = result
   },
   resetState (state) {
     Object.assign(state, getDefaultState())
@@ -47,6 +60,7 @@ const mutations = {
     const assessment = state.all.find(a => parseInt(a.id) === parseInt(data.id))
     if (assessment) {
       assessment.reviews = data.reviews
+      Vue.set(state.indexed, assessment.id, assessment)
     }
   },
   setReview(state, data) {

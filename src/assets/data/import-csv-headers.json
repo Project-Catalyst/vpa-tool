@@ -1,0 +1,18 @@
+{
+  "id": {
+    "type": "integer",
+    "label": "id"
+  },
+  "excellent": {
+    "type": "boolean",
+    "label": "Excellent"
+  },
+  "good": {
+    "type": "boolean",
+    "label": "Good"
+  },
+  "not_valid": {
+    "type": "boolean",
+    "label": "Not Valid"
+  }
+}

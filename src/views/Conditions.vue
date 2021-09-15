@@ -65,6 +65,7 @@ import CFilter from "@/views/CFilter";
 import { EventBus } from "./../EventBus";
 import proposals from "../assets/data/proposals.json";
 import assessors from "../assets/data/assessors.json";
+import originalAssessments from "../assets/data/assessments.csv";
 
 export default {
   name: "Conditions",
@@ -74,6 +75,7 @@ export default {
   },
   data() {
     return {
+      originalAssessments: originalAssessments,
       proposals: proposals,
       assessors: assessors,
       prefilters: [
@@ -95,12 +97,19 @@ export default {
   },
   computed: {
     ...mapState({
-      assessments: (state) => state.assessments.all,
+      assessments: (state) => state.assessments.indexed,
     }),
+    fullAssessments() {
+      const localAssessments = this.assessments
+      return this.originalAssessments.map(item => ({
+        ...item,
+        ...localAssessments[item.id],
+      }));
+    },
     filteredAssessments() {
       return this.activeFilters.length
-        ? this.customFilter(this.assessments, this.activeFilters)
-        : this.assessments;
+        ? this.customFilter(this.fullAssessments, this.activeFilters)
+        : this.fullAssessments;
     },
     randomAssessments() {
       return shuffle(this.filteredAssessments);
@@ -229,7 +238,8 @@ export default {
     },
     remoteUpdate() {
       this.$store.dispatch("assessments/getReviewsCount");
-    }
+    },
+
   },
   mounted() {
     this.setList({ label: "All", v: "filteredAssessments" });

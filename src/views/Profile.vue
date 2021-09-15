@@ -66,7 +66,7 @@
 
 <script>
 import { mapState } from "vuex";
-import csvHeaders from "../assets/data/csv-headers.json";
+import csvHeaders from "../assets/data/import-csv-headers.json";
 
 export default {
   name: "Profile",
