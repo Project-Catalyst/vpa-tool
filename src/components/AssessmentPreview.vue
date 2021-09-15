@@ -2,17 +2,21 @@
   <div
     class="assessment-preview columns is-multiline is-mobile"
     >
-    <div class="info column is-half">
+    <div class="info column is-one-third">
       <div class="label mr-2">Proposal:</div>
       <div class="value">{{proposal.title}}</div>
     </div>
-    <div class="info column is-half">
+    <div class="info column is-one-third">
       <div class="label mr-2">Average Rating: </div>
       <div class="value">
         <b-rate v-model="rating" disabled />
       </div>
     </div>
-    <div class="info column is-half">
+    <div class="info column is-one-third">
+      <div class="label mr-2">Assessor:</div>
+      <div class="value">{{assessment.assessor}}</div>
+    </div>
+    <div class="info column is-one-third">
       <div class="value">
         <b-checkbox
           class="always-opaque"
@@ -23,9 +27,9 @@
         </b-checkbox>
       </div>
     </div>
-    <div class="info column is-half">
-      <div class="label mr-2">Assessor:</div>
-      <div class="value">&nbsp;{{assessment.assessor}}</div>
+    <div class="info column is-one-third">
+      <div class="label mr-2">No. of vCAs reviews:</div>
+      <div class="value">{{ (assessment.reviews) ? assessment.reviews : 0 }}</div>
     </div>
     <div class="info mt-3 column is-full">
       <b-button
