@@ -31,26 +31,45 @@
       >
     </div>
     <b-message>
-      <p><b>How it works</b><br /></p>
-      <p>The vCA-tool is designed to work in parallel with the standard way (using the Google Sheet) in order to provide a better user experience and to better coordinate the vCA work.<br />
-      Consider it as an experiment that hopefully will be used as the standard method in the next funds.<br /><br />
-      1. From the vCA email you'll receive the Google Sheet link for the vCA Master File: instead of following the standard procedure, save the vCA MAster File as a CSV (File -> Download -> Comma-separated value).<br />
-      2. Click on the "Start Process" button, fill the form and upload the file you've just downloaded.<br />
-      3. Click "Import data" and the tool will load all the CA assessments in the browser.<br />
-      4. After that you will access to the "Assessments list view".<br />
-      There are two type of filters: the first one includes "Random", "Low reviewed", "No reviews", "All" and the second one includes "Flagged by proposers", "Proposal", "Question", "Rating", "Length less than", "Length greated than".<br />
-      You can combine them in any way you like.<br />
-      5. Clicking on the "Next" button, you will access to the "Assessment View" where you can review the assessment flagging the y/r card criteria.<br />
-      Unlike what happens with the Google Sheet, here you can see how many times an assessment has been reviewed by the vCAs (Reviews: X): this information is useful to better coordinate the work of the vCAs as you can check if an assessment has reached quorum ( Note: since not everyone will use the vCA tool this information is partial, welcome to the experiment in the experiment).
-      6. In the "Assessments list view" you can also click the "Show list" button to see the list of the assessments based on the filters selected.<br />
-      7. When you've finished your work, you have to click on top right "vCA Tool" menu and select "Export CSV".<br />
-      This is the final file that you'll have to share at the end of the vCA process. This file file can also be re-imported in the vCA-tool.<br />
-      Upload the final export to Google Docs, change the share settings to "Anyone with the link", send the link in the <a href="https://t.me/CatalystCommunityAdvisors">Telegram Community Advisor Chat</a>, tag Marek Buchowiecki (@Marklar_IO) and fill in <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_8UtlGoRho9-b6NnnvRELPYSaY8woSBIYnt4r_v1dOnDbvA/viewform">this form</a> with your details.<br /></p>
-      <p><b>Useful resources</b><br /></p>
-      <p>
-        <a href="https://docs.google.com/document/d/1LTw7iY-_XJ5welSUk-olRvkfyVuOIPcR_iAgqbnZv8c/edit">THE YELLOW AND RED CARD THING v2.0</a><br />
-        <a href="https://docs.google.com/document/d/1R3il7CjEjp-b_-dXK9jQwgWsyrnAYDzL_i_SHlVsZlM/edit">ASSESS QA (Quality Assurance) stage</a><br />
-      </p>
+      <div class="content">
+        <p><b>How it works</b><br /></p>
+        <p>The vCA-tool is designed to work in parallel with the standard way (using the Google Sheet) in order to provide a better user experience and to better coordinate the vCA work.<br />
+        Consider it as an experiment that hopefully will be used as the standard method in the next funds.<br /><br /></p>
+        <ol>
+          <li>
+            From the vCA email you'll receive the Google Sheet link for the vCA Master File: instead of following the standard procedure, save the vCA MAster File as a CSV (File -> Download -> Comma-separated value).
+          </li>
+          <li>
+            Click on the "Start Process" button, fill the form and upload the file you've just downloaded.<br />
+          </li>
+          <li>
+            Click "Import data" and the tool will load all the CA assessments in the browser.<br />
+          </li>
+          <li>
+            After that you will access to the "Assessments list view".<br />
+            There are two type of filters: the first one includes "Random", "Low reviewed", "No reviews", "All" and the second one includes "Flagged by proposers", "Proposal", "Question", "Rating", "Length less than", "Length greated than".<br />
+            You can combine them in any way you like.<br />
+          </li>
+          <li>
+            Clicking on the "Next" button, you will access to the "Assessment View" where you can review the assessment flagging the y/r card criteria.<br />
+            Unlike what happens with the Google Sheet, here you can see how many times an assessment has been reviewed by the vCAs (Reviews: X): this information is useful to better coordinate the work of the vCAs as you can check if an assessment has reached quorum ( Note: since not everyone will use the vCA tool this information is partial, welcome to the experiment in the experiment).
+          </li>
+          <li>
+            In the "Assessments list view" you can also click the "Show list" button to see the list of the assessments based on the filters selected.<br />
+          </li>
+          <li>
+            When you've finished your work, you have to click on top right "vCA Tool" menu and select "Export CSV".<br />
+          </li>
+        </ol>
+        <p>This is the final file that you'll have to share at the end of the vCA process. This file file can also be re-imported in the vCA-tool.<br />
+        Upload the final export to Google Docs, change the share settings to "Anyone with the link", send the link in the <a href="https://t.me/CatalystCommunityAdvisors">Telegram Community Advisor Chat</a>, tag Marek Buchowiecki (@Marklar_IO) and fill in <a href="#">this form</a> with your details.<br /></p>
+        <p><b>Useful resources</b><br /></p>
+        <p>
+          <a href="https://docs.google.com/document/d/1vHapUV1LHM4cb2375V99oM32xJ-wj_XoN-DYcvKEk0A/edit?usp=sharing">QA Stage Guide</a><br />
+          <a href="https://docs.google.com/document/d/1QkdaFK1tigrSI40iMeV3UP9GyTGsoqVmCUp7OJz0WFs">Community Advisor Guide</a><br />
+          <a href="https://docs.google.com/document/d/1g-iZhDlKhUBZkui1uv8NVNfJC4oVD3JtR-P6Fue7XPU/edit">Proposal Assessment Guide</a><br />
+        </p>
+      </div>
 
 
     </b-message>

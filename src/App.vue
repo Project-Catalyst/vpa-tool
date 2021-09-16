@@ -31,6 +31,7 @@
     <footer class="footer">
       <div class="content has-text-centered">
         <p>Made by Catalyst Community for the Catalyst Community</p>
+        <p><img class="aim-logo" src="@/assets/images/aim-logo.png" alt="Cardano AIM" /></p>
         <b-button
           label="Feedback"
           type="is-primary"
@@ -82,3 +83,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+.aim-logo {
+  width: 150px;
+}
+</style>
