@@ -185,6 +185,7 @@ export default {
           id: this.$route.params.id,
           value: val
         });
+        EventBus.$emit('update-list')
       }
     },
   },

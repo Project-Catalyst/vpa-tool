@@ -24,7 +24,7 @@ const getters = {
 // actions
 const actions = {
   getReviewsCount ({ state, commit }) {
-    const assessments = state.all
+    const assessments = JSON.parse(JSON.stringify(state.all))
     this._vm.$http.get().then((res) => {
       if (res.data) {
         Object.entries(res.data).forEach(([key, val]) => {
@@ -76,7 +76,7 @@ const mutations = {
         if (res.data) {
           this.commit('assessments/setReviews', {
             id: assessment.id,
-            reviews: res.data.reviews
+            reviews: res.data.reviews,
           })
         }
       }

@@ -26,6 +26,7 @@
         >
       </b-field>
       <div class="notification is-primary mb-6">
+        <div class="mb-3">Your progress: {{localTot}}/{{listAssessments.length}}</div>
         <div class="buttons">
           <b-button type="is-primary" inverted @click="getNext">Next</b-button>
           <b-button
@@ -98,6 +99,7 @@ export default {
   computed: {
     ...mapState({
       assessments: (state) => state.assessments.indexed,
+      listAssessments: (state) => state.assessments.all
     }),
     fullAssessments() {
       const localAssessments = this.assessments
@@ -132,6 +134,17 @@ export default {
         (obj, item) => Object.assign(obj, { [item.title]: item.id }),
         {}
       );
+    },
+    localTot() {
+      let tot = 0
+      const keys = Object.keys(this.assessments);
+      keys.forEach((key) => {
+        let ass = this.assessments[key]
+        if (ass.excellent || ass.good || ass.not_valid) {
+          tot = tot + 1
+        }
+      });
+      return tot
     },
     availableFilters() {
       return {
@@ -197,10 +210,14 @@ export default {
   },
   methods: {
     setList(el) {
+      this.remoteUpdate()
       this.currentSlice = 100;
       this.currentIndex = 0;
       this.currentPrefilter = el;
       this.currentList = this[el.v];
+    },
+    updateList() {
+      this.currentList = this[this.currentPrefilter.v];
     },
     getNext() {
       this.$router.push({
@@ -245,14 +262,17 @@ export default {
     this.setList({ label: "All", v: "filteredAssessments" });
     EventBus.$on("next-assessment", this.getNext);
     EventBus.$on("set-assessment-index", this.setNext);
+    EventBus.$on("update-list", this.updateList);
     this.remoteUpdate()
     this.interval = setInterval(() => {
       this.remoteUpdate()
-    }, 30 * 60 * 1000)
+      this.updateList()
+    }, 10 * 60 * 1000)
   },
   destroyed() {
     EventBus.$off("next-assessment");
     EventBus.$off("set-assessment-index");
+    EventBus.$off("update-list");
     clearInterval(this.interval)
   }
 };
