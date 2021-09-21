@@ -5,7 +5,7 @@ const getDefaultState = () => ({
   info: {
     name: '',
     email: '',
-    proposersRationaleVisible: false
+    proposersRationaleVisible: true
   }
 })
 const state = getDefaultState()

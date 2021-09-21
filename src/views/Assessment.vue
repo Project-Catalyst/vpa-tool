@@ -14,7 +14,7 @@
           />
         </figure>
       </div> -->
-      <div class="card-content">
+      <div class="card-content" :key="`assessment-${assessment.id}`">
         <p class="title is-4">
           {{ proposal.title }} <span class="is-size-5 has-text-weight-bold">(<a :href="proposal.url" target="_blank">See proposal in IdeaScale</a>)</span>
         </p>
@@ -181,6 +181,7 @@ export default {
         return '';
       },
       set(val) {
+        console.log(val)
         this.$store.commit('assessments/setReview', {
           id: this.$route.params.id,
           value: val
