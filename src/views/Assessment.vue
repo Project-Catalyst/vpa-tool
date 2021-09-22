@@ -104,10 +104,9 @@
         </div>
       </div>
       <footer class="card-footer custom-footer">
-        <router-link class="card-footer-item" :to="{ name: 'conditions' }">
+        <a @click="goToConditions" class="card-footer-item">
           Overview
-        </router-link>
-
+        </a>
         <a @click="getNext" class="card-footer-item">
           Next
         </a>
@@ -181,12 +180,10 @@ export default {
         return '';
       },
       set(val) {
-        console.log(val)
         this.$store.commit('assessments/setReview', {
           id: this.$route.params.id,
           value: val
         });
-        EventBus.$emit('update-list')
       }
     },
   },
@@ -200,6 +197,10 @@ export default {
     getNext() {
       EventBus.$emit("next-assessment");
     },
+    goToConditions() {
+      EventBus.$emit('update-list')
+      this.$router.push({"name": "conditions"})
+    }
   },
 };
 </script>

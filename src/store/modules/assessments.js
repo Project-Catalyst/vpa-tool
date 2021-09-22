@@ -57,7 +57,8 @@ const mutations = {
     Object.assign(state, getDefaultState())
   },
   setReviews (state, data) {
-    const assessment = state.all.find(a => parseInt(a.id) === parseInt(data.id))
+    //const assessment = state.all.find(a => parseInt(a.id) === parseInt(data.id))
+    const assessment = state.indexed[data.id]
     if (assessment) {
       assessment.reviews = data.reviews
       Vue.set(state.indexed, assessment.id, assessment)
