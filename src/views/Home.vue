@@ -62,12 +62,13 @@
           </li>
         </ol>
         <p>This is the final file that you'll have to share at the end of the vCA process. This file file can also be re-imported in the vCA-tool.<br />
-        Upload the final export to Google Docs, change the share settings to "Anyone with the link", send the link in the <a href="https://t.me/CatalystCommunityAdvisors">Telegram Community Advisor Chat</a>, tag Marek Buchowiecki (@Marklar_IO) and fill in <a href="#">this form</a> with your details.<br /></p>
+        Upload the final export to Google Docs, change the share settings to "Anyone with the link" and fill in <a href="https://forms.gle/a9oqmSi9JBDQGHKM8" target="_blank">this form</a> with your details.<br /></p>
         <p><b>Useful resources</b><br /></p>
         <p>
-          <a href="https://docs.google.com/document/d/1vHapUV1LHM4cb2375V99oM32xJ-wj_XoN-DYcvKEk0A/edit?usp=sharing">QA Stage Guide</a><br />
-          <a href="https://docs.google.com/document/d/1QkdaFK1tigrSI40iMeV3UP9GyTGsoqVmCUp7OJz0WFs">Community Advisor Guide</a><br />
-          <a href="https://docs.google.com/document/d/1g-iZhDlKhUBZkui1uv8NVNfJC4oVD3JtR-P6Fue7XPU/edit">Proposal Assessment Guide</a><br />
+          <a href="https://docs.google.com/document/d/1vHapUV1LHM4cb2375V99oM32xJ-wj_XoN-DYcvKEk0A/edit?usp=sharing" target="_blank">QA Stage Guide</a><br />
+          <a href="https://docs.google.com/document/d/16aq9dNudJ5S3TEVQhBgRznTCoaF8SQezyActtVhec8E" target="_blank">Community Advisor Onboarding</a><br />
+          <a href="https://docs.google.com/document/d/1QkdaFK1tigrSI40iMeV3UP9GyTGsoqVmCUp7OJz0WFs" target="_blank">Community Advisor Guide</a><br />
+          <a href="https://docs.google.com/document/d/1g-iZhDlKhUBZkui1uv8NVNfJC4oVD3JtR-P6Fue7XPU/edit" target="_blank">Proposal Assessment Guide</a><br />
         </p>
       </div>
 
