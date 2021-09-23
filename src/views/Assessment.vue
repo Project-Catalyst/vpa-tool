@@ -96,7 +96,7 @@
                 size="is-large"
                 type="is-danger is-light is-outlined">
                 <b-icon icon="close"></b-icon>
-                Not Valid
+                Filtered out
               </b-radio-button>
             </b-field>
             <b-button type="is-warning is-light" @click="uncheck()" outlined>Deselect</b-button>
