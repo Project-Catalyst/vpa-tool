@@ -37,13 +37,13 @@
         Consider it as an experiment that hopefully will be used as the standard method in the next funds.<br /><br /></p>
         <ol>
           <li>
-            From the vCA email you'll receive the Google Sheet link for the vCA Master File: instead of following the standard procedure, save the vCA MAster File as a CSV (File -> Download -> Comma-separated value).
+            From the vCA email you'll receive the Google Sheet link for the vCA Master File: instead of following the standard procedure, from the vCA MAster File, save the "Assessment" tab as a CSV (File -> Download -> Comma-separated value).
           </li>
           <li>
-            Click on the "Start Process" button, fill the form and upload the file you've just downloaded.<br />
+            Click on the "Start Process" button, fill the form and upload the file you've just downloaded. To check that you imported the right file you should see: "No of assessments to be loaded: <b>4118</b>". If you see a different number you've probably imported the wrong file.<br />
           </li>
           <li>
-            Click "Import data" and the tool will load all the CA assessments in the browser.<br />
+            Click "Import data" and the tool will load all the CA assessments in the browser. <br />
           </li>
           <li>
             After that you will access to the "Assessments list view".<br />
@@ -51,7 +51,7 @@
             You can combine them in any way you like.<br />
           </li>
           <li>
-            Clicking on the "Next" button, you will access to the "Assessment View" where you can review the assessment flagging the y/r card criteria.<br />
+            Clicking on the "Next" button, you will access to the "Assessment View" where you can review the assessment flagging them as "Excellent", "Good" or "Not valid", according to the guidelines.<br />
             Unlike what happens with the Google Sheet, here you can see how many times an assessment has been reviewed by the vCAs (Reviews: X): this information is useful to better coordinate the work of the vCAs as you can check if an assessment has reached quorum ( Note: since not everyone will use the vCA tool this information is partial, welcome to the experiment in the experiment).
           </li>
           <li>
