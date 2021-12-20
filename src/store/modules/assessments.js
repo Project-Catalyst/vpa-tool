@@ -3,9 +3,11 @@ import originalAssessments from "@/assets/data/assessments.csv"
 import comparisons from "@/utils/comparisons"
 import router from '@/router'
 
+/*
 const isReviewed = (el) => {
   return el.excellent || el.good || el.filtered_out;
 }
+*/
 
 // initial state
 const getDefaultState = () => ({
@@ -132,13 +134,16 @@ const mutations = {
     }
   },
   setReview(state, data) {
-    const assessment = state.all.find(a => parseInt(a.id) === parseInt(data.id));
-    if (assessment) {
-      const oldReviewed = isReviewed(assessment)
+    const assessmentId = state.all.findIndex(a => parseInt(a.id) === parseInt(data.id));
+    if (assessmentId != -1) {
+      let assessment = {...state.all[assessmentId]}
+      // const oldReviewed = isReviewed(assessment)
       assessment.excellent = data.value === 'excellent';
       assessment.good = data.value === 'good';
       assessment.filtered_out = data.value === 'filtered_out';
-      const newReviewed = isReviewed(assessment)
+      Vue.set(state.all, assessmentId, assessment)
+      // const newReviewed = isReviewed(assessment)
+      /*
       const assessmentCb = (res) => {
         if (res.data) {
           this.commit('assessments/setReviews', {
@@ -152,6 +157,16 @@ const mutations = {
       } else if (!newReviewed && oldReviewed) {
         this._vm.$http.delete(`/${assessment.id}`).then(assessmentCb)
       }
+      */
+    } else {
+      let assessment = {
+        id: data.id,
+      }
+      assessment.excellent = data.value === 'excellent';
+      assessment.good = data.value === 'good';
+      assessment.filtered_out = data.value === 'filtered_out';
+      state.all.push(assessment)
+      // this._vm.$http.post(`/${assessment.id}`).then(assessmentCb)
     }
   },
   addFilter(state, {prop, value}) {

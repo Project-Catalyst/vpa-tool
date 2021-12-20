@@ -177,7 +177,7 @@ export default {
       };
     },
     showListLabel() {
-      return (this.showList) ? 'Close list' : 'Show list'
+      return (this.listVisible) ? 'Close list' : 'Show list'
     }
   },
   methods: {

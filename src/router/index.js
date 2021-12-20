@@ -34,14 +34,12 @@ const routes = [
     path: "/assessments",
     name: "conditions",
     component: Conditions,
-    children: [
-      {
-        path: "/assessments/:id",
-        name: "assessment",
-        component: Assessment,
-      },
-    ],
   },
+  {
+    path: "/assessments/:id",
+    name: "assessment",
+    component: Assessment,
+  }
 ];
 
 const router = new VueRouter({

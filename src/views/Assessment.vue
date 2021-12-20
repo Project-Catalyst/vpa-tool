@@ -1,22 +1,16 @@
 <template>
   <b-modal class="assessment"
+    :key="`assessment-${fullAssessment.id}`"
     :ref="'modal'"
     v-model="isOpen"
     :can-cancel="false"
+    :animation="'no-animation'"
     full-screen
     >
-    <div class="card container custom-card" v-if="assessment">
-      <!-- <div class="card-image">
-        <figure class="image is-4by3">
-          <img
-            src="https://via.placeholder.com/1280x960"
-            :alt="proposal.title"
-          />
-        </figure>
-      </div> -->
-      <div class="card-content" :key="`assessment-${assessment.id}`">
+    <div class="card container custom-card" v-if="fullAssessment">
+      <div class="card-content">
         <p class="title is-4">
-          {{ proposal.title }} <span class="is-size-5 has-text-weight-bold">(<a :href="proposal.url" target="_blank">See proposal in IdeaScale</a>)</span>
+          {{ fullAssessment.title }} <span class="is-size-5 has-text-weight-bold">(<a :href="fullAssessment.url" target="_blank">See proposal in IdeaScale</a>)</span>
         </p>
         <p class="subtitle is-5">{{ category.title }}</p>
         <p class="subtitle is-5">
@@ -25,7 +19,7 @@
         </p>
         <p class="is-6">
           <strong>Assessor:</strong>
-          {{ assessment.assessor }}
+          {{ fullAssessment.assessor }}
         </p>
 
         <div class="columns is-multiline is-mobile">
@@ -37,37 +31,37 @@
             <p class="title is-6 mb-4">
               Impact / Alignment
             </p>
-            <b-rate size="is-medium" v-model="assessment.impact_rating" disabled />
-            <p class="subtitle is-6 mb-2">{{ assessment.impact_note }}</p>
+            <b-rate size="is-medium" v-model="fullAssessment.impact_rating" disabled />
+            <p class="subtitle is-6 mb-2">{{ fullAssessment.impact_note }}</p>
           </div>
           <div class="column is-one-quarter">
           </div>
           <div class="column is-three-quarters">
             <p class="title is-6 mb-4">Feasibility</p>
-            <b-rate size="is-medium" v-model="assessment.feasibility_rating" disabled />
-            <p class="subtitle is-6 mb-2">{{ assessment.feasibility_note }}</p>
+            <b-rate size="is-medium" v-model="fullAssessment.feasibility_rating" disabled />
+            <p class="subtitle is-6 mb-2">{{ fullAssessment.feasibility_note }}</p>
           </div>
           <div class="column is-one-quarter">
           </div>
           <div class="column is-three-quarters">
             <p class="title is-6 mb-4">Auditability</p>
-            <b-rate size="is-medium" v-model="assessment.auditability_rating" disabled />
-            <p class="subtitle is-6 mb-2">{{ assessment.auditability_note }}</p>
+            <b-rate size="is-medium" v-model="fullAssessment.auditability_rating" disabled />
+            <p class="subtitle is-6 mb-2">{{ fullAssessment.auditability_note }}</p>
           </div>
           <div class="column is-one-quarter">
           </div>
           <div class="column is-three-quarters">
             <b-checkbox
               class="always-opaque mb-3"
-              v-model="assessment.proposer_mark"
+              v-model="fullAssessment.proposer_mark"
               type="is-warning"
               disabled>
               Flagged by Proposer
             </b-checkbox>
             <b-message
-              v-if="profile.info.proposersRationaleVisible && assessment.proposer_rationale"
+              v-if="profile.info.proposersRationaleVisible && fullAssessment.proposer_rationale"
               title="Proposer rationale" :closable="false">
-              {{ assessment.proposer_rationale }}
+              {{ fullAssessment.proposer_rationale }}
             </b-message>
           </div>
         </div>
@@ -104,9 +98,10 @@
         </div>
       </div>
       <footer class="card-footer custom-footer">
-        <a @click="goToConditions" class="card-footer-item">
+        <router-link class="card-footer-item"
+          :to="{ name: 'conditions' }">
           Overview
-        </a>
+        </router-link>
         <a @click="getNext" class="card-footer-item">
           Next
         </a>
@@ -117,49 +112,26 @@
 
 <script>
 import { mapGetters, mapState } from "vuex";
-import proposals from "../assets/data/proposals.json";
 import categories from "../assets/data/categories.json";
-import originalAssessments from "../assets/data/assessments.csv";
-
-import { EventBus } from "./../EventBus";
 
 export default {
   name: "Assessment",
   data() {
     return {
-      originalAssessments: originalAssessments,
-      proposals: proposals,
       categories: categories,
       isOpen: true
     };
   },
   computed: {
-    ...mapGetters("assessments", ["getById"]),
+    ...mapGetters("assessments", ["getById", "getFullById"]),
     ...mapState({
       profile: (state) => state.profile
     }),
-    mappedAssessments() {
-      let result = {}
-      this.originalAssessments.forEach(el => {
-        result[el.id] = el
-      })
-      return result
-    },
     assessment() {
-      const fullAssessment = this.mappedAssessments[this.$route.params.id]
-      const localAssessment = this.getById(this.$route.params.id)
-      return {...fullAssessment, ...localAssessment}
+      return this.getById(this.$route.params.id)
     },
-    proposal() {
-      if (this.assessment) {
-        let filtered = this.proposals.filter(
-          (p) => p.id === parseInt(this.assessment.proposal_id)
-        );
-        if (filtered.length) {
-          return filtered[0];
-        }
-      }
-      return false;
+    fullAssessment() {
+      return this.getFullById(this.$route.params.id)
     },
     category() {
       if (this.proposal) {
@@ -191,15 +163,8 @@ export default {
     uncheck() {
       this.review = ''
     },
-    self() {
-      return this;
-    },
     getNext() {
-      EventBus.$emit("next-assessment");
-    },
-    goToConditions() {
-      EventBus.$emit('update-list')
-      this.$router.push({"name": "conditions"})
+      this.$store.dispatch('assessments/getNext')
     }
   },
 };

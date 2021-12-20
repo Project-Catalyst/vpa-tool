@@ -54,8 +54,6 @@
 
 import proposals from '../assets/data/proposals.json'
 
-import { EventBus } from "./../EventBus";
-
 export default {
   data() {
     return {
@@ -83,11 +81,10 @@ export default {
   },
   methods: {
     goTo() {
-      EventBus.$emit("set-assessment-index", this.idx);
-      this.$router.push({
-        name: "assessment",
-        params: { id: this.assessment.id },
-      });
+      this.$store.dispatch('assessments/goTo', {
+        newId: this.assessment.id,
+        newIdx: this.idx + 1
+      })
     }
   }
 }
