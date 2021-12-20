@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
 const isReviewed = (el) => {
-  return el.excellent || el.good || el.not_valid;
+  return el.excellent || el.good || el.filtered_out;
 }
 
 // initial state
@@ -70,7 +70,7 @@ const mutations = {
       const oldReviewed = isReviewed(assessment)
       assessment.excellent = data.value === 'excellent';
       assessment.good = data.value === 'good';
-      assessment.not_valid = data.value === 'not_valid';
+      assessment.filtered_out = data.value === 'filtered_out';
       const newReviewed = isReviewed(assessment)
 
       const assessmentCb = (res) => {

@@ -140,7 +140,7 @@ export default {
       const keys = Object.keys(this.assessments);
       keys.forEach((key) => {
         let ass = this.assessments[key]
-        if (ass.excellent || ass.good || ass.not_valid) {
+        if (ass.excellent || ass.good || ass.filtered_out) {
           tot = tot + 1
         }
       });

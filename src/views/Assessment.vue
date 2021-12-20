@@ -92,7 +92,7 @@
               </b-radio-button>
 
               <b-radio-button v-model="review"
-                native-value="not_valid"
+                native-value="filtered_out"
                 size="is-large"
                 type="is-danger is-light is-outlined">
                 <b-icon icon="close"></b-icon>
@@ -176,7 +176,7 @@ export default {
       get() {
         if (this.assessment.excellent) return 'excellent';
         if (this.assessment.good) return 'good';
-        if (this.assessment.not_valid) return 'not_valid';
+        if (this.assessment.filtered_out) return 'filtered_out';
         return '';
       },
       set(val) {

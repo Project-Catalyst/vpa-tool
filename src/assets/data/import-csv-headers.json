@@ -11,8 +11,8 @@
     "type": "boolean",
     "label": "Good"
   },
-  "not_valid": {
+  "filtered_out": {
     "type": "boolean",
-    "label": "Not Valid"
+    "label": "Filtered Out"
   }
 }
