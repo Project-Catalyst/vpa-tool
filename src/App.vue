@@ -75,14 +75,13 @@ export default {
   },
   mounted() {
     if (window.localStorage) {
-      let oldKey = window.localStorage.getItem('vca-tool-f4')
-      if (oldKey) {
-        window.localStorage.removeItem('vca-tool-f4')
-      }
-      let oldKey2 = window.localStorage.getItem('vca-tool-f5')
-      if (oldKey2) {
-        window.localStorage.removeItem('vca-tool-f5')
-      }
+      let oldKeys = ['vca-tool-f4-default', 'vca-tool-f5-default', 'vca-tool-f6-default']
+      oldKeys.forEach((k) => {
+        let oldKey = window.localStorage.getItem(k)
+        if (oldKey) {
+          window.localStorage.removeItem(k)
+        }
+      })
     }
   }
 };
