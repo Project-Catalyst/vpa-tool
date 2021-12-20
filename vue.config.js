@@ -70,6 +70,10 @@ csvHeaders = JSON.parse(`{
   "filtered_out": {
     "type": "boolean",
     "label": "Filtered Out"
+  },
+  "vca_feedback": {
+    "type": "string",
+    "label": "vCA Feedback"
   }
 }`);
 
