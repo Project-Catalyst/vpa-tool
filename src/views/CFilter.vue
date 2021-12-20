@@ -6,7 +6,7 @@
         v-for="(v, i) in availableFilters"
         :key="`filter-${v.key}-${i}`"
       >
-        <b-field expanded :label="v.label">
+        <b-field expanded :label="v.label" v-if="v.type === 'select'">
           <b-select
             expanded
             :placeholder="v.label"
@@ -17,6 +17,18 @@
               {{ kk }}
             </option>
           </b-select>
+        </b-field>
+        <b-field expanded :label="v.label" v-if="v.type === 'autocomplete'">
+          <b-autocomplete
+              v-model="search[v.key]"
+              :data="filteredDataArray(v.values, v.key)"
+              :placeholder="`Search ${v.label}`"
+              icon="magnify"
+              :open-on-focus="true"
+              clearable
+              @select="option => updateAutocomplete(option, v)">
+              <template #empty>No results found</template>
+          </b-autocomplete>
         </b-field>
       </div>
     </div>
@@ -40,6 +52,16 @@
 export default {
   name: "CFilter",
   props: ["availableFilters", "activeFilters", "filterVisible"],
+  data() {
+    return {
+      autocomplete: ['proposal_id'],
+      search: {
+        proposal_id: '',
+        challenge: '',
+        assessor: ''
+      }
+    }
+  },
   methods: {
     updateFilter(prop, value) {
       this.$emit("update-filter", prop, value);
@@ -51,6 +73,19 @@ export default {
       return Object.keys(f.values)
         .find((key) => f.values[key] === f.value)
     },
+    filteredDataArray(values, key) {
+      return Object.keys(values).filter((option) => {
+        return option
+            .toString()
+            .toLowerCase()
+            .indexOf(this.search[key].toLowerCase()) >= 0
+      })
+    },
+    updateAutocomplete(option, v) {
+      if (option) {
+        this.updateFilter(v, v.values[option])
+      }
+    }
   },
 };
 </script>

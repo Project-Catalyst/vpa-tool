@@ -25,7 +25,25 @@
         </b-checkbox>
       </b-field>
 
-      <div class="csv-load" v-if="!localDb">
+      <div class="main-choice" v-if="!localDb && localChoice === false">
+        <h2>Choose an option to start your process:</h2>
+        <div class="is-flex columns mt-6 mb-6">
+          <div class="is-half column has-text-centered">
+            <b-button class="is-primary special-button" @click="setLocalChoice('start')">
+              I want to start the process from the beginning<br />
+              I don't have a backup file to import
+            </b-button>
+          </div>
+          <div class="is-half column has-text-centered">
+            <b-button class="is-primary is-light special-button" @click="setLocalChoice('import')">
+              I want to continue the process<br />
+              I have a backup file to import
+            </b-button>
+          </div>
+        </div>
+      </div>
+
+      <div class="csv-load" v-if="!localDb && localChoice === 'import'">
         <b-field class="file is-primary">
           <b-upload v-on:input="readFile" drag-drop expanded accept=".csv">
             <section class="section">
@@ -73,7 +91,8 @@ export default {
   data() {
     return {
       csv: null,
-      csvHeaders: csvHeaders
+      csvHeaders: csvHeaders,
+      localChoice: false
     };
   },
   computed: {
@@ -173,7 +192,22 @@ export default {
           this.$buefy.toast.open('Database cleared!')
         }
       })
+    },
+    setLocalChoice(value) {
+      if (value == 'start') {
+        this.$store.commit("profile/setLocalDb", true);
+        this.$router.push({"name": "conditions"})
+      } else if (value === 'import') {
+        this.localChoice = 'import'
+      }
     }
   },
 };
 </script>
+
+<style lang="scss">
+  .special-button {
+    max-height: none !important;
+    height: auto !important;
+  }
+</style>
