@@ -4,7 +4,7 @@
     >
     <div class="info column is-one-third">
       <div class="label mr-2">Proposal:</div>
-      <div class="value">{{proposal.title}}</div>
+      <div class="value">{{assessment.title}}</div>
     </div>
     <div class="info column is-one-third">
       <div class="label mr-2">Average Rating: </div>
@@ -15,6 +15,10 @@
     <div class="info column is-one-third">
       <div class="label mr-2">Assessor:</div>
       <div class="value">{{assessment.assessor}}</div>
+    </div>
+    <div class="info column is-one-third">
+      <div class="label mr-2">Challenge:</div>
+      <div class="value">{{assessment.challenge}}</div>
     </div>
     <div class="info column is-one-third">
       <div class="value">
@@ -52,26 +56,14 @@
 
 <script>
 
-import proposals from '../assets/data/proposals.json'
-
 export default {
   data() {
     return {
-      proposals: proposals,
     }
   },
   name: 'AssessmentPreview',
   props: ['assessment', 'idx'],
   computed: {
-    proposal() {
-      if (this.assessment) {
-        let filtered = this.proposals.filter(p => (p.id === parseInt(this.assessment.proposal_id)))
-        if (filtered.length) {
-          return filtered[0]
-        }
-      }
-      return false
-    },
     rating() {
       return Math.round((this.assessment.auditability_rating + this.assessment.feasibility_rating + this.assessment.impact_rating) / 3)
     },
