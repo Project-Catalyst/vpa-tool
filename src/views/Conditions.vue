@@ -6,7 +6,7 @@
           >Choose Filters</b-button
         >
         <c-filter
-          :filterVisible="'true'"
+          :filterVisible="filterVisible"
           :activeFilters="activeFilters"
           :availableFilters="availableFilters"
           @remove-filter="removeFilter"
@@ -15,9 +15,8 @@
       </div>
       <b-field class="p-4">
         <b-radio-button
-          v-model="activePrefilter"
+          v-model="localActivePrefilter"
           v-for="(el, i) in prefilters"
-          v-on:input="setList(el)"
           :native-value="el.v"
           :key="i"
           size="is-small"
@@ -78,11 +77,12 @@ export default {
       assessors: assessors,
       categories: categories,
       interval: false,
+      filterVisible: false,
       prefilters: [
-        { label: "Random", v: "randomAssessments" },
+        { label: "Random", v: "random" },
         { label: "Low reviewed (from other vCAs)", v: "lowReviewed" },
         { label: "No reviews (from other vCAs)", v: "noReviewed" },
-        { label: "All", v: "filteredAssessments" },
+        { label: "All", v: "std" },
       ],
     };
   },
@@ -90,14 +90,21 @@ export default {
     ...mapState({
       assessments: (state) => state.assessments.indexed,
       reviewed: (state) => state.assessments.reviewed,
-      listAssessments: (state) => state.assessments.all,
       activeFilters: (state) => state.assessments.activeFilters,
-      activePrefilter: (state) => state.assessments.activePrefilter,
       currentIndex: (state) => state.assessments.currentIndex,
       currentSlice: (state) => state.assessments.currentSlice,
       listVisible: (state) => state.assessments.listVisible
     }),
     ...mapGetters("assessments", ["renderedList", "filteredCount", "fullCount"]),
+    localActivePrefilter: {
+      get() {
+        return this.$store.state.assessments.activePrefilter.v
+      },
+      set(val) {
+        let selected = this.prefilters.find((el) => el.v === val)
+        this.$store.commit('assessments/setPrefilter', selected)
+      }
+    },
     proposalsById() {
       return this.proposals.reduce(
         (obj, item) => Object.assign(obj, { [item.title]: item.id }),
@@ -111,7 +118,7 @@ export default {
       );
     },
     localTot() {
-      return this.reviewed.length
+      return this.$store.state.assessments.all.length
     },
     availableFilters() {
       return {
