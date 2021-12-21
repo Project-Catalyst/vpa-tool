@@ -2,6 +2,7 @@ import Vue from 'vue'
 import originalAssessments from "@/assets/data/assessments.csv"
 import comparisons from "@/utils/comparisons"
 import router from '@/router'
+import axios from 'axios'
 
 const isReviewed = (el) => {
   return el.excellent || el.good || el.filtered_out;
@@ -15,6 +16,7 @@ const getDefaultState = () => ({
   currentIndex: 0,
   currentSlice: 100,
   listVisible: false,
+  reviewed: {},
   remote: []
 })
 
@@ -41,7 +43,8 @@ const getters = {
   fullAssessments: (state) => {
     return originalAssessments.map(item => ({
       ...item,
-      ...state.remote[item.id]
+      ...state.remote[item.id],
+      ...state.reviewed[item.id]
     }))
   },
   filteredAssessments: (state, _, rootState, rootGetters) => {
@@ -147,12 +150,15 @@ const mutations = {
       assessment.excellent = data.value === 'excellent';
       assessment.good = data.value === 'good';
       assessment.filtered_out = data.value === 'filtered_out';
-      Vue.set(state.all, assessmentId, assessment)
       const newReviewed = isReviewed(assessment)
+      state.reviewed[assessment.id] = {
+        reviewed: newReviewed
+      }
+      Vue.set(state.all, assessmentId, assessment)
       if (newReviewed && !oldReviewed) {
-        this._vm.$http.post(`/${assessment.id}`).then(assessmentCb)
+        axios.post(`/${assessment.id}`).then(assessmentCb)
       } else if (!newReviewed && oldReviewed) {
-        this._vm.$http.delete(`/${assessment.id}`).then(assessmentCb)
+        axios.delete(`/${assessment.id}`).then(assessmentCb)
       }
     } else {
       let assessment = {
@@ -161,8 +167,11 @@ const mutations = {
       assessment.excellent = data.value === 'excellent';
       assessment.good = data.value === 'good';
       assessment.filtered_out = data.value === 'filtered_out';
+      state.reviewed[assessment.id] = {
+        reviewed: isReviewed(assessment)
+      }
       state.all.push(assessment)
-      this._vm.$http.post(`/${assessment.id}`).then(assessmentCb)
+      axios.post(`/${assessment.id}`).then(assessmentCb)
     }
   },
   addFilter(state, {prop, value}) {

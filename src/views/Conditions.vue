@@ -89,7 +89,6 @@ export default {
   computed: {
     ...mapState({
       assessments: (state) => state.assessments.indexed,
-      reviewed: (state) => state.assessments.reviewed,
       activeFilters: (state) => state.assessments.activeFilters,
       currentIndex: (state) => state.assessments.currentIndex,
       currentSlice: (state) => state.assessments.currentSlice,

@@ -45,7 +45,7 @@
 
         <b-checkbox
           class="always-opaque"
-          v-model="isReviewed"
+          v-model="assessment.reviewed"
           type="is-warning"
           disabled>
           Already reviewed
@@ -66,9 +66,6 @@ export default {
   computed: {
     rating() {
       return Math.round((this.assessment.auditability_rating + this.assessment.feasibility_rating + this.assessment.impact_rating) / 3)
-    },
-    isReviewed() {
-      return this.assessment.excellent || this.assessment.good || this.assessment.filtered_out;
     }
   },
   methods: {
