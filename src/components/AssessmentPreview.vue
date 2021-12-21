@@ -62,7 +62,7 @@ export default {
     }
   },
   name: 'AssessmentPreview',
-  props: ['assessment', 'idx'],
+  props: ['assessment'],
   computed: {
     rating() {
       return Math.round((this.assessment.auditability_rating + this.assessment.feasibility_rating + this.assessment.impact_rating) / 3)
@@ -70,10 +70,7 @@ export default {
   },
   methods: {
     goTo() {
-      this.$store.dispatch('assessments/goTo', {
-        newId: this.assessment.id,
-        newIdx: this.idx + 1
-      })
+      this.$store.dispatch('assessments/goTo', this.assessment.id)
     }
   }
 }

@@ -39,9 +39,8 @@
       </div>
       <div class="assessments-list" v-if="listVisible">
         <assessment-preview
-          v-for="(assessment, idx) in renderedList"
+          v-for="assessment in renderedList"
           :key="`ass-${assessment.id}`"
-          :idx="idx"
           :assessment="assessment"
         />
         <div
@@ -90,7 +89,6 @@ export default {
     ...mapState({
       assessments: (state) => state.assessments.indexed,
       activeFilters: (state) => state.assessments.activeFilters,
-      currentIndex: (state) => state.assessments.currentIndex,
       currentSlice: (state) => state.assessments.currentSlice,
       listVisible: (state) => state.assessments.listVisible
     }),
@@ -179,6 +177,17 @@ export default {
           type: 'select',
           value: false,
           values: { "90": 90, "180": 180, "270": 270, "600": 600 },
+        },
+        already_reviewed: {
+          key: "reviewed",
+          label: "Already reviewed",
+          comparison: 'alreadyReviewed',
+          type: 'select',
+          value: "",
+          values: {
+            "Reviewed": true,
+            "Not reviewed": false,
+          },
         },
       };
     },

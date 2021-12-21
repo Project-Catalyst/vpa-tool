@@ -30,7 +30,7 @@ const getters = {
     return (indexed[id]) ? indexed[id] : {}
   },
   getFullById: (state, _, rootState, rootGetters) => (id) => {
-    let filteredById = rootGetters['assessments/filteredById']
+    let filteredById = rootGetters['assessments/fullById']
     return filteredById[id]
   },
   indexed: (state) => {
@@ -56,9 +56,9 @@ const getters = {
     })
     return comparisons[state.activePrefilter.v](filtered)
   },
-  filteredById: (state, _, rootState, rootGetters) => {
+  fullById: (state, _, rootState, rootGetters) => {
     let result = {}
-    let filtered = rootGetters['assessments/filteredAssessments']
+    let filtered = rootGetters['assessments/fullAssessments']
     filtered.forEach(el => {
       result[el.id] = el
     })
@@ -92,8 +92,9 @@ const actions = {
   },
   getNext({ commit, state, getters }) {
     let fAssessments = getters.filteredAssessments
-    if (fAssessments[state.currentIndex]) {
-      let newId = fAssessments[state.currentIndex].id
+    let next = fAssessments.find((el) => el.id > state.currentIndex)
+    if (next) {
+      let newId = next.id
       let currentId = false
       if (router.currentRoute.name === 'assessment') {
         currentId = router.currentRoute.params.id
@@ -101,19 +102,19 @@ const actions = {
       if (newId !== currentId) {
         router.push({ name: 'assessment', params:{ id: newId }})
       }
-      commit('incrementIndex')
+      commit('setIndex', newId)
     } else {
       commit('setIndex', 0)
     }
   },
-  goTo({ commit }, {newId, newIdx}) {
+  goTo({ commit }, newId) {
     let currentId = false
     if (router.currentRoute.name === 'assessment') {
       currentId = router.currentRoute.params.id
     }
     if (newId !== currentId) {
       router.push({ name: 'assessment', params:{ id: newId }})
-      commit('setIndex', newIdx)
+      commit('setIndex', newId)
     }
   }
 }

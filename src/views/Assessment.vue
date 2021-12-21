@@ -215,4 +215,7 @@ export default {
   width: 500px !important;
   max-width: 100vw !important;
 }
+.control .button {
+  box-shadow: none !important;
+}
 </style>
