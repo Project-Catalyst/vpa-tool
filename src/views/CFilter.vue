@@ -1,8 +1,8 @@
 <template>
   <section class="filter pt-4 pb-4">
-    <div class="filter-list box" v-if="filterVisible">
+    <div class="filter-list box columns is-multiline" v-if="filterVisible">
       <div
-        class="single-filter is-expanded"
+        class="single-filter is-6 column"
         v-for="(v, i) in availableFilters"
         :key="`filter-${v.key}-${i}`"
       >
