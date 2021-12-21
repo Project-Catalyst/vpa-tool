@@ -122,10 +122,12 @@ const actions = {
 // mutations
 const mutations = {
   setAssessments (state, assessments) {
-    state.all = assessments
+    let filteredImport = assessments.filter((el) => isReviewed(el))
+    state.all = filteredImport
   },
   setReviewed (state, assessments) {
-    assessments.forEach((el) => {
+    let filteredImport = assessments.filter((el) => isReviewed(el))
+    filteredImport.forEach((el) => {
       state.reviewed[el.id] = {
         reviewed: isReviewed(el)
       }
