@@ -132,6 +132,7 @@ export default {
         if (this.csv.data) {
           this.$store.commit("profile/setLocalDb", true);
           this.$store.commit("assessments/setAssessments", this.csv.data);
+          this.$store.commit("assessments/setReviewed", this.csv.data);
           this.$router.push({"name": "conditions"})
         }
       }

@@ -12,7 +12,7 @@
         <p class="title is-4">
           {{ fullAssessment.title }} <span class="is-size-5 has-text-weight-bold">(<a :href="fullAssessment.url" target="_blank">See proposal in IdeaScale</a>)</span>
         </p>
-        <p class="subtitle is-5">{{ category.title }}</p>
+        <p class="subtitle is-5">{{ fullAssessment.challenge }}</p>
         <p class="subtitle is-5">
           <strong>No. of vCAs reviews:</strong>
           {{ (fullAssessment.reviews) ? fullAssessment.reviews : 0 }}
@@ -112,13 +112,11 @@
 
 <script>
 import { mapGetters, mapState } from "vuex";
-import categories from "../assets/data/categories.json";
 
 export default {
   name: "Assessment",
   data() {
     return {
-      categories: categories,
       isOpen: true
     };
   },
@@ -132,17 +130,6 @@ export default {
     },
     fullAssessment() {
       return this.getFullById(this.$route.params.id)
-    },
-    category() {
-      if (this.proposal) {
-        let filtered = this.categories.filter(
-          (c) => c.id === parseInt(this.proposal.category)
-        );
-        if (filtered.length) {
-          return filtered[0];
-        }
-      }
-      return false;
     },
     review: {
       get() {

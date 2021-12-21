@@ -78,7 +78,7 @@ const getters = {
 // actions
 const actions = {
   getReviewsCount ({ commit }) {
-    this._vm.$http.get().then((res) => {
+    axios.get().then((res) => {
       if (res.data) {
         let results = {}
         Object.entries(res.data).forEach(([key, val]) => {
@@ -123,6 +123,13 @@ const actions = {
 const mutations = {
   setAssessments (state, assessments) {
     state.all = assessments
+  },
+  setReviewed (state, assessments) {
+    assessments.forEach((el) => {
+      state.reviewed[el.id] = {
+        reviewed: isReviewed(el)
+      }
+    })
   },
   setRemote (state, assessments) {
     state.remote = assessments

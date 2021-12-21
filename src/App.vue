@@ -47,32 +47,10 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-import downloadCsv from "@/utils/export-csv";
-import originalAssessments from "@/assets/data/assessments.csv";
+import DownloadMixin from '@/mixins/download'
 
 export default {
-  data() {
-    return {
-      originalAssessments: originalAssessments
-    }
-  },
-  computed: {
-    ...mapState({
-      profile: (state) => state.profile,
-      assessments: (state) => state.assessments.indexed
-    })
-  },
-  methods: {
-    exportCsv() {
-      const localAssessments = this.assessments
-      const assessmentsExport = this.originalAssessments.map(item => ({
-        ...item,
-        ...localAssessments[item.id],
-      }));
-      downloadCsv(assessmentsExport, this.profile.info.name)
-    }
-  },
+  mixins: [DownloadMixin],
   mounted() {
     if (window.localStorage) {
       let oldKeys = ['vca-tool-f4-default', 'vca-tool-f5-default', 'vca-tool-f6-default']
