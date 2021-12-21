@@ -15,7 +15,7 @@
         <p class="subtitle is-5">{{ category.title }}</p>
         <p class="subtitle is-5">
           <strong>No. of vCAs reviews:</strong>
-          {{ (assessment.reviews) ? assessment.reviews : 0 }}
+          {{ (fullAssessment.reviews) ? fullAssessment.reviews : 0 }}
         </p>
         <p class="is-6">
           <strong>Assessor:</strong>

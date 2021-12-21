@@ -3,11 +3,9 @@ import originalAssessments from "@/assets/data/assessments.csv"
 import comparisons from "@/utils/comparisons"
 import router from '@/router'
 
-/*
 const isReviewed = (el) => {
   return el.excellent || el.good || el.filtered_out;
 }
-*/
 
 // initial state
 const getDefaultState = () => ({
@@ -17,7 +15,7 @@ const getDefaultState = () => ({
   currentIndex: 0,
   currentSlice: 100,
   listVisible: false,
-  reviewed: []
+  remote: []
 })
 
 
@@ -40,10 +38,11 @@ const getters = {
     })
     return result
   },
-  fullAssessments: () => {
-    return originalAssessments.filter(
-      (el) => (!el.blank)
-    );
+  fullAssessments: (state) => {
+    return originalAssessments.map(item => ({
+      ...item,
+      ...state.remote[item.id]
+    }))
   },
   filteredAssessments: (state, _, rootState, rootGetters) => {
     let filtered = rootGetters['assessments/fullAssessments']
@@ -75,17 +74,16 @@ const getters = {
 
 // actions
 const actions = {
-  getReviewsCount ({ state, commit }) {
-    const assessments = JSON.parse(JSON.stringify(state.all))
+  getReviewsCount ({ commit }) {
     this._vm.$http.get().then((res) => {
       if (res.data) {
+        let results = {}
         Object.entries(res.data).forEach(([key, val]) => {
-          const assessment = assessments.find(a => parseInt(a.id) === parseInt(key))
-          if (assessment) {
-            assessment.reviews = val
+          results[key] = {
+            reviews: val
           }
         });
-        commit('setAssessments', assessments)
+        commit('setRemote', results)
       }
     })
   },
@@ -122,42 +120,40 @@ const mutations = {
   setAssessments (state, assessments) {
     state.all = assessments
   },
+  setRemote (state, assessments) {
+    state.remote = assessments
+  },
   resetState (state) {
     Object.assign(state, getDefaultState())
   },
-  setReviews (state, data) {
-    //const assessment = state.all.find(a => parseInt(a.id) === parseInt(data.id))
-    const assessment = state.indexed[data.id]
-    if (assessment) {
-      assessment.reviews = data.reviews
-      Vue.set(state.indexed, assessment.id, assessment)
-    }
+  setSingleRemote (state, data) {
+    const assessment = {}
+    assessment.reviews = data.reviews
+    Vue.set(state.remote, data.id, assessment)
   },
   setReview(state, data) {
+    const assessmentCb = (res) => {
+      if (res.data) {
+        this.commit('assessments/setSingleRemote', {
+          id: data.id,
+          reviews: res.data.reviews,
+        })
+      }
+    }
     const assessmentId = state.all.findIndex(a => parseInt(a.id) === parseInt(data.id));
     if (assessmentId != -1) {
       let assessment = {...state.all[assessmentId]}
-      // const oldReviewed = isReviewed(assessment)
+      const oldReviewed = isReviewed(assessment)
       assessment.excellent = data.value === 'excellent';
       assessment.good = data.value === 'good';
       assessment.filtered_out = data.value === 'filtered_out';
       Vue.set(state.all, assessmentId, assessment)
-      // const newReviewed = isReviewed(assessment)
-      /*
-      const assessmentCb = (res) => {
-        if (res.data) {
-          this.commit('assessments/setReviews', {
-            id: assessment.id,
-            reviews: res.data.reviews,
-          })
-        }
-      }
+      const newReviewed = isReviewed(assessment)
       if (newReviewed && !oldReviewed) {
         this._vm.$http.post(`/${assessment.id}`).then(assessmentCb)
       } else if (!newReviewed && oldReviewed) {
         this._vm.$http.delete(`/${assessment.id}`).then(assessmentCb)
       }
-      */
     } else {
       let assessment = {
         id: data.id,
@@ -166,7 +162,7 @@ const mutations = {
       assessment.good = data.value === 'good';
       assessment.filtered_out = data.value === 'filtered_out';
       state.all.push(assessment)
-      // this._vm.$http.post(`/${assessment.id}`).then(assessmentCb)
+      this._vm.$http.post(`/${assessment.id}`).then(assessmentCb)
     }
   },
   addFilter(state, {prop, value}) {
