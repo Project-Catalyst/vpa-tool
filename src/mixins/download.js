@@ -25,6 +25,11 @@ const download = {
         ...item,
       }));
       downloadCsv(assessmentsExport, this.profile.info.name)
+      this.$buefy.dialog.alert({
+        title: 'CSV Downloaded!',
+        message: '<div class="content">Your CSV is now downloaded.<br />To complete the vCA submission you have to:<ol><li>Create a new Google Sheet document</li><li>Click <i>File</i> -> <i>Import</i> and select the CSV downloaded</li><li>Change the share settings to <i>Anyone with the link can view</i>.<br /><b>Important!</b> If you don\'t change the share settings, your reviews will not be used</li><li>Fill <u><a href="#">this form</a></u> with your details and the link to the Google Sheet document.</div>',
+        confirmText: 'OK'
+      })
     }
   },
 }
