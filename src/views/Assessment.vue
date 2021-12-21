@@ -94,6 +94,18 @@
               </b-radio-button>
             </b-field>
             <b-button type="is-warning is-light" @click="uncheck()" outlined>Deselect</b-button>
+            <b-field
+              class="mt-4"
+              v-if="fullAssessment.reviewed"
+              label="Your feedback to CA (not required):">
+              <b-input
+                type="textarea"
+                @keydown.native="saveStatus = 'Saving...'"
+                v-model="debouncedRationale"></b-input>
+            </b-field>
+            <b-tag icon="content-save-outline" v-if="assessment.id && fullAssessment.reviewed">
+              {{saveStatus}}
+            </b-tag>
           </section>
         </div>
       </div>
@@ -112,12 +124,14 @@
 
 <script>
 import { mapGetters, mapState } from "vuex";
+import debounce from 'lodash.debounce';
 
 export default {
   name: "Assessment",
   data() {
     return {
-      isOpen: true
+      isOpen: true,
+      saveStatus: 'Saved'
     };
   },
   computed: {
@@ -145,6 +159,18 @@ export default {
         });
       }
     },
+    debouncedRationale: {
+      get() {
+        return this.assessment.vca_feedback;
+      },
+      set: debounce(function(val) {
+        this.$store.commit('assessments/setVcaFeedback', {
+          id: this.$route.params.id,
+          value: val
+        });
+        this.saveStatus = 'Saved'
+      }, 500)
+    }
   },
   methods: {
     uncheck() {

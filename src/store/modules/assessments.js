@@ -182,6 +182,19 @@ const mutations = {
       axios.post(`/${assessment.id}`).then(assessmentCb)
     }
   },
+  setVcaFeedback(state, data) {
+    const assessmentId = state.all.findIndex(a => parseInt(a.id) === parseInt(data.id));
+    if (assessmentId != -1) {
+      let assessment = {...state.all[assessmentId]}
+      assessment.vca_feedback = data.value;
+      Vue.set(state.all, assessmentId, assessment)
+    } else {
+      state.all.push({
+        id: data.id,
+        vca_feedback: data.value
+      })
+    }
+  },
   addFilter(state, {prop, value}) {
     const newFilter = Object.assign({}, prop);
     newFilter.value = value;
