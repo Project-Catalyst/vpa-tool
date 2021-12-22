@@ -62,7 +62,7 @@
         </div>
         <div class="columns is-mobile is-centered">
           <section class="column is-narrow">
-            <p class="title is-4">Your review:</p>
+            <p class="title is-4">Your categorization of the assessment:</p>
             <b-field>
               <b-radio-button v-model="review"
                 native-value="excellent"

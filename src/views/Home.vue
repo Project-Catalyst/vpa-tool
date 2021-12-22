@@ -1,20 +1,14 @@
 <template>
   <div class="section container">
-    <b-message>
-      <p>This is an app to help vCAs with the review process. It's currently in
-      early development. Please report any bugs.</p>
-    </b-message>
-
     <b-message type="is-warning" has-icon>
       This tool uses localStorage and cookies to store the progress of your work.<br />
-      If you're using a setup where cookies are cleared at every browser launch, be careful because you may lose your work! You should export (download) the file, and re-import it every time or add a exception to your browser's settings.<br />
-      We plan to add server authentication mechanism in the future versions to avoid this problem.
+      If you're using a setup where cookies are cleared at every browser launch, be careful because you may lose your work! You should export (download) the file, and re-import it every time or add a exception to your browser's settings.
     </b-message>
 
     <b-message type="is-info" has-icon v-if="profile.localDb">
       <p>
         Hello <strong>{{profile.info.name}}</strong>,<br />
-        your database is already loaded in the app.<br />
+        your database is already initialized in the app.<br />
         You can continue your work clicking on the button below.
       </p>
 

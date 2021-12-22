@@ -2,42 +2,37 @@
   <b-message>
     <div class="content">
       <p><b>How it works</b><br /></p>
-      <p>The vCA-tool is designed to work in parallel with the standard way (using the Google Sheet) in order to provide a better user experience and to better coordinate the vCA work.<br />
-      Consider it as an experiment that hopefully will be used as the standard method in the next funds.<br /><br /></p>
+      <p>The vCA-tool is designed to work in parallel with the standard way (using the Google Sheet) in order to provide a better user experience and to better coordinate the vCA work. It is a community made tool, feedback is welcomed.</p>
       <ol>
+        <li>Click on the "Start Process" button</li>
+        <li>Enter your Full Name and email address.</li>
+        <li>Choose either “I want to start the process from the beginning” or “I have a backup file to import” (see step 8)</li>
         <li>
-          From the vCA email you'll receive the Google Sheet link for the vCA Master File: instead of following the standard procedure, from the vCA MAster File, save the "Assessment" tab as a CSV (File -> Download -> Comma-separated value).
+          You will be redirected to the "Assessments list view".<br />
+          From this page you can show/hide the list and select your chosen filters, by clicking ‘Choose Filters’. You can combine them in any way you like.
         </li>
-        <li>
-          Click on the "Start Process" button, fill the form and upload the file you've just downloaded. To check that you imported the right file you should see: "No of assessments to be loaded: <b>4118</b>". If you see a different number you've probably imported the wrong file.<br />
+        <li>Click on the ‘Next’ button to access to the “Review View”</li>
+        <li>Make your review of the CA assessment click ‘next’ to see another assessment.
+          <ol type="a" class="mt-0">
+            <li>Read the assessment triplet on “Impact / Alignment”, “Feasibility” and “Clearity/Auditability”.</li>
+            <li>Read the proposal and cross reference the CA assessment with the content of the proposal.</li>
+            <li>Categorize them as either, "Excellent", "Good" or "Filtered Out", according to the CA Guidelines.</li>
+            <li>Provide the CA with any positive or constructive criticism to help them continue to or in the future make better assessments (optional).</li>
+          </ol>
         </li>
-        <li>
-          Click "Import data" and the tool will load all the CA assessments in the browser. <br />
+        <li>Repeat the process for all Assessments you wish to review</li>
+        <li>When Complete - Click "Export CSV".
+          <ol type="a" class="mt-0">
+            <li>This export can be used to ‘save’/backup your reviews and import them into the tool in another location or cleared browser.</li>
+          </ol>
         </li>
-        <li>
-          After that you will access to the "Assessments list view".<br />
-          There are two type of filters: the first one includes "Random", "Low reviewed", "No reviews", "All" and the second one includes "Flagged by proposers", "Proposal", "Question", "Rating", "Length less than", "Length greated than".<br />
-          You can combine them in any way you like.<br />
-        </li>
-        <li>
-          Clicking on the "Next" button, you will access to the "Assessment View" where you can review the assessment flagging them as "Excellent", "Good" or "Not valid", according to the guidelines.<br />
-          Unlike what happens with the Google Sheet, here you can see how many times an assessment has been reviewed by the vCAs (Reviews: X): this information is useful to better coordinate the work of the vCAs as you can check if an assessment has reached quorum ( Note: since not everyone will use the vCA tool this information is partial, welcome to the experiment in the experiment).
-        </li>
-        <li>
-          In the "Assessments list view" you can also click the "Show list" button to see the list of the assessments based on the filters selected.<br />
-        </li>
-        <li>
-          When you've finished your work, you have to click on top right "vCA Tool" menu and select "Export CSV".<br />
-        </li>
+        <li>Upload the final export to Google Docs, change the share settings to "Anyone with the link".</li>
+        <li>Submit your final review (CSV file) using <a href="https://forms.gle/a9oqmSi9JBDQGHKM8" target="_blank">this form</a></li>
       </ol>
-      <p>This is the final file that you'll have to share at the end of the vCA process. This file file can also be re-imported in the vCA-tool.<br />
-      Upload the final export to Google Docs, change the share settings to "Anyone with the link" and fill in <a href="https://forms.gle/a9oqmSi9JBDQGHKM8" target="_blank">this form</a> with your details.<br /></p>
       <p><b>Useful resources</b><br /></p>
       <p>
-        <a href="https://docs.google.com/document/d/1vHapUV1LHM4cb2375V99oM32xJ-wj_XoN-DYcvKEk0A/edit?usp=sharing" target="_blank">QA Stage Guide</a><br />
-        <a href="https://docs.google.com/document/d/16aq9dNudJ5S3TEVQhBgRznTCoaF8SQezyActtVhec8E" target="_blank">Community Advisor Onboarding</a><br />
-        <a href="https://docs.google.com/document/d/1QkdaFK1tigrSI40iMeV3UP9GyTGsoqVmCUp7OJz0WFs" target="_blank">Community Advisor Guide</a><br />
-        <a href="https://docs.google.com/document/d/1g-iZhDlKhUBZkui1uv8NVNfJC4oVD3JtR-P6Fue7XPU/edit" target="_blank">Proposal Assessment Guide</a><br />
+        <a href="https://docs.google.com/document/d/1vHapUV1LHM4cb2375V99oM32xJ-wj_XoN-DYcvKEk0A/edit?usp=sharing" target="_blank">Assess QA (Quality Assurance) Stage</a><br />
+        <a href="https://docs.google.com/document/d/1g-iZhDlKhUBZkui1uv8NVNfJC4oVD3JtR-P6Fue7XPU/edit" target="_blank">Community Advisor Assessment Guide</a><br />
       </p>
     </div>
   </b-message>
