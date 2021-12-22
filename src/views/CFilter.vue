@@ -1,6 +1,6 @@
 <template>
   <section class="filter pt-4 pb-4">
-    <div class="filter-list box columns is-multiline" v-if="filterVisible">
+    <div class="filter-list box columns is-multiline m-0 mb-4" v-if="filterVisible">
       <div
         class="single-filter is-6 column"
         v-for="(v, i) in availableFilters"

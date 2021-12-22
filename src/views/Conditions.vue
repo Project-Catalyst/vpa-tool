@@ -1,7 +1,7 @@
 <template>
   <div class="conditions container">
     <section>
-      <div class="filters p-4">
+      <div class="filters pt-4">
         <b-button expanded @click="filterVisible = !filterVisible"
           >Choose Filters</b-button
         >
@@ -13,7 +13,7 @@
           @update-filter="updateFilter"
         />
       </div>
-      <b-field class="p-4">
+      <b-field class="pt-4 pb-4">
         <b-radio-button
           v-model="localActivePrefilter"
           v-for="(el, i) in prefilters"
@@ -24,9 +24,9 @@
           >{{ el.label }}</b-radio-button
         >
       </b-field>
-      <div class="notification is-primary mb-6">
+      <div class="notification is-primary mb-6 p-4">
         <div class="mb-3">Your progress: {{localTot}}/{{fullCount}}</div>
-        <div class="buttons">
+        <div class="buttons is-flex">
           <b-button type="is-primary" inverted @click="getNext">Next</b-button>
           <b-button
             type="is-primary"
@@ -35,6 +35,11 @@
             @click="toggleList"
             >{{ showListLabel }}</b-button
           >
+          <div class="is-flex-grow-1">
+            <b-button class="is-pulled-right" @click="exportCsv" v-if="profile.localDb">
+              Export CSV
+            </b-button>
+          </div>
         </div>
       </div>
       <div class="assessments-list" v-if="listVisible">
@@ -60,6 +65,7 @@
 import { mapState, mapGetters } from "vuex";
 import AssessmentPreview from "@/components/AssessmentPreview";
 import CFilter from "@/views/CFilter";
+import DownloadMixin from '@/mixins/download'
 import proposals from "../assets/data/proposals.json";
 import categories from "../assets/data/categories.json";
 import assessors from "../assets/data/assessors.json";
@@ -70,6 +76,7 @@ export default {
     AssessmentPreview,
     CFilter,
   },
+  mixins: [DownloadMixin],
   data() {
     return {
       proposals: proposals,
@@ -87,7 +94,6 @@ export default {
   },
   computed: {
     ...mapState({
-      assessments: (state) => state.assessments.indexed,
       activeFilters: (state) => state.assessments.activeFilters,
       currentSlice: (state) => state.assessments.currentSlice,
       listVisible: (state) => state.assessments.listVisible
