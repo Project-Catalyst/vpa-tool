@@ -103,8 +103,17 @@ const transformHeader = function(header) {
   return header
 };
 
+
+let publicPath = ''
+if (process.env.APP_ENV === 'production') {
+  publicPath = '/vca-tool/'
+}
+if (process.env.APP_ENV === 'staging') {
+  publicPath = '/'
+}
+
 module.exports = {
-  publicPath: (process.env.NODE_ENV === 'production') ? '/vca-tool/' : '',
+  publicPath: publicPath,
   chainWebpack: config => {
     config
       .module
