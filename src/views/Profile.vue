@@ -12,16 +12,16 @@
     </section>
     <section class="section">
       <b-field label="Full Name">
-        <b-input v-model="name"></b-input>
+        <b-input v-model="name" required></b-input>
       </b-field>
 
       <b-field label="Email">
-        <b-input type="email" v-model="email"></b-input>
+        <b-input type="email" v-model="email" required></b-input>
       </b-field>
 
       <b-field>
         <b-checkbox v-model="proposersRationaleVisible">
-          I want to have access to proposers' rationales for flags
+          I want to have access to proposers' rationales
         </b-checkbox>
       </b-field>
 
@@ -29,13 +29,19 @@
         <h2>Choose an option to start your process:</h2>
         <div class="is-flex columns mt-6 mb-6">
           <div class="is-half column has-text-centered">
-            <b-button class="is-primary special-button" @click="setLocalChoice('start')">
+            <b-button
+              :disabled="(name.length === 0) || (email.length === 0)"
+              class="is-primary special-button"
+              @click="setLocalChoice('start')">
               I want to start the process from the beginning<br />
               I don't have a backup file to import
             </b-button>
           </div>
           <div class="is-half column has-text-centered">
-            <b-button class="is-primary is-light special-button" @click="setLocalChoice('import')">
+            <b-button
+              :disabled="(name.length === 0) || (email.length === 0)"
+              class="is-primary is-light special-button"
+              @click="setLocalChoice('import')">
               I want to continue the process<br />
               I have a backup file to import
             </b-button>
