@@ -1,11 +1,6 @@
 <template>
-  <b-modal class="assessment"
+  <div class="assessment mt-4 mb-6"
     :key="`assessment-${fullAssessment.id}`"
-    :ref="'modal'"
-    v-model="isOpen"
-    :can-cancel="false"
-    :animation="'no-animation'"
-    full-screen
     >
     <div class="card container custom-card" v-if="fullAssessment">
       <div class="card-content">
@@ -119,7 +114,7 @@
         </a>
       </footer>
     </div>
-  </b-modal>
+  </div>
 </template>
 
 <script>
@@ -131,7 +126,7 @@ export default {
   data() {
     return {
       isOpen: true,
-      saveStatus: 'Saved'
+      saveStatus: 'Feedback saved locally'
     };
   },
   computed: {
@@ -168,7 +163,7 @@ export default {
           id: this.$route.params.id,
           value: val
         });
-        this.saveStatus = 'Saved'
+        this.saveStatus = 'Feedback saved locally'
       }, 500)
     }
   },
