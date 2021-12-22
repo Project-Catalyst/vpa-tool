@@ -7,6 +7,9 @@
         </b-navbar-item>
       </template>
       <template #end>
+        <b-navbar-item @click="openInstructions">
+          Instructions
+        </b-navbar-item>
         <b-navbar-dropdown label="vCA Tool">
           <b-navbar-item tag="router-link" :to="{ name: 'profile' }">
             Profile
@@ -59,14 +62,26 @@
         </b-button>
       </div>
     </footer>
+    <b-modal v-model="instructionModal">
+      <instructions />
+    </b-modal>
   </div>
 </template>
 
 <script>
 import DownloadMixin from '@/mixins/download'
+import Instructions from "@/components/Instructions"
 
 export default {
+  data() {
+    return {
+      instructionModal: false
+    }
+  },
   mixins: [DownloadMixin],
+  components: {
+    Instructions
+  },
   mounted() {
     if (window.localStorage) {
       let oldKeys = ['vca-tool-f4-default', 'vca-tool-f5-default', 'vca-tool-f6-default']
@@ -76,6 +91,11 @@ export default {
           window.localStorage.removeItem(k)
         }
       })
+    }
+  },
+  methods: {
+    openInstructions() {
+      this.instructionModal = true
     }
   }
 };
