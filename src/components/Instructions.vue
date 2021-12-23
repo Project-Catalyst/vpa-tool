@@ -26,8 +26,8 @@
             <li>This export can be used to ‘save’/backup your reviews and import them into the tool in another location or cleared browser.</li>
           </ol>
         </li>
-        <li>Upload the final export to Google Docs, change the share settings to "Anyone with the link".</li>
-        <li>Submit your final review (CSV file) using <a href="https://docs.google.com/forms/d/e/1FAIpQLSc5hWW3Wlsl-RAjLMWuaIcFYesG7JdnHBlRQXPtPY-PHoDdow/viewform" target="_blank">this form</a></li>
+        <li>Upload the final export to Google Sheet, change the share settings to "Anyone with the link".</li>
+        <li>Submit your final work using <a href="https://docs.google.com/forms/d/e/1FAIpQLSc5hWW3Wlsl-RAjLMWuaIcFYesG7JdnHBlRQXPtPY-PHoDdow/viewform" target="_blank">this form</a></li>
       </ol>
       <p><b>Useful resources</b><br /></p>
       <p>
