@@ -57,7 +57,7 @@ csvHeaders = JSON.parse(`{
   },
   "proposer_rationale": {
     "type": "string",
-    "label": "Proposer Filtered Out rationale or Feedback"
+    "label": "Proposer Not Valid rationale or Feedback"
   },
   "excellent": {
     "type": "boolean",
