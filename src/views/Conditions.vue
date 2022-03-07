@@ -165,6 +165,13 @@ export default {
           value: false,
           values: this.proposalsById,
         },
+        not_proposal_id: {
+          key: "proposal_id",
+          label: "Not-Proposal (All assessments NOT from this <Proposal>)",
+          comparision: (a, v) => parseInt(a) !== parseInt(v),
+          value: false,
+          values: this.proposalsById,
+        },
         rating: {
           key: "rating",
           label: "Average Rating",
@@ -175,10 +182,27 @@ export default {
           value: false,
           values: { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 },
         },
+        not_rating: {
+          key: "rating",
+          label: "Not-Average Rating (All assessments NOT with this <Rating>)",
+          comparision: (a, v, el) => {
+            v = Math.round((el.auditability_rating + el.feasibility_rating + el.impact_rating) / 3);
+            return parseInt(a) !== v;
+          },
+          value: false,
+          values: { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 },
+        },
         assessor: {
           key: "assessor",
           label: "Assessor",
           comparision: (a, v) => a === v,
+          value: "",
+          values: this.assessors,
+        },
+        not_assessor: {
+          key: "assessor",
+          label: "Not-Assessor (All assessments NOT from this <Assessor>)",
+          comparision: (a, v) => a !== v,
           value: "",
           values: this.assessors,
         },
