@@ -30,6 +30,9 @@
               <template #empty>No results found</template>
           </b-autocomplete>
         </b-field>
+        <div class="checkbox">
+          <b-checkbox v-if="v.key === 'assessor'" v-model="assessor_invert"><span>Select All except</span></b-checkbox>
+        </div>
       </div>
     </div>
     <div class="active-filters box" v-if="activeFilters.length">
@@ -55,6 +58,7 @@ export default {
   data() {
     return {
       autocomplete: ['proposal_id'],
+      assessor_invert: false,
       search: {
         proposal_id: '',
         challenge: '',
@@ -83,7 +87,8 @@ export default {
     },
     updateAutocomplete(option, v) {
       if (option) {
-        this.updateFilter(v, v.values[option])
+        v.comparison = v.key === 'assessor' ? (this.assessor_invert ? 'not': 'same') : v.comparison;
+        this.updateFilter(v, v.values[option]);
       }
     }
   },
