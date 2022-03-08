@@ -11,12 +11,38 @@
             expanded
             :placeholder="v.label"
             :value="v.value"
-            @input="updateFilter(v, $event)"
+            @input="setInputValue(v, $event)"
           >
             <option v-for="(vv, kk) in v.values" :value="vv" :key="vv">
               {{ kk }}
             </option>
           </b-select>
+          <div class="filter-buttons exclude" v-if="hasNegation(v.key)"> 
+            <b-button 
+              type="is-success is-light"
+              @click="inclusiveButton(v.key)"
+              outlined>
+              <span>Include</span>
+              <b-icon icon="check"></b-icon>
+            </b-button>
+            <b-button 
+              type="is-danger is-light" 
+              style="margin-left:5px"
+              @click="exclusiveButton(v.key)"
+              outlined>
+              <span>Exclude</span>
+              <b-icon icon="close"></b-icon>
+            </b-button>
+          </div>
+          <div class="filter-buttons search" v-else> 
+            <b-button 
+              type="is-primary is-light"
+              style="width:215px"
+              @click="inclusiveButton(v.key)"
+              outlined>
+              Search
+            </b-button>
+          </div>
         </b-field>
       </div>
     </div>
@@ -40,16 +66,40 @@
 export default {
   name: "CFilter",
   props: ["availableFilters", "activeFilters", "filterVisible"],
+  data() {
+    return {
+      optionSelection: {},
+      negOption: { // newly implemented availableFilters() have to be inserted here
+        "proposer_mark": false,
+        "proposal_id": true,
+        "rating": true,
+        "assessor": true,
+        "note": false
+      }
+    };
+  },
   methods: {
-    updateFilter(prop, value) {
-      this.$emit("update-filter", prop, value);
+    hasNegation(filter_key){
+      return this.negOption[filter_key]
+    },
+    setInputValue(prop, value){
+      prop.value = value
+      this.optionSelection[prop.key] = prop
+    },
+    inclusiveButton(filter_key) {
+      this.$emit("update-filter", this.optionSelection[filter_key], false);
+    },
+    exclusiveButton(filter_key) {
+      this.$emit("update-filter", this.optionSelection[filter_key], true);
     },
     removeFilter(f) {
       this.$emit("remove-filter", f);
     },
     getLabelValue(f) {
-      return Object.keys(f.values)
-        .find((key) => f.values[key] === f.value)
+      let val = Object.keys(f.values).find((key) => f.values[key] === f.value)
+      return f.negation
+        ? "(NOT)"+val
+        : val
     },
   },
 };
@@ -58,5 +108,18 @@ export default {
 <style lang="scss" scoped>
 .tag .has-ellipsis {
   max-width: calc(100vw - 110px);
+}
+.single-filter {
+  width: 100%;
+}
+.exclude {
+  width: 20%;
+  padding: .50rem;
+  margin-top: 0px;
+}
+.search {
+  width: 20%;
+  padding: .50rem;
+  margin-top: 0px
 }
 </style>

@@ -151,6 +151,7 @@ export default {
         proposer_mark: {
           key: "proposer_mark",
           label: "Flagged by proposers",
+          nagation: false,
           comparision: (a, v) => a === v,
           value: "",
           values: {
@@ -161,33 +162,24 @@ export default {
         proposal_id: {
           key: "proposal_id",
           label: "Proposal",
-          comparision: (a, v) => parseInt(a) === parseInt(v),
-          value: false,
-          values: this.proposalsById,
-        },
-        not_proposal_id: {
-          key: "proposal_id",
-          label: "Not-Proposal (All assessments NOT from this <Proposal>)",
-          comparision: (a, v) => parseInt(a) !== parseInt(v),
+          nagation: false,
+          comparision: (a, v, neg) => {
+            return neg
+            ? parseInt(a) !== parseInt(v)
+            : parseInt(a) === parseInt(v)
+          },
           value: false,
           values: this.proposalsById,
         },
         rating: {
           key: "rating",
           label: "Average Rating",
-          comparision: (a, v, el) => {
+          nagation: false,
+          comparision: (a, v, neg, el) => {
             v = Math.round((el.auditability_rating + el.feasibility_rating + el.impact_rating) / 3);
-            return parseInt(a) === v;
-          },
-          value: false,
-          values: { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 },
-        },
-        not_rating: {
-          key: "rating",
-          label: "Not-Average Rating (All assessments NOT with this <Rating>)",
-          comparision: (a, v, el) => {
-            v = Math.round((el.auditability_rating + el.feasibility_rating + el.impact_rating) / 3);
-            return parseInt(a) !== v;
+            return neg
+              ? parseInt(a) !== v
+              : parseInt(a) === v
           },
           value: false,
           values: { "1": 1, "2": 2, "3": 3, "4": 4, "5": 5 },
@@ -195,21 +187,20 @@ export default {
         assessor: {
           key: "assessor",
           label: "Assessor",
-          comparision: (a, v) => a === v,
-          value: "",
-          values: this.assessors,
-        },
-        not_assessor: {
-          key: "assessor",
-          label: "Not-Assessor (All assessments NOT from this <Assessor>)",
-          comparision: (a, v) => a !== v,
+          nagation: false,
+          comparision: (a, v, neg) => {
+            return neg
+              ? a !== v
+              : a === v
+          },
           value: "",
           values: this.assessors,
         },
         lenLess: {
           key: "note",
           label: "Length less than",
-          comparision: (a, v, el) => {
+          nagation: false,
+          comparision: (a, v, _neg, el) => {
             v = el.auditability_note + el.feasibility_note + el.impact_note;
             return v ? v.length <= a : false;
           },
@@ -219,7 +210,8 @@ export default {
         lenGreater: {
           key: "note",
           label: "Length greater than",
-          comparision: (a, v, el) => {
+          nagation: false,
+          comparision: (a, v, _neg, el) => {
             v = el.auditability_note + el.feasibility_note + el.impact_note;
             return v ? v.length >= a : false;
           },
@@ -253,9 +245,9 @@ export default {
     setNext(index) {
       this.currentIndex = index + 1;
     },
-    updateFilter(prop, value) {
+    updateFilter(prop, neg) {
       const newFilter = Object.assign({}, prop);
-      newFilter.value = value;
+      newFilter.negation = neg;
       this.activeFilters.push(newFilter);
       this.setList(this.currentPrefilter);
     },
@@ -269,7 +261,7 @@ export default {
     customFilter(data, filters) {
       const [current, ...newFilters] = filters;
       const filtered = data.filter((el) =>
-        current.comparision(current.value, el[current.key], el)
+        current.comparision(current.value, el[current.key], current.negation, el)
       );
       if (filters.length > 1) {
         return this.customFilter(filtered, newFilters);
