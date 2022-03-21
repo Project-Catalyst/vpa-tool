@@ -19,6 +19,11 @@
           </b-select>
         </b-field>
         <b-field expanded :label="v.label" v-if="v.type === 'autocomplete'">
+          <b-checkbox
+            v-if="v.label === 'Assessor'"
+            v-model="v.negative">
+            Not
+          </b-checkbox>
           <b-autocomplete
               v-model="search[v.key]"
               :data="filteredDataArray(v.values, v.key)"
@@ -40,7 +45,7 @@
           v-for="f in activeFilters"
           :key="`active-${f.key}-${f.value}`"
         >
-          <span class="has-ellipsis">{{ f.label }}: {{ getLabelValue(f) }}</span>
+          <span class="has-ellipsis">{{ (f.negative) ? 'Not' : '' }} {{ f.label }}: {{ getLabelValue(f) }}</span>
           <button class="delete" @click="removeFilter(f)"></button>
         </div>
       </div>

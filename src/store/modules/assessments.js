@@ -50,9 +50,10 @@ const getters = {
   filteredAssessments: (state, _, rootState, rootGetters) => {
     let filtered = rootGetters['assessments/fullAssessments']
     state.activeFilters.forEach((current) => {
-      filtered = filtered.filter((el) =>
-        comparisons[current.comparison](current.value, el[current.key], el)
-      )
+      filtered = filtered.filter((el) => {
+        let currentComparison = current.negative ? `not${current.comparison}` : current.comparison
+        return comparisons[currentComparison](current.value, el[current.key], el)
+      })
     })
     return comparisons[state.activePrefilter.v](filtered)
   },

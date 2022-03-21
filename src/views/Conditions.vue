@@ -84,6 +84,7 @@ export default {
       categories: categories,
       interval: false,
       filterVisible: false,
+      negativeAssessorFilter: false,
       prefilters: [
         { label: "Random", v: "random" },
         { label: "Low reviewed (from other vCAs)", v: "lowReviewed" },
@@ -167,6 +168,7 @@ export default {
           type: 'autocomplete',
           value: "",
           values: this.assessors,
+          negative: this.negativeAssessorFilter
         },
         lenLess: {
           key: "note",
