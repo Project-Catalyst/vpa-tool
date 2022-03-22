@@ -3,7 +3,6 @@ import shuffle from '@/utils/shuffle'
 const comparisions = {
   sameInt: (a, v) => parseInt(a) === parseInt(v),
   same: (a, v) => a === v,
-  notsame: (a, v) => a !== v,
   alreadyReviewed: (a, v, el) => (el.reviewed !== undefined) ? (a === v) : (!a),
   sameAvg: (a, v, el) => {
     v = Math.round((el.auditability_rating + el.feasibility_rating + el.impact_rating) / 3);
