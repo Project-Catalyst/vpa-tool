@@ -84,7 +84,12 @@ export default {
       categories: categories,
       interval: false,
       filterVisible: false,
-      negativeAssessorFilter: false,
+      negationFilters: {
+        assessor: false,
+        challenge: false,
+        proposal: false,
+
+      },
       prefilters: [
         { label: "Random", v: "random" },
         { label: "Low reviewed (from other vCAs)", v: "lowReviewed" },
@@ -144,6 +149,7 @@ export default {
           type: 'autocomplete',
           value: false,
           values: this.proposalsById,
+          negative: this.negationFilters.proposal
         },
         challenge: {
           key: "challenge",
@@ -152,6 +158,7 @@ export default {
           type: 'autocomplete',
           value: false,
           values: this.categoriesByTitle,
+          negative: this.negationFilters.challenge
         },
         rating: {
           key: "rating",
@@ -168,7 +175,7 @@ export default {
           type: 'autocomplete',
           value: "",
           values: this.assessors,
-          negative: this.negativeAssessorFilter
+          negative: this.negationFilters.assessor
         },
         lenLess: {
           key: "note",
