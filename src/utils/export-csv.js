@@ -1,42 +1,35 @@
-import { parse } from 'json2csv'
 import FileSaver from 'file-saver'
 import slugify from 'slugify';
+import papa from 'papaparse'
 
-import csvHeaders from '../assets/data/csv-headers.json'
-
-function generateFields() {
-  let criteriaKeys = Object.keys(csvHeaders).map((c) => {
-    return {
-      label: csvHeaders[c].label,
-      value: (row) => {
-        if (csvHeaders[c].type === 'boolean') {
-          return (row[c]) ? 'x' : ''
-        } else {
-          return row[c]
-        }
-      }
-    }
-  })
-  return criteriaKeys
+function errorHandling(err, file, inputElem, reason) {
+  console.log("CSV: error exporting");
+  console.log("reason:");
+  console.log(reason);
+  console.log("err:");
+  console.log(err);
+  console.log("inputElem:");
+  console.log(inputElem);
 }
 
-function generateCsv(data) {
-  if (data.length) {
-    return parse(
-      data,
-      {
-        fields: generateFields()
-      }
-    );
-  }
-  return ''
+function onComplete(results) {
+  console.log("onComplete parsing CSV results:");
+  console.log(results);
 }
 
 function downloadCsv(data, filename) {
-  let date = new Date().toLocaleString().replace(',','').replaceAll('/', '-').replaceAll(':','-')
-  filename = filename + date + '-Fund7-vCA-export.csv'
-  let csv = generateCsv(data);
-  var blob = new Blob([csv], {type: "text/plain;charset=utf-8"});
+  let date = new Date().toLocaleString().replace(',', '').replaceAll('/', '-').replaceAll(':', '-')
+  filename = filename + date + '-Fund8-vCA-export.csv'
+  let csv = papa.unparse(data, {
+    complete: onComplete,
+    error: errorHandling,
+
+    dynamicTyping: true,
+    header: true,
+    skipEmptyLines: true,
+    // preview: 0, //experiment with specifing how many columns to read in order to avoid issues
+  })
+  var blob = new Blob([csv], { type: "text/plain;charset=utf-8" });
   FileSaver.saveAs(blob, slugify(filename));
 }
 

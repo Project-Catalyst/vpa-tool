@@ -77,7 +77,7 @@ csvHeaders = JSON.parse(`{
   }
 }`);
 
-const transformData = function(value, col) {
+const transformData = function (value, col) {
   if (csvHeaders[col]) {
     if (csvHeaders[col].type === 'integer') {
       return parseInt(value)
@@ -92,7 +92,7 @@ const transformData = function(value, col) {
     return value
   }
 };
-const transformHeader = function(header) {
+const transformHeader = function (header) {
   const newHeaders = {}
   Object.keys(csvHeaders).forEach((h) => {
     newHeaders[csvHeaders[h].label] = h
