@@ -25,8 +25,9 @@
         >
       </b-field>
       <div class="notification is-primary mb-6 p-4">
-        <div class="mb-3">Your progress: {{localTot}}/{{fullCount}}</div>
-        <div class="buttons is-flex">
+        <v-chip class="m-2" >Your progress: {{localTot}}/{{fullCount}}</v-chip>
+        <v-chip class="m-2">Filtered results: {{filteredCount}}</v-chip>
+        <div class="buttons is-flex mt-3">
           <b-button type="is-primary" inverted @click="getNext">Next</b-button>
           <b-button
             type="is-primary"
