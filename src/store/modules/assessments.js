@@ -40,10 +40,10 @@ const getters = {
     })
     return result
   },
-  fullAssessments: (state) => {
+  fullAssessments: (state, _, rootState, rootGetters) => {
     return originalAssessments.map(item => ({
       ...item,
-      ...state.remote[item.id],
+      ...rootGetters['assessments/indexed'][item.id],
       ...state.reviewed[item.id]
     }))
   },
