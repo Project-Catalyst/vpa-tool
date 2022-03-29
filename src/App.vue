@@ -84,7 +84,7 @@ export default {
   },
   mounted() {
     if (window.localStorage) {
-      let oldKeys = ['vca-tool-f4-default', 'vca-tool-f5-default', 'vca-tool-f6-default']
+      let oldKeys = ['vca-tool-f4-default', 'vca-tool-f5-default', 'vca-tool-f6-default', 'vca-tool-f7-default']
       oldKeys.forEach((k) => {
         let oldKey = window.localStorage.getItem(k)
         if (oldKey) {
