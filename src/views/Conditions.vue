@@ -184,7 +184,7 @@ export default {
           comparison: 'lengthLess',
           type: 'select',
           value: false,
-          values: { "40": 40, "90": 90, "180": 180, "270": 270, "600": 600 },
+          values: { "180": 180, "250": 250, "400": 400, "700": 700 },
         },
         lenGreater: {
           key: "note",
@@ -192,7 +192,7 @@ export default {
           comparison: 'lengthGreater',
           type: 'select',
           value: false,
-          values: { "90": 90, "180": 180, "270": 270, "600": 600 },
+          values: { "120": 120, "240": 240, "360": 360, "600": 600 },
         },
         already_reviewed: {
           key: "reviewed",
