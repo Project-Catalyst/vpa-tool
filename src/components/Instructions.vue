@@ -27,11 +27,11 @@
           </ol>
         </li>
         <li>Upload the final export to Google Sheet, change the share settings to "Anyone with the link".</li>
-        <li>Submit your final work using <a href="https://docs.google.com/forms/d/e/1FAIpQLSc5hWW3Wlsl-RAjLMWuaIcFYesG7JdnHBlRQXPtPY-PHoDdow/viewform" target="_blank">this form</a></li>
+        <li>Submit your final work using <a href="https://docs.google.com/forms/d/1-9mPZ26p1mqUa3ITxwbmpJQ4ioYo6n6LsWmI9W_Ruro/viewform" target="_blank">this form</a></li>
       </ol>
       <p><b>Useful resources</b><br /></p>
       <p>
-        <a href="https://docs.google.com/document/d/1vHapUV1LHM4cb2375V99oM32xJ-wj_XoN-DYcvKEk0A/edit?usp=sharing" target="_blank">Assess QA (Quality Assurance) Stage</a><br />
+        <a href="https://bit.ly/vCA_Guide" target="_blank">Veteran Community Advisor Guide</a><br />
         <a href="https://docs.google.com/document/d/1g-iZhDlKhUBZkui1uv8NVNfJC4oVD3JtR-P6Fue7XPU/edit" target="_blank">Community Advisor Assessment Guide</a><br />
       </p>
     </div>
