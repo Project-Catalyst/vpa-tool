@@ -3,7 +3,7 @@
     <div class="columns is-multiline is-mobile m-0 p-2 pb-4">
       <div class="info column is-one-third">
         <div class="label mr-2">Proposal:</div>
-        <div class="value">{{assessment.title}}</div>
+        <div class="value"><a :href="assessment.url" target="_blank">{{assessment.title}}</a></div>
       </div>
       <div class="info column is-one-third">
         <div class="label mr-2">Average Rating: </div>
