@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="info column is-one-third">
-        <div class="label mr-2">No. of vCAs reviews:</div>
+        <div class="label mr-2">No. of vPAs reviews:</div>
         <div class="value">{{ (assessment.reviews) ? assessment.reviews : 0 }}</div>
       </div>
       <div class="info mt-3 column is-full">

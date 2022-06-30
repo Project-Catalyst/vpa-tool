@@ -73,7 +73,7 @@ csvHeaders = JSON.parse(`{
   },
   "vca_feedback": {
     "type": "string",
-    "label": "vCA Feedback"
+    "label": "vPA Feedback"
   }
 }`);
 

@@ -1,9 +1,9 @@
 # vca-tool
 
-This is the repo for the vCA tool frontend.
+This is the repo for the vPA tool frontend.
 
-The process involves importing a CSV file with all assessments that are saved in the localStorage and reviewed locally by the Veteran Community Advisor.
-An external endpoint is connected to the app to have the updated number of reviews carried out by the vCAs and to be able to coordinate the work efficiently.
+The process involves importing a CSV file with all assessments that are saved in the localStorage and reviewed locally by the Veteran Proposal Assessor.
+An external endpoint is connected to the app to have the updated number of reviews carried out by the vPAs and to be able to coordinate the work efficiently.
 
 The development is based on Vue.js
 

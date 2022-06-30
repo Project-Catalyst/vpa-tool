@@ -93,8 +93,8 @@ export default {
       },
       prefilters: [
         { label: "Random", v: "random" },
-        { label: "Low reviewed (from other vCAs)", v: "lowReviewed" },
-        { label: "No reviews (from other vCAs)", v: "noReviewed" },
+        { label: "Low reviewed (from other vPAs)", v: "lowReviewed" },
+        { label: "No reviews (from other vPAs)", v: "noReviewed" },
         { label: "All", v: "std" },
       ],
     };
