@@ -2,7 +2,7 @@
   <b-message>
     <div class="content">
       <p><b>How it works</b><br /></p>
-      <p>The vCA-tool is designed to work in parallel with the standard way (using the Google Sheet) in order to provide a better user experience and to better coordinate the vCA work. It is a community made tool, feedback is welcomed.</p>
+      <p>The vPA-tool is designed to work in parallel with the standard way (using the Google Sheet) in order to provide a better user experience and to better coordinate the vPA work. It is a community made tool, feedback is welcomed.</p>
       <ol>
         <li>Click on the "Start Process" button</li>
         <li>Enter your Full Name and email address.</li>
@@ -12,12 +12,12 @@
           From this page you can show/hide the list and select your chosen filters, by clicking ‘Choose Filters’. You can combine them in any way you like.
         </li>
         <li>Click on the ‘Next’ button to access to the “Review View”</li>
-        <li>Make your review of the CA assessment click ‘next’ to see another assessment.
+        <li>Make your review of the PA assessment click ‘next’ to see another assessment.
           <ol type="a" class="mt-0">
             <li>Read the assessment triplet on “Impact / Alignment”, “Feasibility” and “Clearity/Auditability”.</li>
-            <li>Read the proposal and cross reference the CA assessment with the content of the proposal.</li>
-            <li>Categorize them as either, "Excellent", "Good" or "Filtered Out", according to the CA Guidelines.</li>
-            <li>Provide the CA with any positive or constructive criticism to help them continue to or in the future make better assessments (optional).</li>
+            <li>Read the proposal and cross reference the PA assessment with the content of the proposal.</li>
+            <li>Categorize them as either, "Excellent", "Good" or "Filtered Out", according to the PA Guidelines.</li>
+            <li>Provide the PA with any positive or constructive criticism to help them continue to or in the future make better assessments (optional).</li>
           </ol>
         </li>
         <li>Repeat the process for all Assessments you wish to review</li>
@@ -31,8 +31,8 @@
       </ol>
       <p><b>Useful resources</b><br /></p>
       <p>
-        <a href="https://bit.ly/vCA_Guide" target="_blank">Veteran Community Advisor Guide</a><br />
-        <a href="https://docs.google.com/document/d/1g-iZhDlKhUBZkui1uv8NVNfJC4oVD3JtR-P6Fue7XPU/edit" target="_blank">Community Advisor Assessment Guide</a><br />
+        <a href="https://bit.ly/vCA_Guide" target="_blank">Veteran Proposal Advisor Guide</a><br />
+        <a href="https://docs.google.com/document/d/1g-iZhDlKhUBZkui1uv8NVNfJC4oVD3JtR-P6Fue7XPU/edit" target="_blank">Proposal Advisor Assessment Guide</a><br />
       </p>
     </div>
   </b-message>

@@ -10,7 +10,7 @@
         <b-navbar-item @click="openInstructions">
           Instructions
         </b-navbar-item>
-        <b-navbar-dropdown label="vCA Tool">
+        <b-navbar-dropdown label="vPA Tool">
           <b-navbar-item tag="router-link" :to="{ name: 'profile' }">
             Profile
           </b-navbar-item>

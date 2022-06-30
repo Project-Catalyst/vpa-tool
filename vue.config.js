@@ -17,7 +17,7 @@ csvHeaders = JSON.parse(`{
   },
   "assessor": {
     "type": "string",
-    "label": "Assessor"
+    "label": "Advisor"
   },
   "triplet_id": {
     "type": "string",
@@ -73,7 +73,7 @@ csvHeaders = JSON.parse(`{
   },
   "vca_feedback": {
     "type": "string",
-    "label": "vCA Feedback"
+    "label": "vPA Feedback"
   }
 }`);
 

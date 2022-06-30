@@ -2,7 +2,7 @@
   <article id="profile" class="container">
     <section class="hero is-primary">
       <div class="hero-body">
-        <p class="title">vCA Review Tool</p>
+        <p class="title">vPA Review Tool</p>
         <p class="subtitle">Load a file to get started</p>
       </div>
     </section>

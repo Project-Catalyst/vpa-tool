@@ -9,11 +9,11 @@
         </p>
         <p class="subtitle is-5">{{ fullAssessment.challenge }}</p>
         <p class="subtitle is-5">
-          <strong>No. of vCAs reviews:</strong>
+          <strong>No. of vPAs reviews:</strong>
           {{ (fullAssessment.reviews) ? fullAssessment.reviews : 0 }}
         </p>
         <p class="is-6">
-          <strong>Assessor:</strong>
+          <strong>Advisor:</strong>
           {{ fullAssessment.assessor }}
         </p>
 
@@ -92,7 +92,7 @@
             <b-field
               class="mt-4"
               v-if="fullAssessment.reviewed"
-              label="Your feedback to CA (not required):">
+              label="Your feedback to PA (not required):">
               <b-input
                 type="textarea"
                 @keydown.native="saveStatus = 'Saving...'"
