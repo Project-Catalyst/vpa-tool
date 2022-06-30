@@ -171,7 +171,7 @@ export default {
         },
         assessor: {
           key: "assessor",
-          label: "Advisor",
+          label: "Assessor",
           comparison: 'same',
           type: 'autocomplete',
           value: "",

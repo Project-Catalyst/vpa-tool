@@ -13,7 +13,7 @@
           {{ (fullAssessment.reviews) ? fullAssessment.reviews : 0 }}
         </p>
         <p class="is-6">
-          <strong>Advisor:</strong>
+          <strong>Assessor:</strong>
           {{ fullAssessment.assessor }}
         </p>
 

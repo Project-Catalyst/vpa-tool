@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="info column is-one-third">
-        <div class="label mr-2">Advisor:</div>
+        <div class="label mr-2">Assessor:</div>
         <div class="value">{{assessment.assessor}}</div>
       </div>
       <div class="info column is-one-third">

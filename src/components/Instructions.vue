@@ -31,8 +31,8 @@
       </ol>
       <p><b>Useful resources</b><br /></p>
       <p>
-        <a href="https://bit.ly/vCA_Guide" target="_blank">Veteran Proposal Advisor Guide</a><br />
-        <a href="https://docs.google.com/document/d/1g-iZhDlKhUBZkui1uv8NVNfJC4oVD3JtR-P6Fue7XPU/edit" target="_blank">Proposal Advisor Assessment Guide</a><br />
+        <a href="https://bit.ly/vCA_Guide" target="_blank">Veteran Proposal Assessor Guide</a><br />
+        <a href="https://docs.google.com/document/d/1g-iZhDlKhUBZkui1uv8NVNfJC4oVD3JtR-P6Fue7XPU/edit" target="_blank">Proposal Assessor Guide</a><br />
       </p>
     </div>
   </b-message>

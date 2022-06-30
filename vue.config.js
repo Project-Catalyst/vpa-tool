@@ -17,7 +17,7 @@ csvHeaders = JSON.parse(`{
   },
   "assessor": {
     "type": "string",
-    "label": "Advisor"
+    "label": "Assessor"
   },
   "triplet_id": {
     "type": "string",
