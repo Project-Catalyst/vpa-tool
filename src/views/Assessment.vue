@@ -92,7 +92,7 @@
             <b-field
               :type="(!navigationAvailable) ? 'is-danger' : ''"
               :message="(!navigationAvailable) ? 'Please fill out this field.' : ''"
-              label="Provide your rationale for filtered out OR your feedback to PA:"
+              label="Provide your rationale for filtered out OR your feedback to PA (recommended):"
               class="mt-4"
               v-if="fullAssessment.reviewed">
               <b-input
@@ -146,6 +146,7 @@ export default {
       return this.review === 'filtered_out'
     },
     navigationAvailable() {
+      /*
       if (this.review === 'filtered_out') {
         if (this.debouncedRationale) {
           if (this.debouncedRationale.length > 0) {
@@ -154,6 +155,7 @@ export default {
         }
         return false
       }
+      */
       return true
     },
     review: {
