@@ -27,7 +27,7 @@
             <li>This export can be used to ‘save’/backup your reviews and import them into the tool in another location or cleared browser.</li>
           </ol>
         </li>
-        <li>Submit your final work using <a href="https://docs.google.com/forms/d/1-9mPZ26p1mqUa3ITxwbmpJQ4ioYo6n6LsWmI9W_Ruro/viewform" target="_blank">this form</a> and upload the CSV you just exported there.</li>
+        <li>Submit your final work using <a href="https://docs.google.com/forms/d/e/1FAIpQLSefmWhoctlIrOgSPzHyMiaQ1ncTcqzPgz6xAUdulI8kwLo2fA/viewform" target="_blank">this form</a> and upload the CSV you just exported there.</li>
       </ol>
       <p><b>Useful resources</b><br /></p>
       <p>
