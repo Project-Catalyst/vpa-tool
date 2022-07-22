@@ -27,7 +27,7 @@ const download = {
       downloadCsv(assessmentsExport, this.profile.info.name)
       this.$buefy.dialog.alert({
         title: 'CSV Downloading...',
-        message: '<div class="content">Your CSV is now downloading.<br />To complete the vPA submission you have to:<ol><li>Fill <u><a href="https://docs.google.com/forms/d/e/1FAIpQLSefmWhoctlIrOgSPzHyMiaQ1ncTcqzPgz6xAUdulI8kwLo2fA/viewform">this form</a></u> with your details</li><li>Upload in the form the CSV you just downloaded.</div>',
+        message: '<div class="content">Your CSV is now downloading.<br />To complete the vPA submission you have to:<ol><li>Fill <u><a href="https://forms.gle/TxbXUQDzNEwP3DFM7">this form</a></u> with your details</li><li>Upload in the form the CSV you just downloaded.</div>',
         confirmText: 'OK'
       })
     }
