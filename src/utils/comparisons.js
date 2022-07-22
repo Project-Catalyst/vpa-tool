@@ -9,7 +9,7 @@ const comparisions = {
     return parseInt(a) === v;
   },
   random: (l) => shuffle(l),
-  lowReviewed: (l) => l.filter((el) => el.reviews <= 5)
+  lowReviewed: (l) => l.filter((el) => el.reviews <= 8)
     .sort((a, b) => a.reviews - b.reviews),
   noReviewed: (l) => l.filter((el) => (el.reviews === 0) || (!el.reviews)),
   lengthLess: (a, v, el) => {

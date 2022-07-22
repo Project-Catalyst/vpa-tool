@@ -189,12 +189,12 @@ const mutations = {
     const assessmentId = state.all.findIndex(a => parseInt(a.id) === parseInt(data.id));
     if (assessmentId != -1) {
       let assessment = {...state.all[assessmentId]}
-      assessment.vca_feedback = data.value;
+      assessment.vpa_feedback = data.value;
       Vue.set(state.all, assessmentId, assessment)
     } else {
       state.all.push({
         id: data.id,
-        vca_feedback: data.value
+        vpa_feedback: data.value
       })
     }
   },

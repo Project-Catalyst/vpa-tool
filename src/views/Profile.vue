@@ -2,7 +2,7 @@
   <article id="profile" class="container">
     <section class="hero is-primary">
       <div class="hero-body">
-        <p class="title">vCA Review Tool</p>
+        <p class="title">vPA Review Tool</p>
         <p class="subtitle">Load a file to get started</p>
       </div>
     </section>
@@ -13,12 +13,6 @@
 
       <b-field label="Email">
         <b-input type="email" v-model="email" required></b-input>
-      </b-field>
-
-      <b-field>
-        <b-checkbox v-model="proposersRationaleVisible">
-          I want to have access to proposers' rationales
-        </b-checkbox>
       </b-field>
 
       <div class="main-choice" v-if="!localDb && localChoice === false">

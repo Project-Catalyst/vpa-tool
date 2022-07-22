@@ -19,7 +19,7 @@ function onComplete(results) {
 
 function downloadCsv(data, filename) {
   let date = new Date().toLocaleString().replace(',', '').replaceAll('/', '-').replaceAll(':', '-')
-  filename = filename + date + '-Fund8-vCA-export.csv'
+  filename = filename + date + '-Fund9-vPA-export.csv'
   let csv = papa.unparse(data, {
     complete: onComplete,
     error: errorHandling,

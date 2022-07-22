@@ -10,7 +10,7 @@
         <b-navbar-item @click="openInstructions">
           Instructions
         </b-navbar-item>
-        <b-navbar-dropdown label="vCA Tool">
+        <b-navbar-dropdown label="vPA Tool">
           <b-navbar-item tag="router-link" :to="{ name: 'profile' }">
             Profile
           </b-navbar-item>
@@ -33,7 +33,7 @@
     <router-view class="main-view" />
     <footer class="footer">
       <div class="content has-text-centered">
-        <p>Made by Catalyst Community for the Catalyst Community</p>
+        <p>Made by Catalyst Community for the Cardano Community</p>
         <p><img class="aim-logo" src="@/assets/images/aim-logo.png" alt="Cardano AIM" /></p>
         <p class="is-size-4 has-text-weight-bold">
           <a href="https://cardanoscan.io/pool/b61f05ec1e907ab9b069eaec6c664056c16f56cab59076109c66d2ae" target="_blank">
@@ -84,7 +84,7 @@ export default {
   },
   mounted() {
     if (window.localStorage) {
-      let oldKeys = ['vca-tool-f4-default', 'vca-tool-f5-default', 'vca-tool-f6-default', 'vca-tool-f7-default']
+      let oldKeys = ['vca-tool-f4-default', 'vca-tool-f5-default', 'vca-tool-f6-default', 'vca-tool-f7-default', 'vca-tool-f8-default']
       oldKeys.forEach((k) => {
         let oldKey = window.localStorage.getItem(k)
         if (oldKey) {

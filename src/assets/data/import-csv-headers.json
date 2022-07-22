@@ -15,8 +15,8 @@
     "type": "boolean",
     "label": "Filtered Out"
   },
-  "vca_feedback": {
+  "vpa_feedback": {
     "type": "string",
-    "label": "vCA Feedback"
+    "label": "vPA Feedback"
   }
 }

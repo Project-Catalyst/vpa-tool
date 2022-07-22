@@ -93,8 +93,8 @@ export default {
       },
       prefilters: [
         { label: "Random", v: "random" },
-        { label: "Low reviewed (from other vCAs)", v: "lowReviewed" },
-        { label: "No reviews (from other vCAs)", v: "noReviewed" },
+        { label: "Low reviewed (from other vPAs)", v: "lowReviewed" },
+        { label: "No reviews (from other vPAs)", v: "noReviewed" },
         { label: "All", v: "std" },
       ],
     };
@@ -184,7 +184,7 @@ export default {
           comparison: 'lengthLess',
           type: 'select',
           value: false,
-          values: { "180": 180, "250": 250, "400": 400, "700": 700 },
+          values: { "500": 500, "600": 700, "750": 750, "900": 900 },
         },
         lenGreater: {
           key: "note",
@@ -192,7 +192,7 @@ export default {
           comparison: 'lengthGreater',
           type: 'select',
           value: false,
-          values: { "120": 120, "240": 240, "360": 360, "600": 600 },
+          values: { "600": 700, "750": 750, "900": 900, "1200": 1200 },
         },
         already_reviewed: {
           key: "reviewed",
