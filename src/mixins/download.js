@@ -20,10 +20,16 @@ const download = {
       this.originalAssessments.forEach(el => {
         originalAssessmentsIndexed[el.id] = el
       })
-      const assessmentsExport = this.assessments.map(item => ({
-        ...originalAssessmentsIndexed[item.id],
-        ...item,
-      }));
+      const assessmentsExport = this.assessments.map((item) => {
+        let newItem = {
+          ...originalAssessmentsIndexed[item.id],
+          ...item,
+        };
+        if (!Object.prototype.hasOwnProperty.call(newItem, 'vpa_feedback')) {
+          newItem['vpa_feedback'] = ''
+        }
+        return newItem
+      });
       downloadCsv(assessmentsExport, this.profile.info.name)
       this.$buefy.dialog.alert({
         title: 'CSV Downloading...',
