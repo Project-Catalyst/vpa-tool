@@ -1,18 +1,23 @@
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
-import store from "./store";
+import { createApp } from 'vue'
+import App from './App.vue'
 
-import "./plugins/axios";
-import "./plugins/buefy";
-import "./plugins/vue-papa-parse";
-import "./plugins/async-computed";
-import "./plugins/lodash";
+import { createWebHistory } from 'vue-router'
+import createRouter from './router/index.js'
 
-Vue.config.productionTip = false;
+import Oruga from '@oruga-ui/oruga-next'
+import { bulmaConfig } from '@oruga-ui/theme-bulma'
 
-new Vue({
-  router,
-  store,
-  render: (h) => h(App),
-}).$mount("#app");
+import { createPinia } from 'pinia'
+
+// import '@oruga-ui/theme-bulma/dist/bulma.css'
+import './assets/sass/main.scss'
+import './style.css'
+
+const store = createPinia()
+const router = createRouter(createWebHistory())
+
+createApp(App)
+  .use(store)
+  .use(Oruga, bulmaConfig)
+  .use(router)
+  .mount('#app')

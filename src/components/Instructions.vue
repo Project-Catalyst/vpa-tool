@@ -1,5 +1,8 @@
+<script setup>
+</script>
+
 <template>
-  <b-message>
+  <o-notification>
     <div class="content">
       <p><b>How it works</b><br /></p>
       <p>The vPA-tool is designed to work in parallel with the standard way (using the Google Sheet) in order to provide a better user experience and to better coordinate the vPA work. It is a community made tool, feedback is welcomed.</p>
@@ -36,11 +39,12 @@
         <a href="https://bit.ly/Fund-9-PA-Clusters" target="_blank">F9 Cluster Analysis</a><br />
       </p>
     </div>
-  </b-message>
+  </o-notification>
 </template>
 
-<script>
-export default {
-  name: 'Instructions',
-}
-</script>
+<style scoped>
+/* ADJUST BACKGROUND COLOR */
+/* .content {
+  background-color: antiquewhite;
+} */
+</style>

@@ -1,23 +1,8 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-
-import store from "@/store";
-
-import Home from "../views/Home.vue";
-import Profile from "../views/Profile.vue";
-import CFilter from "../views/CFilter.vue";
-import Stats from "../views/Stats.vue";
-import Conditions from "../views/Conditions.vue";
-import Assessment from "../views/Assessment.vue";
-
-Vue.use(VueRouter);
-
-const guard = (to, from, next) => {
-  if (!store.state.profile.localDb) {
-    next('/profile')
-  }
-  next();
-}
+import {createRouter} from 'vue-router';
+import Home from '../pages/Home.vue';
+import Profile from '../pages/Profile.vue';
+import Search from '../pages/Search.vue';
+import Store from '../pages/Store.vue';
 
 const routes = [
   {
@@ -31,40 +16,39 @@ const routes = [
     component: Profile,
   },
   {
-    path: "/filter",
-    name: "filter",
-    component: CFilter,
-  },
-  {
-    path: "/stats",
-    name: "stats",
-    component: Stats,
-  },
-  {
     path: "/assessments",
-    name: "conditions",
-    component: Conditions,
-    beforeEnter: guard,
+    name: "search",
+    component: Search,
+    // beforeEnter: guard,
   },
   {
-    path: "/assessments/:id",
-    name: "assessment",
-    component: Assessment,
-    beforeEnter: guard,
-  }
-];
-
-const router = new VueRouter({
-  //mode: 'history',
-  base: process.env.BASE_URL,
-  scrollBehavior (to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition
-    } else {
-      return { x: 0, y: 0 }
-    }
+    path: "/store",
+    name: "store",
+    component: Store,
   },
-  routes,
-});
+  //==== FROM ORIGINAL PROJECT
+  // {
+  //   path: "/filter",
+  //   name: "filter",
+  //   component: CFilter,
+  // },
+  // {
+  //   path: "/stats",
+  //   name: "stats",
+  //   component: Stats,
+  // },
+  // {
+  //   path: "/assessments/:id",
+  //   name: "assessment",
+  //   component: Assessment,
+  //   beforeEnter: guard,
+  // }
+]
 
-export default router;
+export default function (history) {
+  // ADD SCROLL BEHAVIOUR >> SEE AT MASTER CODE
+  return createRouter({
+    history,
+    routes
+  })
+}

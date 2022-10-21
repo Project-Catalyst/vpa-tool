@@ -1,50 +1,17 @@
-// initial state
-const getDefaultState = () => ({
-  initialized: false,
-  localDb: false,
-  info: {
-    name: '',
-    email: '',
-    proposersRationaleVisible: true
-  }
+export const useProfileStore = defineStore('profile', {
+  state: () => (
+    { 
+      surname: "Mattos", 
+      name: 'Juliana',
+      count: 0
+    }
+  ),
+  getters: {
+    completeName: (state) => state.name + ' ' + state.surname
+  },
+  actions: {
+    increment() {
+      this.count++
+    },
+  },
 })
-const state = getDefaultState()
-
-// getters
-const getters = {}
-
-// actions
-const actions = {
-}
-
-const checkInitialized = state => (state.info.name !== '') && (state.info.email !== '')
-
-// mutations
-const mutations = {
-  setName (state, name) {
-    state.info.name = name
-    state.initialized = checkInitialized(state)
-  },
-  setEmail (state, email) {
-    state.info.email = email
-    state.initialized = checkInitialized(state)
-  },
-  setProposersRationale (state, value) {
-    state.info.proposersRationaleVisible = value
-    state.initialized = checkInitialized(state)
-  },
-  setLocalDb (state, localDb) {
-    state.localDb = localDb
-  },
-  resetState (state) {
-    Object.assign(state, getDefaultState())
-  }
-}
-
-export default {
-  namespaced: true,
-  state,
-  getters,
-  actions,
-  mutations
-}

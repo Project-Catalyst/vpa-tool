@@ -1,40 +1,55 @@
+<script setup>
+// This starter template is using Vue 3 <script setup> SFCs
+// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
+  
+  import { useProgrammatic } from '@oruga-ui/oruga-next'
+  import Instructions from './components/Instructions.vue'
+
+  const { oruga } = useProgrammatic()
+
+  function openInstructions() {
+    oruga.modal.open({
+      component: Instructions,
+      trapFocus: false
+    })
+  }
+</script>
+
 <template>
   <div id="app">
-    <b-navbar class="is-primary">
-      <template #brand>
-        <b-navbar-item tag="router-link" :to="{ name: 'home' }">
-          <img src="@/assets/images/catalyst.png" alt="Project Catalyst" />
-        </b-navbar-item>
-      </template>
-      <template #end>
-        <b-navbar-item @click="openInstructions">
-          Instructions
-        </b-navbar-item>
-        <b-navbar-dropdown label="vPA Tool">
-          <b-navbar-item tag="router-link" :to="{ name: 'profile' }">
-            Profile
-          </b-navbar-item>
-          <b-navbar-item
-            tag="router-link"
-            :to="{ name: 'conditions' }"
-            v-if="profile.localDb"
-          >
-            Assessments
-          </b-navbar-item>
-          <b-navbar-item @click="exportCsv" v-if="profile.localDb">
-            Export CSV
-          </b-navbar-item>
-          <!--<b-navbar-item tag="router-link" :to="{ name: 'stats' }">
-            Statistics
-          </b-navbar-item>-->
-        </b-navbar-dropdown>
-      </template>
-    </b-navbar>
-    <router-view class="main-view" />
+    <nav class="navbar is-primary is-fixed-top">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <img src="./assets/images/catalyst.png" alt="Project Catalyst" width="112" height="28">
+        </a>
+      </div>
+      <div class="navbar-end">
+        <a class="navbar-item" @click="openInstructions()"> Instructions </a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            vPA Tool
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item">
+              <router-link :to="{name: 'profile'}"> Profile </router-link>
+            </a>
+            <a class="navbar-item">
+              <router-link :to="{name: 'store'}"> Store </router-link>
+            </a>
+            <a class="navbar-item">
+              <router-link :to="{name: 'search'}"> Assessments </router-link>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <router-view></router-view>
+    <!-- FOOTER -->
     <footer class="footer">
       <div class="content has-text-centered">
         <p>Made by Catalyst Community for the Cardano Community</p>
-        <p><img class="aim-logo" src="@/assets/images/aim-logo.png" alt="Cardano AIM" /></p>
+        <img class="aim-logo" src="./assets/images/aim-logo.png" alt="Catalyst AIM Group">
+        
         <p class="is-size-4 has-text-weight-bold">
           <a href="https://cardanoscan.io/pool/b61f05ec1e907ab9b069eaec6c664056c16f56cab59076109c66d2ae" target="_blank">
             Stake with [AIM] pool
@@ -42,66 +57,30 @@
         </p>
         <p class="icons">
           <a href="https://github.com/Project-Catalyst/ca-tool" target="_blank">
-            <b-icon icon="github" size="small" />
+            <o-icon pack="mdi" icon="github" size="medium"></o-icon>
           </a>
           <a href="https://twitter.com/AimCardano" target="_blank">
-            <b-icon icon="twitter" size="small" />
+            <o-icon icon="twitter" size="medium"></o-icon>
           </a>
           <a href="https://t.me/joinchat/Ivl50eWG7r0zODI1" target="_blank">
-            <b-icon icon="telegram" size="small" />
+            <o-icon icon="telegram" size="medium"></o-icon>
           </a>
         </p>
-        <b-button
+        <o-button
           label="Feedback"
-          type="is-primary"
+          variant="primary"
           icon-left="message-reply-text"
           tag="a"
           target="_blank"
           href="https://forms.gle/BUFPVPetPvetpQB5A"
           >
-        </b-button>
+        </o-button>
       </div>
     </footer>
-    <b-modal v-model="instructionModal">
-      <instructions />
-    </b-modal>
   </div>
 </template>
 
-<script>
-import DownloadMixin from '@/mixins/download'
-import Instructions from "@/components/Instructions"
-
-export default {
-  data() {
-    return {
-      instructionModal: false
-    }
-  },
-  mixins: [DownloadMixin],
-  components: {
-    Instructions
-  },
-  mounted() {
-    if (window.localStorage) {
-      let oldKeys = ['vca-tool-f4-default', 'vca-tool-f5-default', 'vca-tool-f6-default', 'vca-tool-f7-default', 'vca-tool-f8-default']
-      oldKeys.forEach((k) => {
-        let oldKey = window.localStorage.getItem(k)
-        if (oldKey) {
-          window.localStorage.removeItem(k)
-        }
-      })
-    }
-  },
-  methods: {
-    openInstructions() {
-      this.instructionModal = true
-    }
-  }
-};
-</script>
-
-<style lang="scss">
+<style scoped>
 .aim-logo {
   width: 150px;
 }
