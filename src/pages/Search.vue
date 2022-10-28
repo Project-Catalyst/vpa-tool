@@ -1,20 +1,29 @@
 <script setup>
-import { ref } from 'vue'
+// import { ref } from 'vue';
 
-const count = ref("FILTERS")
+import Filters from "../components/Filters.vue";
+import Sortings from "../components/Sortings.vue";
+import SearchList from "../components/AssessmentsList.vue";
+
+// const count = ref("FILTERS")
 </script>
 
 <template>
-  <div class="title">ASSESSMENTS SEARCH</div>
-  <div class="subtitle">Quick explanation about the assessments search engine</div>
-
   <section>
-    <h1>{{ count }}</h1>
-  </section>
+    <div class="title">ASSESSMENTS SEARCH</div>
+    <div class="subtitle">Quick explanation about the assessments search engine</div>
 
-  <section class="box">
-    <h5> List of filtered assessments preview components</h5>
+    <section>
+      <o-button variant="primary" expanded>Open Filters</o-button>
+      <filters/>
+
+      <o-button variant="primary" expanded>Open Sortings</o-button>
+      <sortings/>
+    </section>
+
+    <search-list/>
   </section>
+  
 </template>
 
 <style scoped>

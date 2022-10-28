@@ -1,4 +1,5 @@
 export const useReviewsStore = defineStore('reviews', {
+  persist: true,
   state: () => (
     { 
       assessmentId: 0,

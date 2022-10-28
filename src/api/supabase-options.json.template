@@ -1,0 +1,4 @@
+{
+  "CATALYST_SUPABASE_URL": "supabase-project-settings-api-url",
+  "CATALYST_SUPABASE_ANON_KEY": "supabase-project-settings-api-projectApiKeys-anon-public"
+}

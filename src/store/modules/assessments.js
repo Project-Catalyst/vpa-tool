@@ -1,5 +1,4 @@
-export const useProfileStore = defineStore('profile', {
-  persist: true,
+export const useProfileStore = defineStore('assessments', {
   state: () => (
     { 
       surname: "Mattos", 

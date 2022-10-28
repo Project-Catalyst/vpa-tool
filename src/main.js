@@ -8,13 +8,15 @@ import Oruga from '@oruga-ui/oruga-next'
 import { bulmaConfig } from '@oruga-ui/theme-bulma'
 
 import { createPinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
 // import '@oruga-ui/theme-bulma/dist/bulma.css'
 import './assets/sass/main.scss'
 import './style.css'
 
-const store = createPinia()
 const router = createRouter(createWebHistory())
+const store = createPinia()
+store.use(piniaPluginPersistedstate)
 
 createApp(App)
   .use(store)

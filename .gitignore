@@ -1,4 +1,5 @@
 .vscode/
+*supabase-options.json
 
 # Logs
 logs

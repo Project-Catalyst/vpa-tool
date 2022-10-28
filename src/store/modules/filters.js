@@ -1,4 +1,4 @@
-export const useProfileStore = defineStore('profile', {
+export const useProfileStore = defineStore('filters', {
   persist: true,
   state: () => (
     { 
