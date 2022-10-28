@@ -4,7 +4,7 @@
 <template>
   <o-notification>
     <div class="content">
-      <p><b>How it works</b><br /></p>
+      <p><b>How this tool works</b><br /></p>
       <p>The vPA-tool is designed to work in parallel with the standard way (using the Google Sheet) in order to provide a better user experience and to better coordinate the vPA work. It is a community made tool, feedback is welcomed.</p>
       <ol>
         <li>Click on the "Start Process" button</li>

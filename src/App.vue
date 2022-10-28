@@ -80,6 +80,18 @@
   </div>
 </template>
 
+<script>
+import langs from "./locales/locales.js";
+
+export default {
+  data(){
+    return {
+      langs: langs
+    }
+  },
+}
+</script>
+
 <style scoped>
 .aim-logo {
   width: 150px;

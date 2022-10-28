@@ -49,8 +49,6 @@ function exportCsv() {
     </o-notification>
 
     <!-- Assessment's preview list -->
-    <div class="title">{{count}} COMPONENT</div>
-    <div class="subtitle">CONTAINS LIST OF PREVIEWS</div>
     <div class="assessments-list" v-if="listVisible">
       <assessment-preview
         v-for="assessment in [0,1,2,3,4,5]"
