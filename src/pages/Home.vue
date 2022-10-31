@@ -1,21 +1,12 @@
 <script setup>
-  import { ref } from 'vue'
-  import Instructions from '../components/Instructions.vue'
+  import { useProfileStore } from '../store/modules/profile.js'
 
-  // ADD PROFILE LOCAL DB
-  const profile = ref({
-    localDb: true,
-    info: {
-      name: 'Juliana',
-      email: 'jbm@gmail.com'
-    }
-  })
-  
+  const profile = useProfileStore()
+
 </script>
 
 <template>
   <section>
-    <!-- <o-notification v-html="$t('home.STORAGE_WARNING')" -->
     <o-notification 
       class="" type="warning" variant="warning" icon="alert" hasIcon>
       {{ $t('home.STORAGE_WARNING') }}
@@ -24,7 +15,7 @@
     <div class="title has-text-centered">{{ $t('general.TOOL_TITLE') }}</div>
     <div class="subtitle" v-html="$t('general.TOOL_DESCRIPTION')"></div>
 
-    <o-notification type="info" variant="info" v-if="profile.localDb">
+    <o-notification type="info" variant="info" v-if="profile.initialized">
       <p>
         Hello <strong>{{profile.info.name}}</strong>,<br />
         your database is already initialized in the app.<br />
@@ -32,9 +23,9 @@
       </p>
     </o-notification>
 
-    <o-button class="buttons is-centered" variant="primary" size="large"
-      tag="router-link"
-      :to="{ name: buttonInfo.link }">
+    <o-button class="buttons is-centered columns column is-half is-offset-one-quarter" 
+      variant="primary" size="large"
+      tag="router-link" :to="{name: buttonInfo.link}">
         {{ buttonInfo.text }}
     </o-button>
 
@@ -44,6 +35,8 @@
 </template>
 
 <script>
+import Instructions from '../components/Instructions.vue'
+
 export default {
   name: "Home",
   components: {
@@ -51,15 +44,15 @@ export default {
   },
   computed: {
     buttonInfo() {
-      if (this.profile.localDb) {
+      if (this.profile.initialized) {
         return {
-          text: 'Continue Process',
+          text: 'Continue vPA-Tool Process',
           link: 'search'
         }
       } else {
         return {
-          text: 'Start Process',
-          link: 'profile'
+          text: 'Start vPA-Tool Process',
+          link: 'login'
         }
       }
     },

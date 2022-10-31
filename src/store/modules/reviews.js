@@ -1,19 +1,29 @@
+import { defineStore } from 'pinia'
+
 export const useReviewsStore = defineStore('reviews', {
   persist: true,
   state: () => (
     { 
-      assessmentId: 0,
-      assessor: 'az01234',
-      review: 'This is an assessment review',
-      count: 0
+      initialized: false,
+      file: "",
+      reviews: []
     }
   ),
   getters: {
-    identifiedReview: (state) => state.assessor + ": " + state.review,
+    isInitialized () {
+      return (this.file !== '')
+    }
   },
   actions: {
-    increment() {
-      this.count++
+    init(file) {
+      this.file = file
+      this.initialized = this.isInitialized
     },
+    getReviewById(id) {
+      console.log(id)
+    },
+    resetState () {
+      this.$reset()
+    }
   },
 })

@@ -1,6 +1,7 @@
 import {createRouter} from 'vue-router';
 import Home from '../pages/Home.vue';
 import Profile from '../pages/Profile.vue';
+import Login from '../pages/Login.vue'
 import Search from '../pages/Search.vue';
 import Store from '../pages/Store.vue';
 
@@ -14,6 +15,11 @@ const routes = [
     path: "/profile",
     name: "profile",
     component: Profile,
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: Login,
   },
   {
     path: "/assessments",

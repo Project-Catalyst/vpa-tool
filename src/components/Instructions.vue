@@ -43,8 +43,4 @@
 </template>
 
 <style scoped>
-/* ADJUST BACKGROUND COLOR */
-/* .content {
-  background-color: antiquewhite;
-} */
 </style>

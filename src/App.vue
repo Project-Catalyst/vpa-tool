@@ -4,7 +4,9 @@
   
   import { useProgrammatic } from '@oruga-ui/oruga-next'
   import Instructions from './components/Instructions.vue'
+  import { useProfileStore } from './store/modules/profile.js'
 
+  const profile = useProfileStore()
   const { oruga } = useProgrammatic()
 
   function openInstructions() {
@@ -25,7 +27,8 @@
       </div>
       <div class="navbar-end">
         <a class="navbar-item" @click="openInstructions()"> Instructions </a>
-        <div class="navbar-item has-dropdown is-hoverable">
+        <router-link class="navbar-item" :to="{name: 'login'}" v-if="!profile.initialized"> Login </router-link>
+        <div class="navbar-item has-dropdown is-hoverable" v-if="profile.initialized">
           <a class="navbar-link">
             vPA Tool
           </a>
@@ -81,12 +84,9 @@
 </template>
 
 <script>
-import langs from "./locales/locales.js";
-
 export default {
   data(){
     return {
-      langs: langs
     }
   },
 }
