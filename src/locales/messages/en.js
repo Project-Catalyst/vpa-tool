@@ -17,5 +17,8 @@ export default {
     DESCRIPTION: "Find here your personal stored information."
   },
   "search": {
+    TITLE: "Assessments Search",
+    DESCRIPTION: "Search for assessments to review.\
+                <br>Use the filters and sorting methods to guide your work towards the assessments that best suit you."
   }
 }
