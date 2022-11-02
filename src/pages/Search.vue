@@ -10,7 +10,7 @@
     <div class="subtitle" v-html="$t('search.DESCRIPTION')"></div>
 
     <section id="filters">
-      <o-collapse v-model:open="isFilterOpen">
+      <o-collapse v-model:open="isFilterOpen" class="my-4">
         <template #trigger>
           <o-button variant="primary" expanded>
             {{ btnFilterMsg }}
@@ -21,7 +21,7 @@
         </div>
       </o-collapse>
 
-      <o-collapse v-model:open="isSortingOpen">
+      <!-- <o-collapse v-model:open="isSortingOpen">
         <template #trigger>
           <o-button variant="primary" expanded>
             {{ btnSortingMsg }}
@@ -30,7 +30,7 @@
         <div class="notification">
           <sortings/>
         </div>
-      </o-collapse>
+      </o-collapse> -->
       
     </section>
 
@@ -61,13 +61,13 @@ export default {
     btnFilterMsg() {
       return (this.isFilterOpen)
       ? "Close Filters"
-      : "Open Filters"
+      : "Choose Filters"
     },
-    btnSortingMsg() {
-      return (this.isSortingOpen)
-      ? "Close Sorting Options"
-      : "Open Sorting Options"
-    },
+    // btnSortingMsg() {
+    //   return (this.isSortingOpen)
+    //   ? "Close Sorting Options"
+    //   : "Open Sorting Options"
+    // },
   }
 }
 </script>

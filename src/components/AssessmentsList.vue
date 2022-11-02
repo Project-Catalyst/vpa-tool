@@ -24,7 +24,7 @@ function exportCsv() {
 </script>
 
 <template>
-  <section class="box">
+  <section>
 
     <!-- header -->
     <o-notification class="" variant="primary">

@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import supabase from '../api/supabase.js'
 
 export const useFilterStore = defineStore('filters', {
   persist: true,
@@ -29,7 +30,7 @@ export const useFilterStore = defineStore('filters', {
         rating: {
           id: '',
           value: '',
-          values: []
+          values: {min: 0, max: 5}
         },
         reviewed: {
           id: '',
@@ -39,7 +40,7 @@ export const useFilterStore = defineStore('filters', {
         length: {
           id: '',
           value: '',
-          values: []
+          values: [500, 750, 1000, 1250, 1500]
         }
       }
     }
@@ -50,11 +51,32 @@ export const useFilterStore = defineStore('filters', {
     },
     getFilterValues: (state) => {
       return (filterId) => state.filters[filterId].values
-    }
+    },
   },
   actions: {
-    init() {
-      console.log("init")
+    async init() {
+      console.log("Filters stores init")
+      await this.populateProposals()
+      console.log('>> loaded proposals')
+      await this.populateChallenges()
+      console.log('>> loaded challenges')
+      await this.populateAssessors()
+      console.log('>> loaded assessors')
+      this.initialized = true;
+      console.log('done!')
+    },
+    async populateProposals() {
+      this.filters.proposal.values = await supabase.getProposals();
+    },
+    async populateChallenges() {
+      this.filters.challenge.values = await supabase.getChallenges();
+    },
+    async populateAssessors() {
+      this.filters.assessor.values = await supabase.getAssessors();
+    },
+    resetState() {
+      this.$reset()
+      console.log('Filters store reset')
     }
   }
 })

@@ -4,7 +4,7 @@
   
   import { useProgrammatic } from '@oruga-ui/oruga-next'
   import Instructions from './components/Instructions.vue'
-  import { useProfileStore } from './store/modules/profile.js'
+  import { useProfileStore } from './store/profile.js'
 
   const profile = useProfileStore()
   const { oruga } = useProgrammatic()

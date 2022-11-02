@@ -1,5 +1,5 @@
 <script setup>
-  import { useProfileStore } from '../store/modules/profile.js'
+  import { useProfileStore } from '../store/profile.js'
 
   const profile = useProfileStore()
 

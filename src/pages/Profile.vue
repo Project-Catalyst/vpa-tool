@@ -1,6 +1,6 @@
 <script setup>
-  import { useProfileStore } from '../store/modules/profile.js'
-  import { useReviewsStore } from '../store/modules/reviews.js'
+  import { useProfileStore } from '../store/profile.js'
+  import { useReviewsStore } from '../store/reviews.js'
     
   const profile = useProfileStore()
   const reviews = useReviewsStore()
