@@ -20,17 +20,6 @@
           <filters/>
         </div>
       </o-collapse>
-
-      <!-- <o-collapse v-model:open="isSortingOpen">
-        <template #trigger>
-          <o-button variant="primary" expanded>
-            {{ btnSortingMsg }}
-          </o-button>
-        </template>
-        <div class="notification">
-          <sortings/>
-        </div>
-      </o-collapse> -->
       
     </section>
 
@@ -41,14 +30,12 @@
 
 <script>
 import Filters from "../components/Filters.vue";
-import Sortings from "../components/Sortings.vue";
-import SearchList from "../components/AssessmentsList.vue";
+import SearchList from "../components/SearchList.vue";
 
 export default {
   name: "Search",
   components: {
-    Filters, 
-    Sortings,
+    Filters,
     SearchList
   },
   data() {
@@ -63,11 +50,6 @@ export default {
       ? "Close Filters"
       : "Choose Filters"
     },
-    // btnSortingMsg() {
-    //   return (this.isSortingOpen)
-    //   ? "Close Sorting Options"
-    //   : "Open Sorting Options"
-    // },
   }
 }
 </script>

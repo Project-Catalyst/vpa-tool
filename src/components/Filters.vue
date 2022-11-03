@@ -14,9 +14,6 @@
 <template>
   <div class="box">
     
-    <!-- <o-button variant="warning" size="large" @click="filters.init()"> TEST FILTERS.INIT </o-button>
-    <o-button variant="danger" size="large" @click="filters.resetState()"> TEST FILTERS.RESET </o-button> -->
-
     <div class="columns is-multiline is-vcentered">
 
       <o-field label="Proposal" class="column is-two-thirds">

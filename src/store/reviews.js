@@ -12,6 +12,9 @@ export const useReviewsStore = defineStore('reviews', {
   getters: {
     isInitialized () {
       return (this.file !== '')
+    },
+    count() {
+      return this.reviews.length
     }
   },
   actions: {

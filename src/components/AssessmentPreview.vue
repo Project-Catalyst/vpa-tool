@@ -1,16 +1,16 @@
 <script setup>
 import { ref } from 'vue';
 
-const assessment = ref({
-  id: 1,
-  proposal: "assessmentTitle",
-  assessor: "assessmentAssessor",
-  challenge: "assessmentChallenge",
-  rating: 3.5,
-  reviews: 3,
-  proposer_mark: true,
-  reviewed: true
-})
+// const assessment = ref({
+//   id: 1,
+//   proposal: "assessmentTitle",
+//   assessor: "assessmentAssessor",
+//   challenge: "assessmentChallenge",
+//   rating: 3.5,
+//   reviews: 3,
+//   proposer_mark: true,
+//   reviewed: true
+// })
 
 function goTo() {
   console.log("goTo")
@@ -26,27 +26,26 @@ function goTo() {
 
       <div class="column is-one-third py-0">
         <div class="label inline mr-2">Assessor:</div>
-        <div class="value inline">{{assessment.assessor}}</div>
+        <div class="value inline">{{assessment.Assessors.anon_id}}</div>
       </div>
 
       <div class="column is-one-third py-0">
         <div class="label inline mr-2">Average Rating: </div>
-        <div class="value inline"> {{assessment.rating}} </div>
+        <div class="value inline"> {{rating}} </div>
       </div>
 
       <div class="column is-one-third py-0">
         <div class="label inline mr-2">No. of vPAs reviews:</div>
-        <div class="value inline">{{ (assessment.reviews) ? assessment.reviews : 0 }}</div>
+        <div class="value inline">{{assessment.vpas_reviews}}</div>
       </div>
 
       <div class="column is-two-thirds py-0">
         <div class="label inline mr-2">Proposal:</div>
-        <div class="value inline">{{assessment.proposal}}</div>
+        <div class="value inline">{{assessment.Proposals.title}}</div>
       </div>
 
       <div class="column is-one-third py-0">
         <o-checkbox
-          class="always-opaque"
           v-model="assessment.proposer_mark"
           variant="warning"
           disabled>
@@ -56,7 +55,7 @@ function goTo() {
 
       <div class="column is-one-third py-0">
         <div class="label inline mr-2">Challenge:</div>
-        <div class="value inline">{{assessment.challenge}}</div>
+        <div class="value inline">{{assessment.Challenges.title}}</div>
       </div>
 
       <div class="column is-full py-0">
@@ -67,8 +66,8 @@ function goTo() {
           Open
         </o-button>
         <o-checkbox
-          class="always-opaque pt-2"
-          v-model="assessment.reviewed"
+          class="pt-2"
+          v-model="reviewed"
           variant="warning"
           disabled>
           Already reviewed
@@ -79,14 +78,29 @@ function goTo() {
   </div>
 </template>
 
+<script>
+
+export default {
+  name: "AssessmentPreview",
+  props: ['assessment'],
+  data() {
+    return {
+    }
+  },
+  computed: {
+    rating() {
+      return ((this.assessment.auditability_rating + this.assessment.feasibility_rating + this.assessment.impact_rating)/3)
+        .toLocaleString(undefined, {maximumFractionDigits: 2})
+    },
+    reviewed() {
+      return false
+    }
+  }
+}
+</script>
+
 <style scoped>
-.inline {
-  display: inline-block;
-}
-.content.is-vcentered {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center; /* used this for multiple child */
-  align-items: center; /* if an only child */
-}
+  .inline {
+    display: inline-block;
+  }
 </style>

@@ -1,17 +1,30 @@
-export const useProfileStore = defineStore('assessments', {
+import { defineStore } from 'pinia'
+import supabase from '../api/supabase.js'
+
+const totalAssessments = await (async () => {
+  return await supabase.getTotalAssessmentsCount()
+})()
+
+export const useAssessmentsStore = defineStore('assessments', {
   state: () => (
     { 
-      surname: "Mattos", 
-      name: 'Juliana',
-      count: 0
+      total: totalAssessments,
+      count: totalAssessments, // update when filtering with the count of query
+      fetchSize: 30,
+      assessments: [],
+      available: false,
     }
   ),
   getters: {
-    completeName: (state) => state.name + ' ' + state.surname
+    getAssessments() {
+      return this.assessments
+    }
   },
   actions: {
-    increment() {
-      this.count++
+    async load() {
+      this.available = false;
+      this.assessments = await supabase.fetchAssessments(0, this.fetchSize-1)
+      this.available = true;
     },
   },
 })

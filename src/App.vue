@@ -5,6 +5,12 @@
   import { useProgrammatic } from '@oruga-ui/oruga-next'
   import Instructions from './components/Instructions.vue'
   import { useProfileStore } from './store/profile.js'
+  import { useFilterStore } from './store/filters.js'
+
+  const filters = useFilterStore()
+  if(!filters.initialized) {
+    filters.init()
+  }
 
   const profile = useProfileStore()
   const { oruga } = useProgrammatic()

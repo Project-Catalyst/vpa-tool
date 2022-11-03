@@ -16,6 +16,9 @@ const currentFund = await (async () => {
 })()
 
 export default {
+  client() {
+    return supabase
+  },
   async getAllFromTable(table) {
     const { data, error } = await supabase
       .from(table)
@@ -39,6 +42,34 @@ export default {
       `)
       .eq('id', fundId)
     return (error) ? {} : data[0].AssessorsFunds.map( obj => obj.Assessors)
+  },
+  async getTotalAssessmentsCount() {
+    const { count, error } = await supabase
+      .from('Assessments')
+      .select('*', { count: 'estimated', head: true})
+      .eq("fund_id", currentFund.id)
+    return (error) ? 0 : count
+  },
+  async fetchAssessments(init, end) {
+    const { data, error } = await supabase
+      .from('Assessments')
+      .select(`
+        id,
+        auditability_note,
+        auditability_rating,
+        feasibility_note,
+        feasibility_rating,
+        impact_note,
+        impact_rating,
+        proposer_mark,
+        vpas_reviews,
+        fund_id,
+        Assessors (id, anon_id),
+        Challenges (id, title),
+        Proposals (id, title)`)
+      .range(init, end)
+      .order('id', { ascending: true })
+    return (error) ? {} : data
   },
   getFunds() {
     console.log('currentFund', currentFund)
