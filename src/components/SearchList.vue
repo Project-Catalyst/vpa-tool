@@ -6,8 +6,6 @@
   const assessments = useAssessmentsStore();
   const reviews = useReviewsStore();
 
-  assessments.load()
-
   const sortingOptions = ['Randomize', 'Alphabetically', 'Higher Ratings', 'Most reviewed']
 
   function getNext() {
@@ -20,7 +18,7 @@
   <section>
 
     <!-- header -->
-    <o-notification class="" variant="primary">
+    <o-notification id="header" variant="primary">
       <div class="columns is-multiline is-vcentered">
         <div class="label column is-full has-text-centered is-size-4 is-white m-0 p-0">Search Results</div>
         <div class="column is-three-quarters p-0">
@@ -52,12 +50,13 @@
       :range-before="3"
       :range-after="3"
       order="centered"
-      size="default">
+      size="default"
+      @update:current="changePage()">
     </o-pagination>
     
-    <o-loading v-model:active="isLoading"></o-loading>
+    <!-- <o-loading v-model:active="isLoading"></o-loading> -->
     <assessment-preview
-      v-for="assessment in assessments.getAssessments"
+      v-for="assessment in paginatedItems"
       :key="`ass-${assessment.id}`"
       :assessment="assessment"
     />
@@ -69,13 +68,15 @@
       :range-before="3"
       :range-after="3"
       order="centered"
-      size="default">
+      size="default"
+      @update:current="changePage()">
     </o-pagination>
   </section>
 </template>
 
 <script>
 import AssessmentPreview from "./AssessmentPreview.vue";
+import $ from "jquery";
 // import Sortings from "../components/Sortings.vue";
 
 export default {
@@ -89,9 +90,23 @@ export default {
       paginationItemsPerPage: this.assessments.fetchSize,
     }
   },
+  mounted() {
+    this.assessments.loadAssessments(this.paginationCurrentPage)
+  },
   computed: {
     isLoading() {
       return !this.assessments.available
+    },
+    paginatedItems() {
+      return this.assessments.getAssessments
+    }
+  },
+  methods: {
+    async changePage() {
+      await this.assessments.loadAssessments(this.paginationCurrentPage)
+      $([document.documentElement, document.body]).animate({
+          scrollTop: $("#header").offset().top
+      }, 1000);
     }
   }
 }

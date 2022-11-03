@@ -21,9 +21,11 @@ export const useAssessmentsStore = defineStore('assessments', {
     }
   },
   actions: {
-    async load() {
+    async loadAssessments(currentPage) {
       this.available = false;
-      this.assessments = await supabase.fetchAssessments(0, this.fetchSize-1)
+      let init = (currentPage-1)*this.fetchSize;
+      let final = (currentPage*this.fetchSize)-1;
+      this.assessments = await supabase.fetchAssessments(init, final)
       this.available = true;
     },
   },

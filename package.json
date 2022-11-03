@@ -13,6 +13,7 @@
     "@oruga-ui/theme-bulma": "^0.2.7",
     "@supabase/supabase-js": "^2.0.4",
     "bulma": "^0.9.4",
+    "jquery": "^3.6.1",
     "pinia": "^2.0.23",
     "pinia-plugin-persistedstate": "^2.3.0",
     "vue": "^3.2.37",
