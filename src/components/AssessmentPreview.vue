@@ -1,21 +1,4 @@
 <script setup>
-import { ref } from 'vue';
-
-// const assessment = ref({
-//   id: 1,
-//   proposal: "assessmentTitle",
-//   assessor: "assessmentAssessor",
-//   challenge: "assessmentChallenge",
-//   rating: 3.5,
-//   reviews: 3,
-//   proposer_mark: true,
-//   reviewed: true
-// })
-
-function goTo() {
-  console.log("goTo")
-}
-
 </script>
 
 <template>
@@ -62,7 +45,7 @@ function goTo() {
         <o-button
           class="mr-6"
           variant="primary"
-          @click="goTo()">
+          @click="openAssessment()">
           Open
         </o-button>
         <o-checkbox
@@ -87,6 +70,20 @@ export default {
     return {
     }
   },
+  created() {
+    if (this.assessment.Challenges === null) {
+      this.assessment.Challenges = {
+        id: null,
+        title: '(No Challenge identification provided)'
+      }
+    }
+    if (this.assessment.Proposals === null) {
+      this.assessment.Proposals = {
+        id: null,
+        title: '(No Proposal identification provided)'
+      }
+    }
+  },
   computed: {
     rating() {
       return ((this.assessment.auditability_rating + this.assessment.feasibility_rating + this.assessment.impact_rating)/3)
@@ -94,6 +91,11 @@ export default {
     },
     reviewed() {
       return false
+    }
+  },
+  methods: {
+    openAssessment() {
+      this.router
     }
   }
 }
