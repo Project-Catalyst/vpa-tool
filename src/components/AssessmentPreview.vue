@@ -95,7 +95,7 @@ export default {
   },
   methods: {
     openAssessment() {
-      this.router
+      this.$router.push({name: 'assessment', params: {id:this.assessment.id} })
     }
   }
 }

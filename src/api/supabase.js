@@ -71,6 +71,26 @@ export default {
       .order('id', { ascending: true })
     return (error) ? {} : data
   },
+  async fetchAssessmentById(id) {
+    const { data, error } = await supabase
+      .from('Assessments')
+      .select(`
+        id,
+        auditability_note,
+        auditability_rating,
+        feasibility_note,
+        feasibility_rating,
+        impact_note,
+        impact_rating,
+        proposer_mark,
+        vpas_reviews,
+        fund_id,
+        Assessors (id, anon_id),
+        Challenges (id, title),
+        Proposals (id, title, url)`)
+      .eq('id', id)
+    return (error) ? {} : data[0]
+  },
   getFunds() {
     console.log('currentFund', currentFund)
     return this.getAllFromTable('Funds')

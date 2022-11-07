@@ -18,6 +18,9 @@ export const useAssessmentsStore = defineStore('assessments', {
   getters: {
     getAssessments() {
       return this.assessments
+    },
+    getAssessmentById: (state) => {
+      return async (id) => await supabase.fetchAssessmentById(id)
     }
   },
   actions: {

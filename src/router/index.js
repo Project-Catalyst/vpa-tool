@@ -4,6 +4,7 @@ import Profile from '../pages/Profile.vue';
 import Login from '../pages/Login.vue'
 import Search from '../pages/Search.vue';
 import Store from '../pages/Store.vue';
+import Assessment from '../pages/Assessment.vue';
 
 const routes = [
   {
@@ -32,6 +33,11 @@ const routes = [
     name: "store",
     component: Store,
   },
+  {
+    path: "/assessments/:id",
+    name: "assessment",
+    component: Assessment,
+  }
   //==== FROM ORIGINAL PROJECT
   // {
   //   path: "/filter",
@@ -43,12 +49,6 @@ const routes = [
   //   name: "stats",
   //   component: Stats,
   // },
-  // {
-  //   path: "/assessments/:id",
-  //   name: "assessment",
-  //   component: Assessment,
-  //   beforeEnter: guard,
-  // }
 ]
 
 export default function (history) {
