@@ -8,10 +8,6 @@
 
   const sortingOptions = ['Randomize', 'Alphabetically', 'Higher Ratings', 'Most reviewed']
 
-  function getNext() {
-    console.log("getNext")
-  }
-
 </script>
 
 <template>
@@ -55,7 +51,7 @@
     </o-pagination>
     
     <!-- <o-loading v-model:active="isLoading"></o-loading> -->
-    <assessment-preview
+    <assessment-preview v-bind:id="`ass-${assessment.id}`"
       v-for="assessment in paginatedItems"
       :key="`ass-${assessment.id}`"
       :assessment="assessment"

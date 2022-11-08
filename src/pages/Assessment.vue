@@ -163,7 +163,6 @@ export default {
     },
     goToNextAssessment() {
       let nextId = this.assessmentsStore.getNextAssessmentId(this.assessment.id)
-      console.log(nextId)
       this.$router.push({name: 'assessment', params: {id: nextId}})
     }
   }

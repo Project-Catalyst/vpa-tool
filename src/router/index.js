@@ -59,6 +59,10 @@ export default function (history) {
     scrollBehavior(to, from, savedPosition) {
       if (savedPosition) {
         return savedPosition
+      } else if ( document.getElementById(`ass-${from.params.id}`) ) {
+        return {
+          el: `#ass-${from.params.id-1}`,
+        }
       } else {
         return { top: 0 }
       }
