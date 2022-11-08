@@ -21,6 +21,16 @@ export const useAssessmentsStore = defineStore('assessments', {
     },
     getAssessmentById: (state) => {
       return async (id) => await supabase.fetchAssessmentById(id)
+    },
+    getNextAssessmentId: (state) => {
+      return (id) => {
+        if(!state.available) {
+          return id+1
+        } else {
+          let index = state.assessments.map(ass => ass.id).indexOf(id);
+          return state.assessments[index+1].id
+        }
+      }
     }
   },
   actions: {

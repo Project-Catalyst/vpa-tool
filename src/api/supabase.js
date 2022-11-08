@@ -91,8 +91,15 @@ export default {
       .eq('id', id)
     return (error) ? {} : data[0]
   },
+  async addReview(assessment_id) {
+    const { data, error } = await supabase
+      .rpc('add_assessment_review', { assessment_id: assessment_id })
+  },
+  async removeReview(assessment_id) {
+    const { data, error } = await supabase
+      .rpc('remove_assessment_review', { assessment_id: assessment_id })
+  },
   getFunds() {
-    console.log('currentFund', currentFund)
     return this.getAllFromTable('Funds')
   },
   getProposals() {
