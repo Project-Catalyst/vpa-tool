@@ -13,6 +13,7 @@ export const useAssessmentsStore = defineStore('assessments', {
       count: totalAssessments, // update when filtering with the count of query
       fetchSize: 30,
       assessments: [],
+      currentAssessment: {},
       available: false, // true if assessments have been loaded at least once
       isLoading: false  // true when assessments are being fetched from supabase
     }
@@ -48,9 +49,8 @@ export const useAssessmentsStore = defineStore('assessments', {
     async fetchAssessment(id) {
       this.isLoading = true;
       let assessment = await supabase.fetchAssessmentById(id)
-      assessment = {...assessment, reviewed: this.isReviewed(assessment.id) }
+      this.currentAssessment = {...assessment, reviewed: this.isReviewed(assessment.id) }
       this.isLoading = false;
-      return assessment
     },
     isReviewed(assessmentId) {
       const reviewsStore = useReviewsStore();

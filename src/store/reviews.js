@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { useAssessmentsStore } from './assessments.js';
 import supabase from '../api/supabase.js'
 
 const reviewMap = {
@@ -20,7 +21,8 @@ export const useReviewsStore = defineStore('reviews', {
     { 
       initialized: false,
       file: "",
-      reviews: []
+      reviews: [],
+      isLoading: false  // true when the store is updating some property
     }
   ),
   getters: {
@@ -49,6 +51,10 @@ export const useReviewsStore = defineStore('reviews', {
       this.file = file
       this.initialized = this.isInitialized
     },
+    async updateAssessment(id) {
+      const assessmentsStore = useAssessmentsStore();
+      await assessmentsStore.fetchAssessment(id)
+    },
     async setReview(id, review) {
       if( !this.isReviewed(id) ) {
         await this.addReview(id, review)
@@ -63,21 +69,33 @@ export const useReviewsStore = defineStore('reviews', {
         rationale: ''
       })
       await supabase.addReview(id)
+      await this.updateAssessment(id)
     },
     async removeReview(id) {
+      this.isLoading = true;
       let index = this.getReviewIndex(id)
       this.reviews.splice(index, 1)
       await supabase.removeReview(id)
+      await this.updateAssessment(id)
+      this.isLoading = false;
+    },
+    async removeAllReviews() {
+      this.reviews.forEach( async (r) => {
+        await supabase.removeReview(r.id)
+      })
     },
     updateReview(id, review) {
       let index = this.getReviewIndex(id)
       this.reviews[index].review = getReviewCode(review)
     },
     updateRationale(id, rationale) {
+      this.isLoading = true;
       let index = this.getReviewIndex(id)
       this.reviews[index].rationale = rationale
+      this.isLoading = false;
     },
-    resetState () {
+    async resetState () {
+      await this.removeAllReviews()
       this.$reset()
     }
   },
