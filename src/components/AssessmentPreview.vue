@@ -50,7 +50,7 @@
         </o-button>
         <o-checkbox
           class="pt-2"
-          v-model="reviewed"
+          v-model="assessment.reviewed"
           variant="warning"
           disabled>
           Already reviewed
@@ -88,9 +88,6 @@ export default {
     rating() {
       return ((this.assessment.auditability_rating + this.assessment.feasibility_rating + this.assessment.impact_rating)/3)
         .toLocaleString(undefined, {maximumFractionDigits: 2})
-    },
-    reviewed() {
-      return false
     }
   },
   methods: {
