@@ -12,6 +12,11 @@
 
 <template>
   <section>
+    <o-loading
+      :full-page="true"
+      v-model:active="assessments.isLoading"
+      :can-cancel="false"
+    ></o-loading>
 
     <!-- header -->
     <o-notification id="header" variant="primary">
@@ -50,7 +55,6 @@
       @update:current="changePage()">
     </o-pagination>
     
-    <!-- <o-loading v-model:active="isLoading"></o-loading> -->
     <assessment-preview v-bind:id="`ass-${assessment.id}`"
       v-for="assessment in paginatedItems"
       :key="`ass-${assessment.id}`"
@@ -90,9 +94,6 @@ export default {
     this.assessments.loadAssessments(this.paginationCurrentPage)
   },
   computed: {
-    isLoading() {
-      return !this.assessments.available
-    },
     paginatedItems() {
       return this.assessments.getAssessments
     }
