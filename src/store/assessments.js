@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { useReviewsStore } from './reviews.js';
 import supabase from '../api/supabase.js'
 
 const totalAssessments = await (async () => {
@@ -12,15 +13,13 @@ export const useAssessmentsStore = defineStore('assessments', {
       count: totalAssessments, // update when filtering with the count of query
       fetchSize: 30,
       assessments: [],
-      available: false,
+      available: false, // true if assessments have been loaded at least once
+      isLoading: false  // true when assessments are being fetched from supabase
     }
   ),
   getters: {
     getAssessments() {
       return this.assessments
-    },
-    getAssessmentById: (state) => {
-      return async (id) => await supabase.fetchAssessmentById(id)
     },
     getNextAssessmentId: (state) => {
       return (id) => {
@@ -35,11 +34,27 @@ export const useAssessmentsStore = defineStore('assessments', {
   },
   actions: {
     async loadAssessments(currentPage) {
-      this.available = false;
+      this.isLoading = true;
+
       let init = (currentPage-1)*this.fetchSize;
       let final = (currentPage*this.fetchSize)-1;
-      this.assessments = await supabase.fetchAssessments(init, final)
+      
+      let assessments = await supabase.fetchAssessments(init, final)
+      this.assessments = assessments.map( ass => ({... ass, reviewed: this.isReviewed(ass.id)}) )
+
       this.available = true;
+      this.isLoading = false;
+    },
+    async fetchAssessment(id) {
+      this.isLoading = true;
+      let assessment = await supabase.fetchAssessmentById(id)
+      assessment = {...assessment, reviewed: this.isReviewed(assessment.id) }
+      this.isLoading = false;
+      return assessment
+    },
+    isReviewed(assessmentId) {
+      const reviewsStore = useReviewsStore();
+      return reviewsStore.isReviewed(assessmentId)
     },
   },
 })
