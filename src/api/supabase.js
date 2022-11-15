@@ -1,9 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
-import options from './supabase-options.json';
 
 const supabase = createClient(
-  options.CATALYST_SUPABASE_URL,
-  options.CATALYST_SUPABASE_ANON_KEY
+  import.meta.env.VITE_CATALYST_SUPABASE_URL,
+  import.meta.env.VITE_CATALYST_SUPABASE_ANON_KEY
 )
 
 const currentFund = await (async () => {
@@ -19,34 +18,17 @@ export default {
   client() {
     return supabase
   },
-  async getAllFromTable(table) {
-    const { data, error } = await supabase
-      .from(table)
-      .select('*')
-    return (error) ? {} : data
-  },
-  async getAllFromTableAndFund(table, fundId) {
-    const { data, error } = await supabase
-      .from(table)
-      .select('*')
-      .eq('fund_id', fundId)
-    return (error) ? {} : data
-  },
-  async getAssessorsFromFund(fundId) {
-    const { data, error } = await supabase
-      .from('Funds')
-      .select(`
-        AssessorsFunds (
-          Assessors (id, anon_id)
-        )
-      `)
-      .eq('id', fundId)
-    return (error) ? {} : data[0].AssessorsFunds.map( obj => obj.Assessors)
-  },
   async getTotalAssessmentsCount() {
     const { count, error } = await supabase
       .from('Assessments')
-      .select('*', { count: 'estimated', head: true})
+      .select('*', { count: 'exact', head: true})
+      .eq("fund_id", currentFund.id)
+    return (error) ? 0 : count
+  },
+  async getTotalProposalsCount() {
+    const { count, error } = await supabase
+      .from('Proposals')
+      .select('*', { count: 'exact', head: true})
       .eq("fund_id", currentFund.id)
     return (error) ? 0 : count
   },
@@ -91,6 +73,34 @@ export default {
       .eq('id', id)
     return (error) ? {} : data[0]
   },
+  async getProposals(init, end) {
+    const { data, error } = await supabase
+      .from('Proposals')
+      .select('id, title')
+      .eq('fund_id', currentFund.id)
+      .range(init, end)
+      .order('id', { ascending: true })
+    return (error) ? {} : data
+  },
+  async getChallenges() {
+    const { data, error } = await supabase
+      .from('Challenges')
+      .select('id, title')
+      .eq('fund_id', currentFund.id)
+      .order('id', { ascending: true })
+    return (error) ? {} : data
+  },
+  async getAssessors() {
+    const { data, error } = await supabase
+      .from('Funds')
+      .select(`
+        AssessorsFunds (
+          Assessors (id, anon_id)
+        )
+      `)
+      .eq('id', currentFund.id)
+    return (error) ? {} : data[0].AssessorsFunds.map( obj => obj.Assessors)
+  },
   async addReview(assessment_id) {
     const { data, error } = await supabase
       .rpc('add_assessment_review', { assessment_id: assessment_id })
@@ -98,17 +108,5 @@ export default {
   async removeReview(assessment_id) {
     const { data, error } = await supabase
       .rpc('remove_assessment_review', { assessment_id: assessment_id })
-  },
-  getFunds() {
-    return this.getAllFromTable('Funds')
-  },
-  getProposals() {
-    return this.getAllFromTableAndFund('Proposals', currentFund.id)
-  },
-  getChallenges() {
-    return this.getAllFromTableAndFund('Challenges', currentFund.id)
-  },
-  getAssessors() {
-    return this.getAssessorsFromFund(currentFund.id)
   },
 }
