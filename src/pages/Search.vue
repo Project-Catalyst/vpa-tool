@@ -28,9 +28,7 @@
       </o-notification>
     </section>
 
-    <search-list
-      :page="currentPage"
-    />
+    <search-list/>
   </section>
   
 </template>

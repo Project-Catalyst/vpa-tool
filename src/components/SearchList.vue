@@ -52,8 +52,7 @@
         :range-after="3"
         order="centered"
         size="default"
-        v-model:current="currentPage"
-        @update:current="(newPage) => changePage(newPage)">
+        v-model:current="currentPage">
       </o-pagination>
       
       <assessment-preview v-bind:id="`ass-${assessment.id}`"
@@ -69,8 +68,7 @@
         :range-after="3"
         order="centered"
         size="default"
-        v-model:current="currentPage"
-        @update:current="(newPage) => changePage(newPage)">
+        v-model:current="currentPage">
     </o-pagination>
     </div>
   </section>
@@ -82,13 +80,11 @@ import AssessmentPreview from "./AssessmentPreview.vue";
 
 export default {
   name: "SearchList",
-  props: ["page"],
   components: {
     AssessmentPreview,
   },
   data() {
     return {
-      currentPage: this.page,
       paginationItemsPerPage: this.assessments.fetchSize,
     }
   },
@@ -96,6 +92,14 @@ export default {
     await this.assessments.loadAssessments(this.currentPage)
   },
   computed: {
+    currentPage: {
+      get() {
+        return parseInt(this.$route.params.page)
+      },
+      set(newPage) {
+        this.changePage(newPage)
+      }
+    },
     paginatedItems() {
       return this.assessments.getAssessments
     }
