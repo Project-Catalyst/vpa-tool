@@ -11,7 +11,7 @@ export const useAssessmentsStore = defineStore('assessments', {
     { 
       total: totalAssessments,
       count: totalAssessments, // update when filtering with the count of query
-      fetchSize: 30,
+      loadedPage: null,
       assessments: [],
       currentAssessment: {},
       available: false, // true if assessments have been loaded at least once
@@ -19,6 +19,9 @@ export const useAssessmentsStore = defineStore('assessments', {
     }
   ),
   getters: {
+    pageSize() {
+      return this.assessments.length
+    },
     getAssessments() {
       return this.assessments
     },
@@ -37,14 +40,17 @@ export const useAssessmentsStore = defineStore('assessments', {
     async loadAssessments(currentPage) {
       this.isLoading = true;
 
-      let init = (currentPage-1)*this.fetchSize;
-      let final = (currentPage*this.fetchSize)-1;
-      
-      let assessments = await supabase.fetchAssessments(init, final)
-      this.assessments = assessments.map( ass => ({... ass, reviewed: this.isReviewed(ass.id)}) )
+      if(currentPage !== this.loadedPage) {
+        await this.fetchPageAssessments(currentPage)
+        this.loadedPage = currentPage
+      }
 
       this.available = true;
       this.isLoading = false;
+    },
+    async fetchPageAssessments(currentPage) {
+      let assessments = await supabase.fetchAssessments(currentPage)
+      this.assessments = assessments.map( ass => ({... ass, reviewed: this.isReviewed(ass.id)}) )
     },
     async fetchAssessment(id) {
       this.isLoading = true;

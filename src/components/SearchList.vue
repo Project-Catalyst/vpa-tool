@@ -47,7 +47,7 @@
       <!-- Assessment's preview list -->
       <o-pagination
         :total="assessments.total"
-        :per-page="paginationItemsPerPage"
+        :per-page="assessments.pageSize"
         :range-before="3"
         :range-after="3"
         order="centered"
@@ -63,7 +63,7 @@
 
       <o-pagination class="mt-3 mb-5"
         :total="assessments.total"
-        :per-page="paginationItemsPerPage"
+        :per-page="assessments.pageSize"
         :range-before="3"
         :range-after="3"
         order="centered"
@@ -85,11 +85,7 @@ export default {
   },
   data() {
     return {
-      paginationItemsPerPage: this.assessments.fetchSize,
     }
-  },
-  async beforeMount() {
-    await this.assessments.loadAssessments(this.currentPage)
   },
   computed: {
     currentPage: {
@@ -107,17 +103,18 @@ export default {
   methods: {
     async changePage(newPage) {
       this.$router.push({name: 'search', params: {page: newPage}})
+    },
+    async fetchData() {
+      await this.assessments.loadAssessments(this.currentPage)
     }
   },
   created() {
     this.$watch(
       () => this.$route.params,
-      async (toParams, previousParams) => {
-        if (toParams.page !== previousParams.page) {
-          await this.assessments.loadAssessments(toParams.page)
-          document.getElementById("active-filters").scrollIntoView(true, { behavior: "smooth" })
-        }
-      }
+      () => {
+        this.fetchData()
+      },
+      { immediate: true }
     )
   },
 }

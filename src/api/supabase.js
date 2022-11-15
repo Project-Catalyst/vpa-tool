@@ -1,5 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 
+const RANGE = parseInt(import.meta.env.VITE_PAGE_RANGE)
+
 const supabase = createClient(
   import.meta.env.VITE_CATALYST_SUPABASE_URL,
   import.meta.env.VITE_CATALYST_SUPABASE_ANON_KEY
@@ -32,7 +34,11 @@ export default {
       .eq("fund_id", currentFund.id)
     return (error) ? 0 : count
   },
-  async fetchAssessments(init, end) {
+  async fetchAssessments(page, range=RANGE) {
+
+    let init = (page-1)*range;
+    let end = (page*range)-1;
+
     const { data, error } = await supabase
       .from('Assessments')
       .select(`
