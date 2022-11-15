@@ -46,7 +46,7 @@
               <router-link :to="{name: 'store'}"> Store </router-link>
             </a>
             <a class="navbar-item">
-              <router-link :to="{name: 'search'}"> Search</router-link>
+              <router-link :to="{name: 'search', params: {page: 1} }"> Search</router-link>
             </a>
           </div>
         </div>

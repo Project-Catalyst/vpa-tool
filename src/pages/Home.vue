@@ -25,7 +25,7 @@
 
     <o-button class="buttons is-centered columns column is-half is-offset-one-quarter" 
       variant="primary" size="large"
-      tag="router-link" :to="{name: buttonInfo.link}">
+      tag="router-link" :to="{path: buttonInfo.link}">
         {{ buttonInfo.text }}
     </o-button>
 
@@ -47,12 +47,12 @@ export default {
       if (this.profile.initialized) {
         return {
           text: 'Continue vPA-Tool Process',
-          link: 'search'
+          link: '/assessments/1'
         }
       } else {
         return {
           text: 'Start vPA-Tool Process',
-          link: 'login'
+          link: '/login'
         }
       }
     },

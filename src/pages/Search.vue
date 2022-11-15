@@ -20,10 +20,17 @@
           <filters/>
         </div>
       </o-collapse>
-      
     </section>
 
-    <search-list/>
+    <section id="active-filters" class="mb-5">
+      <o-notification>
+        <div class="subtitle has-text-centered"><b>Active Filters</b></div>
+      </o-notification>
+    </section>
+
+    <search-list
+      :page="currentPage"
+    />
   </section>
   
 </template>
@@ -45,6 +52,9 @@ export default {
     }
   },
   computed: {
+    currentPage() {
+      return this.$route.params.page
+    },
     btnFilterMsg() {
       return (this.isFilterOpen)
       ? "Close Filters"

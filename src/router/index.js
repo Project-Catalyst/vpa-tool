@@ -23,7 +23,7 @@ const routes = [
     component: Login,
   },
   {
-    path: "/assessments",
+    path: "/assessments/:page",
     name: "search",
     component: Search,
     // beforeEnter: guard,
@@ -34,7 +34,7 @@ const routes = [
     component: Store,
   },
   {
-    path: "/assessments/:id",
+    path: "/assessment/:id",
     name: "assessment",
     component: Assessment,
   }
