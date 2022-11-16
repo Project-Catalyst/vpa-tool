@@ -1,7 +1,9 @@
 <script setup>
 // import { ref } from 'vue';
+  import { useFilterStore } from '../store/filters.js'
 
-// const count = ref("FILTERS")
+  const filters = useFilterStore()
+
 </script>
 
 <template>
@@ -22,7 +24,7 @@
       </o-collapse>
     </section>
 
-    <section id="active-filters" class="mb-5">
+    <section v-if="filters.hasActiveFilters" id="active-filters" class="mb-5">
       <o-notification>
         <div class="subtitle has-text-centered"><b>Active Filters</b></div>
       </o-notification>

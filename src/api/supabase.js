@@ -1,6 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 
 const RANGE = parseInt(import.meta.env.VITE_PAGE_RANGE)
+const BATCH_SIZE = parseInt(import.meta.env.VITE_SUPABASE_FETCH_BATCH_SIZE)
 
 const supabase = createClient(
   import.meta.env.VITE_CATALYST_SUPABASE_URL,
@@ -35,10 +36,8 @@ export default {
     return (error) ? 0 : count
   },
   async fetchAssessments(page, range=RANGE) {
-
     let init = (page-1)*range;
     let end = (page*range)-1;
-
     const { data, error } = await supabase
       .from('Assessments')
       .select(`
@@ -79,24 +78,38 @@ export default {
       .eq('id', id)
     return (error) ? {} : data[0]
   },
-  async getProposals(init, end) {
+  async getProposals(selectQuery="id, title") {
+    const totalProposals = await this.getTotalProposalsCount()
+    let all_proposals = [];
+    for (let i = 0; i < Math.ceil(totalProposals/BATCH_SIZE); i++) {
+      let init = i*BATCH_SIZE;
+      let final = (i+1)*BATCH_SIZE -1;
+      let proposals_batch = await this.fetchProposalsByRange(init, final, selectQuery)
+      all_proposals.push(...proposals_batch)
+    }
+    return all_proposals
+  },
+  async fetchProposalsByRange(init, end, selectQuery) {
     const { data, error } = await supabase
       .from('Proposals')
-      .select('id, title')
+      .select(selectQuery)
       .eq('fund_id', currentFund.id)
       .range(init, end)
       .order('id', { ascending: true })
     return (error) ? {} : data
   },
-  async getChallenges() {
+  async getChallenges(selectQuery="id, title") {
     const { data, error } = await supabase
       .from('Challenges')
-      .select('id, title')
+      .select(selectQuery)
       .eq('fund_id', currentFund.id)
       .order('id', { ascending: true })
     return (error) ? {} : data
   },
   async getAssessors() {
+    return await this.getAssessorsFromFund(currentFund.id)
+  },
+  async getAssessorsFromFund(fundId) {
     const { data, error } = await supabase
       .from('Funds')
       .select(`
@@ -104,7 +117,7 @@ export default {
           Assessors (id, anon_id)
         )
       `)
-      .eq('id', currentFund.id)
+      .eq('id', fundId)
     return (error) ? {} : data[0].AssessorsFunds.map( obj => obj.Assessors)
   },
   async addReview(assessment_id) {
