@@ -94,6 +94,21 @@ export const useFilterStore = defineStore('filters', {
     isFilterActive: (state) => {
       return (filterId) => state.activeFilters[filterId].length > 0
     },
+    getActiveRatings() {
+      return (this.isFilterActive(keysMap.ratings))
+      ? [this.activeFilters[keysMap.ratings][0].value.min, this.activeFilters[keysMap.ratings][0].value.max]
+      : [this.populationValues[keysMap.ratings].min, this.populationValues[keysMap.ratings].max]
+    },
+    getActiveFlagged() {
+      return (this.isFilterActive(keysMap.flagged))
+      ? this.activeFilters[keysMap.flagged][0].value
+      : 'All'
+    },
+    getActiveReviewed() {
+      return (this.isFilterActive(keysMap.flagged))
+      ? this.activeFilters[keysMap.reviewed][0].value
+      : 'All'
+    },
     filtersKeys() {
       return keysMap
     },

@@ -16,10 +16,10 @@
       proposals: '',
       challenges: '',
       assessors: '',
-      ratings: [ratings.min, ratings.max],
+      ratings: filters.getActiveRatings,
       length: ['',''],
-      flagged: 'All',
-      reviewed: 'All'
+      flagged: filters.getActiveFlagged,
+      reviewed: filters.getActiveReviewed
     }
   }
 
