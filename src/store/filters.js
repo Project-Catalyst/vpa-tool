@@ -1,7 +1,8 @@
+import { filter } from 'lodash'
 import { defineStore } from 'pinia'
 import supabase from '../api/supabase.js'
 
-// mapping to guarantee consistency: all filters' obj should follow such mapping
+// mapping to guarantee consistency: all filters' obj-keys should follow such mapping
 const keysMap = { 
   proposals: 'proposals',
   challenges: 'challenges',
@@ -58,7 +59,7 @@ const getEncapsulatedFilter = (option, mode) => {
   }
   else if(mode===modeMap.range) {
     filter.value.min = option[0]
-    filter.value.amx = option[1]
+    filter.value.max = option[1]
   }
   else if (mode===modeMap.val ) { 
     filter.value = option
@@ -102,26 +103,78 @@ export const useFilterStore = defineStore('filters', {
   },
   actions: {
     logFilters() {
-
+      console.log(this.activeFilters)
     },
-    addActiveFilter(filterId, filterOption, mode) {
-      // check if filter is already included and replace
-      // chack if min/max value is already included and just add
-      console.log(filterId)
-      console.log(filterOption)
-      console.log(mode)
-      let newFilter = getEncapsulatedFilter(filterOption, mode)
-      console.log(newFilter)
-    },
-    removeActiveFilter(filterId, filterOption) {
-      console.log(filterId)
-      console.log(filterOption)
-    }, 
     async init() {
       await this.populateProposals()
       await this.populateChallenges()
       await this.populateAssessors()
       this.initialized = true;
+    },
+    removeActiveFilter(filterId, filterOption) {
+      console.log(filterId)
+      console.log(filterOption)
+      // this.callAssessmentLoad()
+    }, 
+    addActiveFilter(filterId, filterOption, mode) {
+
+      if(!this.isFilterActive(filterId)) {
+        this.pushNewFilter(filterId, filterOption, mode)
+      }
+      else {
+        if(mode===modeMap.inc || mode===modeMap.exc) {
+          this.manageIncExcFilter(filterId, filterOption, mode)
+        }
+        else if(mode===modeMap.min || mode===modeMap.max || mode===modeMap.range) {
+          this.manageMinMaxFilter(filterId, filterOption, mode)
+        }
+        else if (mode===modeMap.val ) { 
+          this.manageValFilter(filterId, filterOption, mode)
+        }
+      }
+      // console.log(this.activeFilters)
+      // this.callAssessmentLoad()
+    },
+    manageIncExcFilter(filterId, filterOption, mode) {
+      let optionIndex = this.activeFilters[filterId].map( f => f.value.id).indexOf(filterOption.id)
+      if(optionIndex===-1) {
+        this.pushNewFilter(filterId, filterOption, mode)
+      }
+      else if(this.activeFilters[filterId][optionIndex].mode!==mode) {
+        this.activeFilters[filterId][optionIndex].value = filterOption
+        this.activeFilters[filterId][optionIndex].mode = mode
+        // set assessments update flag to true
+      }
+    },
+    manageMinMaxFilter(filterId, filterOption, mode) {
+      let filterEncap = this.activeFilters[filterId][0]
+      if(mode===modeMap.min && filterEncap.value[mode]!==filterOption) {
+        filterEncap.value.min = filterOption
+        filterEncap.mode = mode
+        // set assessments update flag to true
+      }
+      else if(mode===modeMap.max && filterEncap.value[mode]!==filterOption) {
+        filterEncap.value.max = filterOption
+        filterEncap.mode = mode
+        // set assessments update flag to true
+      }
+      else if(mode===modeMap.range && !(filterEncap.value.min===filterOption[0] && filterEncap.value.max===filterOption[1]) ) {
+        filterEncap.value.min = filterOption[0]
+        filterEncap.value.max = filterOption[1]
+        filterEncap.mode = mode
+        // set assessments update flag to true
+      }
+    },
+    manageValFilter(filterId, filterOption, mode) {
+      if(this.activeFilters[filterId][0].value!==filterOption) {
+        this.activeFilters[filterId][0].value = filterOption
+        // set assessments update flag to true  
+      }
+    },
+    pushNewFilter(filterId, filterOption, mode) {
+      let newFilter = getEncapsulatedFilter(filterOption, mode)
+      this.activeFilters[filterId].push(newFilter)
+      // set assessments update flag to true
     },
     async populateProposals() {
       this.populationValues.proposals = await supabase.getProposals();
@@ -131,6 +184,10 @@ export const useFilterStore = defineStore('filters', {
     },
     async populateAssessors() {
       this.populationValues.assessors = await supabase.getAssessors();
+    },
+    async callAssessmentLoad() {
+      console.log('callAssessmentLoad')
+      // set assessments update flag to false
     },
     resetFilters() {
       console.log('resetFilters')
