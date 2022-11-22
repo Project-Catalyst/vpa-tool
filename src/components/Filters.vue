@@ -134,6 +134,25 @@
 
 export default {
   name: "Filters",
+  created() {
+    this.$watch(
+      () => this.filters.eventDisplayUpdate,
+      (newVal, oldVal) => {
+        if(newVal===this.fKeys.ratings) {
+          this.vmodelValues[this.fKeys.ratings] = this.filters.getActiveRatings
+          this.filters.resetEventDisplayUpdate()
+        }
+        else if(newVal===this.fKeys.flagged) {
+          this.vmodelValues[this.fKeys.flagged] = this.filters.getActiveFlagged
+          this.filters.resetEventDisplayUpdate()
+        }
+        else if(newVal===this.fKeys.reviewed) {
+          this.vmodelValues[this.fKeys.reviewed] = this.filters.getActiveReviewed
+          this.filters.resetEventDisplayUpdate()
+        }
+      }
+    )
+  },
   data() {
     return {
       vmodelValues: this.getVmodelDefaultlValues(),

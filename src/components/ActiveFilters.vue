@@ -22,13 +22,13 @@
             <div v-if="filters.hasIncludedOptions(fKeys.proposals)"><b>Included in the search:</b>
               <span v-for="option in filters.getIncludedOptions(fKeys.proposals)" :key="option.id" class="tag is-success is-light is-small mb-1">
                 {{option.title}}
-                <button class="delete is-small"></button>
+                <button class="delete is-small" @click="removeFilter(fKeys.proposals, option)"></button>
               </span>
             </div>
             <div v-if="filters.hasExcludedOptions(fKeys.proposals)"><b>Excluded from the search:</b>
               <span v-for="option in filters.getExcludedOptions(fKeys.proposals)" :key="option.id" class="tag is-danger is-light is-small">
                 {{option.title}}
-                <button class="delete is-small"></button>
+                <button class="delete is-small" @click="removeFilter(fKeys.proposals, option)"></button>
               </span>
             </div>
           </div>
@@ -38,13 +38,13 @@
             <div v-if="filters.hasIncludedOptions(fKeys.challenges)"><b>Included in the search:</b>
               <span v-for="option in filters.getIncludedOptions(fKeys.challenges)" :key="option.id" class="tag is-success is-light is-small mb-1">
                 {{option.title}}
-                <button class="delete is-small"></button>
+                <button class="delete is-small" @click="removeFilter(fKeys.challenges, option)"></button>
               </span>
             </div>
             <div v-if="filters.hasExcludedOptions(fKeys.challenges)"><b>Excluded from the search:</b>
               <span v-for="option in filters.getExcludedOptions(fKeys.challenges)" :key="option.id" class="tag is-danger is-light is-small">
                 {{option.title}}
-                <button class="delete is-small"></button>
+                <button class="delete is-small" @click="removeFilter(fKeys.challenges, option)"></button>
               </span>
             </div>
           </div>
@@ -54,13 +54,13 @@
             <div v-if="filters.hasIncludedOptions(fKeys.assessors)"><b>Included in the search:</b>
               <span v-for="option in filters.getIncludedOptions(fKeys.assessors)" :key="option.id" class="tag is-success is-light is-small mb-1">
                 {{option.anon_id}}
-                <button class="delete is-small"></button>
+                <button class="delete is-small" @click="removeFilter(fKeys.assessors, option)"></button>
               </span>
             </div>
             <div v-if="filters.hasExcludedOptions(fKeys.assessors)"><b>Excluded from the search:</b>
               <span v-for="option in filters.getExcludedOptions(fKeys.assessors)" :key="option.id" class="tag is-danger is-light is-small">
                 {{option.anon_id}}
-                <button class="delete is-small"></button>
+                <button class="delete is-small" @click="removeFilter(fKeys.assessors, option)"></button>
               </span>
             </div>
           </div>
@@ -73,28 +73,28 @@
           <div v-if="filters.isFilterActive(fKeys.length)" class="mb-3"><b>Length:</b>
             <span class="tag is-primary is-light is-medium">
               {{getTagText(fKeys.length)}}
-              <button class="delete is-small"></button>
+              <button class="delete is-small" @click="removeFilter(fKeys.length)"></button>
             </span>
           </div>
           
           <div v-if="filters.isFilterActive(fKeys.ratings)" class="mb-3"><b>Rating:</b>
             <span class="tag is-primary is-light is-medium">
               {{getTagText(fKeys.ratings)}}
-              <button class="delete is-small"></button>
+              <button class="delete is-small" @click="removeFilter(fKeys.ratings)"></button>
             </span>
           </div>
 
           <div v-if="filters.isFilterActive(fKeys.flagged)" class="mb-3"><b>Proposer Flag:</b>
             <span class="tag is-primary is-light is-medium">
               {{getTagText(fKeys.flagged)}}
-              <button class="delete is-small"></button>
+              <button class="delete is-small" @click="removeFilter(fKeys.flagged)"></button>
             </span>
           </div>
 
           <div v-if="filters.isFilterActive(fKeys.reviewed)" class="mb-3"><b>vPAs reviewing:</b>
             <span class="tag is-primary is-light is-medium">
               {{getTagText(fKeys.reviewed)}}
-              <button class="delete is-small"></button>
+              <button class="delete is-small" @click="removeFilter(fKeys.reviewed)"></button>
             </span>
           </div>
 
@@ -116,6 +116,9 @@ export default {
     }
   },
   methods: {
+    removeFilter(filterId, option=null) {
+      this.filters.removeActiveFilter(filterId, option)
+    },
     getTagText(filterId) {
       if (filterId===this.fKeys.length) {
         let activeVal = this.filters.getActiveLength
@@ -127,7 +130,7 @@ export default {
         return `Rate between ${this.filters.getActiveRatings[0]} and ${this.filters.getActiveRatings[1]} points`
       }
       else if(filterId===this.fKeys.flagged) {
-        return `${this.filters.getActiveFlagged} by Proposer`
+        return `${this.filters.getActiveFlagged}`
       }
       else if(filterId===this.fKeys.reviewed) {
         return (this.filters.getActiveReviewed === 'Reviewed')

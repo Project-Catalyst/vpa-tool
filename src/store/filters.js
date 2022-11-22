@@ -22,6 +22,8 @@ const modeMap = {
   val: 'val'
 }
 
+const valFilterDefaultValue = 'All'
+
 const getEmptyFilters = () => {
   return {
     proposals: [],
@@ -82,6 +84,7 @@ export const useFilterStore = defineStore('filters', {
         reviewed: ['Reviewed', 'Not reviewed', 'All']
       },
       activeFilters: getEmptyFilters(),
+      eventDisplayUpdate: false,
     }
   ),
   getters: {
@@ -119,12 +122,12 @@ export const useFilterStore = defineStore('filters', {
     getActiveFlagged() {
       return (this.isFilterActive(keysMap.flagged))
       ? this.activeFilters[keysMap.flagged][0].value
-      : 'All'
+      : valFilterDefaultValue
     },
     getActiveReviewed() {
       return (this.isFilterActive(keysMap.reviewed))
       ? this.activeFilters[keysMap.reviewed][0].value
-      : 'All'
+      : valFilterDefaultValue
     },
     filtersKeys() {
       return keysMap
@@ -144,12 +147,21 @@ export const useFilterStore = defineStore('filters', {
       this.initialized = true;
     },
     removeActiveFilter(filterId, filterOption) {
-      console.log(filterId)
-      console.log(filterOption)
+      if(filterId===keysMap.proposals || filterId===keysMap.challenges || filterId===keysMap.assessors) {
+        this.removeFilterOption(filterId, filterOption)
+      }
+      else {
+        this.activeFilters[filterId] = []
+        if(filterId===keysMap.ratings || filterId===keysMap.flagged || filterId===keysMap.reviewed) {
+          this.eventDisplayUpdate = filterId
+        }
+      }
       // this.callAssessmentLoad()
-    }, 
+    },
+    removeFilterOption(filterId, filterOption) {
+      this.activeFilters[filterId] = this.activeFilters[filterId].filter(f => f.value.id!==filterOption.id)
+    },
     addActiveFilter(filterId, filterOption, mode) {
-
       if(!this.isFilterActive(filterId)) {
         this.pushNewFilter(filterId, filterOption, mode)
       }
@@ -164,8 +176,6 @@ export const useFilterStore = defineStore('filters', {
           this.manageValFilter(filterId, filterOption, mode)
         }
       }
-      // console.log(this.activeFilters)
-      // this.callAssessmentLoad()
     },
     manageIncExcFilter(filterId, filterOption, mode) {
       let optionIndex = this.activeFilters[filterId].map( f => f.value.id).indexOf(filterOption.id)
@@ -175,7 +185,7 @@ export const useFilterStore = defineStore('filters', {
       else if(this.activeFilters[filterId][optionIndex].mode!==mode) {
         this.activeFilters[filterId][optionIndex].value = filterOption
         this.activeFilters[filterId][optionIndex].mode = mode
-        // set assessments update flag to true
+        // this.callAssessmentLoad()
       }
     },
     manageMinMaxFilter(filterId, filterOption, mode) {
@@ -183,30 +193,33 @@ export const useFilterStore = defineStore('filters', {
       if(mode===modeMap.min && filterEncap.value[mode]!==filterOption) {
         filterEncap.value.min = filterOption
         filterEncap.mode = mode
-        // set assessments update flag to true
+        // this.callAssessmentLoad()
       }
       else if(mode===modeMap.max && filterEncap.value[mode]!==filterOption) {
         filterEncap.value.max = filterOption
         filterEncap.mode = mode
-        // set assessments update flag to true
+        // this.callAssessmentLoad()
       }
       else if(mode===modeMap.range && !(filterEncap.value.min===filterOption[0] && filterEncap.value.max===filterOption[1]) ) {
         filterEncap.value.min = filterOption[0]
         filterEncap.value.max = filterOption[1]
         filterEncap.mode = mode
-        // set assessments update flag to true
+        // this.callAssessmentLoad()
       }
     },
     manageValFilter(filterId, filterOption, mode) {
-      if(this.activeFilters[filterId][0].value!==filterOption) {
+      if(filterOption===valFilterDefaultValue) {
+        this.removeActiveFilter(filterId, filterOption)
+      }
+      else if(this.activeFilters[filterId][0].value!==filterOption) {
         this.activeFilters[filterId][0].value = filterOption
-        // set assessments update flag to true  
+        // this.callAssessmentLoad()
       }
     },
     pushNewFilter(filterId, filterOption, mode) {
       let newFilter = getEncapsulatedFilter(filterOption, mode)
       this.activeFilters[filterId].push(newFilter)
-      // set assessments update flag to true
+      // this.callAssessmentLoad()
     },
     async populateProposals() {
       this.populationValues.proposals = await supabase.getProposals();
@@ -219,12 +232,14 @@ export const useFilterStore = defineStore('filters', {
     },
     async callAssessmentLoad() {
       console.log('callAssessmentLoad')
-      // set assessments update flag to false
     },
     resetFilters() {
       console.log('resetFilters')
       this.activeFilters = getEmptyFilters()
-      // call assessments loading 
+      // this.callAssessmentLoad() // default call without filters
+    },
+    resetEventDisplayUpdate() {
+      this.eventDisplayUpdate = false
     },
     resetState() {
       this.$reset()
