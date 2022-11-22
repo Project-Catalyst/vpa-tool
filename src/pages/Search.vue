@@ -24,11 +24,9 @@
       </o-collapse>
     </section>
 
-    <section v-if="filters.hasActiveFilters" id="active-filters" class="mb-5">
-      <o-notification>
-        <div class="subtitle has-text-centered"><b>Active Filters</b></div>
-      </o-notification>
-    </section>
+    <div v-if="filters.hasActiveFilters" id="active-filters" class="mb-5">
+      <active-filters/>
+    </div>
 
     <search-list/>
   </section>
@@ -37,12 +35,14 @@
 
 <script>
 import Filters from "../components/Filters.vue";
+import ActiveFilters from "../components/ActiveFilters.vue";
 import SearchList from "../components/SearchList.vue";
 
 export default {
   name: "Search",
   components: {
     Filters,
+    ActiveFilters,
     SearchList
   },
   data() {
