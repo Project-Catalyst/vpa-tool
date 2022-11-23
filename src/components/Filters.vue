@@ -31,6 +31,7 @@
     <o-button @click="filters.init()" variant="success" class="mx-1"> INIT FILTERS STORE </o-button>
     <o-button @click="filters.resetState()" variant="danger"> RESET FILTERS STORE </o-button>
     <o-button @click="filters.logFilters()" variant="primary" class="mx-1"> LOG FILTERS </o-button>
+    <o-button @click="filters.callAssessmentLoad()" variant="primary" class="mx-1"> LOG PARAMS </o-button>
     
     <div class="columns is-multiline is-vcentered">
 
@@ -82,7 +83,7 @@
       <o-field label="Length greater than (characters)" class="column is-one-third">
         <o-autocomplete placeholder="Select a minimum length"
           v-model="vmodelValues.length[0]"
-          icon="search" clearOnSelect
+          icon="search"
           :open-on-focus="true"
           :data="length"
           @select="option => addFilter(fKeys.length, option, fModes.min)"
@@ -91,7 +92,7 @@
       <o-field label="Length smaller than (characters)" class="column is-one-third">
         <o-autocomplete placeholder="Select a maximum length"
           v-model="vmodelValues.length[1]"
-          icon="search" clearOnSelect
+          icon="search"
           :open-on-focus="true"
           :data="length"
           @select="option => addFilter(fKeys.length, option, fModes.max)"

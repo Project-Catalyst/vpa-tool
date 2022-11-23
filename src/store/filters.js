@@ -23,6 +23,8 @@ const modeMap = {
 }
 
 const valFilterDefaultValue = 'All'
+const flaggedFilterValues = {positive: 'Flagged', negative: 'Not flagged'}
+const reviewedFilterValues = {positive: 'Reviewed', negative: 'Not reviewed'}
 
 const getEmptyFilters = () => {
   return {
@@ -80,8 +82,8 @@ export const useFilterStore = defineStore('filters', {
         assessors: [],
         ratings: {min: 0, max: 5},
         length: [500, 750, 1000, 1250, 1500],
-        flagged: ['Flagged', 'Not flagged', 'All'],
-        reviewed: ['Reviewed', 'Not reviewed', 'All']
+        flagged: [flaggedFilterValues.positive, flaggedFilterValues.negative, valFilterDefaultValue],
+        reviewed: [reviewedFilterValues.positive, reviewedFilterValues.negative, valFilterDefaultValue]
       },
       activeFilters: getEmptyFilters(),
       eventDisplayUpdate: false,
@@ -221,6 +223,73 @@ export const useFilterStore = defineStore('filters', {
       this.activeFilters[filterId].push(newFilter)
       // this.callAssessmentLoad()
     },
+    resetFilters() {
+      console.log('resetFilters')
+      this.activeFilters = getEmptyFilters()
+      // this.callAssessmentLoad() // default call without filters
+    },
+    async callAssessmentLoad() {
+      console.log('callAssessmentLoad')
+      let supabaseFiltersParam = this.getSupabaseFilterParam()
+      console.log(supabaseFiltersParam)
+      // call assessments to call supabase and update assessments
+    },
+    getSupabaseFilterParam() {
+      let supabaseFilterParam = {
+        proposalId: null,
+        challengeId: null,
+        assessorId: null, 
+        avRatingMin: null,
+        avRatingMax: null,
+        lengthMin: null,
+        lengthMax: null, 
+        flagged: null,
+        reviewed: null
+      }
+
+      if( this.isFilterActive(keysMap.proposals) ) {
+        supabaseFilterParam.proposalId = this.activeFilters[keysMap.proposals].map(f => f.value.id)
+      }
+      if( this.isFilterActive(keysMap.challenges) ) {
+        supabaseFilterParam.challengeId = this.activeFilters[keysMap.challenges].map(f => f.value.id)
+      }
+      if( this.isFilterActive(keysMap.assessors) ) {
+        supabaseFilterParam.assessorId = this.activeFilters[keysMap.assessors].map(f => f.value.id)
+      }
+      if( this.isFilterActive(keysMap.ratings) ) {
+        if (this.activeFilters[keysMap.ratings].value.min !== this.populationValues[keysMap.ratings].min) {
+          supabaseFilterParam.avRatingMin = this.activeFilters[keysMap.ratings].value.min
+        }
+        if (this.activeFilters[keysMap.ratings].value.max !== this.populationValues[keysMap.ratings].max) {
+          supabaseFilterParam.avRatingMax = this.activeFilters[keysMap.ratings].value.max
+        }
+      }
+      if( this.isFilterActive(keysMap.length) ) {
+        if (this.activeFilters[keysMap.length].value.min !== null) {
+          supabaseFilterParam.lengthMin = this.activeFilters[keysMap.length].value.min
+        }
+        if (this.activeFilters[keysMap.length].value.max !== null) {
+          supabaseFilterParam.lengthMax = this.activeFilters[keysMap.length].value.max
+        }
+      }
+      if( this.isFilterActive(keysMap.flagged) ) {
+        if(this.activeFilters[keysMap.flagged].value === reviewedFilterValues.positive) {
+          supabaseFilterParam.flagged = true
+        }
+        else if(this.activeFilters[keysMap.flagged].value === reviewedFilterValues.negative) {
+          supabaseFilterParam.flagged = false
+        }  
+      }
+      if( this.isFilterActive(keysMap.reviewed) ) {
+        if(this.activeFilters[keysMap.reviewed].value === reviewedFilterValues.positive) {
+          supabaseFilterParam.reviewed = true
+        }
+        else if(this.activeFilters[keysMap.reviewed].value === reviewedFilterValues.negative) {
+          supabaseFilterParam.reviewed = false
+        }  
+      }
+      return supabaseFilterParam
+    },
     async populateProposals() {
       this.populationValues.proposals = await supabase.getProposals();
     },
@@ -229,14 +298,6 @@ export const useFilterStore = defineStore('filters', {
     },
     async populateAssessors() {
       this.populationValues.assessors = await supabase.getAssessors();
-    },
-    async callAssessmentLoad() {
-      console.log('callAssessmentLoad')
-    },
-    resetFilters() {
-      console.log('resetFilters')
-      this.activeFilters = getEmptyFilters()
-      // this.callAssessmentLoad() // default call without filters
     },
     resetEventDisplayUpdate() {
       this.eventDisplayUpdate = false
