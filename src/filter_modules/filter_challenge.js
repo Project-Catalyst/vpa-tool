@@ -1,0 +1,47 @@
+
+export default {
+  populationValues() {
+    return
+  },
+  defaultVmodel() {
+    return ''
+  },
+  filterTemplate() {
+    return {
+      included: [],
+      excluded: []
+    }
+  },
+  getFilter(currentTemplate, option, mode) {
+    let isIncluded = currentTemplate.included.map( f => f.id).indexOf(option.id)
+    let isExcluded = currentTemplate.excluded.map( f => f.id).indexOf(option.id)
+    if(mode==='inc' && isIncluded===-1) {
+      currentTemplate.included.push(option)
+      if(isExcluded!==-1) {
+        currentTemplate.excluded = currentTemplate.excluded.filter(f => f.id!==option.id)
+      }
+    }
+    else if(mode==='exc' && isExcluded===-1) {
+      currentTemplate.excluded.push(option)
+      if(isIncluded!==-1) {
+        currentTemplate.included = currentTemplate.included.filter(f => f.id!==option.id)
+      }
+    }
+    return currentTemplate
+  },
+  removeFilter(currentTemplate, option) {
+    let isIncluded = currentTemplate.included.map( f => f.id).indexOf(option.id)
+    let isExcluded = currentTemplate.excluded.map( f => f.id).indexOf(option.id)
+    if(isIncluded!==-1) {
+      currentTemplate.included = currentTemplate.included.filter(f => f.id!==option.id)
+    }
+    else if(isExcluded!==-1) {
+      currentTemplate.excluded = currentTemplate.excluded.filter(f => f.id!==option.id)
+    }
+    return currentTemplate
+  },
+  isActive(currentTemplate=false) {
+    if(!currentTemplate) { currentTemplate = this.filterTemplate() }
+    return (currentTemplate.included.length > 0) || (currentTemplate.excluded.length > 0)
+  } 
+}

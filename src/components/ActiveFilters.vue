@@ -15,7 +15,7 @@
 
       <div class="columns">
 
-        <div class="column is-two-thirds">
+        <div class="column is-three-fifths">
 
           <div v-if="filters.isFilterActive(fKeys.proposals)" class="mb-5">
             <div class="subtitle mb-2"><b>Filtered Proposals</b></div>
@@ -67,7 +67,7 @@
         
         </div>
 
-        <div class="column is-one-third">
+        <div class="column is-two-fifths">
           <div class="subtitle mb-2"><b>Assessments filtered by</b></div>
 
           <div v-if="filters.isFilterActive(fKeys.length)" class="mb-3"><b>Length:</b>
@@ -121,19 +121,19 @@ export default {
     },
     getTagText(filterId) {
       if (filterId===this.fKeys.length) {
-        let activeVal = this.filters.getActiveLength
-        if(activeVal.min===null) { return `Length up to ${activeVal.max} chars` }
-        else if(activeVal.max===null) { return `Length greater than ${activeVal.min} chars` }
-        else { return `Length between ${activeVal.min}-${activeVal.max} chars` }
+        let activeVal = this.filters.reactiveVbindings[filterId]
+        if(activeVal[0]==='') { return `Length up to ${activeVal[1]} chars` }
+        else if(activeVal[1]==='') { return `Length greater than ${activeVal[0]} chars` }
+        else { return `Length between ${activeVal[0]}-${activeVal[1]} chars` }
       }
       else if(filterId===this.fKeys.ratings) {
-        return `Rate between ${this.filters.getActiveRatings[0]} and ${this.filters.getActiveRatings[1]} points`
+        return `Rate between ${this.filters.reactiveVbindings[filterId][0]} and ${this.filters.reactiveVbindings[filterId][1]} points`
       }
       else if(filterId===this.fKeys.flagged) {
-        return `${this.filters.getActiveFlagged}`
+        return `${this.filters.reactiveVbindings[filterId]}`
       }
       else if(filterId===this.fKeys.reviewed) {
-        return (this.filters.getActiveReviewed === 'Reviewed')
+        return (this.filters.reactiveVbindings[filterId] === 'Reviewed')
         ? "Reviews provided"
         : "No reviews provided"
       }
