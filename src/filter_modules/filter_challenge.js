@@ -29,13 +29,11 @@ export default {
     }
     return currentTemplate
   },
-  removeFilter(currentTemplate, option) {
-    let isIncluded = currentTemplate.included.map( f => f.id).indexOf(option.id)
-    let isExcluded = currentTemplate.excluded.map( f => f.id).indexOf(option.id)
-    if(isIncluded!==-1) {
+  removeFilter(currentTemplate, option, mode) {
+    if(mode==='inc') {
       currentTemplate.included = currentTemplate.included.filter(f => f.id!==option.id)
     }
-    else if(isExcluded!==-1) {
+    else if(mode==='exc') {
       currentTemplate.excluded = currentTemplate.excluded.filter(f => f.id!==option.id)
     }
     return currentTemplate

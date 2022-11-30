@@ -29,7 +29,7 @@ export default {
     }
     return currentTemplate
   },
-  removeFilter(currentTemplate, option) {
+  removeFilter(currentTemplate, option, mode) {
     return this.filterTemplate()
   },
   isActive(currentTemplate=false) {

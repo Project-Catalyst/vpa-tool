@@ -4,6 +4,7 @@
 
   const filters = useFilterStore()
   const fKeys = filters.filtersKeys
+  const fModes = filters.filtersModes
 
 </script>
 
@@ -15,20 +16,21 @@
 
       <div class="columns">
 
-        <div class="column is-three-fifths">
+        <div class="column is-three-fifths"
+          v-if="filters.isFilterActive(fKeys.proposals) || filters.isFilterActive(fKeys.challenges) || filters.isFilterActive(fKeys.assessors)">
 
           <div v-if="filters.isFilterActive(fKeys.proposals)" class="mb-5">
             <div class="subtitle mb-2"><b>Filtered Proposals</b></div>
             <div v-if="filters.hasIncludedOptions(fKeys.proposals)"><b>Included in the search:</b>
               <span v-for="option in filters.getIncludedOptions(fKeys.proposals)" :key="option.id" class="tag is-success is-light is-small mb-1">
                 {{option.title}}
-                <button class="delete is-small" @click="removeFilter(fKeys.proposals, option)"></button>
+                <button class="delete is-small" @click="removeFilter(fKeys.proposals, option, fModes.inc)"></button>
               </span>
             </div>
             <div v-if="filters.hasExcludedOptions(fKeys.proposals)"><b>Excluded from the search:</b>
               <span v-for="option in filters.getExcludedOptions(fKeys.proposals)" :key="option.id" class="tag is-danger is-light is-small">
                 {{option.title}}
-                <button class="delete is-small" @click="removeFilter(fKeys.proposals, option)"></button>
+                <button class="delete is-small" @click="removeFilter(fKeys.proposals, option, fModes.exc)"></button>
               </span>
             </div>
           </div>
@@ -38,13 +40,13 @@
             <div v-if="filters.hasIncludedOptions(fKeys.challenges)"><b>Included in the search:</b>
               <span v-for="option in filters.getIncludedOptions(fKeys.challenges)" :key="option.id" class="tag is-success is-light is-small mb-1">
                 {{option.title}}
-                <button class="delete is-small" @click="removeFilter(fKeys.challenges, option)"></button>
+                <button class="delete is-small" @click="removeFilter(fKeys.challenges, option, fModes.inc)"></button>
               </span>
             </div>
             <div v-if="filters.hasExcludedOptions(fKeys.challenges)"><b>Excluded from the search:</b>
               <span v-for="option in filters.getExcludedOptions(fKeys.challenges)" :key="option.id" class="tag is-danger is-light is-small">
                 {{option.title}}
-                <button class="delete is-small" @click="removeFilter(fKeys.challenges, option)"></button>
+                <button class="delete is-small" @click="removeFilter(fKeys.challenges, option, fModes.exc)"></button>
               </span>
             </div>
           </div>
@@ -54,13 +56,13 @@
             <div v-if="filters.hasIncludedOptions(fKeys.assessors)"><b>Included in the search:</b>
               <span v-for="option in filters.getIncludedOptions(fKeys.assessors)" :key="option.id" class="tag is-success is-light is-small mb-1">
                 {{option.anon_id}}
-                <button class="delete is-small" @click="removeFilter(fKeys.assessors, option)"></button>
+                <button class="delete is-small" @click="removeFilter(fKeys.assessors, option, fModes.inc)"></button>
               </span>
             </div>
             <div v-if="filters.hasExcludedOptions(fKeys.assessors)"><b>Excluded from the search:</b>
               <span v-for="option in filters.getExcludedOptions(fKeys.assessors)" :key="option.id" class="tag is-danger is-light is-small">
                 {{option.anon_id}}
-                <button class="delete is-small" @click="removeFilter(fKeys.assessors, option)"></button>
+                <button class="delete is-small" @click="removeFilter(fKeys.assessors, option, fModes.exc)"></button>
               </span>
             </div>
           </div>
@@ -69,6 +71,13 @@
 
         <div class="column is-two-fifths">
           <div class="subtitle mb-2"><b>Assessments filtered by</b></div>
+
+          <div v-if="filters.isFilterActive(fKeys.stored)" class="mb-3"><b>Stored reviews:</b>
+            <span class="tag is-primary is-light is-medium">
+              {{getTagText(fKeys.stored)}}
+              <button class="delete is-small" @click="removeFilter(fKeys.stored)"></button>
+            </span>
+          </div>
 
           <div v-if="filters.isFilterActive(fKeys.length)" class="mb-3"><b>Length:</b>
             <span class="tag is-primary is-light is-medium">
@@ -116,7 +125,7 @@ export default {
     }
   },
   methods: {
-    removeFilter(filterId, option=null) {
+    removeFilter(filterId, option=null, mode=null) {
       this.filters.removeActiveFilter(filterId, option)
     },
     getTagText(filterId) {
@@ -133,9 +142,17 @@ export default {
         return `${this.filters.reactiveVbindings[filterId]}`
       }
       else if(filterId===this.fKeys.reviewed) {
-        return (this.filters.reactiveVbindings[filterId] === 'Reviewed')
-        ? "Reviews provided"
+        let rangeText = ""
+        if(this.filters.hasReviewedRangeActive) {
+          let range = this.filters.getReviewedRange
+          rangeText = ` (no. of reviews from ${range[0]}-${range[1]})`
+        }
+        return (this.filters.reactiveVbindings[filterId] === this.filters.getReviewedValue)
+        ? `Reviews provided${rangeText}`
         : "No reviews provided"
+      }
+      else if(filterId===this.fKeys.stored) {
+        return "Personal stored reviews"
       }
     },
   }

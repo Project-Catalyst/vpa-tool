@@ -17,7 +17,7 @@ export default {
     /* Method to receive the current filter state from store, update and return the filter object */
     return currentTemplate
   },
-  removeFilter(currentTemplate, option) {
+  removeFilter(currentTemplate, option, mode) {
     /* Method to receive the current filter state from store, and return the filter object for the action of removing <option> */
     return currentTemplate
   },

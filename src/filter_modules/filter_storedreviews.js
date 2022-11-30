@@ -1,26 +1,18 @@
 
-const RANGE = {min: 0, max: 5}
-
 export default {
   populationValues() {
-    return RANGE
+    return 
   },
   defaultVmodel() {
-    return [RANGE.min, RANGE.max]
+    return false
   },
   filterTemplate() {
     return {
-      min: RANGE.min,
-      max: RANGE.max
+      valFlag: false,
     }
   },
   getFilter(currentTemplate, option, mode) {
-    if(option[0]!==currentTemplate.min) {
-      currentTemplate.min = option[0]
-    }
-    if(option[1]!==currentTemplate.max) {
-      currentTemplate.max = option[1]
-    }
+    currentTemplate.valFlag = option
     return currentTemplate
   },
   removeFilter(currentTemplate, option, mode) {
@@ -28,6 +20,6 @@ export default {
   },
   isActive(currentTemplate=false) {
     if(!currentTemplate) { currentTemplate = this.filterTemplate() }
-    return (currentTemplate.min!==RANGE.min) || (currentTemplate.max!==RANGE.max)
-  }
+    return currentTemplate.valFlag
+  } 
 }

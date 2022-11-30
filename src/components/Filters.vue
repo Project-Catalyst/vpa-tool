@@ -71,6 +71,35 @@
           @select="option => addFilter(fKeys.length, option, fModes.min)"
         />
       </o-field>
+      <o-field label="Flagged by Proposer" class="column is-one-third pt-0">
+        <o-radio v-for="value in filters.flaggedOptions" :key="value"
+          v-model="vmodelValues.flagged" :native-value="value" 
+          variant="primary"
+          @update:modelValue="option => addFilter(fKeys.flagged, option, fModes.val)">
+          {{value}}
+        </o-radio>
+      </o-field>
+      <div class="column is-one-third columns is-multiline mb-0 mt-2">
+        <o-field label="Reviews by vPAs" class="column is-full mb-0 py-0 pr-0">
+          <o-radio v-for="value in filters.reviewedOptions" :key="value"
+            v-model="vmodelValues.reviewed" :native-value="value" 
+            variant="primary"
+            @update:modelValue="option => addFilter(fKeys.reviewed, option, fModes.val)">
+            {{value}}
+          </o-radio>
+        </o-field>
+        <o-field class="column is-full pb-0 ml-2">
+          <o-slider v-model="vmodelValues.reviewedRange" 
+            :min="filters.reviewedThresholds.min" :max="filters.reviewedThresholds.max" :step="1" lazy
+            @change="option => addFilter(fKeys.reviewed, option, fModes.range)"
+            :disabled="vmodelValues.reviewed!==filters.getReviewedValue">
+            <template v-for="val in [filters.reviewedThresholds.min, filters.reviewedThresholds.max]" :key="val">
+              <o-slider-tick :value="val">{{ val }}</o-slider-tick>
+            </template>
+          </o-slider>
+        </o-field>
+      </div>
+      
       <o-field label="Length smaller than (characters)" class="column is-one-third">
         <o-autocomplete placeholder="Select a maximum length"
           v-model="vmodelValues.length[1]"
@@ -80,7 +109,7 @@
           @select="option => addFilter(fKeys.length, option, fModes.max)"
         />
       </o-field>
-      <o-field label="Average Rating" class="column is-one-third pt-2">
+      <o-field label="Average Rating" class="column is-one-third pt-0 px-4">
         <o-slider v-model="vmodelValues.ratings" 
           :min="filters.ratingThresholds.min" :max="filters.ratingThresholds.max" :step="0.5" ticks lazy
           @change="option => addFilter(fKeys.ratings, option, fModes.range)">
@@ -89,25 +118,17 @@
           </template>
         </o-slider>
       </o-field>
-
-      <o-field label="Flagged by Proposer" class="column is-one-third">
-        <o-radio v-for="value in filters.flaggedOptions" :key="value"
-          v-model="vmodelValues.flagged" :native-value="value" 
-          variant="primary"
-          @update:modelValue="option => addFilter(fKeys.flagged, option, fModes.val)">
-          {{value}}
-        </o-radio>
+      <o-field label="My own reviews" class="column is-one-third">
+        <o-switch v-model="vmodelValues.stored" 
+        @update:modelValue="option => addFilter(fKeys.stored, option, fModes.val)">
+          Only stored reviews
+        </o-switch>
       </o-field>
-      <o-field label="Reviewed Status" class="column is-one-third">
-        <o-radio v-for="value in filters.reviewedOptions" :key="value"
-          v-model="vmodelValues.reviewed" :native-value="value" 
-          variant="primary"
-          @update:modelValue="option => addFilter(fKeys.reviewed, option, fModes.val)">
-          {{value}}
-        </o-radio>
-      </o-field>
-      <o-button class="column is-2 is-offset-1 p-0" @click="resetFilters()" variant="danger" outlined> Reset all filters </o-button>
 
+      <o-field class="column is-full has-text-centered">
+        <o-button @click="resetFilters()" variant="danger" outlined> Reset all filters </o-button>
+      </o-field>
+      
     </div>
 
   </div>
@@ -125,6 +146,8 @@ export default {
         this.vmodelValues[this.fKeys.ratings] = newVal[this.fKeys.ratings]
         this.vmodelValues[this.fKeys.flagged] = newVal[this.fKeys.flagged]
         this.vmodelValues[this.fKeys.reviewed] = newVal[this.fKeys.reviewed]
+        this.vmodelValues[this.fKeys.reviewedRange] = newVal[this.fKeys.reviewedRange]
+        this.vmodelValues[this.fKeys.stored] = newVal[this.fKeys.stored]
       },
       { deep: true }
     )

@@ -8,6 +8,7 @@ import filterRatings from '../filter_modules/filter_ratings.js'
 import filterLength from '../filter_modules/filter_length.js'
 import filterFlagged from '../filter_modules/filter_flagged.js'
 import filterReviewed from '../filter_modules/filter_reviewed.js'
+import filterStoredReviews from '../filter_modules/filter_storedreviews.js'
 
 const filterModules = {
   proposals: filterProposal,
@@ -16,10 +17,11 @@ const filterModules = {
   ratings: filterRatings,
   length: filterLength,
   flagged: filterFlagged,
-  reviewed: filterReviewed
+  reviewed: filterReviewed,
+  stored: filterStoredReviews,
 }
 
-// mapping to guarantee consistency: all filters' obj-keys should follow such mapping
+// mapping to guarantee consistency: obj-keys should follow such mapping
 const keysMap = { 
   proposals: 'proposals',
   challenges: 'challenges',
@@ -27,7 +29,9 @@ const keysMap = {
   ratings: 'ratings',
   length: 'length',
   flagged: 'flagged',
-  reviewed: 'reviewed'
+  reviewed: 'reviewed',
+  reviewedRange: 'reviewedRange',
+  stored: 'stored'
 }
 // mapping to guarantee consistency
 const modeMap = {
@@ -39,6 +43,42 @@ const modeMap = {
   val: 'val'
 }
 
+const getDefaultReactiveVbindings = () => {
+  return {
+    length: filterLength.defaultVmodel(),
+    ratings: filterRatings.defaultVmodel(),
+    flagged: filterFlagged.defaultVmodel(),
+    reviewed: filterReviewed.defaultVmodel(),
+    reviewedRange: filterReviewed.defaultRangeVmodel(),
+    stored: filterStoredReviews.defaultVmodel()
+  }
+}
+
+const getDefaultAllFilters = () => {
+  return {
+    proposals: filterProposal.filterTemplate(),
+    challenges: filterChallenge.filterTemplate(),
+    assessors: filterAssessor.filterTemplate(),
+    ratings: filterRatings.filterTemplate(),
+    length: filterLength.filterTemplate(),
+    flagged: filterFlagged.filterTemplate(),
+    reviewed: filterReviewed.filterTemplate(),
+    stored: filterStoredReviews.filterTemplate()
+  }
+}
+
+const getDefaultActiveStatus = () => {
+  return {
+    proposals: filterProposal.isActive(),
+    challenges: filterChallenge.isActive(),
+    assessors: filterAssessor.isActive(),
+    ratings: filterRatings.isActive(),
+    length: filterLength.isActive(),
+    flagged: filterFlagged.isActive(),
+    reviewed: filterReviewed.isActive(),
+    stored: filterStoredReviews.isActive()
+  }
+}
 
 export const useFilterStore = defineStore('filters', {
   persist: true,
@@ -57,35 +97,19 @@ export const useFilterStore = defineStore('filters', {
         ratings: filterRatings.defaultVmodel(),
         length: filterLength.defaultVmodel(),
         flagged: filterFlagged.defaultVmodel(),
-        reviewed: filterReviewed.defaultVmodel()
+        reviewed: filterReviewed.defaultVmodel(),
+        reviewedRange: filterReviewed.defaultRangeVmodel(),
+        stored: filterStoredReviews.defaultVmodel()
       },
-      reactiveVbindings: {
-        length: filterLength.defaultVmodel(),
-        ratings: filterRatings.defaultVmodel(),
-        flagged: filterFlagged.defaultVmodel(),
-        reviewed: filterReviewed.defaultVmodel()
-      },
-      allFilters: {
-        proposals: filterProposal.filterTemplate(),
-        challenges: filterChallenge.filterTemplate(),
-        assessors: filterAssessor.filterTemplate(),
-        ratings: filterRatings.filterTemplate(),
-        length: filterLength.filterTemplate(),
-        flagged: filterFlagged.filterTemplate(),
-        reviewed: filterReviewed.filterTemplate()
-      },
-      activesStatus: {
-        proposals: filterProposal.isActive(),
-        challenges: filterChallenge.isActive(),
-        assessors: filterAssessor.isActive(),
-        ratings: filterRatings.isActive(),
-        length: filterLength.isActive(),
-        flagged: filterFlagged.isActive(),
-        reviewed: filterReviewed.isActive()
-      }
+      reactiveVbindings: getDefaultReactiveVbindings(),
+      allFilters: getDefaultAllFilters(),
+      activesStatus: getDefaultActiveStatus()
     }
   ),
   actions: {
+    logFilters() {
+      console.log(this.allFilters)
+    },
     async init() {
       this.storedFiltersData.proposals = await supabase.getProposals()
       this.storedFiltersData.challenges = await supabase.getChallenges()
@@ -98,17 +122,20 @@ export const useFilterStore = defineStore('filters', {
       this.updateReactiveBidings(filterId, filterOption, mode)
       // this.callAssessmentLoad()
     },
-    removeActiveFilter(filterId, filterOption) {
+    removeActiveFilter(filterId, filterOption, mode) {
       this.allFilters[filterId] = filterModules[filterId].removeFilter(this.allFilters[filterId], filterOption, mode)
       this.activesStatus[filterId] = filterModules[filterId].isActive(this.allFilters[filterId])
       this.updateReactiveBidings(filterId, filterOption)
       // this.callAssessmentLoad()
     },
     updateReactiveBidings(filterId, filterOption, mode=null) {
+      if(filterId===keysMap.reviewed && mode===modeMap.range) {
+        filterId = keysMap.reviewedRange
+      }
       if(Object.prototype.hasOwnProperty.call(this.reactiveVbindings, filterId)) {
         if(filterId===keysMap.length) {
           if(mode===null) {
-            this.reactiveVbindings[filterId] = filterModules[filterId].defaultVmodel  
+            this.reactiveVbindings[filterId] = filterModules[filterId].defaultVmodel()
           }
           else if(mode===modeMap.min) {
             (filterOption===null)
@@ -121,9 +148,16 @@ export const useFilterStore = defineStore('filters', {
             : this.reactiveVbindings[filterId][1] = filterOption
           }
         }
+        else if(filterId===keysMap.reviewedRange) {
+          this.reactiveVbindings[filterId] = filterOption
+        }
+        else if(filterId===keysMap.reviewed && filterOption===null) {
+          this.reactiveVbindings[filterId] = filterModules[filterId].defaultVmodel()
+          this.reactiveVbindings[keysMap.reviewedRange] = filterModules[filterId].defaultRangeVmodel() 
+        }
         else {
           if(filterOption===null) {
-            this.reactiveVbindings[filterId] = filterModules[filterId].defaultVmodel  
+            this.reactiveVbindings[filterId] = filterModules[filterId].defaultVmodel()
           }
           else {
             this.reactiveVbindings[filterId] = filterOption
@@ -132,30 +166,9 @@ export const useFilterStore = defineStore('filters', {
       }
     },
     resetFilters() {
-      this.allFilters = {
-        proposals: filterProposal.filterTemplate(),
-        challenges: filterChallenge.filterTemplate(),
-        assessors: filterAssessor.filterTemplate(),
-        ratings: filterRatings.filterTemplate(),
-        length: filterLength.filterTemplate(),
-        flagged: filterFlagged.filterTemplate(),
-        reviewed: filterReviewed.filterTemplate()
-      }
-      this.activesStatus = {
-        proposals: filterProposal.isActive(),
-        challenges: filterChallenge.isActive(),
-        assessors: filterAssessor.isActive(),
-        ratings: filterRatings.isActive(),
-        length: filterLength.isActive(),
-        flagged: filterFlagged.isActive(),
-        reviewed: filterReviewed.isActive()
-      }
-      this.reactiveVbindings = {
-        length: filterLength.defaultVmodel(),
-        ratings: filterRatings.defaultVmodel(),
-        flagged: filterFlagged.defaultVmodel(),
-        reviewed: filterReviewed.defaultVmodel()
-      }
+      this.reactiveVbindings = getDefaultReactiveVbindings(),
+      this.allFilters = getDefaultAllFilters(),
+      this.activesStatus = getDefaultActiveStatus()
       // this.callAssessmentLoad() // default call without filters
     },
     async callAssessmentLoad() {
@@ -188,6 +201,9 @@ export const useFilterStore = defineStore('filters', {
     reviewedOptions() {
       return filterReviewed.populationValues()
     },
+    reviewedThresholds() {
+      return filterReviewed.thresholdValues()
+    },
     flaggedOptions() {
       return filterFlagged.populationValues()
     },
@@ -209,6 +225,15 @@ export const useFilterStore = defineStore('filters', {
     },
     getExcludedOptions: (state) => {
       return (filterId) => state.allFilters[filterId].excluded
+    },
+    hasReviewedRangeActive() {
+      return this.allFilters[keysMap.reviewed].activeRange
+    },
+    getReviewedRange() {
+      return this.allFilters[keysMap.reviewed].range
+    },
+    getReviewedValue() {
+      return filterReviewed.positiveValue()
     },
     // Map getters
     filtersKeys() {
