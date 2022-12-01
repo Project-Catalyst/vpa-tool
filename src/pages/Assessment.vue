@@ -150,7 +150,7 @@ export default {
       return (btnType === this.reviewClass) ? false : true
     }, 
     goToSearchList() {
-      this.$router.push({name: 'search'})
+      this.$router.push({name: 'search', params: {page: this.assessmentsStore.currentPage}})
     },
     goToNextAssessment() {
       let nextId = this.assessmentsStore.getNextAssessmentId(this.assessment.id)
