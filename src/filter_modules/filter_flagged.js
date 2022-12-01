@@ -35,5 +35,9 @@ export default {
   isActive(currentTemplate=false) {
     if(!currentTemplate) { currentTemplate = this.filterTemplate() }
     return (currentTemplate.valFlag!==this.filterTemplate().valFlag)
+  },
+  updateParam(currentTemplate, param) {
+    param.flagged = currentTemplate.valFlag
+    return param
   }
 }

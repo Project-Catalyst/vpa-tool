@@ -21,5 +21,8 @@ export default {
   isActive(currentTemplate=false) {
     if(!currentTemplate) { currentTemplate = this.filterTemplate() }
     return currentTemplate.valFlag
-  } 
+  },
+  updateParam(currentTemplate, param) {
+    return
+  }
 }

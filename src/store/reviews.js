@@ -32,6 +32,12 @@ export const useReviewsStore = defineStore('reviews', {
     count() {
       return this.reviews.length
     },
+    hasReviews() {
+      return this.reviews.length > 0
+    },
+    allIds() {
+      return this.reviews.map(r => r.id)
+    },
     isReviewed: (state) => {
       return (id) => state.reviews.map(r=> r.id).includes(id)
     },

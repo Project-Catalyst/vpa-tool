@@ -67,7 +67,7 @@
           v-model="vmodelValues.length[0]"
           icon="search" clearable
           :open-on-focus="true"
-          :data="filters.lengthOptions"
+          :data="filters.lengthMinOptions"
           @select="option => addFilter(fKeys.length, option, fModes.min)"
         />
       </o-field>
@@ -105,7 +105,7 @@
           v-model="vmodelValues.length[1]"
           icon="search" clearable
           :open-on-focus="true"
-          :data="filters.lengthOptions"
+          :data="filters.lengthMaxOptions"
           @select="option => addFilter(fKeys.length, option, fModes.max)"
         />
       </o-field>

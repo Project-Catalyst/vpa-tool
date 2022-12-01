@@ -1,4 +1,6 @@
 import { defineStore } from 'pinia'
+import { useReviewsStore } from '../store/reviews.js'
+import { useAssessmentsStore } from '../store/assessments.js';
 import supabase from '../api/supabase.js'
 
 import filterProposal from '../filter_modules/filter_proposal.js'
@@ -41,6 +43,40 @@ const modeMap = {
   max: 'max',
   range: 'range',
   val: 'val'
+}
+
+const getFilterParamTemplate = () => {
+  return {
+    storedAssessments: null,
+    proposalsIncluded: null,
+    proposalsExcluded: null,
+    challengesIncluded: null,
+    challengesExcluded: null,
+    assessorsIncluded: null,
+    assessorsExcluded: null,
+    ratingMin: null,
+    ratingMax: null,
+    lengthMin: null,
+    lengthMax: null,
+    flagged: null,
+    reviewed: null,
+    reviewedMin: null,
+    reviewedMax: null
+  }
+}
+
+const getDefaultVbindings = () => {
+  return {
+    proposals: filterProposal.defaultVmodel(),
+    challenges: filterChallenge.defaultVmodel(),
+    assessors: filterAssessor.defaultVmodel(),
+    ratings: filterRatings.defaultVmodel(),
+    length: filterLength.defaultVmodel(),
+    flagged: filterFlagged.defaultVmodel(),
+    reviewed: filterReviewed.defaultVmodel(),
+    reviewedRange: filterReviewed.defaultRangeVmodel(),
+    stored: filterStoredReviews.defaultVmodel()
+  }
 }
 
 const getDefaultReactiveVbindings = () => {
@@ -90,25 +126,20 @@ export const useFilterStore = defineStore('filters', {
         challenges: [],
         assessors: []
       },
-      defaultVmodels: {
-        proposals: filterProposal.defaultVmodel(),
-        challenges: filterChallenge.defaultVmodel(),
-        assessors: filterAssessor.defaultVmodel(),
-        ratings: filterRatings.defaultVmodel(),
-        length: filterLength.defaultVmodel(),
-        flagged: filterFlagged.defaultVmodel(),
-        reviewed: filterReviewed.defaultVmodel(),
-        reviewedRange: filterReviewed.defaultRangeVmodel(),
-        stored: filterStoredReviews.defaultVmodel()
-      },
+      defaultVmodels: getDefaultVbindings(),
       reactiveVbindings: getDefaultReactiveVbindings(),
       allFilters: getDefaultAllFilters(),
-      activesStatus: getDefaultActiveStatus()
+      activesStatus: getDefaultActiveStatus(),
+      supabaseParam: getFilterParamTemplate()
     }
   ),
   actions: {
     logFilters() {
       console.log(this.allFilters)
+    },
+    async callAssessmentsLoad() {
+      const assessmentsStore = useAssessmentsStore();
+      await assessmentsStore.loadAssessments(assessmentsStore.currentPage)
     },
     async init() {
       this.storedFiltersData.proposals = await supabase.getProposals()
@@ -116,17 +147,38 @@ export const useFilterStore = defineStore('filters', {
       this.storedFiltersData.assessors = await supabase.getAssessors()
       this.initialized = true;
     },
+    resetFilters() {
+      this.reactiveVbindings = getDefaultReactiveVbindings()
+      this.allFilters = getDefaultAllFilters()
+      this.activesStatus = getDefaultActiveStatus()
+      this.supabaseParam = getFilterParamTemplate()
+      this.callAssessmentsLoad()
+    },
     addActiveFilter(filterId, filterOption, mode) {
       this.allFilters[filterId] = filterModules[filterId].getFilter(this.allFilters[filterId], filterOption, mode)
       this.activesStatus[filterId] = filterModules[filterId].isActive(this.allFilters[filterId])
+      this.updateSupabaseParam(filterId)
       this.updateReactiveBidings(filterId, filterOption, mode)
-      // this.callAssessmentLoad()
+      this.callAssessmentsLoad()
     },
     removeActiveFilter(filterId, filterOption, mode) {
       this.allFilters[filterId] = filterModules[filterId].removeFilter(this.allFilters[filterId], filterOption, mode)
       this.activesStatus[filterId] = filterModules[filterId].isActive(this.allFilters[filterId])
+      this.updateSupabaseParam(filterId)
       this.updateReactiveBidings(filterId, filterOption)
-      // this.callAssessmentLoad()
+      this.callAssessmentsLoad()
+    },
+    updateSupabaseParam(filterId) {
+      if(filterId === keysMap.stored) {
+        const reviewStore = useReviewsStore();
+        if(reviewStore.hasReviews) {
+          this.supabaseParam.storedAssessments = reviewStore.allIds
+        } else {
+          this.supabaseParam.storedAssessments = null
+        }
+      } else {
+        this.supabaseParam = filterModules[filterId].updateParam(this.allFilters[filterId], this.supabaseParam)
+      }
     },
     updateReactiveBidings(filterId, filterOption, mode=null) {
       if(filterId===keysMap.reviewed && mode===modeMap.range) {
@@ -165,18 +217,6 @@ export const useFilterStore = defineStore('filters', {
         }
       }
     },
-    resetFilters() {
-      this.reactiveVbindings = getDefaultReactiveVbindings(),
-      this.allFilters = getDefaultAllFilters(),
-      this.activesStatus = getDefaultActiveStatus()
-      // this.callAssessmentLoad() // default call without filters
-    },
-    async callAssessmentLoad() {
-      console.log('callAssessmentLoad')
-      // let supabaseFiltersParam = this.getSupabaseFilterParam()
-      // console.log(supabaseFiltersParam)
-      // call assessments to call supabase and update assessments
-    },
     resetState() {
       this.$reset()
     }
@@ -192,8 +232,11 @@ export const useFilterStore = defineStore('filters', {
     assessors() {
       return this.storedFiltersData.assessors
     },
-    lengthOptions() {
-      return filterLength.populationValues()
+    lengthMinOptions() {
+      return filterLength.populationValuesMin()
+    },
+    lengthMaxOptions() {
+      return filterLength.populationValuesMax()
     },
     ratingThresholds() {
       return filterRatings.populationValues()

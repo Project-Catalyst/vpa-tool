@@ -41,5 +41,19 @@ export default {
   isActive(currentTemplate=false) {
     if(!currentTemplate) { currentTemplate = this.filterTemplate() }
     return (currentTemplate.included.length > 0) || (currentTemplate.excluded.length > 0)
-  } 
+  },
+  updateParam(currentTemplate, param) {
+    if(currentTemplate.included.length > 0) {
+      param.challengesIncluded = currentTemplate.included.map(f => f.id)
+    } else {
+      param.challengesIncluded = null
+    }
+
+    if(currentTemplate.excluded.length > 0) {
+      param.challengesExcluded = currentTemplate.excluded.map(f => f.id)
+    } else {
+      param.challengesExcluded = null
+    }
+    return param
+  }
 }

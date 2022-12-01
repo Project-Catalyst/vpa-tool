@@ -24,5 +24,11 @@ export default {
   isActive(currentTemplate=false) {
     if(!currentTemplate) { currentTemplate = this.filterTemplate() }
     return // returns whether <currentTemplate> filter object is considered active or not
-  } 
+  },
+  updateParam(currentTemplate, param) {
+    /* Method to update the < param > object keys related to this filter with the values to be filtered on the supabase Assessments table.
+      The filter-key is considered deactivated for null values.
+      The logic in this function should always activate or deactivate the filter-keys considering the < currentTemplate > */
+    return param
+  }
 }

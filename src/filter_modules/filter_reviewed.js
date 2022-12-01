@@ -1,10 +1,13 @@
+import supabase from '../api/supabase.js'
+
+const MAX_REVIEWS = await (async () => {
+  return await supabase.getReviewsMaximum()
+})()
+const RANGE = {min: 0, max: MAX_REVIEWS}
 
 const defaultValue = 'All'
 const positiveValue = 'Reviewed'
 const negativeValue = 'Not reviewed'
-
-const MAX_REVIEWS = 30 // get from supabase
-const RANGE = {min: 0, max: MAX_REVIEWS}
 
 export default {
   populationValues() {
@@ -59,5 +62,25 @@ export default {
   isActive(currentTemplate=false) {
     if(!currentTemplate) { currentTemplate = this.filterTemplate() }
     return (currentTemplate.valFlag!==this.filterTemplate().valFlag)
+  },
+  updateParam(currentTemplate, param) {
+    param.reviewed = currentTemplate.valFlag
+    if(currentTemplate.activeRange) {
+      if(currentTemplate.range[0] !== this.filterTemplate().range[0]) {
+        param.reviewedMin = currentTemplate.range[0]
+      } else {
+        param.reviewedMin = null
+      }
+
+      if(currentTemplate.range[1] !== this.filterTemplate().range[1]) {
+        param.reviewedMax = currentTemplate.range[1]
+      } else {
+        param.reviewedMax = null
+      }
+    } else {
+      param.reviewedMin = null
+      param.reviewedMax = null
+    }
+    return param
   }
 }

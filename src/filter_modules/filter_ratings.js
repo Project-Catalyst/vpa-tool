@@ -28,6 +28,20 @@ export default {
   },
   isActive(currentTemplate=false) {
     if(!currentTemplate) { currentTemplate = this.filterTemplate() }
-    return (currentTemplate.min!==RANGE.min) || (currentTemplate.max!==RANGE.max)
+    return (currentTemplate.min!==this.filterTemplate().min) || (currentTemplate.max!==this.filterTemplate().max)
+  },
+  updateParam(currentTemplate, param) {
+    if(currentTemplate.min !== this.filterTemplate().min) {
+      param.ratingMin = currentTemplate.min
+    } else {
+      param.ratingMin = null
+    }
+
+    if(currentTemplate.max !== this.filterTemplate().max) {
+      param.ratingMax = currentTemplate.max
+    } else {
+      param.ratingMax = null
+    }
+    return param 
   }
 }
