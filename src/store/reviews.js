@@ -103,7 +103,7 @@ export const useReviewsStore = defineStore('reviews', {
     async assureReviewingConsistency() {
       if(this.hasReviews) {
         let reviewedAss = await supabase.getAssessmentsReviewing(this.allIds)
-        reviewedAss.forEach( ass => {
+        reviewedAss.forEach( async (ass) => {
           if(ass.vpas_reviews===0) {
             await supabase.addReview(ass.id)
           }

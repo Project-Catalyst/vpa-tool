@@ -6,7 +6,7 @@
   import Instructions from './components/Instructions.vue'
   import { useProfileStore } from './store/profile.js'
   import { useFilterStore } from './store/filters.js'
-  import { useReviewsStore } from '../store/reviews.js';
+  import { useReviewsStore } from './store/reviews.js';
 
   const { oruga } = useProgrammatic()
   const profile = useProfileStore()
