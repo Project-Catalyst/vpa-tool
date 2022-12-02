@@ -6,14 +6,18 @@
   import Instructions from './components/Instructions.vue'
   import { useProfileStore } from './store/profile.js'
   import { useFilterStore } from './store/filters.js'
+  import { useReviewsStore } from '../store/reviews.js';
+
+  const { oruga } = useProgrammatic()
+  const profile = useProfileStore()
 
   const filters = useFilterStore()
   if(!filters.initialized) {
     filters.init()
   }
 
-  const profile = useProfileStore()
-  const { oruga } = useProgrammatic()
+  const reviews = useReviewsStore();
+  reviews.assureReviewingConsistency()
 
   function openInstructions() {
     oruga.modal.open({

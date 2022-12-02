@@ -113,6 +113,15 @@ export default {
       .eq('id', id)
     return (error) ? {} : data[0]
   },
+  async getAssessmentsReviewing(reviewedIds) {
+    const { data, error } = await supabase
+      .from('Assessments')
+      .select(`
+        id,
+        vpas_reviews`)
+      .in('id', reviewedIds)
+    return (error) ? {} : data
+  },
   async getTotalAssessmentsCount() {
     const { count, error } = await supabase
       .from('Assessments')

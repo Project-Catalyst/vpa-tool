@@ -11,9 +11,9 @@
 <template>
   <div class="box">
 
-    <o-button @click="filters.init()" variant="success" class="mx-1"> INIT FILTERS STORE </o-button>
+    <!-- <o-button @click="filters.init()" variant="success" class="mx-1"> INIT FILTERS STORE </o-button>
     <o-button @click="filters.resetState()" variant="danger"> RESET FILTERS STORE </o-button>
-    <o-button @click="filters.logFilters()" variant="primary" class="mx-1"> LOG FILTERS </o-button>
+    <o-button @click="filters.logFilters()" variant="primary" class="mx-1"> LOG FILTERS </o-button> -->
     
     <div class="columns is-multiline is-vcentered">
 

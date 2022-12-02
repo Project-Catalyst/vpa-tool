@@ -100,6 +100,16 @@ export const useReviewsStore = defineStore('reviews', {
       this.reviews[index].rationale = rationale
       this.isLoading = false;
     },
+    async assureReviewingConsistency() {
+      if(this.hasReviews) {
+        let reviewedAss = await supabase.getAssessmentsReviewing(this.allIds)
+        reviewedAss.forEach( ass => {
+          if(ass.vpas_reviews===0) {
+            await supabase.addReview(ass.id)
+          }
+        })
+      }
+    },
     async resetState () {
       await this.removeAllReviews()
       this.$reset()
