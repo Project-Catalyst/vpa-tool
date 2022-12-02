@@ -126,7 +126,7 @@ export default {
   },
   methods: {
     removeFilter(filterId, option=null, mode=null) {
-      this.filters.removeActiveFilter(filterId, option)
+      this.filters.removeActiveFilter(filterId, option, mode)
     },
     getTagText(filterId) {
       if (filterId===this.fKeys.length) {

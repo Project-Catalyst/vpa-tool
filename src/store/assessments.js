@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { useReviewsStore } from './reviews.js';
+import { useFilterStore } from '../store/filters.js'
 import supabase from '../api/supabase.js'
 
 const totalAssessments = await (async () => {
@@ -19,6 +20,9 @@ export const useAssessmentsStore = defineStore('assessments', {
     }
   ),
   getters: {
+    currentPage() {
+      return (this.loadedPage===null) ? 1 : this.loadedPage
+    },
     pageSize() {
       return this.assessments.length
     },
@@ -39,18 +43,20 @@ export const useAssessmentsStore = defineStore('assessments', {
   actions: {
     async loadAssessments(currentPage) {
       this.isLoading = true;
+      let filterParam = false;
 
-      if(currentPage !== this.loadedPage) {
-        await this.fetchPageAssessments(currentPage)
-        this.loadedPage = currentPage
+      const filterStore = useFilterStore()
+      if(filterStore.hasActiveFilters) {
+        filterParam = filterStore.filterParam
       }
+      // if sorting option: should be considered on supabase fetch
 
+      let assessments = await supabase.fetchAssessmentsWithFilters(currentPage, filterParam)
+      this.assessments = assessments.map( ass => ({... ass, reviewed: this.isReviewed(ass.id)}) )
+      
+      this.loadedPage = currentPage
       this.available = true;
       this.isLoading = false;
-    },
-    async fetchPageAssessments(currentPage) {
-      let assessments = await supabase.fetchAssessments(currentPage)
-      this.assessments = assessments.map( ass => ({... ass, reviewed: this.isReviewed(ass.id)}) )
     },
     async fetchAssessment(id) {
       this.isLoading = true;

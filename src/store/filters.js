@@ -222,6 +222,9 @@ export const useFilterStore = defineStore('filters', {
     }
   },
   getters: {
+    filterParam() {
+      return this.supabaseParam
+    },
     // Getters to expose building values of filter elements
     proposals() {
       return this.storedFiltersData.proposals

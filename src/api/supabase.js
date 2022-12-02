@@ -17,6 +17,35 @@ const currentFund = await (async () => {
   : data.filter( fund => fund.number === Math.max(...data.map(funds => funds.number)) )[0]
 })()
 
+const appendFiltersToQuery = (filters, query) => {
+  if(filters.storedAssessments !== null) { query = query.in('id', filters.storedAssessments) }
+  if(filters.proposalsIncluded !== null) { query = query.in('proposal_id', filters.proposalsIncluded) }
+  if(filters.proposalsExcluded !== null) { query = query.not('proposal_id','in',`(${filters.proposalsExcluded})`) }
+  if(filters.challengesIncluded !== null) { query = query.in('challenge_id', filters.challengesIncluded) }
+  if(filters.challengesExcluded !== null) { query = query.not('challenge_id','in',`(${filters.challengesExcluded})`) }
+  if(filters.assessorsIncluded !== null) { query = query.in('assessor_id', filters.assessorsIncluded) }
+  if(filters.assessorsExcluded !== null) { query = query.not('assessor_id','in',`(${filters.assessorsExcluded})`) }
+  if(filters.ratingMin !== null) { query = query.gte('rating_avg', filters.ratingMin) }
+  if(filters.ratingMax !== null) { query = query.lte('rating_avg', filters.ratingMax) }
+  if(filters.lengthMin !== null) { query = query.gte('notes_len', filters.lengthMin) }
+  if(filters.lengthMax !== null) { query = query.lte('notes_len', filters.lengthMax) }
+  if(filters.flagged !== null) { query = query.eq('proposer_mark', filters.flagged) }
+  if(filters.reviewed !== null) { 
+    if(filters.reviewed === false) { query = query.eq('vpas_reviews', 0) }
+    else if(filters.reviewed === true) {
+      if(filters.reviewedMin !== null) { 
+        query = query.gte('vpas_reviews', filters.reviewedMin) 
+      } else { 
+        query = query.gt('vpas_reviews', 0) 
+      }
+      if(filters.reviewedMax !== null) { 
+        query = query.lte('vpas_reviews', filters.reviewedMax) 
+      }
+    }
+  }
+  return query
+}
+
 export default {
   client() {
     return supabase
@@ -35,6 +64,26 @@ export default {
       .eq("fund_id", currentFund.id)
     return (error) ? 0 : count
   },
+  async getReviewsMaximum() {
+    const { data, error } = await supabase
+      .rpc('max_reviews')
+    return (error) ? 0 : data
+  },
+  async getLengthRange() {
+    let minLen = await this.getLengthMin()
+    let maxLen = await this.getLengthMax()
+    return [minLen,maxLen]
+  },
+  async getLengthMin() {
+    const { data, error } = await supabase
+      .rpc('min_length')
+    return (error) ? 0 : data
+  },
+  async getLengthMax() {
+    const { data, error } = await supabase
+      .rpc('max_length')
+    return (error) ? 0 : data
+  },
   async fetchAssessments(page, range=RANGE) {
     let init = (page-1)*range;
     let end = (page*range)-1;
@@ -48,6 +97,8 @@ export default {
         feasibility_rating,
         impact_note,
         impact_rating,
+        rating_avg,
+        notes_len,
         proposer_mark,
         vpas_reviews,
         fund_id,
@@ -56,6 +107,42 @@ export default {
         Proposals (id, title)`)
       .range(init, end)
       .order('id', { ascending: true })
+    return (error) ? {} : data
+  },
+  async fetchAssessmentsWithFilters(page, filters, range=RANGE) {
+    let init = (page-1)*range;
+    let end = (page*range)-1;
+
+    let query = supabase
+      .from('Assessments')
+      .select(`
+        id,
+        auditability_note,
+        auditability_rating,
+        feasibility_note,
+        feasibility_rating,
+        impact_note,
+        impact_rating,
+        rating_avg,
+        notes_len,
+        proposer_mark,
+        vpas_reviews,
+        fund_id,
+        Assessors (id, anon_id),
+        Challenges (id, title),
+        Proposals (id, title)`
+      )
+
+    if(filters) {
+      query = appendFiltersToQuery(filters, query)
+    }
+
+    // create case to append specific ordering (for sorting options)
+    query = query.order('id', { ascending: true })
+
+    const { data, error } = await query
+      .range(init, end)
+      // .order('id', { ascending: true })
     return (error) ? {} : data
   },
   async fetchAssessmentById(id) {
