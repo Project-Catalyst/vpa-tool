@@ -16,7 +16,8 @@ export const useAssessmentsStore = defineStore('assessments', {
       assessments: [],
       currentAssessment: {},
       available: false, // true if assessments have been loaded at least once
-      isLoading: false  // true when assessments are being fetched from supabase
+      isLoading: false,  // true when assessments are being fetched from supabase
+      triggerFilterFetch: false,
     }
   ),
   getters: {
@@ -43,12 +44,9 @@ export const useAssessmentsStore = defineStore('assessments', {
   actions: {
     async loadAssessments(currentPage) {
       this.isLoading = true;
-      let filterParam = false;
 
       const filterStore = useFilterStore()
-      if(filterStore.hasActiveFilters) {
-        filterParam = filterStore.filterParam
-      }
+      let filterParam = filterStore.filterParam
       // if sorting option: should be considered on supabase fetch
       
       let {count, data} = await supabase.fetchAssessments(currentPage, filterParam)
@@ -59,7 +57,8 @@ export const useAssessmentsStore = defineStore('assessments', {
         this.assessments = this.assessments
       }
 
-      this.loadedPage = currentPage
+      this.loadedPage = currentPage;
+      this.triggerFilterFetch = false;
       this.available = true;
       this.isLoading = false;
     },

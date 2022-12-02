@@ -136,10 +136,11 @@ export const useFilterStore = defineStore('filters', {
   actions: {
     logFilters() {
       console.log(this.allFilters)
+      console.log(this.supabaseParam)
     },
-    async callAssessmentsLoad() {
+    async triggerAssessmentsLoad() {
       const assessmentsStore = useAssessmentsStore();
-      await assessmentsStore.loadAssessments(assessmentsStore.currentPage)
+      assessmentsStore.triggerFilterFetch = true
     },
     async init() {
       this.storedFiltersData.proposals = await supabase.getProposals()
@@ -152,21 +153,21 @@ export const useFilterStore = defineStore('filters', {
       this.allFilters = getDefaultAllFilters()
       this.activesStatus = getDefaultActiveStatus()
       this.supabaseParam = getFilterParamTemplate()
-      this.callAssessmentsLoad()
+      this.triggerAssessmentsLoad()
     },
     addActiveFilter(filterId, filterOption, mode) {
       this.allFilters[filterId] = filterModules[filterId].getFilter(this.allFilters[filterId], filterOption, mode)
       this.activesStatus[filterId] = filterModules[filterId].isActive(this.allFilters[filterId])
       this.updateSupabaseParam(filterId)
       this.updateReactiveBidings(filterId, filterOption, mode)
-      this.callAssessmentsLoad()
+      this.triggerAssessmentsLoad()
     },
     removeActiveFilter(filterId, filterOption, mode) {
       this.allFilters[filterId] = filterModules[filterId].removeFilter(this.allFilters[filterId], filterOption, mode)
       this.activesStatus[filterId] = filterModules[filterId].isActive(this.allFilters[filterId])
       this.updateSupabaseParam(filterId)
       this.updateReactiveBidings(filterId, filterOption)
-      this.callAssessmentsLoad()
+      this.triggerAssessmentsLoad()
     },
     updateSupabaseParam(filterId) {
       if(filterId === keysMap.stored) {
@@ -223,7 +224,7 @@ export const useFilterStore = defineStore('filters', {
   },
   getters: {
     filterParam() {
-      return this.supabaseParam
+      return (this.hasActiveFilters) ? this.supabaseParam : false
     },
     // Getters to expose building values of filter elements
     proposals() {

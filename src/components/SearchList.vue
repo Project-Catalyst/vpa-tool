@@ -121,6 +121,19 @@ export default {
       },
       { immediate: true }
     )
+    this.$watch(
+      () => this.assessments.triggerFilterFetch,
+      (newVal, oldVal) => {
+        if(newVal) {
+          if(parseInt(this.$route.params.page)===1) {
+            this.fetchData()
+          } else {
+            this.$router.push({name: 'search', params: {page: 1}})
+          }
+        }
+      },
+      { immediate: true }
+    )
   },
 }
 </script>

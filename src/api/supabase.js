@@ -86,9 +86,6 @@ export default {
     const { data, count, error } = await query
       .range(init, end)
 
-    console.log(data)
-    console.log(count)
-    console.log(error)
     if(error || data===null ) { 
       let count=0; 
       let data={}
