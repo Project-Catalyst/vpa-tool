@@ -44,32 +44,37 @@
         </div>
       </o-notification>
 
-      <!-- Assessment's preview list -->
-      <o-pagination
-        :total="assessments.count"
-        :per-page="assessments.pageSize"
-        :range-before="3"
-        :range-after="3"
-        order="centered"
-        size="default"
-        v-model:current="currentPage">
-      </o-pagination>
-      
-      <assessment-preview v-bind:id="`ass-${assessment.id}`"
-        v-for="assessment in paginatedItems"
-        :key="`ass-${assessment.id}`"
-        :assessment="assessment"
-      />
+      <div v-if="assessments.count !==0">
+        <o-pagination
+          :total="assessments.count"
+          :per-page="assessments.pageSize"
+          :range-before="3"
+          :range-after="3"
+          order="centered"
+          size="default"
+          v-model:current="currentPage">
+        </o-pagination>
+        
+        <assessment-preview v-bind:id="`ass-${assessment.id}`"
+          v-for="assessment in paginatedItems"
+          :key="`ass-${assessment.id}`"
+          :assessment="assessment"
+        />
 
-      <o-pagination class="mt-3 mb-5"
-        :total="assessments.count"
-        :per-page="assessments.pageSize"
-        :range-before="3"
-        :range-after="3"
-        order="centered"
-        size="default"
-        v-model:current="currentPage">
-    </o-pagination>
+        <o-pagination class="mt-3 mb-5"
+          :total="assessments.count"
+          :per-page="assessments.pageSize"
+          :range-before="3"
+          :range-after="3"
+          order="centered"
+          size="default"
+          v-model:current="currentPage">
+        </o-pagination>
+      </div>
+      <div v-else>
+        <div class="subtitle has-text-centered mb-5">No assessments found for this search</div>
+      </div>
+      
     </div>
   </section>
 </template>

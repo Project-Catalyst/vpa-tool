@@ -53,7 +53,11 @@ export const useAssessmentsStore = defineStore('assessments', {
       
       let {count, data} = await supabase.fetchAssessments(currentPage, filterParam)
       this.count = count
-      this.assessments = data.map( ass => ({... ass, reviewed: this.isReviewed(ass.id)}) )
+      if(count!==0) {
+        this.assessments = data.map( ass => ({... ass, reviewed: this.isReviewed(ass.id)}) )
+      } else {
+        this.assessments = this.assessments
+      }
 
       this.loadedPage = currentPage
       this.available = true;

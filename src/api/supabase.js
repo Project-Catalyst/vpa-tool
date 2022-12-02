@@ -85,8 +85,15 @@ export default {
 
     const { data, count, error } = await query
       .range(init, end)
-    if(error) { let count=0; let data={} }
-    
+
+    console.log(data)
+    console.log(count)
+    console.log(error)
+    if(error || data===null ) { 
+      let count=0; 
+      let data={}
+      return {count, data}
+    }
     return {count, data}
   },
   async fetchAssessmentById(id) {
