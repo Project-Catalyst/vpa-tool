@@ -11,7 +11,7 @@ export const useAssessmentsStore = defineStore('assessments', {
   state: () => (
     { 
       total: totalAssessments,
-      count: totalAssessments, // update when filtering with the count of query
+      count: totalAssessments,
       loadedPage: null,
       assessments: [],
       currentAssessment: {},
@@ -50,10 +50,11 @@ export const useAssessmentsStore = defineStore('assessments', {
         filterParam = filterStore.filterParam
       }
       // if sorting option: should be considered on supabase fetch
-
-      let assessments = await supabase.fetchAssessmentsWithFilters(currentPage, filterParam)
-      this.assessments = assessments.map( ass => ({... ass, reviewed: this.isReviewed(ass.id)}) )
       
+      let {count, data} = await supabase.fetchAssessments(currentPage, filterParam)
+      this.count = count
+      this.assessments = data.map( ass => ({... ass, reviewed: this.isReviewed(ass.id)}) )
+
       this.loadedPage = currentPage
       this.available = true;
       this.isLoading = false;

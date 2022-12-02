@@ -46,7 +46,7 @@
 
       <!-- Assessment's preview list -->
       <o-pagination
-        :total="assessments.total"
+        :total="assessments.count"
         :per-page="assessments.pageSize"
         :range-before="3"
         :range-after="3"
@@ -62,7 +62,7 @@
       />
 
       <o-pagination class="mt-3 mb-5"
-        :total="assessments.total"
+        :total="assessments.count"
         :per-page="assessments.pageSize"
         :range-before="3"
         :range-after="3"

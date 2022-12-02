@@ -50,6 +50,65 @@ export default {
   client() {
     return supabase
   },
+  async fetchAssessments(page, filters, range=RANGE) {
+    let init = (page-1)*range;
+    let end = (page*range)-1;
+
+    let query = supabase
+      .from('Assessments')
+      .select(`
+        id,
+        auditability_note,
+        auditability_rating,
+        feasibility_note,
+        feasibility_rating,
+        impact_note,
+        impact_rating,
+        rating_avg,
+        notes_len,
+        proposer_mark,
+        vpas_reviews,
+        fund_id,
+        Assessors (id, anon_id),
+        Challenges (id, title),
+        Proposals (id, title)`,
+        { count: 'exact' }
+      )
+      .eq("fund_id", currentFund.id)
+
+    if(filters) {
+      query = appendFiltersToQuery(filters, query)
+    }
+
+    // create case to append specific ordering (for sorting options)
+    query = query.order('id', { ascending: true })
+
+    const { data, count, error } = await query
+      .range(init, end)
+    if(error) { let count=0; let data={} }
+    
+    return {count, data}
+  },
+  async fetchAssessmentById(id) {
+    const { data, error } = await supabase
+      .from('Assessments')
+      .select(`
+        id,
+        auditability_note,
+        auditability_rating,
+        feasibility_note,
+        feasibility_rating,
+        impact_note,
+        impact_rating,
+        proposer_mark,
+        vpas_reviews,
+        fund_id,
+        Assessors (id, anon_id),
+        Challenges (id, title),
+        Proposals (id, title, url)`)
+      .eq('id', id)
+    return (error) ? {} : data[0]
+  },
   async getTotalAssessmentsCount() {
     const { count, error } = await supabase
       .from('Assessments')
@@ -83,87 +142,6 @@ export default {
     const { data, error } = await supabase
       .rpc('max_length')
     return (error) ? 0 : data
-  },
-  async fetchAssessments(page, range=RANGE) {
-    let init = (page-1)*range;
-    let end = (page*range)-1;
-    const { data, error } = await supabase
-      .from('Assessments')
-      .select(`
-        id,
-        auditability_note,
-        auditability_rating,
-        feasibility_note,
-        feasibility_rating,
-        impact_note,
-        impact_rating,
-        rating_avg,
-        notes_len,
-        proposer_mark,
-        vpas_reviews,
-        fund_id,
-        Assessors (id, anon_id),
-        Challenges (id, title),
-        Proposals (id, title)`)
-      .range(init, end)
-      .order('id', { ascending: true })
-    return (error) ? {} : data
-  },
-  async fetchAssessmentsWithFilters(page, filters, range=RANGE) {
-    let init = (page-1)*range;
-    let end = (page*range)-1;
-
-    let query = supabase
-      .from('Assessments')
-      .select(`
-        id,
-        auditability_note,
-        auditability_rating,
-        feasibility_note,
-        feasibility_rating,
-        impact_note,
-        impact_rating,
-        rating_avg,
-        notes_len,
-        proposer_mark,
-        vpas_reviews,
-        fund_id,
-        Assessors (id, anon_id),
-        Challenges (id, title),
-        Proposals (id, title)`
-      )
-
-    if(filters) {
-      query = appendFiltersToQuery(filters, query)
-    }
-
-    // create case to append specific ordering (for sorting options)
-    query = query.order('id', { ascending: true })
-
-    const { data, error } = await query
-      .range(init, end)
-      // .order('id', { ascending: true })
-    return (error) ? {} : data
-  },
-  async fetchAssessmentById(id) {
-    const { data, error } = await supabase
-      .from('Assessments')
-      .select(`
-        id,
-        auditability_note,
-        auditability_rating,
-        feasibility_note,
-        feasibility_rating,
-        impact_note,
-        impact_rating,
-        proposer_mark,
-        vpas_reviews,
-        fund_id,
-        Assessors (id, anon_id),
-        Challenges (id, title),
-        Proposals (id, title, url)`)
-      .eq('id', id)
-    return (error) ? {} : data[0]
   },
   async getProposals(selectQuery="id, title") {
     const totalProposals = await this.getTotalProposalsCount()
