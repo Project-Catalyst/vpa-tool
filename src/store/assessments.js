@@ -14,6 +14,7 @@ export const useAssessmentsStore = defineStore('assessments', {
       count: totalAssessments,
       loadedPage: null,
       assessments: [],
+      storedAssessments: [],
       currentAssessment: {},
       available: false, // true if assessments have been loaded at least once
       isLoading: false,  // true when assessments are being fetched from supabase
@@ -25,10 +26,13 @@ export const useAssessmentsStore = defineStore('assessments', {
       return (this.loadedPage===null) ? 1 : this.loadedPage
     },
     pageSize() {
-      return this.assessments.length
+      return supabase.pageSize()
     },
     getAssessments() {
       return this.assessments
+    },
+    getStoredAssessments() {
+      return this.storedAssessments
     },
     getNextAssessmentId: (state) => {
       return (id) => {
@@ -60,6 +64,20 @@ export const useAssessmentsStore = defineStore('assessments', {
       this.loadedPage = currentPage;
       this.triggerFilterFetch = false;
       this.available = true;
+      this.isLoading = false;
+    },
+    async loadStoredAssessments(currentPage) {
+      this.isLoading = true;
+
+      const reviewsStore = useReviewsStore();
+      
+      let {count, data} = await supabase.fetchStoredAssessments(currentPage, reviewsStore.allIds)
+      if(count!==0) {
+        this.storedAssessments = data.map( ass => ({... ass, reviewed: this.isReviewed(ass.id)}) )
+      } else {
+        this.storedAssessments = []
+      }
+
       this.isLoading = false;
     },
     async fetchAssessment(id) {

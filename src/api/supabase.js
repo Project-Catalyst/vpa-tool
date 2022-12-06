@@ -18,8 +18,6 @@ const currentFund = await (async () => {
 })()
 
 const appendOrderToQuery = (ordering, query) => {
-  console.log('appendOrderToQuery')
-  console.log('ordering: ', ordering)
   // follows the structure of filters.sortingVmodels
   if(ordering==='default') { 
     query = query.order('id', { ascending: true }) 
@@ -71,6 +69,9 @@ export default {
   client() {
     return supabase
   },
+  pageSize() {
+    return RANGE
+  },
   async fetchAssessments(page, filters, ordering, range=RANGE) {
     let init = (page-1)*range;
     let end = (page*range)-1;
@@ -102,6 +103,45 @@ export default {
     }
 
     query = appendOrderToQuery(ordering, query)
+
+    const { data, count, error } = await query
+      .range(init, end)
+
+    if(error || data===null ) { 
+      let count=0; 
+      let data={}
+      return {count, data}
+    }
+    return {count, data}
+  },
+  async fetchStoredAssessments(page, storedIds, range=RANGE) {
+    let init = (page-1)*range;
+    let end = (page*range)-1;
+
+    let query = supabase
+      .from('Assessments')
+      .select(`
+        id,
+        auditability_note,
+        auditability_rating,
+        feasibility_note,
+        feasibility_rating,
+        impact_note,
+        impact_rating,
+        rating_avg,
+        notes_len,
+        proposer_mark,
+        vpas_reviews,
+        fund_id,
+        Assessors (id, anon_id),
+        Challenges (id, title),
+        Proposals (id, title)`,
+        { count: 'exact' }
+      )
+      .eq("fund_id", currentFund.id)
+
+    query = query.in('id', storedIds)
+    // query = query.order('id', { ascending: true })
 
     const { data, count, error } = await query
       .range(init, end)

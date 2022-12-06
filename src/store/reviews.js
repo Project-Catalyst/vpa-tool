@@ -53,6 +53,9 @@ export const useReviewsStore = defineStore('reviews', {
     }
   },
   actions: {
+    logCount() {
+      console.log(this.count)
+    },
     init(file) {
       this.file = file
       this.initialized = this.isInitialized
