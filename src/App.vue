@@ -38,9 +38,10 @@
       <div class="navbar-end">
         <a class="navbar-item" @click="openInstructions()"> Instructions </a>
         <router-link class="navbar-item" :to="{name: 'login'}" v-if="!profile.initialized"> Login </router-link>
+        <router-link class="navbar-item" :to="{name: 'search', params: {page: 1}}" v-if="profile.initialized"> Search Assessments </router-link>
         <div class="navbar-item has-dropdown is-hoverable" v-if="profile.initialized">
           <a class="navbar-link">
-            vPA Tool
+            User Info
           </a>
           <div class="navbar-dropdown">
             <a class="navbar-item">
@@ -48,9 +49,6 @@
             </a>
             <a class="navbar-item">
               <router-link :to="{name: 'store'}"> Store </router-link>
-            </a>
-            <a class="navbar-item">
-              <router-link :to="{name: 'search', params: {page: 1} }"> Search</router-link>
             </a>
           </div>
         </div>
