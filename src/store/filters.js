@@ -45,6 +45,15 @@ const modeMap = {
   val: 'val'
 }
 
+const sortingVmodels = {
+  default: '',
+  minRate: 'Least rated',
+  maxRate: 'Most rated',
+  minReview: 'Least reviewed',
+  maxReview: 'Most reviewed', 
+  random: 'Randomize'
+}
+
 const getFilterParamTemplate = () => {
   return {
     storedAssessments: null,
@@ -130,13 +139,15 @@ export const useFilterStore = defineStore('filters', {
       reactiveVbindings: getDefaultReactiveVbindings(),
       allFilters: getDefaultAllFilters(),
       activesStatus: getDefaultActiveStatus(),
-      supabaseParam: getFilterParamTemplate()
+      supabaseParam: getFilterParamTemplate(),
+      selectedSorting: sortingVmodels.default,
     }
   ),
   actions: {
     logFilters() {
       console.log(this.allFilters)
       console.log(this.supabaseParam)
+      console.log(this.selectedSorting)
     },
     async triggerAssessmentsLoad() {
       const assessmentsStore = useAssessmentsStore();
@@ -218,6 +229,10 @@ export const useFilterStore = defineStore('filters', {
         }
       }
     },
+    setSorting(sortingKey) {
+      this.selectedSorting = sortingKey[0]
+      this.triggerAssessmentsLoad()
+    },
     resetState() {
       this.$reset()
     }
@@ -254,6 +269,9 @@ export const useFilterStore = defineStore('filters', {
     flaggedOptions() {
       return filterFlagged.populationValues()
     },
+    sortingOptions() {
+      return Object.entries(sortingVmodels)
+    },
     //  Getters to expose status state for condition elements
     hasActiveFilters() {
       return Object.values(this.activesStatus).some(stat => stat===true)
@@ -281,6 +299,9 @@ export const useFilterStore = defineStore('filters', {
     },
     getReviewedValue() {
       return filterReviewed.positiveValue()
+    },
+    selectedSortingVmodel() {
+      return sortingVmodels[this.selectedSorting]
     },
     // Map getters
     filtersKeys() {

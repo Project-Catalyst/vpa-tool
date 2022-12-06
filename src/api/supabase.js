@@ -17,7 +17,28 @@ const currentFund = await (async () => {
   : data.filter( fund => fund.number === Math.max(...data.map(funds => funds.number)) )[0]
 })()
 
+const appendOrderToQuery = (ordering, query) => {
+  console.log('appendOrderToQuery')
+  console.log('ordering: ', ordering)
+  // follows the structure of filters.sortingVmodels
+  if(ordering==='default') { 
+    query = query.order('id', { ascending: true }) 
+    return query
+  }
+  else if(ordering==='random') { 
+    query = query.order('id', { ascending: true })
+    return query
+  }
+  else if(ordering==='minRate') { query = query.order('rating_avg', { ascending: true }) }
+  else if(ordering==='maxRate') { query = query.order('rating_avg', { ascending: false }) }
+  else if(ordering==='minReview') { query = query.order('vpas_reviews', { ascending: true }) }
+  else if(ordering==='maxReview') { query = query.order('vpas_reviews', { ascending: false }) }
+  // query = query.order('id', { ascending: true })
+  return query
+}
+
 const appendFiltersToQuery = (filters, query) => {
+  // follows the structure of filters.getFilterParamTemplate
   if(filters.storedAssessments !== null) { query = query.in('id', filters.storedAssessments) }
   if(filters.proposalsIncluded !== null) { query = query.in('proposal_id', filters.proposalsIncluded) }
   if(filters.proposalsExcluded !== null) { query = query.not('proposal_id','in',`(${filters.proposalsExcluded})`) }
@@ -50,7 +71,7 @@ export default {
   client() {
     return supabase
   },
-  async fetchAssessments(page, filters, range=RANGE) {
+  async fetchAssessments(page, filters, ordering, range=RANGE) {
     let init = (page-1)*range;
     let end = (page*range)-1;
 
@@ -80,8 +101,7 @@ export default {
       query = appendFiltersToQuery(filters, query)
     }
 
-    // create case to append specific ordering (for sorting options)
-    query = query.order('id', { ascending: true })
+    query = appendOrderToQuery(ordering, query)
 
     const { data, count, error } = await query
       .range(init, end)

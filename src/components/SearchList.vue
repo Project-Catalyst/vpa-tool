@@ -2,11 +2,11 @@
   import { ref } from 'vue';
   import { useAssessmentsStore } from '../store/assessments.js';
   import { useReviewsStore } from '../store/reviews.js';
+  import { useFilterStore } from '../store/filters.js';
 
   const assessments = useAssessmentsStore();
   const reviews = useReviewsStore();
-
-  const sortingOptions = ['Randomize', 'Alphabetically', 'Higher Ratings', 'Most reviewed']
+  const filters = useFilterStore();
 
 </script>
 
@@ -32,11 +32,13 @@
               <p><b>Sorting Options</b></p>
             </div>
             <div class="column is-full p-0 mb-2">
-              <o-select placeholder="Select a sorting method" expanded class="p-0 pl-2">
-                <option v-for="(sortingMethod, index) in sortingOptions"
-                  :key="index"
-                  :value="sortingMethod">
-                  {{sortingMethod}}
+              <o-select placeholder="Select a sorting method" expanded class="p-0 pl-2"
+                v-model="selectedSorting"
+                @update:modelValue="option => addSorting(option)">
+                <option v-for="([key, value]) in filters.sortingOptions"
+                  :key="key"
+                  :value="[key, value]">
+                  {{value}}
                 </option>
               </o-select>
             </div>
@@ -81,7 +83,6 @@
 
 <script>
 import AssessmentPreview from "./AssessmentPreview.vue";
-// import Sortings from "../components/Sortings.vue";
 
 export default {
   name: "SearchList",
@@ -90,6 +91,7 @@ export default {
   },
   data() {
     return {
+      selectedSorting: this.filters.selectedSortingVmodel
     }
   },
   computed: {
@@ -106,6 +108,9 @@ export default {
     }
   },
   methods: {
+    addSorting(option) {
+      this.filters.setSorting(option)
+    },
     async changePage(newPage) {
       this.$router.push({name: 'search', params: {page: newPage}})
     },

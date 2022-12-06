@@ -47,9 +47,9 @@ export const useAssessmentsStore = defineStore('assessments', {
 
       const filterStore = useFilterStore()
       let filterParam = filterStore.filterParam
-      // if sorting option: should be considered on supabase fetch
+      let orderingOption = filterStore.selectedSorting
       
-      let {count, data} = await supabase.fetchAssessments(currentPage, filterParam)
+      let {count, data} = await supabase.fetchAssessments(currentPage, filterParam, orderingOption)
       this.count = count
       if(count!==0) {
         this.assessments = data.map( ass => ({... ass, reviewed: this.isReviewed(ass.id)}) )
