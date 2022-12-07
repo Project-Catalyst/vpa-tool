@@ -301,7 +301,7 @@ export const useFilterStore = defineStore('filters', {
       return filterReviewed.positiveValue()
     },
     selectedSortingVmodel() {
-      return sortingVmodels[this.selectedSorting]
+      return [this.selectedSorting, sortingVmodels[this.selectedSorting]]
     },
     // Map getters
     filtersKeys() {
