@@ -22,8 +22,8 @@ const reviews = useReviewsStore()
     </o-field>
 
     <o-field label="Imported backup file">
-      <o-notification v-if="reviews.initialized" variant="success">
-        <p> You have loaded previous process into the application.</p>
+      <o-notification v-if="reviews.hasImportedFile" variant="success" class="is-light">
+        <p><b> You have loaded previous process into the application.</b></p>
         <b>Imported file:</b> {{ reviews.file }}
       </o-notification>
       <o-notification v-else>

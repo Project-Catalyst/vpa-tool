@@ -266,4 +266,7 @@ export default {
     const { data, error } = await supabase
       .rpc('remove_assessment_review', { assessment_id: assessment_id })
   },
+  getCurrentFund() {
+    return currentFund
+  },
 }

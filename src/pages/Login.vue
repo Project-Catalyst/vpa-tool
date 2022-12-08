@@ -34,36 +34,33 @@ const isEdition = profile.initialized
             <o-icon icon="information"></o-icon>
         </o-tooltip>
       </template>
-      <o-upload v-if="!backupFile" v-model="backupFile" drag-drop expanded>
+      <o-upload v-if="!hasBackupFile" @update:modelValue="loadFile" drag-drop expanded accept=".csv">
         <div class="content has-text-centered">
           <p><o-icon icon="upload" size="is-large"></o-icon></p>
           <p>Drop your vPA-progress backup file here or click to upload</p>
         </div>
       </o-upload>
-      <o-notification v-if="backupFile" closable @close="deleteDropFile()">
+      <o-notification v-if="hasBackupFile && !reviews.hasReviews" closable @close="deleteDropFile()">
         <b>Upload file:</b> {{ backupFile.name }}
+      </o-notification>
+      <o-notification v-if="hasBackupFile && reviews.hasReviews" closable @close="deleteDropFile()" variant="warning" class="mb-2">
+        <b>Upload file:</b> {{ backupFile.name }}
+        <p><br/><b>WARNING: YOU HAVE STORED ON-GOING PROCESS</b></p>
+        <p>To upload new backup file will erase <u>all the work currently stored in the application.</u></p>
+        <p><em>Be careful, this operation is not reversible!</em></p>
       </o-notification>
     </o-field>
 
-    <div v-if="reviews.initialized">
+    <div v-if="reviews.hasImportedFile">
       <o-field label="Imported backup file">
-        <o-notification variant="success">
-          <p> You have loaded previous process into the application.</p>
+        <o-notification variant="success" class="is-light">
+          <p><b> You have loaded previous process into the application.</b></p>
           <b>Imported file:</b> {{ reviews.file }}
-          <o-button variant="danger" size="small" @click="clearReviews()">Clear local database</o-button>
         </o-notification>
       </o-field>
     </div>
 
-    <!-- reviewsStore not initialized -->
-    <div v-if="reviews.initialized && hasBackupFile">
-      <o-notification variant="warning">
-        <p>To upload new backup file will erase all previous information already loaded.</p>
-        <p><b>Be careful, this operation is not reversible!</b></p>
-      </o-notification>
-    </div>
-
-    <o-button class="buttons is-centered columns column is-half is-offset-one-quarter" 
+    <o-button class="buttons is-centered columns column is-half is-offset-one-quarter mt-5" 
       variant="primary" size="large"
       :disabled="!canLogin"
       @click="login()">
@@ -74,12 +71,14 @@ const isEdition = profile.initialized
 </template>
 
 <script>
+import {readFile} from '../utils/import_csv.js'
 
 export default {
   name: "Login",
   data() {
     return {
       backupFile: null,
+      importedData: []
     }
   },
   mounted() {
@@ -108,24 +107,23 @@ export default {
   methods: {
     login() {
       if(this.backupFile !== null) {
-        this.setReviewsStore()
+        this.reviews.initializeFromFile(this.backupFile.name, this.importedData)
       }
-      this.setProfileStore()
+      this.profile.init(this.name, this.email)
       this.nextPage()
     },
     nextPage() {
       (this.isEdition)
       ? this.$router.push({name: "profile"})
-      : this.$router.push({name: "search"})
+      : this.$router.push({name: "search", params: {page: 1} })
+    },
+    async loadFile(file) {
+      this.backupFile = file
+      this.importedData = await this.readFile(file)
     },
     deleteDropFile() {
       this.backupFile = null
-    },
-    setProfileStore() {
-      this.profile.init(this.name, this.email)
-    },
-    setReviewsStore() {
-      this.reviews.init(this.backupFile.name)
+      this.importedData = []
     },
     clearReviews() {
       this.reviews.resetState()

@@ -1,16 +1,40 @@
 <script setup>
-  import { ref } from 'vue'
+  import Notification from '../components/NotificationExportCsv.vue'
   import { useAssessmentsStore } from '../store/assessments.js';
   import { useReviewsStore } from '../store/reviews.js';
+  import { useProfileStore } from '../store/profile.js';
+  import { useProgrammatic } from '@oruga-ui/oruga-next'
+
+  const { oruga } = useProgrammatic()
+  function openExportNotification() {
+    oruga.modal.open({
+      component: Notification,
+      trapFocus: false
+    })
+  }
 
   const assessments = useAssessmentsStore();
   const reviews = useReviewsStore();
+  const profile = useProfileStore();
 
 </script>
 
 <template>
   <div class="title">User Storage</div>
   <div class="subtitle">Find here all assessments you have revised. You may further edit your reviews, or export your work to a csv file.</div>
+
+  <o-notification class="is-light mb-5" variant="danger" role="alert" v-if="reviews.hasReviews">
+    <p><b>Clear Local Database</b><br /></p>
+    <div class="columns">
+      <div class="column is-four-fifths">
+        <p>This action will remove all your reviews from the local storage.</p>
+        <p><em>Be careful! This operation is not reversible.</em></p>
+      </div>
+      <div class="column is-one-fifth buttons is-right">
+        <o-button @click="reviews.resetState()" variant="danger"> Empty store </o-button>
+      </div>
+    </div>
+  </o-notification>
 
   <section>
     <o-loading
@@ -29,7 +53,7 @@
           </div>
           <div class="column is-one-quarter p-0">
             <div class="buttons is-right">
-              <o-button variant="primary" outlined inverted> Export CSV </o-button>
+              <o-button @click="exportFile" variant="primary" outlined inverted> Export CSV </o-button>
             </div>
           </div>
         </div>
@@ -65,13 +89,14 @@
       <div v-else>
         <div class="subtitle has-text-centered mb-5">You have no assessments reviewed yet</div>
       </div>
-      
     </div>
+    
   </section>
 </template>
 
 <script>
 import AssessmentPreview from "../components/AssessmentPreview.vue";
+import downloadCsv from "../utils/export_csv.js";
 
 export default {
   name: "Store",
@@ -98,9 +123,10 @@ export default {
     }
   },
   methods: {
-    // async changePage(newPage) {
-    //   this.$router.push({name: 'search', params: {page: newPage}})
-    // },
+    exportFile() {
+      downloadCsv(this.reviews.exportData, this.profile.info.name)
+      this.openExportNotification()
+    },
     async fetchData() {
       await this.assessments.loadStoredAssessments(this.currentPage)
     }

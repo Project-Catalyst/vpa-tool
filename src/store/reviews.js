@@ -14,19 +14,48 @@ function getReviewCode(value) {
 function getReviewValue(code) {
   return reviewMap[code]
 }
+function getBoolRepr(code) {
+  return {
+    excellent: (code===2) ? true : false,
+    good: (code===1) ? true : false,
+    filtered_out: (code===0) ? true : false,
+  }
+}
+function getCodeRepr(importedReview) {
+  if (importedReview.excellent) { return 2 }
+  else if (importedReview.good) { return 1 }
+  else if (importedReview.filtered_out) { return 0 }
+}
+function transformDataToFile(data) {
+  return data.map( review => {
+    return {
+      id: review.id,
+      ...getBoolRepr(parseInt(review.review)),
+      vpa_feedback: review.rationale
+    }
+  })
+}
+function transformDataFromFile(data) {
+  return data.map( review => {
+    return {
+      id: review.id,
+      review: getCodeRepr(review),
+      rationale: (review.vpa_feedback===null) ? '' : review.vpa_feedback
+    }
+  })
+}
 
 export const useReviewsStore = defineStore('reviews', {
   persist: true,
   state: () => (
     { 
-      initialized: false,
       file: "",
       reviews: [],
       isLoading: false  // true when the store is updating some property
     }
   ),
   getters: {
-    isInitialized () {
+    hasImportedFile () {
       return (this.file !== '')
     },
     count() {
@@ -50,15 +79,18 @@ export const useReviewsStore = defineStore('reviews', {
     },
     getReviewIndex: (state) => {
       return (id) => state.reviews.map(r => r.id).findIndex( (el) => el===id)
+    },
+    exportData() {
+      return transformDataToFile(this.reviews)
     }
   },
   actions: {
-    logCount() {
-      console.log(this.count)
-    },
-    init(file) {
-      this.file = file
-      this.initialized = this.isInitialized
+    initializeFromFile(fileName, data) {
+      this.file = fileName
+      this.reviews = transformDataFromFile(data)
+      this.reviews.forEach( async (r) => {
+        await supabase.addReview(r.id)
+      })
     },
     async updateAssessment(id) {
       const assessmentsStore = useAssessmentsStore();
