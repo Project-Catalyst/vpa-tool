@@ -2,6 +2,7 @@ import { createClient } from '@supabase/supabase-js';
 
 const RANGE = parseInt(import.meta.env.VITE_PAGE_RANGE)
 const BATCH_SIZE = parseInt(import.meta.env.VITE_SUPABASE_FETCH_BATCH_SIZE)
+const CURRENT_FUND = parseInt(import.meta.env.VITE_CURRENT_FUND)
 
 const supabase = createClient(
   import.meta.env.VITE_CATALYST_SUPABASE_URL,
@@ -11,10 +12,9 @@ const supabase = createClient(
 const currentFund = await (async () => {
   const { data, error } = await supabase
     .from('Funds')
-    .select('*')
-  return (error) 
-  ? {} 
-  : data.filter( fund => fund.number === Math.max(...data.map(funds => funds.number)) )[0]
+    .select('id, title, number')
+    .eq('number', CURRENT_FUND)
+  return (error) ? {} : data[0]
 })()
 
 const appendOrderToQuery = (ordering, query) => {
