@@ -89,6 +89,36 @@ export default {
   components: {
     AssessmentPreview,
   },
+  created() {
+    /** THIS HOOK CONTAINS ALL LOGIC TO TRIGGER DATA FETCH */
+    this.$watch(  // watch the page changing
+      () => this.$route.params,
+      () => {
+        this.fetchData()
+      },
+      { immediate: true }
+    )
+    this.$watch(  // watch the filters change
+      () => this.filters.supabaseParam,
+      () => {
+        if(parseInt(this.$route.params.page)===1) {
+          this.fetchData()
+        } else {
+          this.$router.push({name: 'search', params: {page: 1}})
+        }
+      },
+      { immediate: true, deep: true }
+    )
+    this.$watch(  // watch sorting change
+      () => this.filters.selectedSorting,
+      (newVal, oldVal) => {
+        if(newVal!==oldVal) {
+          this.fetchData()
+        }
+      },
+      { immediate: true, deep: true }
+    )
+  },
   data() {
     return {
       selectedSorting: this.filters.selectedSortingVmodel
@@ -117,38 +147,6 @@ export default {
     async fetchData() {
       await this.assessments.loadAssessments(this.currentPage)
     }
-  },
-  created() {
-    // watch the page changing
-    this.$watch(
-      () => this.$route.params,
-      () => {
-        this.fetchData()
-      },
-      { immediate: true }
-    )
-    // watch the filters change
-    this.$watch(
-      () => this.filters.supabaseParam,
-      () => {
-        if(parseInt(this.$route.params.page)===1) {
-          this.fetchData()
-        } else {
-          this.$router.push({name: 'search', params: {page: 1}})
-        }
-      },
-      { immediate: true, deep: true }
-    )
-    // watch sorting change
-    this.$watch(
-      () => this.filters.selectedSorting,
-      (newVal, oldVal) => {
-        if(newVal!==oldVal) {
-          this.fetchData()
-        }
-      },
-      { immediate: true, deep: true }
-    )
   },
 }
 </script>
