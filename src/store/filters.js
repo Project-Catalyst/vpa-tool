@@ -164,21 +164,21 @@ export const useFilterStore = defineStore('filters', {
       this.allFilters = getDefaultAllFilters()
       this.activeStatus = getDefaultActiveStatus()
       this.supabaseParam = getFilterParamTemplate()
-      this.triggerAssessmentsLoad()
+      // this.triggerAssessmentsLoad()
     },
     addActiveFilter(filterId, filterOption, mode) {
       this.allFilters[filterId] = filterModules[filterId].getFilter(this.allFilters[filterId], filterOption, mode)
       this.activeStatus[filterId] = filterModules[filterId].isActive(this.allFilters[filterId])
       this.updateSupabaseParam(filterId)
       this.updateReactiveBidings(filterId, filterOption, mode)
-      this.triggerAssessmentsLoad()
+      // this.triggerAssessmentsLoad()
     },
     removeActiveFilter(filterId, filterOption, mode) {
       this.allFilters[filterId] = filterModules[filterId].removeFilter(this.allFilters[filterId], filterOption, mode)
       this.activeStatus[filterId] = filterModules[filterId].isActive(this.allFilters[filterId])
       this.updateSupabaseParam(filterId)
       this.updateReactiveBidings(filterId, filterOption)
-      this.triggerAssessmentsLoad()
+      // this.triggerAssessmentsLoad()
     },
     updateSupabaseParam(filterId) {
       if(filterId === keysMap.stored) {
@@ -231,7 +231,7 @@ export const useFilterStore = defineStore('filters', {
     },
     setSorting(sortingKey) {
       this.selectedSorting = sortingKey[0]
-      this.triggerAssessmentsLoad()
+      // this.triggerAssessmentsLoad()
     },
     defaultVmodels() {
       return getDefaultVbindings()

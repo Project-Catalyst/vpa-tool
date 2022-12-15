@@ -119,6 +119,7 @@ export default {
     }
   },
   created() {
+    // watch the page changing
     this.$watch(
       () => this.$route.params,
       () => {
@@ -126,18 +127,27 @@ export default {
       },
       { immediate: true }
     )
+    // watch the filters change
     this.$watch(
-      () => this.assessments.triggerFilterFetch,
-      (newVal, oldVal) => {
-        if(newVal) {
-          if(parseInt(this.$route.params.page)===1) {
-            this.fetchData()
-          } else {
-            this.$router.push({name: 'search', params: {page: 1}})
-          }
+      () => this.filters.supabaseParam,
+      () => {
+        if(parseInt(this.$route.params.page)===1) {
+          this.fetchData()
+        } else {
+          this.$router.push({name: 'search', params: {page: 1}})
         }
       },
-      { immediate: true }
+      { immediate: true, deep: true }
+    )
+    // watch sorting change
+    this.$watch(
+      () => this.filters.selectedSorting,
+      (newVal, oldVal) => {
+        if(newVal!==oldVal) {
+          this.fetchData()
+        }
+      },
+      { immediate: true, deep: true }
     )
   },
 }
