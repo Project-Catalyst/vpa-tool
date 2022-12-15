@@ -83,8 +83,23 @@ export const useAssessmentsStore = defineStore('assessments', {
     async fetchAssessment(id) {
       this.isLoading = true;
       let assessment = await supabase.fetchAssessmentById(id)
-      this.currentAssessment = {...assessment, reviewed: this.isReviewed(assessment.id) }
+      this.currentAssessment = this.formatAssessment(assessment)
       this.isLoading = false;
+    },
+    formatAssessment(assessment) {
+      if (assessment.Challenges === null) {
+        assessment.Challenges = {
+          id: null,
+          title: '(No Challenge identification provided)'
+        }
+      }
+      if (assessment.Proposals === null) {
+        assessment.Proposals = {
+          id: null,
+          title: '(No Proposal identification provided)'
+        }
+      }
+      return {...assessment, reviewed: this.isReviewed(assessment.id) }
     },
     isReviewed(assessmentId) {
       const reviewsStore = useReviewsStore();
