@@ -135,7 +135,6 @@ export const useFilterStore = defineStore('filters', {
         challenges: [],
         assessors: []
       },
-      defaultVmodels: getDefaultVbindings(),
       reactiveVbindings: getDefaultReactiveVbindings(),
       allFilters: getDefaultAllFilters(),
       activesStatus: getDefaultActiveStatus(),
@@ -148,6 +147,7 @@ export const useFilterStore = defineStore('filters', {
       console.log(this.allFilters)
       console.log(this.supabaseParam)
       console.log(this.selectedSorting)
+      console.log(this.reactiveVbindings)
     },
     async triggerAssessmentsLoad() {
       const assessmentsStore = useAssessmentsStore();
@@ -232,6 +232,12 @@ export const useFilterStore = defineStore('filters', {
     setSorting(sortingKey) {
       this.selectedSorting = sortingKey[0]
       this.triggerAssessmentsLoad()
+    },
+    defaultVmodels() {
+      return getDefaultVbindings()
+    },
+    activeVmodels() {
+      return JSON.parse(JSON.stringify(Object.assign({}, getDefaultVbindings(), this.reactiveVbindings)))
     },
     resetState() {
       this.$reset()

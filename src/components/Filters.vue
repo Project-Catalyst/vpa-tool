@@ -6,14 +6,16 @@
   const fKeys = filters.filtersKeys
   const fModes = filters.filtersModes
 
+  const defaultLengthRange = filters.defaultVmodels().length
+
 </script>
 
 <template>
   <div class="box">
 
-    <!-- <o-button @click="filters.init()" variant="success" class="mx-1"> INIT FILTERS STORE </o-button>
+    <o-button @click="filters.init()" variant="success" class="mx-1"> INIT FILTERS STORE </o-button>
     <o-button @click="filters.resetState()" variant="danger"> RESET FILTERS STORE </o-button>
-    <o-button @click="filters.logFilters()" variant="primary" class="mx-1"> LOG FILTERS </o-button> -->
+    <o-button @click="filters.logFilters()" variant="primary" class="mx-1"> LOG FILTERS </o-button>
     
     <div class="columns is-multiline is-vcentered">
 
@@ -62,7 +64,9 @@
         <o-button :disabled="!storedFilters.assessors" @click="addFilter(fKeys.assessors, storedFilters.assessors, fModes.exc)" variant="danger" size="small"> {{btnFilterInclusion.exclude}} </o-button>
       </o-field>
 
-      <o-field label="Length greater than (characters)" class="column is-one-third">
+      <o-field label="Length greater than (characters)" class="column is-one-third"
+        :variant="rangeVariant(fModes.min)"
+        :message="rangeErrorMessage(fModes.min)">
         <o-autocomplete placeholder="Select a minimum length"
           v-model="vmodelValues.length[0]"
           icon="search" clearable
@@ -89,7 +93,7 @@
           </o-radio>
         </o-field>
         <o-field class="column is-full pb-0 ml-2">
-          <o-slider v-model="vmodelValues.reviewedRange" 
+          <o-slider v-model="vmodelValues.reviewedRange" v-if="filters.reviewedThresholds.max > 1"
             :min="filters.reviewedThresholds.min" :max="filters.reviewedThresholds.max" :step="1" lazy
             @change="option => addFilter(fKeys.reviewed, option, fModes.range)"
             :disabled="vmodelValues.reviewed!==filters.getReviewedValue">
@@ -100,7 +104,9 @@
         </o-field>
       </div>
       
-      <o-field label="Length smaller than (characters)" class="column is-one-third">
+      <o-field label="Length smaller than (characters)" class="column is-one-third"
+        :variant="rangeVariant(fModes.max)"
+        :message="rangeErrorMessage(fModes.max)">
         <o-autocomplete placeholder="Select a maximum length"
           v-model="vmodelValues.length[1]"
           icon="search" clearable
@@ -142,24 +148,20 @@ export default {
     this.$watch(
       () => this.filters.reactiveVbindings,
       (newVal, oldVal) => {
-        this.vmodelValues[this.fKeys.length] = newVal[this.fKeys.length]
-        this.vmodelValues[this.fKeys.ratings] = newVal[this.fKeys.ratings]
-        this.vmodelValues[this.fKeys.flagged] = newVal[this.fKeys.flagged]
-        this.vmodelValues[this.fKeys.reviewed] = newVal[this.fKeys.reviewed]
-        this.vmodelValues[this.fKeys.reviewedRange] = newVal[this.fKeys.reviewedRange]
-        this.vmodelValues[this.fKeys.stored] = newVal[this.fKeys.stored]
+        this.vmodelValues = JSON.parse(JSON.stringify(Object.assign({}, this.vmodelValues, newVal)))
       },
       { deep: true }
     )
   },
   data() {
     return {
-      vmodelValues: this.filters.defaultVmodels,
+      vmodelValues: this.filters.activeVmodels(),
       storedFilters: {
         proposals: false,
         challenges: false,
         assessors: false,
-      }
+      },
+      invalidRange: {min: false, max: false},
     }
   },
   computed: {
@@ -169,9 +171,16 @@ export default {
         exclude: "Exclude from search"
       }
     },
+    isInvalidRange() {
+      return this.invalidRange.min || this.invalidRange.max
+    }
   },
   methods: {
     addFilter(filterId, option, mode) {
+      if(filterId===this.fKeys.length) {
+        this.setInvalidLengthRange(option, mode)
+        if(this.isInvalidRange) { return }
+      }
       this.filters.addActiveFilter(filterId, option, mode)
       if(mode===this.fModes.inc || mode===this.fModes.exc) {
         this.vmodelValues[filterId] = ''
@@ -185,9 +194,41 @@ export default {
     clearStoredSelection(filterId) {
       this.storedFilters[filterId] = false
     },
+    setInvalidLengthRange(option, mode) {
+      if( option === null) {
+        this.invalidRange = {min: false, max: false}
+      }
+      else if( mode===this.fModes.min && this.isInvalidMinRange(option) ) {
+        this.activateInvalidRange(mode)
+      }
+      else if ( mode===this.fModes.max && this.isInvalidMaxRange(option) ) {
+        this.activateInvalidRange(mode)
+      }
+      else {
+        this.deactivateInvalidRange()
+      }
+    },
+    activateInvalidRange(mode) {
+      this.invalidRange[mode] = true
+    },
+    deactivateInvalidRange() {
+      this.invalidRange = {min: false, max: false}
+    },
+    isInvalidMinRange(option) {
+      return this.vmodelValues.length[1]!==this.defaultLengthRange[1] && option >= this.vmodelValues.length[1]
+    },
+    isInvalidMaxRange(option) {
+      return this.vmodelValues.length[0]!==this.defaultLengthRange[0] && option <= this.vmodelValues.length[0]
+    },
+    rangeVariant(mode) {
+      return (this.invalidRange[mode]) ? 'danger' : ''
+    }, 
+    rangeErrorMessage(mode) {
+      return (this.invalidRange[mode]) ? 'Invalid length range' : ''
+    },
     resetFilters() {
       this.filters.resetFilters()
-      this.vmodelValues = this.filters.defaultVmodels
+      this.vmodelValues = this.filters.defaultVmodels()
     },
     filteredDataArray(filterId) {
       let searchText = this.vmodelValues[filterId]

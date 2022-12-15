@@ -130,16 +130,16 @@ export default {
     },
     getTagText(filterId) {
       if (filterId===this.fKeys.length) {
-        let activeVal = this.filters.reactiveVbindings[filterId]
+        let activeVal = this.filters.activeVmodels()[filterId]
         if(activeVal[0]==='') { return `Length up to ${activeVal[1]} chars` }
         else if(activeVal[1]==='') { return `Length greater than ${activeVal[0]} chars` }
         else { return `Length between ${activeVal[0]}-${activeVal[1]} chars` }
       }
       else if(filterId===this.fKeys.ratings) {
-        return `Rate between ${this.filters.reactiveVbindings[filterId][0]} and ${this.filters.reactiveVbindings[filterId][1]} points`
+        return `Rate between ${this.filters.activeVmodels()[filterId][0]} and ${this.filters.activeVmodels()[filterId][1]} points`
       }
       else if(filterId===this.fKeys.flagged) {
-        return `${this.filters.reactiveVbindings[filterId]}`
+        return `${this.filters.activeVmodels()[filterId]}`
       }
       else if(filterId===this.fKeys.reviewed) {
         let rangeText = ""
@@ -147,7 +147,7 @@ export default {
           let range = this.filters.getReviewedRange
           rangeText = ` (no. of reviews from ${range[0]}-${range[1]})`
         }
-        return (this.filters.reactiveVbindings[filterId] === this.filters.getReviewedValue)
+        return (this.filters.activeVmodels()[filterId] === this.filters.getReviewedValue)
         ? `Reviews provided${rangeText}`
         : "No reviews provided"
       }
