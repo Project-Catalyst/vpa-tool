@@ -26,7 +26,6 @@ const routes = [
     path: "/assessments/:page",
     name: "search",
     component: Search,
-    // beforeEnter: guard,
   },
   {
     path: "/store",
@@ -38,17 +37,6 @@ const routes = [
     name: "assessment",
     component: Assessment,
   }
-  //==== FROM ORIGINAL PROJECT
-  // {
-  //   path: "/filter",
-  //   name: "filter",
-  //   component: CFilter,
-  // },
-  // {
-  //   path: "/stats",
-  //   name: "stats",
-  //   component: Stats,
-  // },
 ]
 
 export default function (history) {
@@ -61,7 +49,7 @@ export default function (history) {
         return savedPosition
       } else if ( document.getElementById(`ass-${from.params.id}`) ) {
         return {
-          el: `#ass-${from.params.id-1}`,
+          el: `#ass-${from.params.id}`,
         }
       } else {
         return { top: 0 }
