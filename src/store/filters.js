@@ -137,7 +137,7 @@ export const useFilterStore = defineStore('filters', {
       },
       reactiveVbindings: getDefaultReactiveVbindings(),
       allFilters: getDefaultAllFilters(),
-      activesStatus: getDefaultActiveStatus(),
+      activeStatus: getDefaultActiveStatus(),
       supabaseParam: getFilterParamTemplate(),
       selectedSorting: sortingVmodels.default,
     }
@@ -162,20 +162,20 @@ export const useFilterStore = defineStore('filters', {
     resetFilters() {
       this.reactiveVbindings = getDefaultReactiveVbindings()
       this.allFilters = getDefaultAllFilters()
-      this.activesStatus = getDefaultActiveStatus()
+      this.activeStatus = getDefaultActiveStatus()
       this.supabaseParam = getFilterParamTemplate()
       this.triggerAssessmentsLoad()
     },
     addActiveFilter(filterId, filterOption, mode) {
       this.allFilters[filterId] = filterModules[filterId].getFilter(this.allFilters[filterId], filterOption, mode)
-      this.activesStatus[filterId] = filterModules[filterId].isActive(this.allFilters[filterId])
+      this.activeStatus[filterId] = filterModules[filterId].isActive(this.allFilters[filterId])
       this.updateSupabaseParam(filterId)
       this.updateReactiveBidings(filterId, filterOption, mode)
       this.triggerAssessmentsLoad()
     },
     removeActiveFilter(filterId, filterOption, mode) {
       this.allFilters[filterId] = filterModules[filterId].removeFilter(this.allFilters[filterId], filterOption, mode)
-      this.activesStatus[filterId] = filterModules[filterId].isActive(this.allFilters[filterId])
+      this.activeStatus[filterId] = filterModules[filterId].isActive(this.allFilters[filterId])
       this.updateSupabaseParam(filterId)
       this.updateReactiveBidings(filterId, filterOption)
       this.triggerAssessmentsLoad()
@@ -183,10 +183,10 @@ export const useFilterStore = defineStore('filters', {
     updateSupabaseParam(filterId) {
       if(filterId === keysMap.stored) {
         const reviewStore = useReviewsStore();
-        if(reviewStore.hasReviews) {
-          this.supabaseParam.storedAssessments = reviewStore.allIds
-        } else {
+        if( !this.isFilterActive(keysMap.stored) ) {
           this.supabaseParam.storedAssessments = null
+        } else {
+          this.supabaseParam.storedAssessments = reviewStore.allIds
         }
       } else {
         this.supabaseParam = filterModules[filterId].updateParam(this.allFilters[filterId], this.supabaseParam)
@@ -280,10 +280,10 @@ export const useFilterStore = defineStore('filters', {
     },
     //  Getters to expose status state for condition elements
     hasActiveFilters() {
-      return Object.values(this.activesStatus).some(stat => stat===true)
+      return Object.values(this.activeStatus).some(stat => stat===true)
     },    
     isFilterActive: (state) => {
-      return (filterId) => state.activesStatus[filterId]
+      return (filterId) => state.activeStatus[filterId]
     },
     hasIncludedOptions: (state) => {
       return (filterId) => state.allFilters[filterId].included.length > 0
