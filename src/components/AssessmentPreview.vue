@@ -7,27 +7,22 @@
 
       <div class="label column is-full my-0 pb-1 pt-0">Assessment ID: #{{assessment.id}}</div>
 
-      <div class="column is-one-third py-0">
+      <div class="column is-two-fifths py-0">
         <div class="label inline mr-2">Assessor:</div>
         <div class="value inline">{{assessment.Assessors.anon_id}}</div>
       </div>
 
-      <div class="column is-one-third py-0">
+      <div class="column is-one-fifth py-0">
         <div class="label inline mr-2">Average Rating: </div>
         <div class="value inline"> {{rating}} </div>
       </div>
 
-      <div class="column is-one-third py-0">
+      <div class="column is-one-fifth py-0">
         <div class="label inline mr-2">No. of vPAs reviews:</div>
         <div class="value inline">{{assessment.vpas_reviews}}</div>
       </div>
 
-      <div class="column is-two-thirds py-0">
-        <div class="label inline mr-2">Proposal:</div>
-        <div class="value inline">{{assessment.Proposals.title}}</div>
-      </div>
-
-      <div class="column is-one-third py-0">
+      <div class="column is-one-fifth py-0">
         <o-checkbox
           v-model="assessment.proposer_mark"
           variant="warning"
@@ -36,7 +31,12 @@
         </o-checkbox>
       </div>
 
-      <div class="column is-one-third py-0">
+      <div class="column is-full py-0">
+        <div class="label inline mr-2">Proposal:</div>
+        <div class="value inline">{{assessment.Proposals.title}}</div>
+      </div>
+
+      <div class="column is-full py-0">
         <div class="label inline mr-2">Challenge:</div>
         <div class="value inline">{{assessment.Challenges.title}}</div>
       </div>
@@ -51,7 +51,7 @@
         <o-checkbox
           class="pt-2"
           v-model="assessment.reviewed"
-          variant="warning"
+          variant="success"
           disabled>
           Already reviewed
         </o-checkbox>
