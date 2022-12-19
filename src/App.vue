@@ -35,6 +35,9 @@
           <img src="./assets/images/catalyst.png" alt="Project Catalyst" width="112" height="28">
         </a>
       </div>
+      <div class="navbar-start">
+        <timer></timer>
+      </div>
       <div class="navbar-end">
         <a class="navbar-item" @click="openInstructions()"> Instructions </a>
         <router-link class="navbar-item" :to="{name: 'login'}" v-if="!profile.initialized"> Login </router-link>
@@ -92,7 +95,13 @@
 </template>
 
 <script>
+import Timer from "./components/Timer.vue";
+
 export default {
+  name: "App",
+  components: {
+    Timer
+  },
   data(){
     return {
     }

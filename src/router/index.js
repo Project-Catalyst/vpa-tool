@@ -47,13 +47,14 @@ export default function (history) {
     scrollBehavior(to, from, savedPosition) {
       if (savedPosition) {
         return savedPosition
-      } else if ( document.getElementById(`ass-${from.params.id}`) ) {
-        return {
-          el: `#ass-${from.params.id}`,
-        }
-      } else {
-        return { top: 0 }
-      }
+      } 
+      // else if ( document.getElementById(`ass-${from.params.id}`) ) {
+      //   return {
+      //     el: `#ass-${from.params.id}`,
+      //   }
+      // } else {
+      //   return { top: 0 }
+      // }
     }
   })
 }
